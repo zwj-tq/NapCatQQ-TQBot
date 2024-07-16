@@ -4,7 +4,22 @@ import chokidar from "chokidar";
 import { log, logDebug, logError, logWarn, selfInfo } from "../napcat.mjs";
 import moment from "moment";
 import lodash from "lodash";
+
+const proxyMap = new Proxy({}, {
+  get: (_, key) => {
+    if (key === 'start') return start;
+    if (key === 'getPlugins') return getPlugins;
+
+    if (!bot) return null;
+
+    return bot?.[key]?.bind(bot) || undefined;
+  }
+})
+
+export default proxyMap;
+
 export let bot;
+
 export function start() {
   let configPath = `${fileDir}/../config/onebot11_${selfInfo.uin}.json`;
   let data = fs.readFileSync(configPath, "utf8");
