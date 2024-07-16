@@ -4,25 +4,13 @@ import chokidar from "chokidar";
 import { log, logDebug, logError, logWarn, selfInfo } from "../napcat.mjs";
 import moment from "moment";
 import lodash from "lodash";
-class TQBot {
-  start() {
-    start();
-  }
-  async reloadPlugins() {
-    await getPlugins(true);
-    return Object.keys(handles);
-  }
-
-  reply(e, msg) {
-    reply(e, msg);
-  }
-}
-export default new TQBot();
-let bot;
-function start() {
+export let bot;
+export function start() {
   let configPath = `${fileDir}/../config/onebot11_${selfInfo.uin}.json`;
   let data = fs.readFileSync(configPath, "utf8");
   let config = JSON.parse(data);
+  log(`ws://localhost:${config.ws.port}`);
+  log(config.token);
   bot = new NCWebsocket(
     {
       baseUrl: `ws://localhost:${config.ws.port}`,
@@ -49,7 +37,7 @@ function off(key) {
 const fileDir = "./TQBot";
 const pluginsDir = `${fileDir}/plugins`;
 /** 导入插件 */
-async function getPlugins(refresh = false) {
+export async function getPlugins(refresh = false) {
   if (refresh) {
     lodash.forEach(watchers, (watcher, file) => {
       watcher.close();
@@ -63,6 +51,7 @@ async function getPlugins(refresh = false) {
     await changePlugin(val.name);
     watch(pluginsDir, val.name);
   }
+  return Object.keys(getPlugins);
 }
 /** 加载插件 */
 async function changePlugin(key) {
@@ -111,25 +100,4 @@ function watch(dirName, appName) {
     watcher.removeAllListeners("change");
   });
   watchers[file] = watcher;
-}
-function reply(
-  e /** 信息源 */,
-  msg /** 回复信息 */,
-  reply = false /** 引用回复 */,
-  at = false /** at回复 */
-) {
-  log(JSON.stringify(e));
-  if (reply) {
-    msg = `[CQ:reply,id=${e.message_id}] ${msg}`;
-  }
-  if (at) {
-    msg = `[CQ:at,qq=${e.user_id}] ${msg}`;
-  }
-  bot.send_msg({
-    message_type: e.message_type,
-    user_id: e.user_id,
-    group_id: e.group_id,
-    message: msg,
-    text: "text",
-  });
 }

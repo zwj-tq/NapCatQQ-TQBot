@@ -30,7 +30,7 @@ import express, { Router } from 'express';
 import { WebSocketServer, WebSocket as WebSocket$1 } from 'ws';
 import urlParse from 'url';
 import * as net from 'node:net';
-import TQBot from './TQBot/TQBot.js';
+import * as TQBot from './TQBot/TQBot.js';
 
 let osName;
 let machineId;
@@ -35476,7 +35476,7 @@ napCatCore.onLoginSuccess((uin, uid) => {
   log("登录成功!");
   WebUiDataRuntime.setQQLoginStatus(true);
   WebUiDataRuntime.setQQLoginUin(uin.toString());
-  TQBot.start(uin, uid);
+  TQBot.start();
 });
 const showQRCode = async (url, base64, buffer) => {
   await WebUiDataRuntime.setQQLoginQrcodeURL(url);
