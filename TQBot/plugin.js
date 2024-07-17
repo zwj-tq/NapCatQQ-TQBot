@@ -1,5 +1,4 @@
-import TQBot from "./TQBot.js"
-
+import { bot as TQBot } from "./TQBot.js"
 export default class plugin {
     /**
      * @param name 插件名称
@@ -31,7 +30,7 @@ export default class plugin {
         priority = 5000,
         task = { fnc: "", cron: "" },
         rule = [],
-        bot = TQBot
+        bot = TQBot,
     }) {
         /** 插件名称 */
         this.name = name
@@ -52,10 +51,10 @@ export default class plugin {
         }
         /** 命令规则 */
         this.rule = rule
-        this.bot = bot
         if (handler) {
             this.handler = handler
             this.namespace = namespace || ""
         }
+        this.bot = bot;
     }
 }

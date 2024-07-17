@@ -1,9 +1,5 @@
 import { NCWebsocketBase } from "./NCWebsocketBase.js";
 export class NCWebsocketApi extends NCWebsocketBase {
-
-  constructor(NCWebsocketOptions, debug = false) {
-    super(NCWebsocketOptions, debug = false)
-  }
   reboot_normal(params) {
     return this.send("reboot_normal", params);
   }
@@ -217,7 +213,7 @@ export class NCWebsocketApi extends NCWebsocketBase {
   ) {
     console.log(JSON.stringify(e));
     if (reply) {
-      msg = `[CQ:reply,id=${e.message_id}] ${msg}`;
+      msg = `[CQ:reply,id=${e.message_id}]${msg}`;
     }
     if (at) {
       msg = `[CQ:at,qq=${e.user_id}] ${msg}`;

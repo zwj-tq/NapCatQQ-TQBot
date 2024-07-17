@@ -12,6 +12,13 @@ export class NCWebsocketBase {
     #eventBus;
     #echoMap;
     constructor(NCWebsocketOptions, debug = false) {
+        if (NCWebsocketOptions)
+            this.initWebSockeInfo(NCWebsocketOptions);
+        this.#debug = debug;
+        this.#eventBus = new NCEventBus(this.#debug);
+        this.#echoMap = new Map();
+    }
+    initWebSockeInfo(NCWebsocketOptions) {
         this.#accessToken = NCWebsocketOptions.accessToken ?? '';
         if ('baseUrl' in NCWebsocketOptions) {
             this.#baseUrl = NCWebsocketOptions.baseUrl;
@@ -25,15 +32,20 @@ export class NCWebsocketBase {
         else {
             throw new Error('NCWebsocketOptions must contain either "protocol && host && port" or "baseUrl"');
         }
-        this.#debug = debug;
-        this.#eventBus = new NCEventBus(this.#debug);
-        this.#echoMap = new Map();
     }
     // ==================WebSocket操作=============================
-    connect() {
+    connect(NCWebsocketOptions) {
+        if (NCWebsocketOptions) {
+            log(NCWebsocketOptions);
+            this.initWebSockeInfo(NCWebsocketOptions);
+        }
         this.connectEvent();
         this.connectApi();
     }
+    // connect() {
+    //     this.connectEvent();
+    //     this.connectApi();
+    // }
     disconnect() {
         this.disconnectEvent();
         this.disconnectApi();

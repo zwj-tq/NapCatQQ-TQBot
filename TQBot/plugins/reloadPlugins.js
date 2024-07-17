@@ -1,6 +1,4 @@
-import { log } from "node:console";
 import plugin from "../plugin.js";
-import TQBot from "../TQBot.js";
 import lodash from "lodash";
 export default class reloadPlugins extends plugin {
   constructor() {
@@ -17,9 +15,9 @@ export default class reloadPlugins extends plugin {
     });
   }
   async forceReloadPlugins(e) {
-    const plugins = await TQBot.getPlugins();
+    const plugins = await this.bot.getPlugins(true);
     let msg = `强制更新成功${plugins.length}个插件`;
     lodash.forEach(plugins, (key) => (msg += `\n${key}`));
-    TQBot.reply(e, msg, true);
+    this.bot.reply(e, msg, false, true);
   }
 }
