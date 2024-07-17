@@ -1,6 +1,6 @@
 import { log } from "node:console";
 import plugin from "../plugin.js";
-import * as TQBot from "../TQBot.js";
+import TQBot from "../TQBot.js";
 import lodash from "lodash";
 export default class reloadPlugins extends plugin {
   constructor() {
