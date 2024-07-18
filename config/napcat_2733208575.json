@@ -1,6 +1,6 @@
 {
   "fileLog": true,
   "consoleLog": true,
-  "fileLogLevel": "debug",
+  "fileLogLevel": "info",
   "consoleLogLevel": "info"
 }

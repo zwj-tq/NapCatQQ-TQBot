@@ -1,33 +1,50 @@
-import { NCWebsocket } from "./NCWebsocket/index.js";
+import { NCWebsocket } from "./libs/NCWebsocket/index.js";
 import * as fs from "node:fs";
 import chokidar from "chokidar";
-import { log, logDebug, logError, logWarn, selfInfo } from "../napcat.mjs";
 import moment from "moment";
 import lodash from "lodash";
+import { log, logError } from "./libs/log.js";
 
 const fileDir = "./TQBot";
 const pluginsDir = `${fileDir}/plugins`;
+
 class TQBot extends NCWebsocket {
   #watchers = {};
   #handles = {};
+  constructor() {
+    super();
+    this.start();
+  }
   start() {
-    let configPath = `${fileDir}/../config/onebot11_${selfInfo.uin}.json`;
-    let data = fs.readFileSync(configPath, "utf8");
-    let config = JSON.parse(data);
-    this.connect({
-      baseUrl: `ws://localhost:${config.ws.port}`,
-      accessToken: config.token,
+    this.once('socket.eventOpen', function () {
+      log(`event连接成功`)
+      this.once("socket.eventClose", (data) => {
+        log("event断开连接,关闭程序")
+        process.exit();
+      });
     });
+    this.once('socket.apiOpen', function () {
+      log(`api连接成功`)
+      this.once("socket.apiClose", (data) => {
+        log("api断开连接,关闭程序")
+        process.exit();
+      });
+    });
+    this.connect({
+      baseUrl: `ws://localhost:3001`,
+      accessToken: "1106763138",
+    }, true);
+
     this.getPlugins();
   }
   regist(key, plugin, handle) {
-    bot.on(plugin.event, handle);
+    this.on(plugin.event, handle);
     this.#handles[key] = { plugin, handle };
   }
   deregist(key) {
     if (!this.#handles[key]) return;
     const { plugin, handle } = this.#handles[key];
-    bot.off(plugin.event, handle);
+    this.off(plugin.event, handle);
     delete this.#handles[key];
   }
 

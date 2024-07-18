@@ -1,6 +1,4 @@
-import { log } from 'console';
-import plugin from '../plugin.js';
-
+import plugin from "../libs/plugin.js";
 export default class getImage extends plugin {
     constructor() {
         super({
@@ -23,7 +21,7 @@ export default class getImage extends plugin {
             const idPattern = /-\d+/;
             const id = idString.match(idPattern)[0];  // 提取id部分
             this.bot.get_msg({ message_id: id }).then((data) => {
-                log(data);
+                
             });
         }
     }

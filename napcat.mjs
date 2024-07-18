@@ -30,7 +30,6 @@ import express, { Router } from 'express';
 import { WebSocketServer, WebSocket as WebSocket$1 } from 'ws';
 import urlParse from 'url';
 import * as net from 'node:net';
-import { bot } from './TQBot/TQBot.js';
 
 let osName;
 let machineId;
@@ -115,7 +114,7 @@ function CacheClassFuncAsync(ttl = 3600 * 1e3, customKey = "") {
   function logExecutionTime(target, methodName, descriptor) {
     const cache = /* @__PURE__ */ new Map();
     const originalMethod = descriptor.value;
-    descriptor.value = async function (...args) {
+    descriptor.value = async function(...args) {
       const key = `${customKey}${String(methodName)}.(${args.map((arg) => JSON.stringify(arg)).join(", ")})`;
       cache.forEach((value, key2) => {
         if (value.expiry < Date.now()) {
@@ -277,7 +276,7 @@ function assembleStyles() {
         }
         const integer = Number.parseInt(colorString, 16);
         return [/* eslint-disable no-bitwise */
-          integer >> 16 & 0xFF, integer >> 8 & 0xFF, integer & 0xFF
+        integer >> 16 & 0xFF, integer >> 8 & 0xFF, integer & 0xFF
         /* eslint-enable no-bitwise */];
       },
       enumerable: false
@@ -596,7 +595,7 @@ for (const model of usedModels) {
     }
   };
 }
-const proto = Object.defineProperties(() => { }, {
+const proto = Object.defineProperties(() => {}, {
   ...styles,
   level: {
     enumerable: true,
@@ -678,7 +677,7 @@ createChalk({
 
 const __filename$7 = fileURLToPath(import.meta.url);
 const __dirname$6 = dirname(__filename$7);
-let LogLevel = /* @__PURE__ */ function (LogLevel2) {
+let LogLevel = /* @__PURE__ */ function(LogLevel2) {
   LogLevel2["DEBUG"] = "debug";
   LogLevel2["INFO"] = "info";
   LogLevel2["WARN"] = "warn";
@@ -788,16 +787,16 @@ function _log(level, ...args) {
     loggerFile[level](formatMsg(args).replace(colorEscape, ""));
   }
 }
-export function log(...args) {
+function log(...args) {
   _log(LogLevel.INFO, ...args);
 }
-export function logDebug(...args) {
+function logDebug(...args) {
   _log(LogLevel.DEBUG, ...args);
 }
-export function logError(...args) {
+function logError(...args) {
   _log(LogLevel.ERROR, ...args);
 }
-export function logWarn(...args) {
+function logWarn(...args) {
   _log(LogLevel.WARN, ...args);
 }
 
@@ -886,21 +885,21 @@ class GlobalAdapter {
   }
 }
 
-let Sex = /* @__PURE__ */ function (Sex2) {
+let Sex = /* @__PURE__ */ function(Sex2) {
   Sex2[Sex2["male"] = 1] = "male";
   Sex2[Sex2["female"] = 2] = "female";
   Sex2[Sex2["unknown"] = 255] = "unknown";
   return Sex2;
 }({});
 
-let GroupMemberRole = /* @__PURE__ */ function (GroupMemberRole2) {
+let GroupMemberRole = /* @__PURE__ */ function(GroupMemberRole2) {
   GroupMemberRole2[GroupMemberRole2["normal"] = 2] = "normal";
   GroupMemberRole2[GroupMemberRole2["admin"] = 3] = "admin";
   GroupMemberRole2[GroupMemberRole2["owner"] = 4] = "owner";
   return GroupMemberRole2;
 }({});
 
-let ElementType = /* @__PURE__ */ function (ElementType2) {
+let ElementType = /* @__PURE__ */ function(ElementType2) {
   ElementType2[ElementType2["TEXT"] = 1] = "TEXT";
   ElementType2[ElementType2["PIC"] = 2] = "PIC";
   ElementType2[ElementType2["FILE"] = 3] = "FILE";
@@ -913,18 +912,18 @@ let ElementType = /* @__PURE__ */ function (ElementType2) {
   ElementType2[ElementType2["MARKDOWN"] = 14] = "MARKDOWN";
   return ElementType2;
 }({});
-let PicType = /* @__PURE__ */ function (PicType2) {
+let PicType = /* @__PURE__ */ function(PicType2) {
   PicType2[PicType2["gif"] = 2e3] = "gif";
   PicType2[PicType2["jpg"] = 1e3] = "jpg";
   return PicType2;
 }({});
-let AtType = /* @__PURE__ */ function (AtType2) {
+let AtType = /* @__PURE__ */ function(AtType2) {
   AtType2[AtType2["notAt"] = 0] = "notAt";
   AtType2[AtType2["atAll"] = 1] = "atAll";
   AtType2[AtType2["atUser"] = 2] = "atUser";
   return AtType2;
 }({});
-let ChatType = /* @__PURE__ */ function (ChatType3) {
+let ChatType = /* @__PURE__ */ function(ChatType3) {
   ChatType3[ChatType3["friend"] = 1] = "friend";
   ChatType3[ChatType3["group"] = 2] = "group";
   ChatType3[ChatType3["chatDevice"] = 8] = "chatDevice";
@@ -933,30 +932,30 @@ let ChatType = /* @__PURE__ */ function (ChatType3) {
 }({});
 const IMAGE_HTTP_HOST = "https://gchat.qpic.cn";
 const IMAGE_HTTP_HOST_NT = "https://multimedia.nt.qq.com.cn";
-let GrayTipElementSubType = /* @__PURE__ */ function (GrayTipElementSubType2) {
+let GrayTipElementSubType = /* @__PURE__ */ function(GrayTipElementSubType2) {
   GrayTipElementSubType2[GrayTipElementSubType2["INVITE_NEW_MEMBER"] = 12] = "INVITE_NEW_MEMBER";
   GrayTipElementSubType2[GrayTipElementSubType2["MEMBER_NEW_TITLE"] = 17] = "MEMBER_NEW_TITLE";
   return GrayTipElementSubType2;
 }({});
-let FaceType = /* @__PURE__ */ function (FaceType2) {
+let FaceType = /* @__PURE__ */ function(FaceType2) {
   FaceType2[FaceType2["normal"] = 1] = "normal";
   FaceType2[FaceType2["normal2"] = 2] = "normal2";
   FaceType2[FaceType2["dice"] = 3] = "dice";
   return FaceType2;
 }({});
-let FaceIndex = /* @__PURE__ */ function (FaceIndex2) {
+let FaceIndex = /* @__PURE__ */ function(FaceIndex2) {
   FaceIndex2[FaceIndex2["dice"] = 358] = "dice";
   FaceIndex2[FaceIndex2["RPS"] = 359] = "RPS";
   return FaceIndex2;
 }({});
-let TipGroupElementType = /* @__PURE__ */ function (TipGroupElementType2) {
+let TipGroupElementType = /* @__PURE__ */ function(TipGroupElementType2) {
   TipGroupElementType2[TipGroupElementType2["memberIncrease"] = 1] = "memberIncrease";
   TipGroupElementType2[TipGroupElementType2["kicked"] = 3] = "kicked";
   TipGroupElementType2[TipGroupElementType2["ban"] = 8] = "ban";
   return TipGroupElementType2;
 }({});
 
-let GroupNotifyTypes = /* @__PURE__ */ function (GroupNotifyTypes2) {
+let GroupNotifyTypes = /* @__PURE__ */ function(GroupNotifyTypes2) {
   GroupNotifyTypes2[GroupNotifyTypes2["INVITE_ME"] = 1] = "INVITE_ME";
   GroupNotifyTypes2[GroupNotifyTypes2["INVITED_JOIN"] = 4] = "INVITED_JOIN";
   GroupNotifyTypes2[GroupNotifyTypes2["JOIN_REQUEST"] = 7] = "JOIN_REQUEST";
@@ -967,12 +966,12 @@ let GroupNotifyTypes = /* @__PURE__ */ function (GroupNotifyTypes2) {
   GroupNotifyTypes2[GroupNotifyTypes2["ADMIN_UNSET_OTHER"] = 13] = "ADMIN_UNSET_OTHER";
   return GroupNotifyTypes2;
 }({});
-let GroupRequestOperateTypes = /* @__PURE__ */ function (GroupRequestOperateTypes2) {
+let GroupRequestOperateTypes = /* @__PURE__ */ function(GroupRequestOperateTypes2) {
   GroupRequestOperateTypes2[GroupRequestOperateTypes2["approve"] = 1] = "approve";
   GroupRequestOperateTypes2[GroupRequestOperateTypes2["reject"] = 2] = "reject";
   return GroupRequestOperateTypes2;
 }({});
-let BuddyReqType = /* @__PURE__ */ function (BuddyReqType2) {
+let BuddyReqType = /* @__PURE__ */ function(BuddyReqType2) {
   BuddyReqType2[BuddyReqType2["KMEINITIATOR"] = 0] = "KMEINITIATOR";
   BuddyReqType2[BuddyReqType2["KPEERINITIATOR"] = 1] = "KPEERINITIATOR";
   BuddyReqType2[BuddyReqType2["KMEAGREED"] = 2] = "KMEAGREED";
@@ -989,7 +988,7 @@ let BuddyReqType = /* @__PURE__ */ function (BuddyReqType2) {
   BuddyReqType2[BuddyReqType2["KMEINITIATORWAITPEERCONFIRM"] = 13] = "KMEINITIATORWAITPEERCONFIRM";
   return BuddyReqType2;
 }({});
-let MemberExtSourceType = /* @__PURE__ */ function (MemberExtSourceType2) {
+let MemberExtSourceType = /* @__PURE__ */ function(MemberExtSourceType2) {
   MemberExtSourceType2[MemberExtSourceType2["DEFAULTTYPE"] = 0] = "DEFAULTTYPE";
   MemberExtSourceType2[MemberExtSourceType2["TITLETYPE"] = 1] = "TITLETYPE";
   MemberExtSourceType2[MemberExtSourceType2["NEWGROUPTYPE"] = 2] = "NEWGROUPTYPE";
@@ -1306,7 +1305,7 @@ class DBUtil extends DBUtilBase {
                 peerUid TEXT NOT NULL,
                 chatType INTEGER NOT NULL
             )`;
-    this.db.run(createTableSQL, function (err) {
+    this.db.run(createTableSQL, function(err) {
       if (err) {
         logError("Could not create table msgs", err.stack);
       }
@@ -1324,7 +1323,7 @@ class DBUtil extends DBUtilBase {
                 elementId TEXT NOT NULL,
                 msgId TEXT NOT NULL
             )`;
-    this.db.run(createFileTableSQL, function (err) {
+    this.db.run(createFileTableSQL, function(err) {
       if (err) {
         logError("Could not create table files", err);
       }
@@ -1433,7 +1432,7 @@ class DBUtil extends DBUtilBase {
   async addFileCache(file) {
     const stmt = this.db.prepare("INSERT INTO files (name, path, url, size, uuid, elementType ,element, elementId, msgId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     return new Promise((resolve, reject) => {
-      stmt.run(file.name, file.path, file.url, file.size, file.uuid, file.elementType, JSON.stringify(file.element), file.elementId, file.msgId, function (err) {
+      stmt.run(file.name, file.path, file.url, file.size, file.uuid, file.elementType, JSON.stringify(file.element), file.elementId, file.msgId, function(err) {
         if (err) {
           logError("db could not add file", err);
           reject(err);
@@ -1467,7 +1466,7 @@ class DBUtil extends DBUtilBase {
   async updateFileCache(file) {
     const stmt = this.db.prepare("UPDATE files SET path = ?, url = ? WHERE uuid = ?");
     return new Promise((resolve, reject) => {
-      stmt.run(file.path, file.url, file.uuid, function (err) {
+      stmt.run(file.path, file.url, file.uuid, function(err) {
         if (err) {
           logError("db could not update file cache", err);
           reject(err);
@@ -1517,28 +1516,28 @@ fs__default.createReadStream;
 async function stat$1(path) {
   return new Promise((resolve, reject) => {
     fs__default.stat(path, (err, stats) => {
-      if (err) reject(err); else resolve(stats);
+      if (err) reject(err);else resolve(stats);
     });
   });
 }
 async function close(fd) {
   return new Promise((resolve, reject) => {
     fs__default.close(fd, err => {
-      if (err) reject(err); else resolve();
+      if (err) reject(err);else resolve();
     });
   });
 }
 async function open(path, mode) {
   return new Promise((resolve, reject) => {
     fs__default.open(path, mode, (err, fd) => {
-      if (err) reject(err); else resolve(fd);
+      if (err) reject(err);else resolve(fd);
     });
   });
 }
 async function read(fd, buffer, offset, length, position) {
   return new Promise((resolve, reject) => {
     fs__default.read(fd, buffer, offset, length, position, (err, bytesRead, _buffer) => {
-      if (err) reject(err); else resolve({
+      if (err) reject(err);else resolve({
         bytesRead,
         buffer: _buffer
       });
@@ -1980,8 +1979,8 @@ async function fromFile(sourceFilePath) {
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
-function getDefaultExportFromCjs(x) {
-  return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+function getDefaultExportFromCjs (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
 
 // Primitive types
@@ -2206,14 +2205,14 @@ const uint32SyncSafeToken = {
 
 const extensions = ['jpg', 'png', 'apng', 'gif', 'webp', 'flif', 'xcf', 'cr2', 'cr3', 'orf', 'arw', 'dng', 'nef', 'rw2', 'raf', 'tif', 'bmp', 'icns', 'jxr', 'psd', 'indd', 'zip', 'tar', 'rar', 'gz', 'bz2', '7z', 'dmg', 'mp4', 'mid', 'mkv', 'webm', 'mov', 'avi', 'mpg', 'mp2', 'mp3', 'm4a', 'oga', 'ogg', 'ogv', 'opus', 'flac', 'wav', 'spx', 'amr', 'pdf', 'epub', 'elf', 'macho', 'exe', 'swf', 'rtf', 'wasm', 'woff', 'woff2', 'eot', 'ttf', 'otf', 'ico', 'flv', 'ps', 'xz', 'sqlite', 'nes', 'crx', 'xpi', 'cab', 'deb', 'ar', 'rpm', 'Z', 'lz', 'cfb', 'mxf', 'mts', 'blend', 'bpg', 'docx', 'pptx', 'xlsx', '3gp', '3g2', 'j2c', 'jp2', 'jpm', 'jpx', 'mj2', 'aif', 'qcp', 'odt', 'ods', 'odp', 'xml', 'mobi', 'heic', 'cur', 'ktx', 'ape', 'wv', 'dcm', 'ics', 'glb', 'pcap', 'dsf', 'lnk', 'alias', 'voc', 'ac3', 'm4v', 'm4p', 'm4b', 'f4v', 'f4p', 'f4b', 'f4a', 'mie', 'asf', 'ogm', 'ogx', 'mpc', 'arrow', 'shp', 'aac', 'mp1', 'it', 's3m', 'xm', 'ai', 'skp', 'avif', 'eps', 'lzh', 'pgp', 'asar', 'stl', 'chm', '3mf', 'zst', 'jxl', 'vcf', 'jls', 'pst', 'dwg', 'parquet', 'class', 'arj', 'cpio', 'ace', 'avro', 'icc', 'fbx'];
 const mimeTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/flif', 'image/x-xcf', 'image/x-canon-cr2', 'image/x-canon-cr3', 'image/tiff', 'image/bmp', 'image/vnd.ms-photo', 'image/vnd.adobe.photoshop', 'application/x-indesign', 'application/epub+zip', 'application/x-xpinstall', 'application/vnd.oasis.opendocument.text', 'application/vnd.oasis.opendocument.spreadsheet', 'application/vnd.oasis.opendocument.presentation', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/zip', 'application/x-tar', 'application/x-rar-compressed', 'application/gzip', 'application/x-bzip2', 'application/x-7z-compressed', 'application/x-apple-diskimage', 'application/x-apache-arrow', 'video/mp4', 'audio/midi', 'video/x-matroska', 'video/webm', 'video/quicktime', 'video/vnd.avi', 'audio/wav', 'audio/qcelp', 'audio/x-ms-asf', 'video/x-ms-asf', 'application/vnd.ms-asf', 'video/mpeg', 'video/3gpp', 'audio/mpeg', 'audio/mp4',
-  // RFC 4337
-  'audio/opus', 'video/ogg', 'audio/ogg', 'application/ogg', 'audio/x-flac', 'audio/ape', 'audio/wavpack', 'audio/amr', 'application/pdf', 'application/x-elf', 'application/x-mach-binary', 'application/x-msdownload', 'application/x-shockwave-flash', 'application/rtf', 'application/wasm', 'font/woff', 'font/woff2', 'application/vnd.ms-fontobject', 'font/ttf', 'font/otf', 'image/x-icon', 'video/x-flv', 'application/postscript', 'application/eps', 'application/x-xz', 'application/x-sqlite3', 'application/x-nintendo-nes-rom', 'application/x-google-chrome-extension', 'application/vnd.ms-cab-compressed', 'application/x-deb', 'application/x-unix-archive', 'application/x-rpm', 'application/x-compress', 'application/x-lzip', 'application/x-cfb', 'application/x-mie', 'application/mxf', 'video/mp2t', 'application/x-blender', 'image/bpg', 'image/j2c', 'image/jp2', 'image/jpx', 'image/jpm', 'image/mj2', 'audio/aiff', 'application/xml', 'application/x-mobipocket-ebook', 'image/heif', 'image/heif-sequence', 'image/heic', 'image/heic-sequence', 'image/icns', 'image/ktx', 'application/dicom', 'audio/x-musepack', 'text/calendar', 'text/vcard', 'model/gltf-binary', 'application/vnd.tcpdump.pcap', 'audio/x-dsf',
-  // Non-standard
-  'application/x.ms.shortcut',
-  // Invented by us
-  'application/x.apple.alias',
-  // Invented by us
-  'audio/x-voc', 'audio/vnd.dolby.dd-raw', 'audio/x-m4a', 'image/apng', 'image/x-olympus-orf', 'image/x-sony-arw', 'image/x-adobe-dng', 'image/x-nikon-nef', 'image/x-panasonic-rw2', 'image/x-fujifilm-raf', 'video/x-m4v', 'video/3gpp2', 'application/x-esri-shape', 'audio/aac', 'audio/x-it', 'audio/x-s3m', 'audio/x-xm', 'video/MP1S', 'video/MP2P', 'application/vnd.sketchup.skp', 'image/avif', 'application/x-lzh-compressed', 'application/pgp-encrypted', 'application/x-asar', 'model/stl', 'application/vnd.ms-htmlhelp', 'model/3mf', 'image/jxl', 'application/zstd', 'image/jls', 'application/vnd.ms-outlook', 'image/vnd.dwg', 'application/x-parquet', 'application/java-vm', 'application/x-arj', 'application/x-cpio', 'application/x-ace-compressed', 'application/avro', 'application/vnd.iccprofile', 'application/x.autodesk.fbx' // Invented by us
+// RFC 4337
+'audio/opus', 'video/ogg', 'audio/ogg', 'application/ogg', 'audio/x-flac', 'audio/ape', 'audio/wavpack', 'audio/amr', 'application/pdf', 'application/x-elf', 'application/x-mach-binary', 'application/x-msdownload', 'application/x-shockwave-flash', 'application/rtf', 'application/wasm', 'font/woff', 'font/woff2', 'application/vnd.ms-fontobject', 'font/ttf', 'font/otf', 'image/x-icon', 'video/x-flv', 'application/postscript', 'application/eps', 'application/x-xz', 'application/x-sqlite3', 'application/x-nintendo-nes-rom', 'application/x-google-chrome-extension', 'application/vnd.ms-cab-compressed', 'application/x-deb', 'application/x-unix-archive', 'application/x-rpm', 'application/x-compress', 'application/x-lzip', 'application/x-cfb', 'application/x-mie', 'application/mxf', 'video/mp2t', 'application/x-blender', 'image/bpg', 'image/j2c', 'image/jp2', 'image/jpx', 'image/jpm', 'image/mj2', 'audio/aiff', 'application/xml', 'application/x-mobipocket-ebook', 'image/heif', 'image/heif-sequence', 'image/heic', 'image/heic-sequence', 'image/icns', 'image/ktx', 'application/dicom', 'audio/x-musepack', 'text/calendar', 'text/vcard', 'model/gltf-binary', 'application/vnd.tcpdump.pcap', 'audio/x-dsf',
+// Non-standard
+'application/x.ms.shortcut',
+// Invented by us
+'application/x.apple.alias',
+// Invented by us
+'audio/x-voc', 'audio/vnd.dolby.dd-raw', 'audio/x-m4a', 'image/apng', 'image/x-olympus-orf', 'image/x-sony-arw', 'image/x-adobe-dng', 'image/x-nikon-nef', 'image/x-panasonic-rw2', 'image/x-fujifilm-raf', 'video/x-m4v', 'video/3gpp2', 'application/x-esri-shape', 'audio/aac', 'audio/x-it', 'audio/x-s3m', 'audio/x-xm', 'video/MP1S', 'video/MP2P', 'application/vnd.sketchup.skp', 'image/avif', 'application/x-lzh-compressed', 'application/pgp-encrypted', 'application/x-asar', 'model/stl', 'application/vnd.ms-htmlhelp', 'model/3mf', 'image/jxl', 'application/zstd', 'image/jls', 'application/vnd.ms-outlook', 'image/vnd.dwg', 'application/x-parquet', 'application/java-vm', 'application/x-arj', 'application/x-cpio', 'application/x-ace-compressed', 'application/avro', 'application/vnd.iccprofile', 'application/x.autodesk.fbx' // Invented by us
 ];
 
 /**
@@ -3325,15 +3324,15 @@ class FileTypeParser {
     if (this.check([0x66, 0x72, 0x65, 0x65], {
       offset: 4
     }) // `free`
-      || this.check([0x6D, 0x64, 0x61, 0x74], {
-        offset: 4
-      }) // `mdat` MJPEG
-      || this.check([0x6D, 0x6F, 0x6F, 0x76], {
-        offset: 4
-      }) // `moov`
-      || this.check([0x77, 0x69, 0x64, 0x65], {
-        offset: 4
-      }) // `wide`
+    || this.check([0x6D, 0x64, 0x61, 0x74], {
+      offset: 4
+    }) // `mdat` MJPEG
+    || this.check([0x6D, 0x6F, 0x6F, 0x76], {
+      offset: 4
+    }) // `moov`
+    || this.check([0x77, 0x69, 0x64, 0x65], {
+      offset: 4
+    }) // `wide`
     ) {
       return {
         ext: 'mov',
@@ -3589,7 +3588,7 @@ class FileTypeParser {
               mime: 'application/x-asar'
             };
           }
-        } catch { }
+        } catch {}
       }
     }
     if (this.check([0x06, 0x0E, 0x2B, 0x34, 0x02, 0x05, 0x01, 0x01, 0x0D, 0x01, 0x02, 0x01, 0x01, 0x02])) {
@@ -4176,3671 +4175,3671 @@ async function encodeSilk(filePath) {
 }
 
 const sysface = [
-  {
-    QSid: "392",
-    QDes: "/龙年快乐",
-    IQLid: "392",
-    AQLid: "392",
-    EMCode: "10392",
-    AniStickerType: 3,
-    AniStickerPackId: "1",
-    AniStickerId: "38"
-  },
-  {
-    QSid: "393",
-    QDes: "/新年中龙",
-    IQLid: "393",
-    AQLid: "393",
-    EMCode: "10393",
-    QHide: "1",
-    AniStickerType: 3,
-    AniStickerPackId: "1",
-    AniStickerId: "39"
-  },
-  {
-    QSid: "364",
-    QDes: "/超级赞",
-    IQLid: "364",
-    AQLid: "364",
-    EMCode: "10364",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "1",
-    AniStickerPackId: "2",
-    AniStickerPackName: "汪汪"
-  },
-  {
-    QSid: "366",
-    QDes: "/芒狗",
-    IQLid: "366",
-    AQLid: "366",
-    EMCode: "10366",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "2",
-    AniStickerPackId: "2",
-    AniStickerPackName: "汪汪"
-  },
-  {
-    QSid: "362",
-    QDes: "/好兄弟",
-    IQLid: "362",
-    AQLid: "362",
-    EMCode: "10362",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "3",
-    AniStickerPackId: "2",
-    AniStickerPackName: "汪汪"
-  },
-  {
-    QSid: "397",
-    QDes: "/抛媚眼",
-    IQLid: "397",
-    AQLid: "397",
-    EMCode: "10397",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "4",
-    AniStickerPackId: "2",
-    AniStickerPackName: "汪汪"
-  },
-  {
-    QSid: "396",
-    QDes: "/狼狗",
-    IQLid: "396",
-    AQLid: "396",
-    EMCode: "10396",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "5",
-    AniStickerPackId: "2",
-    AniStickerPackName: "汪汪"
-  },
-  {
-    QSid: "360",
-    QDes: "/亲亲",
-    IQLid: "360",
-    AQLid: "360",
-    EMCode: "10360",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "6",
-    AniStickerPackId: "2",
-    AniStickerPackName: "汪汪"
-  },
-  {
-    QSid: "361",
-    QDes: "/狗狗笑哭",
-    IQLid: "361",
-    AQLid: "361",
-    EMCode: "10361",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "7",
-    AniStickerPackId: "2",
-    AniStickerPackName: "汪汪"
-  },
-  {
-    QSid: "363",
-    QDes: "/狗狗可怜",
-    IQLid: "363",
-    AQLid: "363",
-    EMCode: "10363",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "8",
-    AniStickerPackId: "2",
-    AniStickerPackName: "汪汪"
-  },
-  {
-    QSid: "365",
-    QDes: "/狗狗生气",
-    IQLid: "365",
-    AQLid: "365",
-    EMCode: "10365",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "9",
-    AniStickerPackId: "2",
-    AniStickerPackName: "汪汪"
-  },
-  {
-    QSid: "367",
-    QDes: "/狗狗疑问",
-    IQLid: "367",
-    AQLid: "367",
-    EMCode: "10367",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "10",
-    AniStickerPackId: "2",
-    AniStickerPackName: "汪汪"
-  },
-  {
-    QSid: "399",
-    QDes: "/tui",
-    IQLid: "399",
-    AQLid: "399",
-    EMCode: "10399",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "1",
-    AniStickerPackId: "6",
-    AniStickerPackName: "噗噗星人"
-  },
-  {
-    QSid: "398",
-    QDes: "/超级ok",
-    IQLid: "398",
-    AQLid: "398",
-    EMCode: "10398",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "2",
-    AniStickerPackId: "6",
-    AniStickerPackName: "噗噗星人"
-  },
-  {
-    QSid: "373",
-    QDes: "/忙",
-    IQLid: "373",
-    AQLid: "373",
-    EMCode: "10373",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "3",
-    AniStickerPackId: "6",
-    AniStickerPackName: "噗噗星人"
-  },
-  {
-    QSid: "370",
-    QDes: "/祝贺",
-    IQLid: "370",
-    AQLid: "370",
-    EMCode: "10370",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "4",
-    AniStickerPackId: "6",
-    AniStickerPackName: "噗噗星人"
-  },
-  {
-    QSid: "375",
-    QDes: "/超级鼓掌",
-    IQLid: "375",
-    AQLid: "375",
-    EMCode: "10375",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "5",
-    AniStickerPackId: "6",
-    AniStickerPackName: "噗噗星人"
-  },
-  {
-    QSid: "368",
-    QDes: "/奥特笑哭",
-    IQLid: "368",
-    AQLid: "368",
-    EMCode: "10368",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "6",
-    AniStickerPackId: "6",
-    AniStickerPackName: "噗噗星人"
-  },
-  {
-    QSid: "369",
-    QDes: "/彩虹",
-    IQLid: "369",
-    AQLid: "369",
-    EMCode: "10369",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "7",
-    AniStickerPackId: "6",
-    AniStickerPackName: "噗噗星人"
-  },
-  {
-    QSid: "371",
-    QDes: "/冒泡",
-    IQLid: "371",
-    AQLid: "371",
-    EMCode: "10371",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "8",
-    AniStickerPackId: "6",
-    AniStickerPackName: "噗噗星人"
-  },
-  {
-    QSid: "372",
-    QDes: "/气呼呼",
-    IQLid: "372",
-    AQLid: "372",
-    EMCode: "10372",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "9",
-    AniStickerPackId: "6",
-    AniStickerPackName: "噗噗星人"
-  },
-  {
-    QSid: "374",
-    QDes: "/波波流泪",
-    IQLid: "374",
-    AQLid: "374",
-    EMCode: "10374",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "10",
-    AniStickerPackId: "6",
-    AniStickerPackName: "噗噗星人"
-  },
-  {
-    QSid: "382",
-    QDes: "/emo",
-    IQLid: "382",
-    AQLid: "382",
-    EMCode: "10382",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "1",
-    AniStickerPackId: "5",
-    AniStickerPackName: "企鹅"
-  },
-  {
-    QSid: "383",
-    QDes: "/企鹅爱心",
-    IQLid: "383",
-    AQLid: "383",
-    EMCode: "10383",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "2",
-    AniStickerPackId: "5",
-    AniStickerPackName: "企鹅"
-  },
-  {
-    QSid: "401",
-    QDes: "/超级转圈",
-    IQLid: "401",
-    AQLid: "401",
-    EMCode: "10401",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "3",
-    AniStickerPackId: "5",
-    AniStickerPackName: "企鹅"
-  },
-  {
-    QSid: "400",
-    QDes: "/快乐",
-    IQLid: "400",
-    AQLid: "400",
-    EMCode: "10400",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "4",
-    AniStickerPackId: "5",
-    AniStickerPackName: "企鹅"
-  },
-  {
-    QSid: "380",
-    QDes: "/真棒",
-    IQLid: "380",
-    AQLid: "380",
-    EMCode: "10380",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "5",
-    AniStickerPackId: "5",
-    AniStickerPackName: "企鹅"
-  },
-  {
-    QSid: "381",
-    QDes: "/路过",
-    IQLid: "381",
-    AQLid: "381",
-    EMCode: "10381",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "6",
-    AniStickerPackId: "5",
-    AniStickerPackName: "企鹅"
-  },
-  {
-    QSid: "379",
-    QDes: "/企鹅流泪",
-    IQLid: "379",
-    AQLid: "379",
-    EMCode: "10379",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "7",
-    AniStickerPackId: "5",
-    AniStickerPackName: "企鹅"
-  },
-  {
-    QSid: "376",
-    QDes: "/跺脚",
-    IQLid: "376",
-    AQLid: "376",
-    EMCode: "10376",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "8",
-    AniStickerPackId: "5",
-    AniStickerPackName: "企鹅"
-  },
-  {
-    QSid: "378",
-    QDes: "/企鹅笑哭",
-    IQLid: "378",
-    AQLid: "378",
-    EMCode: "10378",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "9",
-    AniStickerPackId: "5",
-    AniStickerPackName: "企鹅"
-  },
-  {
-    QSid: "377",
-    QDes: "/嗨",
-    IQLid: "377",
-    AQLid: "377",
-    EMCode: "10377",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "10",
-    AniStickerPackId: "5",
-    AniStickerPackName: "企鹅"
-  },
-  {
-    QSid: "403",
-    QDes: "/出去玩",
-    IQLid: "403",
-    AQLid: "403",
-    EMCode: "10403",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "1",
-    AniStickerPackId: "4",
-    AniStickerPackName: "QQ黄脸"
-  },
-  {
-    QSid: "402",
-    QDes: "/别说话",
-    IQLid: "402",
-    AQLid: "402",
-    EMCode: "10402",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "2",
-    AniStickerPackId: "4",
-    AniStickerPackName: "QQ黄脸"
-  },
-  {
-    QSid: "390",
-    QDes: "/太头秃",
-    IQLid: "390",
-    AQLid: "390",
-    EMCode: "10390",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "3",
-    AniStickerPackId: "4",
-    AniStickerPackName: "QQ黄脸"
-  },
-  {
-    QSid: "391",
-    QDes: "/太沧桑",
-    IQLid: "391",
-    AQLid: "391",
-    EMCode: "10391",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "4",
-    AniStickerPackId: "4",
-    AniStickerPackName: "QQ黄脸"
-  },
-  {
-    QSid: "388",
-    QDes: "/太头疼",
-    IQLid: "388",
-    AQLid: "388",
-    EMCode: "10388",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "5",
-    AniStickerPackId: "4",
-    AniStickerPackName: "QQ黄脸"
-  },
-  {
-    QSid: "389",
-    QDes: "/太赞了",
-    IQLid: "389",
-    AQLid: "389",
-    EMCode: "10389",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "6",
-    AniStickerPackId: "4",
-    AniStickerPackName: "QQ黄脸"
-  },
-  {
-    QSid: "386",
-    QDes: "/呜呜呜",
-    IQLid: "386",
-    AQLid: "386",
-    EMCode: "10386",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "7",
-    AniStickerPackId: "4",
-    AniStickerPackName: "QQ黄脸"
-  },
-  {
-    QSid: "385",
-    QDes: "/太气了",
-    IQLid: "385",
-    AQLid: "385",
-    EMCode: "10385",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "8",
-    AniStickerPackId: "4",
-    AniStickerPackName: "QQ黄脸"
-  },
-  {
-    QSid: "384",
-    QDes: "/晚安",
-    IQLid: "384",
-    AQLid: "384",
-    EMCode: "10384",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "9",
-    AniStickerPackId: "4",
-    AniStickerPackName: "QQ黄脸"
-  },
-  {
-    QSid: "387",
-    QDes: "/太好笑",
-    IQLid: "387",
-    AQLid: "387",
-    EMCode: "10387",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "10",
-    AniStickerPackId: "4",
-    AniStickerPackName: "QQ黄脸"
-  },
-  {
-    QSid: "413",
-    QDes: "/摇起来",
-    IQLid: "413",
-    AQLid: "413",
-    EMCode: "10413",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "1",
-    AniStickerPackId: "3",
-    AniStickerPackName: "喜花妮"
-  },
-  {
-    QSid: "405",
-    QDes: "/好运来",
-    IQLid: "405",
-    AQLid: "405",
-    EMCode: "10405",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "2",
-    AniStickerPackId: "3",
-    AniStickerPackName: "喜花妮"
-  },
-  {
-    QSid: "404",
-    QDes: "/闪亮登场",
-    IQLid: "404",
-    AQLid: "404",
-    EMCode: "10404",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "3",
-    AniStickerPackId: "3",
-    AniStickerPackName: "喜花妮"
-  },
-  {
-    QSid: "406",
-    QDes: "/姐是女王",
-    IQLid: "406",
-    AQLid: "406",
-    EMCode: "10406",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "4",
-    AniStickerPackId: "3",
-    AniStickerPackName: "喜花妮"
-  },
-  {
-    QSid: "410",
-    QDes: "/么么哒",
-    IQLid: "410",
-    AQLid: "410",
-    EMCode: "10410",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "5",
-    AniStickerPackId: "3",
-    AniStickerPackName: "喜花妮"
-  },
-  {
-    QSid: "411",
-    QDes: "/一起嗨",
-    IQLid: "411",
-    AQLid: "411",
-    EMCode: "10411",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "6",
-    AniStickerPackId: "3",
-    AniStickerPackName: "喜花妮"
-  },
-  {
-    QSid: "407",
-    QDes: "/我听听",
-    IQLid: "407",
-    AQLid: "407",
-    EMCode: "10407",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "7",
-    AniStickerPackId: "3",
-    AniStickerPackName: "喜花妮"
-  },
-  {
-    QSid: "408",
-    QDes: "/臭美",
-    IQLid: "408",
-    AQLid: "408",
-    EMCode: "10408",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "8",
-    AniStickerPackId: "3",
-    AniStickerPackName: "喜花妮"
-  },
-  {
-    QSid: "412",
-    QDes: "/开心",
-    IQLid: "412",
-    AQLid: "412",
-    EMCode: "10412",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "9",
-    AniStickerPackId: "3",
-    AniStickerPackName: "喜花妮"
-  },
-  {
-    QSid: "409",
-    QDes: "/送你花花",
-    IQLid: "409",
-    AQLid: "409",
-    EMCode: "10409",
-    QHide: "1",
-    AniStickerType: 1,
-    AniStickerId: "10",
-    AniStickerPackId: "3",
-    AniStickerPackName: "喜花妮"
-  },
-  {
-    QSid: "394",
-    QDes: "/新年大龙",
-    IQLid: "394",
-    AQLid: "394",
-    EMCode: "10394",
-    QHide: "1",
-    AniStickerType: 3,
-    AniStickerPackId: "1",
-    AniStickerId: "40"
-  },
-  {
-    QSid: "14",
-    QDes: "/微笑",
-    IQLid: "23",
-    AQLid: "23",
-    EMCode: "100"
-  },
-  {
-    QSid: "1",
-    QDes: "/撇嘴",
-    IQLid: "40",
-    AQLid: "40",
-    EMCode: "101"
-  },
-  {
-    QSid: "2",
-    QDes: "/色",
-    IQLid: "19",
-    AQLid: "19",
-    EMCode: "102"
-  },
-  {
-    QSid: "3",
-    QDes: "/发呆",
-    IQLid: "43",
-    AQLid: "43",
-    EMCode: "103"
-  },
-  {
-    QSid: "4",
-    QDes: "/得意",
-    IQLid: "21",
-    AQLid: "21",
-    EMCode: "104"
-  },
-  {
-    QSid: "6",
-    QDes: "/害羞",
-    IQLid: "20",
-    AQLid: "20",
-    EMCode: "106"
-  },
-  {
-    QSid: "7",
-    QDes: "/闭嘴",
-    IQLid: "104",
-    AQLid: "106",
-    EMCode: "107"
-  },
-  {
-    QSid: "8",
-    QDes: "/睡",
-    IQLid: "35",
-    AQLid: "35",
-    EMCode: "108"
-  },
-  {
-    QSid: "9",
-    QDes: "/大哭",
-    IQLid: "10",
-    AQLid: "10",
-    EMCode: "109"
-  },
-  {
-    QSid: "5",
-    QDes: "/流泪",
-    IQLid: "9",
-    AQLid: "9",
-    EMCode: "105",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "16"
-  },
-  {
-    QSid: "10",
-    QDes: "/尴尬",
-    IQLid: "25",
-    AQLid: "25",
-    EMCode: "110"
-  },
-  {
-    QSid: "11",
-    QDes: "/发怒",
-    IQLid: "24",
-    AQLid: "24",
-    EMCode: "111"
-  },
-  {
-    QSid: "12",
-    QDes: "/调皮",
-    IQLid: "1",
-    AQLid: "1",
-    EMCode: "112"
-  },
-  {
-    QSid: "13",
-    QDes: "/呲牙",
-    IQLid: "0",
-    AQLid: "0",
-    EMCode: "113"
-  },
-  {
-    QSid: "0",
-    QDes: "/惊讶",
-    IQLid: "33",
-    AQLid: "33",
-    EMCode: "114"
-  },
-  {
-    QSid: "15",
-    QDes: "/难过",
-    IQLid: "32",
-    AQLid: "32",
-    EMCode: "115"
-  },
-  {
-    QSid: "16",
-    QDes: "/酷",
-    IQLid: "12",
-    AQLid: "12",
-    EMCode: "116"
-  },
-  {
-    QSid: "96",
-    QDes: "/冷汗",
-    IQLid: "27",
-    AQLid: "27",
-    EMCode: "117"
-  },
-  {
-    QSid: "18",
-    QDes: "/抓狂",
-    IQLid: "13",
-    AQLid: "13",
-    EMCode: "118"
-  },
-  {
-    QSid: "19",
-    QDes: "/吐",
-    IQLid: "22",
-    AQLid: "22",
-    EMCode: "119"
-  },
-  {
-    QSid: "20",
-    QDes: "/偷笑",
-    IQLid: "3",
-    AQLid: "3",
-    EMCode: "120"
-  },
-  {
-    QSid: "21",
-    QDes: "/可爱",
-    IQLid: "18",
-    AQLid: "18",
-    EMCode: "121"
-  },
-  {
-    QSid: "22",
-    QDes: "/白眼",
-    IQLid: "30",
-    AQLid: "30",
-    EMCode: "122"
-  },
-  {
-    QSid: "23",
-    QDes: "/傲慢",
-    IQLid: "31",
-    AQLid: "31",
-    EMCode: "123"
-  },
-  {
-    QSid: "24",
-    QDes: "/饥饿",
-    IQLid: "79",
-    AQLid: "81",
-    EMCode: "124"
-  },
-  {
-    QSid: "25",
-    QDes: "/困",
-    IQLid: "80",
-    AQLid: "82",
-    EMCode: "125"
-  },
-  {
-    QSid: "26",
-    QDes: "/惊恐",
-    IQLid: "26",
-    AQLid: "26",
-    EMCode: "126"
-  },
-  {
-    QSid: "27",
-    QDes: "/流汗",
-    IQLid: "2",
-    AQLid: "2",
-    EMCode: "127"
-  },
-  {
-    QSid: "28",
-    QDes: "/憨笑",
-    IQLid: "37",
-    AQLid: "37",
-    EMCode: "128"
-  },
-  {
-    QSid: "29",
-    QDes: "/悠闲",
-    IQLid: "50",
-    AQLid: "50",
-    EMCode: "129"
-  },
-  {
-    QSid: "30",
-    QDes: "/奋斗",
-    IQLid: "42",
-    AQLid: "42",
-    EMCode: "130"
-  },
-  {
-    QSid: "31",
-    QDes: "/咒骂",
-    IQLid: "81",
-    AQLid: "83",
-    EMCode: "131"
-  },
-  {
-    QSid: "32",
-    QDes: "/疑问",
-    IQLid: "34",
-    AQLid: "34",
-    EMCode: "132"
-  },
-  {
-    QSid: "33",
-    QDes: "/嘘",
-    IQLid: "11",
-    AQLid: "11",
-    EMCode: "133"
-  },
-  {
-    QSid: "34",
-    QDes: "/晕",
-    IQLid: "49",
-    AQLid: "49",
-    EMCode: "134"
-  },
-  {
-    QSid: "35",
-    QDes: "/折磨",
-    IQLid: "82",
-    AQLid: "84",
-    EMCode: "135"
-  },
-  {
-    QSid: "36",
-    QDes: "/衰",
-    IQLid: "39",
-    AQLid: "39",
-    EMCode: "136"
-  },
-  {
-    QSid: "37",
-    QDes: "/骷髅",
-    isStatic: "1",
-    IQLid: "76",
-    AQLid: "78",
-    EMCode: "137"
-  },
-  {
-    QSid: "38",
-    QDes: "/敲打",
-    IQLid: "5",
-    AQLid: "5",
-    EMCode: "138"
-  },
-  {
-    QSid: "39",
-    QDes: "/再见",
-    IQLid: "4",
-    AQLid: "4",
-    EMCode: "139"
-  },
-  {
-    QSid: "97",
-    QDes: "/擦汗",
-    IQLid: "6",
-    AQLid: "6",
-    EMCode: "140"
-  },
-  {
-    QSid: "98",
-    QDes: "/抠鼻",
-    IQLid: "83",
-    AQLid: "85",
-    EMCode: "141"
-  },
-  {
-    QSid: "99",
-    QDes: "/鼓掌",
-    IQLid: "84",
-    AQLid: "86",
-    EMCode: "142"
-  },
-  {
-    QSid: "100",
-    QDes: "/糗大了",
-    IQLid: "85",
-    AQLid: "87",
-    EMCode: "143"
-  },
-  {
-    QSid: "101",
-    QDes: "/坏笑",
-    IQLid: "46",
-    AQLid: "46",
-    EMCode: "144"
-  },
-  {
-    QSid: "102",
-    QDes: "/左哼哼",
-    IQLid: "86",
-    AQLid: "88",
-    EMCode: "145"
-  },
-  {
-    QSid: "103",
-    QDes: "/右哼哼",
-    IQLid: "44",
-    AQLid: "44",
-    EMCode: "146"
-  },
-  {
-    QSid: "104",
-    QDes: "/哈欠",
-    IQLid: "87",
-    AQLid: "89",
-    EMCode: "147"
-  },
-  {
-    QSid: "105",
-    QDes: "/鄙视",
-    IQLid: "48",
-    AQLid: "48",
-    EMCode: "148"
-  },
-  {
-    QSid: "106",
-    QDes: "/委屈",
-    IQLid: "14",
-    AQLid: "14",
-    EMCode: "149"
-  },
-  {
-    QSid: "107",
-    QDes: "/快哭了",
-    IQLid: "88",
-    AQLid: "90",
-    EMCode: "150"
-  },
-  {
-    QSid: "108",
-    QDes: "/阴险",
-    IQLid: "41",
-    AQLid: "41",
-    EMCode: "151"
-  },
-  {
-    QSid: "305",
-    QDes: "/右亲亲",
-    IQLid: "305",
-    AQLid: "305",
-    EMCode: "10305"
-  },
-  {
-    QSid: "109",
-    QDes: "/左亲亲",
-    IQLid: "36",
-    AQLid: "36",
-    EMCode: "152"
-  },
-  {
-    QSid: "110",
-    QDes: "/吓",
-    IQLid: "89",
-    AQLid: "91",
-    EMCode: "153"
-  },
-  {
-    QSid: "111",
-    QDes: "/可怜",
-    IQLid: "51",
-    AQLid: "51",
-    EMCode: "154"
-  },
-  {
-    QSid: "172",
-    QDes: "/眨眼睛",
-    IQLid: "142",
-    AQLid: "164",
-    EMCode: "242"
-  },
-  {
-    QSid: "182",
-    QDes: "/笑哭",
-    IQLid: "152",
-    AQLid: "174",
-    EMCode: "252"
-  },
-  {
-    QSid: "179",
-    QDes: "/doge",
-    IQLid: "149",
-    AQLid: "171",
-    EMCode: "249"
-  },
-  {
-    QSid: "173",
-    QDes: "/泪奔",
-    IQLid: "143",
-    AQLid: "165",
-    EMCode: "243"
-  },
-  {
-    QSid: "174",
-    QDes: "/无奈",
-    IQLid: "144",
-    AQLid: "166",
-    EMCode: "244"
-  },
-  {
-    QSid: "212",
-    QDes: "/托腮",
-    IQLid: "182",
-    AQLid: "161",
-    EMCode: "282"
-  },
-  {
-    QSid: "175",
-    QDes: "/卖萌",
-    IQLid: "145",
-    AQLid: "167",
-    EMCode: "245"
-  },
-  {
-    QSid: "178",
-    QDes: "/斜眼笑",
-    IQLid: "148",
-    AQLid: "170",
-    EMCode: "248"
-  },
-  {
-    QSid: "177",
-    QDes: "/喷血",
-    IQLid: "147",
-    AQLid: "169",
-    EMCode: "247"
-  },
-  {
-    QSid: "176",
-    QDes: "/小纠结",
-    IQLid: "146",
-    AQLid: "168",
-    EMCode: "246"
-  },
-  {
-    QSid: "183",
-    QDes: "/我最美",
-    IQLid: "153",
-    AQLid: "175",
-    EMCode: "253"
-  },
-  {
-    QSid: "262",
-    QDes: "/脑阔疼",
-    IQLid: "262",
-    AQLid: "262",
-    EMCode: "10262"
-  },
-  {
-    QSid: "263",
-    QDes: "/沧桑",
-    IQLid: "263",
-    AQLid: "263",
-    EMCode: "10263"
-  },
-  {
-    QSid: "264",
-    QDes: "/捂脸",
-    IQLid: "264",
-    AQLid: "264",
-    EMCode: "10264"
-  },
-  {
-    QSid: "265",
-    QDes: "/辣眼睛",
-    IQLid: "265",
-    AQLid: "265",
-    EMCode: "10265"
-  },
-  {
-    QSid: "266",
-    QDes: "/哦哟",
-    IQLid: "266",
-    AQLid: "266",
-    EMCode: "10266"
-  },
-  {
-    QSid: "267",
-    QDes: "/头秃",
-    IQLid: "267",
-    AQLid: "267",
-    EMCode: "10267"
-  },
-  {
-    QSid: "268",
-    QDes: "/问号脸",
-    IQLid: "268",
-    AQLid: "268",
-    EMCode: "10268"
-  },
-  {
-    QSid: "269",
-    QDes: "/暗中观察",
-    IQLid: "269",
-    AQLid: "269",
-    EMCode: "10269"
-  },
-  {
-    QSid: "270",
-    QDes: "/emm",
-    IQLid: "270",
-    AQLid: "270",
-    EMCode: "10270"
-  },
-  {
-    QSid: "271",
-    QDes: "/吃瓜",
-    IQLid: "271",
-    AQLid: "271",
-    EMCode: "10271"
-  },
-  {
-    QSid: "272",
-    QDes: "/呵呵哒",
-    IQLid: "272",
-    AQLid: "272",
-    EMCode: "10272"
-  },
-  {
-    QSid: "277",
-    QDes: "/汪汪",
-    IQLid: "277",
-    AQLid: "277",
-    EMCode: "10277"
-  },
-  {
-    QSid: "307",
-    QDes: "/喵喵",
-    IQLid: "307",
-    AQLid: "307",
-    EMCode: "10307"
-  },
-  {
-    QSid: "306",
-    QDes: "/牛气冲天",
-    isStatic: "1",
-    IQLid: "306",
-    AQLid: "306",
-    EMCode: "10306"
-  },
-  {
-    QSid: "281",
-    QDes: "/无眼笑",
-    IQLid: "281",
-    AQLid: "281",
-    EMCode: "10281"
-  },
-  {
-    QSid: "282",
-    QDes: "/敬礼",
-    IQLid: "282",
-    AQLid: "282",
-    EMCode: "10282"
-  },
-  {
-    QSid: "283",
-    QDes: "/狂笑",
-    IQLid: "283",
-    AQLid: "283",
-    EMCode: "10283"
-  },
-  {
-    QSid: "284",
-    QDes: "/面无表情",
-    IQLid: "284",
-    AQLid: "284",
-    EMCode: "10284"
-  },
-  {
-    QSid: "285",
-    QDes: "/摸鱼",
-    IQLid: "285",
-    AQLid: "285",
-    EMCode: "10285"
-  },
-  {
-    QSid: "293",
-    QDes: "/摸锦鲤",
-    IQLid: "293",
-    AQLid: "293",
-    EMCode: "10293"
-  },
-  {
-    QSid: "286",
-    QDes: "/魔鬼笑",
-    IQLid: "286",
-    AQLid: "286",
-    EMCode: "10286"
-  },
-  {
-    QSid: "287",
-    QDes: "/哦",
-    IQLid: "287",
-    AQLid: "287",
-    EMCode: "10287"
-  },
-  {
-    QSid: "289",
-    QDes: "/睁眼",
-    IQLid: "289",
-    AQLid: "289",
-    EMCode: "10289"
-  },
-  {
-    QSid: "294",
-    QDes: "/期待",
-    IQLid: "294",
-    AQLid: "294",
-    EMCode: "10294"
-  },
-  {
-    QSid: "297",
-    QDes: "/拜谢",
-    IQLid: "297",
-    AQLid: "297",
-    EMCode: "10297"
-  },
-  {
-    QSid: "298",
-    QDes: "/元宝",
-    IQLid: "298",
-    AQLid: "298",
-    EMCode: "10298"
-  },
-  {
-    QSid: "299",
-    QDes: "/牛啊",
-    IQLid: "299",
-    AQLid: "299",
-    EMCode: "10299"
-  },
-  {
-    QSid: "300",
-    QDes: "/胖三斤",
-    IQLid: "300",
-    AQLid: "300",
-    EMCode: "10300"
-  },
-  {
-    QSid: "323",
-    QDes: "/嫌弃",
-    IQLid: "323",
-    AQLid: "323",
-    EMCode: "10323"
-  },
-  {
-    QSid: "332",
-    QDes: "/举牌牌",
-    IQLid: "332",
-    AQLid: "332",
-    EMCode: "10332"
-  },
-  {
-    QSid: "336",
-    QDes: "/豹富",
-    IQLid: "336",
-    AQLid: "336",
-    EMCode: "10336"
-  },
-  {
-    QSid: "353",
-    QDes: "/拜托",
-    IQLid: "353",
-    AQLid: "353",
-    EMCode: "10353"
-  },
-  {
-    QSid: "355",
-    QDes: "/耶",
-    IQLid: "355",
-    AQLid: "355",
-    EMCode: "10355"
-  },
-  {
-    QSid: "356",
-    QDes: "/666",
-    IQLid: "356",
-    AQLid: "356",
-    EMCode: "10356"
-  },
-  {
-    QSid: "354",
-    QDes: "/尊嘟假嘟",
-    IQLid: "354",
-    AQLid: "354",
-    EMCode: "10354"
-  },
-  {
-    QSid: "352",
-    QDes: "/咦",
-    IQLid: "352",
-    AQLid: "352",
-    EMCode: "10352"
-  },
-  {
-    QSid: "357",
-    QDes: "/裂开",
-    IQLid: "357",
-    AQLid: "357",
-    EMCode: "10357"
-  },
-  {
-    QSid: "334",
-    QDes: "/虎虎生威",
-    IQLid: "334",
-    AQLid: "334",
-    EMCode: "10334"
-  },
-  {
-    QSid: "347",
-    QDes: "/大展宏兔",
-    IQLid: "347",
-    AQLid: "347",
-    EMCode: "10347"
-  },
-  {
-    QSid: "303",
-    QDes: "/右拜年",
-    IQLid: "303",
-    AQLid: "303",
-    EMCode: "10303"
-  },
-  {
-    QSid: "302",
-    QDes: "/左拜年",
-    IQLid: "302",
-    AQLid: "302",
-    EMCode: "10302"
-  },
-  {
-    QSid: "295",
-    QDes: "/拿到红包",
-    IQLid: "295",
-    AQLid: "295",
-    EMCode: "10295"
-  },
-  {
-    QSid: "311",
-    QDes: "/打call",
-    IQLid: "311",
-    AQLid: "311",
-    EMCode: "10311",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "1"
-  },
-  {
-    QSid: "312",
-    QDes: "/变形",
-    IQLid: "312",
-    AQLid: "312",
-    EMCode: "10312",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "2"
-  },
-  {
-    QSid: "314",
-    QDes: "/仔细分析",
-    IQLid: "314",
-    AQLid: "314",
-    EMCode: "10314",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "4"
-  },
-  {
-    QSid: "317",
-    QDes: "/菜汪",
-    IQLid: "317",
-    AQLid: "317",
-    EMCode: "10317",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "7"
-  },
-  {
-    QSid: "318",
-    QDes: "/崇拜",
-    IQLid: "318",
-    AQLid: "318",
-    EMCode: "10318",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "8"
-  },
-  {
-    QSid: "319",
-    QDes: "/比心",
-    IQLid: "319",
-    AQLid: "319",
-    EMCode: "10319",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "9"
-  },
-  {
-    QSid: "320",
-    QDes: "/庆祝",
-    IQLid: "320",
-    AQLid: "320",
-    EMCode: "10320",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "10"
-  },
-  {
-    QSid: "324",
-    QDes: "/吃糖",
-    IQLid: "324",
-    AQLid: "324",
-    EMCode: "10324",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "12"
-  },
-  {
-    QSid: "325",
-    QDes: "/惊吓",
-    IQLid: "325",
-    AQLid: "325",
-    EMCode: "10325",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "14"
-  },
-  {
-    QSid: "337",
-    QDes: "/花朵脸",
-    IQLid: "337",
-    AQLid: "337",
-    EMCode: "10337",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "22"
-  },
-  {
-    QSid: "338",
-    QDes: "/我想开了",
-    IQLid: "338",
-    AQLid: "338",
-    EMCode: "10338",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "20"
-  },
-  {
-    QSid: "339",
-    QDes: "/舔屏",
-    IQLid: "339",
-    AQLid: "339",
-    EMCode: "10339",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "21"
-  },
-  {
-    QSid: "341",
-    QDes: "/打招呼",
-    IQLid: "341",
-    AQLid: "341",
-    EMCode: "10341",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "24"
-  },
-  {
-    QSid: "342",
-    QDes: "/酸Q",
-    IQLid: "342",
-    AQLid: "342",
-    EMCode: "10342",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "26"
-  },
-  {
-    QSid: "343",
-    QDes: "/我方了",
-    IQLid: "343",
-    AQLid: "343",
-    EMCode: "10343",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "27"
-  },
-  {
-    QSid: "344",
-    QDes: "/大怨种",
-    IQLid: "344",
-    AQLid: "344",
-    EMCode: "10344",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "28"
-  },
-  {
-    QSid: "345",
-    QDes: "/红包多多",
-    IQLid: "345",
-    AQLid: "345",
-    EMCode: "10345",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "29"
-  },
-  {
-    QSid: "346",
-    QDes: "/你真棒棒",
-    IQLid: "346",
-    AQLid: "346",
-    EMCode: "10346",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "25"
-  },
-  {
-    QSid: "181",
-    QDes: "/戳一戳",
-    IQLid: "151",
-    AQLid: "173",
-    EMCode: "251",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "37"
-  },
-  {
-    QSid: "74",
-    QDes: "/太阳",
-    isStatic: "1",
-    IQLid: "73",
-    AQLid: "75",
-    EMCode: "176",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "35"
-  },
-  {
-    QSid: "75",
-    QDes: "/月亮",
-    isStatic: "1",
-    IQLid: "67",
-    AQLid: "68",
-    EMCode: "175",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "36"
-  },
-  {
-    QSid: "351",
-    QDes: "/敲敲",
-    IQLid: "351",
-    AQLid: "351",
-    EMCode: "10351",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "30"
-  },
-  {
-    QSid: "349",
-    QDes: "/坚强",
-    IQLid: "349",
-    AQLid: "349",
-    EMCode: "10349",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "32"
-  },
-  {
-    QSid: "350",
-    QDes: "/贴贴",
-    IQLid: "350",
-    AQLid: "350",
-    EMCode: "10350",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "31"
-  },
-  {
-    QSid: "395",
-    QDes: "/略略略",
-    IQLid: "395",
-    AQLid: "395",
-    EMCode: "10395",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "41"
-  },
-  {
-    QSid: "114",
-    QDes: "/篮球",
-    IQLid: "90",
-    AQLid: "92",
-    EMCode: "158",
-    AniStickerType: 2,
-    AniStickerPackId: "1",
-    AniStickerId: "13"
-  },
-  {
-    QSid: "358",
-    QDes: "/骰子",
-    IQLid: "358",
-    AQLid: "358",
-    QHide: "1",
-    EMCode: "10358",
-    AniStickerType: 2,
-    AniStickerPackId: "1",
-    AniStickerId: "33"
-  },
-  {
-    QSid: "359",
-    QDes: "/包剪锤",
-    IQLid: "359",
-    AQLid: "359",
-    QHide: "1",
-    EMCode: "10359",
-    AniStickerType: 2,
-    AniStickerPackId: "1",
-    AniStickerId: "34"
-  },
-  {
-    QSid: "326",
-    QDes: "/生气",
-    IQLid: "326",
-    AQLid: "326",
-    EMCode: "10326",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "15"
-  },
-  {
-    QSid: "53",
-    QDes: "/蛋糕",
-    IQLid: "59",
-    AQLid: "59",
-    EMCode: "168",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "17"
-  },
-  {
-    QSid: "49",
-    QDes: "/拥抱",
-    IQLid: "45",
-    AQLid: "45",
-    EMCode: "178"
-  },
-  {
-    QSid: "66",
-    QDes: "/爱心",
-    IQLid: "28",
-    AQLid: "28",
-    EMCode: "166"
-  },
-  {
-    QSid: "63",
-    QDes: "/玫瑰",
-    IQLid: "8",
-    AQLid: "8",
-    EMCode: "163"
-  },
-  {
-    QSid: "64",
-    QDes: "/凋谢",
-    IQLid: "57",
-    AQLid: "57",
-    EMCode: "164"
-  },
-  {
-    QSid: "187",
-    QDes: "/幽灵",
-    IQLid: "157",
-    AQLid: "179",
-    EMCode: "257"
-  },
-  {
-    QSid: "146",
-    QDes: "/爆筋",
-    IQLid: "116",
-    AQLid: "118",
-    EMCode: "121011"
-  },
-  {
-    QSid: "116",
-    QDes: "/示爱",
-    IQLid: "29",
-    AQLid: "29",
-    EMCode: "165"
-  },
-  {
-    QSid: "67",
-    QDes: "/心碎",
-    IQLid: "72",
-    AQLid: "74",
-    EMCode: "167"
-  },
-  {
-    QSid: "60",
-    QDes: "/咖啡",
-    IQLid: "66",
-    AQLid: "66",
-    EMCode: "160"
-  },
-  {
-    QSid: "185",
-    QDes: "/羊驼",
-    IQLid: "155",
-    AQLid: "177",
-    EMCode: "255"
-  },
-  {
-    QSid: "137",
-    QDes: "/鞭炮",
-    isStatic: "1",
-    IQLid: "107",
-    AQLid: "109",
-    EMCode: "121002",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "18"
-  },
-  {
-    QSid: "333",
-    QDes: "/烟花",
-    isStatic: "1",
-    IQLid: "333",
-    AQLid: "333",
-    EMCode: "10333",
-    AniStickerType: 1,
-    AniStickerPackId: "1",
-    AniStickerId: "19"
-  },
-  {
-    QSid: "76",
-    QDes: "/赞",
-    IQLid: "52",
-    AQLid: "52",
-    EMCode: "179"
-  },
-  {
-    QSid: "124",
-    QDes: "/OK",
-    IQLid: "64",
-    AQLid: "64",
-    EMCode: "189"
-  },
-  {
-    QSid: "118",
-    QDes: "/抱拳",
-    IQLid: "56",
-    AQLid: "56",
-    EMCode: "183"
-  },
-  {
-    QSid: "78",
-    QDes: "/握手",
-    IQLid: "54",
-    AQLid: "54",
-    EMCode: "181"
-  },
-  {
-    QSid: "119",
-    QDes: "/勾引",
-    IQLid: "63",
-    AQLid: "63",
-    EMCode: "184"
-  },
-  {
-    QSid: "79",
-    QDes: "/胜利",
-    IQLid: "55",
-    AQLid: "55",
-    EMCode: "182"
-  },
-  {
-    QSid: "120",
-    QDes: "/拳头",
-    IQLid: "71",
-    AQLid: "73",
-    EMCode: "185"
-  },
-  {
-    QSid: "121",
-    QDes: "/差劲",
-    IQLid: "70",
-    AQLid: "72",
-    EMCode: "186"
-  },
-  {
-    QSid: "77",
-    QDes: "/踩",
-    IQLid: "53",
-    AQLid: "53",
-    EMCode: "180"
-  },
-  {
-    QSid: "123",
-    QDes: "/NO",
-    IQLid: "92",
-    AQLid: "94",
-    EMCode: "188"
-  },
-  {
-    QSid: "201",
-    QDes: "/点赞",
-    IQLid: "171",
-    AQLid: "150",
-    EMCode: "271"
-  },
-  {
-    QSid: "273",
-    QDes: "/我酸了",
-    isStatic: "1",
-    IQLid: "273",
-    AQLid: "273",
-    EMCode: "10273"
-  },
-  {
-    QSid: "46",
-    QDes: "/猪头",
-    isStatic: "1",
-    IQLid: "7",
-    AQLid: "7",
-    EMCode: "162"
-  },
-  {
-    QSid: "112",
-    QDes: "/菜刀",
-    IQLid: "17",
-    AQLid: "17",
-    EMCode: "155"
-  },
-  {
-    QSid: "56",
-    QDes: "/刀",
-    IQLid: "68",
-    AQLid: "70",
-    EMCode: "171"
-  },
-  {
-    QSid: "169",
-    QDes: "/手枪",
-    isStatic: "1",
-    IQLid: "139",
-    AQLid: "141",
-    EMCode: "121034"
-  },
-  {
-    QSid: "171",
-    QDes: "/茶",
-    IQLid: "141",
-    AQLid: "163",
-    EMCode: "241"
-  },
-  {
-    QSid: "59",
-    QDes: "/便便",
-    IQLid: "15",
-    AQLid: "15",
-    EMCode: "174"
-  },
-  {
-    QSid: "144",
-    QDes: "/喝彩",
-    isStatic: "1",
-    IQLid: "114",
-    AQLid: "116",
-    EMCode: "121009"
-  },
-  {
-    QSid: "147",
-    QDes: "/棒棒糖",
-    isStatic: "1",
-    IQLid: "117",
-    AQLid: "119",
-    EMCode: "121012"
-  },
-  {
-    QSid: "89",
-    QDes: "/西瓜",
-    isStatic: "1",
-    IQLid: "60",
-    AQLid: "60",
-    EMCode: "156"
-  },
-  {
-    QSid: "148",
-    QDes: "/喝奶",
-    isStatic: "1",
-    IQLid: "118",
-    AQLid: "120",
-    QHide: "1",
-    EMCode: "121013"
-  },
-  {
-    QSid: "55",
-    QDes: "/炸弹",
-    isStatic: "1",
-    IQLid: "16",
-    AQLid: "16",
-    QHide: "1",
-    EMCode: "170"
-  },
-  {
-    QSid: "41",
-    QDes: "/发抖",
-    isStatic: "1",
-    IQLid: "69",
-    AQLid: "71",
-    EMCode: "193"
-  },
-  {
-    QSid: "125",
-    QDes: "/转圈",
-    IQLid: "95",
-    AQLid: "97",
-    EMCode: "195"
-  },
-  {
-    QSid: "42",
-    QDes: "/爱情",
-    IQLid: "38",
-    AQLid: "38",
-    EMCode: "190"
-  },
-  {
-    QSid: "43",
-    QDes: "/跳跳",
-    IQLid: "93",
-    AQLid: "95",
-    EMCode: "192"
-  },
-  {
-    QSid: "86",
-    QDes: "/怄火",
-    IQLid: "94",
-    AQLid: "96",
-    EMCode: "194"
-  },
-  {
-    QSid: "129",
-    QDes: "/挥手",
-    IQLid: "77",
-    AQLid: "79",
-    EMCode: "199"
-  },
-  {
-    QSid: "226",
-    QDes: "/拍桌",
-    IQLid: "196",
-    isCMEmoji: "1",
-    AQLid: "198",
-    QHide: "1",
-    EMCode: "297"
-  },
-  {
-    QSid: "85",
-    QDes: "/飞吻",
-    isStatic: "1",
-    IQLid: "47",
-    AQLid: "47",
-    EMCode: "191"
-  },
-  {
-    QSid: "215",
-    QDes: "/糊脸",
-    IQLid: "185",
-    isCMEmoji: "1",
-    AQLid: "187",
-    QHide: "1",
-    EMCode: "285"
-  },
-  {
-    QSid: "214",
-    QDes: "/啵啵",
-    IQLid: "184",
-    isCMEmoji: "1",
-    AQLid: "186",
-    QHide: "1",
-    EMCode: "284"
-  },
-  {
-    QSid: "222",
-    QDes: "/抱抱",
-    IQLid: "192",
-    isCMEmoji: "1",
-    AQLid: "194",
-    QHide: "1",
-    EMCode: "292"
-  },
-  {
-    QSid: "203",
-    QDes: "/托脸",
-    IQLid: "173",
-    AQLid: "152",
-    QHide: "1",
-    EMCode: "273"
-  },
-  {
-    QSid: "235",
-    QDes: "/颤抖",
-    IQLid: "205",
-    isCMEmoji: "1",
-    AQLid: "207",
-    QHide: "1",
-    EMCode: "305"
-  },
-  {
-    QSid: "241",
-    QDes: "/生日快乐",
-    IQLid: "211",
-    isCMEmoji: "1",
-    AQLid: "213",
-    QHide: "1",
-    EMCode: "311"
-  },
-  {
-    QSid: "237",
-    QDes: "/偷看",
-    IQLid: "207",
-    isCMEmoji: "1",
-    AQLid: "209",
-    QHide: "1",
-    EMCode: "307"
-  },
-  {
-    QSid: "218",
-    QDes: "/舔一舔",
-    IQLid: "188",
-    isCMEmoji: "1",
-    AQLid: "190",
-    QHide: "1",
-    EMCode: "288"
-  },
-  {
-    QSid: "233",
-    QDes: "/掐一掐",
-    IQLid: "203",
-    isCMEmoji: "1",
-    AQLid: "205",
-    QHide: "1",
-    EMCode: "303"
-  },
-  {
-    QSid: "232",
-    QDes: "/佛系",
-    IQLid: "202",
-    isCMEmoji: "1",
-    AQLid: "204",
-    QHide: "1",
-    EMCode: "302"
-  },
-  {
-    QSid: "238",
-    QDes: "/扇脸",
-    IQLid: "208",
-    isCMEmoji: "1",
-    AQLid: "210",
-    QHide: "1",
-    EMCode: "308"
-  },
-  {
-    QSid: "217",
-    QDes: "/扯一扯",
-    IQLid: "187",
-    isCMEmoji: "1",
-    AQLid: "189",
-    QHide: "1",
-    EMCode: "287"
-  },
-  {
-    QSid: "225",
-    QDes: "/撩一撩",
-    IQLid: "195",
-    isCMEmoji: "1",
-    AQLid: "197",
-    QHide: "1",
-    EMCode: "296"
-  },
-  {
-    QSid: "230",
-    QDes: "/嘲讽",
-    IQLid: "200",
-    isCMEmoji: "1",
-    AQLid: "202",
-    QHide: "1",
-    EMCode: "300"
-  },
-  {
-    QSid: "194",
-    QDes: "/不开心",
-    IQLid: "164",
-    AQLid: "143",
-    QHide: "1",
-    EMCode: "264"
-  },
-  {
-    QSid: "210",
-    QDes: "/飙泪",
-    IQLid: "180",
-    AQLid: "159",
-    QHide: "1",
-    EMCode: "280"
-  },
-  {
-    QSid: "193",
-    QDes: "/大笑",
-    IQLid: "163",
-    AQLid: "185",
-    QHide: "1",
-    EMCode: "263"
-  },
-  {
-    QSid: "204",
-    QDes: "/吃",
-    IQLid: "174",
-    AQLid: "153",
-    QHide: "1",
-    EMCode: "274"
-  },
-  {
-    QSid: "200",
-    QDes: "/求求",
-    IQLid: "170",
-    AQLid: "149",
-    QHide: "1",
-    EMCode: "270"
-  },
-  {
-    QSid: "290",
-    QDes: "/敲开心",
-    IQLid: "290",
-    isCMEmoji: "1",
-    AQLid: "290",
-    QHide: "1",
-    EMCode: "20240"
-  },
-  {
-    QSid: "224",
-    QDes: "/开枪",
-    IQLid: "194",
-    isCMEmoji: "1",
-    AQLid: "196",
-    QHide: "1",
-    EMCode: "295"
-  },
-  {
-    QSid: "229",
-    QDes: "/干杯",
-    IQLid: "199",
-    isCMEmoji: "1",
-    AQLid: "201",
-    QHide: "1",
-    EMCode: "299"
-  },
-  {
-    QSid: "221",
-    QDes: "/顶呱呱",
-    IQLid: "191",
-    isCMEmoji: "1",
-    AQLid: "193",
-    QHide: "1",
-    EMCode: "291"
-  },
-  {
-    QSid: "219",
-    QDes: "/蹭一蹭",
-    IQLid: "189",
-    isCMEmoji: "1",
-    AQLid: "191",
-    QHide: "1",
-    EMCode: "289"
-  },
-  {
-    QSid: "227",
-    QDes: "/拍手",
-    IQLid: "197",
-    isCMEmoji: "1",
-    AQLid: "199",
-    QHide: "1",
-    EMCode: "294"
-  },
-  {
-    QSid: "216",
-    QDes: "/拍头",
-    IQLid: "186",
-    isCMEmoji: "1",
-    AQLid: "188",
-    QHide: "1",
-    EMCode: "286"
-  },
-  {
-    QSid: "231",
-    QDes: "/哼",
-    IQLid: "201",
-    isCMEmoji: "1",
-    AQLid: "203",
-    QHide: "1",
-    EMCode: "301"
-  },
-  {
-    QSid: "244",
-    QDes: "/扔狗",
-    IQLid: "214",
-    isCMEmoji: "1",
-    AQLid: "216",
-    QHide: "1",
-    EMCode: "312"
-  },
-  {
-    QSid: "223",
-    QDes: "/暴击",
-    IQLid: "193",
-    isCMEmoji: "1",
-    AQLid: "195",
-    QHide: "1",
-    EMCode: "293"
-  },
-  {
-    QSid: "243",
-    QDes: "/甩头",
-    IQLid: "213",
-    isCMEmoji: "1",
-    AQLid: "215",
-    QHide: "1",
-    EMCode: "313"
-  },
-  {
-    QSid: "211",
-    QDes: "/我不看",
-    IQLid: "181",
-    AQLid: "160",
-    QHide: "1",
-    EMCode: "281"
-  },
-  {
-    QSid: "292",
-    QDes: "/让我康康",
-    IQLid: "292",
-    isCMEmoji: "1",
-    AQLid: "292",
-    QHide: "1",
-    EMCode: "20242"
-  },
-  {
-    QSid: "240",
-    QDes: "/喷脸",
-    IQLid: "210",
-    isCMEmoji: "1",
-    AQLid: "212",
-    QHide: "1",
-    EMCode: "310"
-  },
-  {
-    QSid: "180",
-    QDes: "/惊喜",
-    IQLid: "150",
-    AQLid: "172",
-    QHide: "1",
-    EMCode: "250"
-  },
-  {
-    QSid: "122",
-    QDes: "/爱你",
-    IQLid: "65",
-    AQLid: "65",
-    QHide: "1",
-    EMCode: "187"
-  },
-  {
-    QSid: "202",
-    QDes: "/无聊",
-    IQLid: "172",
-    AQLid: "151",
-    QHide: "1",
-    EMCode: "272"
-  },
-  {
-    QSid: "278",
-    QDes: "/汗",
-    IQLid: "278",
-    isCMEmoji: "1",
-    AQLid: "278",
-    QHide: "1",
-    EMCode: "20237"
-  },
-  {
-    QSid: "301",
-    QDes: "/好闪",
-    IQLid: "301",
-    AQLid: "301",
-    QHide: "1",
-    EMCode: "10301"
-  },
-  {
-    QSid: "288",
-    QDes: "/请",
-    IQLid: "288",
-    AQLid: "288",
-    QHide: "1",
-    EMCode: "10288"
-  },
-  {
-    QSid: "322",
-    QDes: "/拒绝",
-    IQLid: "322",
-    AQLid: "322",
-    QHide: "1",
-    EMCode: "10322"
-  },
-  {
-    QSid: "198",
-    QDes: "/呃",
-    IQLid: "168",
-    AQLid: "147",
-    QHide: "1",
-    EMCode: "268"
-  },
-  {
-    QSid: "348",
-    QDes: "/福萝卜",
-    IQLid: "348",
-    AQLid: "348",
-    QHide: "1",
-    EMCode: "10348"
-  },
-  {
-    QSid: "206",
-    QDes: "/害怕",
-    IQLid: "176",
-    AQLid: "155",
-    QHide: "1",
-    EMCode: "276"
-  },
-  {
-    QSid: "239",
-    QDes: "/原谅",
-    IQLid: "209",
-    isCMEmoji: "1",
-    AQLid: "211",
-    QHide: "1",
-    EMCode: "309"
-  }
+	{
+		QSid: "392",
+		QDes: "/龙年快乐",
+		IQLid: "392",
+		AQLid: "392",
+		EMCode: "10392",
+		AniStickerType: 3,
+		AniStickerPackId: "1",
+		AniStickerId: "38"
+	},
+	{
+		QSid: "393",
+		QDes: "/新年中龙",
+		IQLid: "393",
+		AQLid: "393",
+		EMCode: "10393",
+		QHide: "1",
+		AniStickerType: 3,
+		AniStickerPackId: "1",
+		AniStickerId: "39"
+	},
+	{
+		QSid: "364",
+		QDes: "/超级赞",
+		IQLid: "364",
+		AQLid: "364",
+		EMCode: "10364",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "1",
+		AniStickerPackId: "2",
+		AniStickerPackName: "汪汪"
+	},
+	{
+		QSid: "366",
+		QDes: "/芒狗",
+		IQLid: "366",
+		AQLid: "366",
+		EMCode: "10366",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "2",
+		AniStickerPackId: "2",
+		AniStickerPackName: "汪汪"
+	},
+	{
+		QSid: "362",
+		QDes: "/好兄弟",
+		IQLid: "362",
+		AQLid: "362",
+		EMCode: "10362",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "3",
+		AniStickerPackId: "2",
+		AniStickerPackName: "汪汪"
+	},
+	{
+		QSid: "397",
+		QDes: "/抛媚眼",
+		IQLid: "397",
+		AQLid: "397",
+		EMCode: "10397",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "4",
+		AniStickerPackId: "2",
+		AniStickerPackName: "汪汪"
+	},
+	{
+		QSid: "396",
+		QDes: "/狼狗",
+		IQLid: "396",
+		AQLid: "396",
+		EMCode: "10396",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "5",
+		AniStickerPackId: "2",
+		AniStickerPackName: "汪汪"
+	},
+	{
+		QSid: "360",
+		QDes: "/亲亲",
+		IQLid: "360",
+		AQLid: "360",
+		EMCode: "10360",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "6",
+		AniStickerPackId: "2",
+		AniStickerPackName: "汪汪"
+	},
+	{
+		QSid: "361",
+		QDes: "/狗狗笑哭",
+		IQLid: "361",
+		AQLid: "361",
+		EMCode: "10361",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "7",
+		AniStickerPackId: "2",
+		AniStickerPackName: "汪汪"
+	},
+	{
+		QSid: "363",
+		QDes: "/狗狗可怜",
+		IQLid: "363",
+		AQLid: "363",
+		EMCode: "10363",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "8",
+		AniStickerPackId: "2",
+		AniStickerPackName: "汪汪"
+	},
+	{
+		QSid: "365",
+		QDes: "/狗狗生气",
+		IQLid: "365",
+		AQLid: "365",
+		EMCode: "10365",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "9",
+		AniStickerPackId: "2",
+		AniStickerPackName: "汪汪"
+	},
+	{
+		QSid: "367",
+		QDes: "/狗狗疑问",
+		IQLid: "367",
+		AQLid: "367",
+		EMCode: "10367",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "10",
+		AniStickerPackId: "2",
+		AniStickerPackName: "汪汪"
+	},
+	{
+		QSid: "399",
+		QDes: "/tui",
+		IQLid: "399",
+		AQLid: "399",
+		EMCode: "10399",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "1",
+		AniStickerPackId: "6",
+		AniStickerPackName: "噗噗星人"
+	},
+	{
+		QSid: "398",
+		QDes: "/超级ok",
+		IQLid: "398",
+		AQLid: "398",
+		EMCode: "10398",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "2",
+		AniStickerPackId: "6",
+		AniStickerPackName: "噗噗星人"
+	},
+	{
+		QSid: "373",
+		QDes: "/忙",
+		IQLid: "373",
+		AQLid: "373",
+		EMCode: "10373",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "3",
+		AniStickerPackId: "6",
+		AniStickerPackName: "噗噗星人"
+	},
+	{
+		QSid: "370",
+		QDes: "/祝贺",
+		IQLid: "370",
+		AQLid: "370",
+		EMCode: "10370",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "4",
+		AniStickerPackId: "6",
+		AniStickerPackName: "噗噗星人"
+	},
+	{
+		QSid: "375",
+		QDes: "/超级鼓掌",
+		IQLid: "375",
+		AQLid: "375",
+		EMCode: "10375",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "5",
+		AniStickerPackId: "6",
+		AniStickerPackName: "噗噗星人"
+	},
+	{
+		QSid: "368",
+		QDes: "/奥特笑哭",
+		IQLid: "368",
+		AQLid: "368",
+		EMCode: "10368",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "6",
+		AniStickerPackId: "6",
+		AniStickerPackName: "噗噗星人"
+	},
+	{
+		QSid: "369",
+		QDes: "/彩虹",
+		IQLid: "369",
+		AQLid: "369",
+		EMCode: "10369",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "7",
+		AniStickerPackId: "6",
+		AniStickerPackName: "噗噗星人"
+	},
+	{
+		QSid: "371",
+		QDes: "/冒泡",
+		IQLid: "371",
+		AQLid: "371",
+		EMCode: "10371",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "8",
+		AniStickerPackId: "6",
+		AniStickerPackName: "噗噗星人"
+	},
+	{
+		QSid: "372",
+		QDes: "/气呼呼",
+		IQLid: "372",
+		AQLid: "372",
+		EMCode: "10372",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "9",
+		AniStickerPackId: "6",
+		AniStickerPackName: "噗噗星人"
+	},
+	{
+		QSid: "374",
+		QDes: "/波波流泪",
+		IQLid: "374",
+		AQLid: "374",
+		EMCode: "10374",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "10",
+		AniStickerPackId: "6",
+		AniStickerPackName: "噗噗星人"
+	},
+	{
+		QSid: "382",
+		QDes: "/emo",
+		IQLid: "382",
+		AQLid: "382",
+		EMCode: "10382",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "1",
+		AniStickerPackId: "5",
+		AniStickerPackName: "企鹅"
+	},
+	{
+		QSid: "383",
+		QDes: "/企鹅爱心",
+		IQLid: "383",
+		AQLid: "383",
+		EMCode: "10383",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "2",
+		AniStickerPackId: "5",
+		AniStickerPackName: "企鹅"
+	},
+	{
+		QSid: "401",
+		QDes: "/超级转圈",
+		IQLid: "401",
+		AQLid: "401",
+		EMCode: "10401",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "3",
+		AniStickerPackId: "5",
+		AniStickerPackName: "企鹅"
+	},
+	{
+		QSid: "400",
+		QDes: "/快乐",
+		IQLid: "400",
+		AQLid: "400",
+		EMCode: "10400",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "4",
+		AniStickerPackId: "5",
+		AniStickerPackName: "企鹅"
+	},
+	{
+		QSid: "380",
+		QDes: "/真棒",
+		IQLid: "380",
+		AQLid: "380",
+		EMCode: "10380",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "5",
+		AniStickerPackId: "5",
+		AniStickerPackName: "企鹅"
+	},
+	{
+		QSid: "381",
+		QDes: "/路过",
+		IQLid: "381",
+		AQLid: "381",
+		EMCode: "10381",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "6",
+		AniStickerPackId: "5",
+		AniStickerPackName: "企鹅"
+	},
+	{
+		QSid: "379",
+		QDes: "/企鹅流泪",
+		IQLid: "379",
+		AQLid: "379",
+		EMCode: "10379",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "7",
+		AniStickerPackId: "5",
+		AniStickerPackName: "企鹅"
+	},
+	{
+		QSid: "376",
+		QDes: "/跺脚",
+		IQLid: "376",
+		AQLid: "376",
+		EMCode: "10376",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "8",
+		AniStickerPackId: "5",
+		AniStickerPackName: "企鹅"
+	},
+	{
+		QSid: "378",
+		QDes: "/企鹅笑哭",
+		IQLid: "378",
+		AQLid: "378",
+		EMCode: "10378",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "9",
+		AniStickerPackId: "5",
+		AniStickerPackName: "企鹅"
+	},
+	{
+		QSid: "377",
+		QDes: "/嗨",
+		IQLid: "377",
+		AQLid: "377",
+		EMCode: "10377",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "10",
+		AniStickerPackId: "5",
+		AniStickerPackName: "企鹅"
+	},
+	{
+		QSid: "403",
+		QDes: "/出去玩",
+		IQLid: "403",
+		AQLid: "403",
+		EMCode: "10403",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "1",
+		AniStickerPackId: "4",
+		AniStickerPackName: "QQ黄脸"
+	},
+	{
+		QSid: "402",
+		QDes: "/别说话",
+		IQLid: "402",
+		AQLid: "402",
+		EMCode: "10402",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "2",
+		AniStickerPackId: "4",
+		AniStickerPackName: "QQ黄脸"
+	},
+	{
+		QSid: "390",
+		QDes: "/太头秃",
+		IQLid: "390",
+		AQLid: "390",
+		EMCode: "10390",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "3",
+		AniStickerPackId: "4",
+		AniStickerPackName: "QQ黄脸"
+	},
+	{
+		QSid: "391",
+		QDes: "/太沧桑",
+		IQLid: "391",
+		AQLid: "391",
+		EMCode: "10391",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "4",
+		AniStickerPackId: "4",
+		AniStickerPackName: "QQ黄脸"
+	},
+	{
+		QSid: "388",
+		QDes: "/太头疼",
+		IQLid: "388",
+		AQLid: "388",
+		EMCode: "10388",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "5",
+		AniStickerPackId: "4",
+		AniStickerPackName: "QQ黄脸"
+	},
+	{
+		QSid: "389",
+		QDes: "/太赞了",
+		IQLid: "389",
+		AQLid: "389",
+		EMCode: "10389",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "6",
+		AniStickerPackId: "4",
+		AniStickerPackName: "QQ黄脸"
+	},
+	{
+		QSid: "386",
+		QDes: "/呜呜呜",
+		IQLid: "386",
+		AQLid: "386",
+		EMCode: "10386",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "7",
+		AniStickerPackId: "4",
+		AniStickerPackName: "QQ黄脸"
+	},
+	{
+		QSid: "385",
+		QDes: "/太气了",
+		IQLid: "385",
+		AQLid: "385",
+		EMCode: "10385",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "8",
+		AniStickerPackId: "4",
+		AniStickerPackName: "QQ黄脸"
+	},
+	{
+		QSid: "384",
+		QDes: "/晚安",
+		IQLid: "384",
+		AQLid: "384",
+		EMCode: "10384",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "9",
+		AniStickerPackId: "4",
+		AniStickerPackName: "QQ黄脸"
+	},
+	{
+		QSid: "387",
+		QDes: "/太好笑",
+		IQLid: "387",
+		AQLid: "387",
+		EMCode: "10387",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "10",
+		AniStickerPackId: "4",
+		AniStickerPackName: "QQ黄脸"
+	},
+	{
+		QSid: "413",
+		QDes: "/摇起来",
+		IQLid: "413",
+		AQLid: "413",
+		EMCode: "10413",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "1",
+		AniStickerPackId: "3",
+		AniStickerPackName: "喜花妮"
+	},
+	{
+		QSid: "405",
+		QDes: "/好运来",
+		IQLid: "405",
+		AQLid: "405",
+		EMCode: "10405",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "2",
+		AniStickerPackId: "3",
+		AniStickerPackName: "喜花妮"
+	},
+	{
+		QSid: "404",
+		QDes: "/闪亮登场",
+		IQLid: "404",
+		AQLid: "404",
+		EMCode: "10404",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "3",
+		AniStickerPackId: "3",
+		AniStickerPackName: "喜花妮"
+	},
+	{
+		QSid: "406",
+		QDes: "/姐是女王",
+		IQLid: "406",
+		AQLid: "406",
+		EMCode: "10406",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "4",
+		AniStickerPackId: "3",
+		AniStickerPackName: "喜花妮"
+	},
+	{
+		QSid: "410",
+		QDes: "/么么哒",
+		IQLid: "410",
+		AQLid: "410",
+		EMCode: "10410",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "5",
+		AniStickerPackId: "3",
+		AniStickerPackName: "喜花妮"
+	},
+	{
+		QSid: "411",
+		QDes: "/一起嗨",
+		IQLid: "411",
+		AQLid: "411",
+		EMCode: "10411",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "6",
+		AniStickerPackId: "3",
+		AniStickerPackName: "喜花妮"
+	},
+	{
+		QSid: "407",
+		QDes: "/我听听",
+		IQLid: "407",
+		AQLid: "407",
+		EMCode: "10407",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "7",
+		AniStickerPackId: "3",
+		AniStickerPackName: "喜花妮"
+	},
+	{
+		QSid: "408",
+		QDes: "/臭美",
+		IQLid: "408",
+		AQLid: "408",
+		EMCode: "10408",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "8",
+		AniStickerPackId: "3",
+		AniStickerPackName: "喜花妮"
+	},
+	{
+		QSid: "412",
+		QDes: "/开心",
+		IQLid: "412",
+		AQLid: "412",
+		EMCode: "10412",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "9",
+		AniStickerPackId: "3",
+		AniStickerPackName: "喜花妮"
+	},
+	{
+		QSid: "409",
+		QDes: "/送你花花",
+		IQLid: "409",
+		AQLid: "409",
+		EMCode: "10409",
+		QHide: "1",
+		AniStickerType: 1,
+		AniStickerId: "10",
+		AniStickerPackId: "3",
+		AniStickerPackName: "喜花妮"
+	},
+	{
+		QSid: "394",
+		QDes: "/新年大龙",
+		IQLid: "394",
+		AQLid: "394",
+		EMCode: "10394",
+		QHide: "1",
+		AniStickerType: 3,
+		AniStickerPackId: "1",
+		AniStickerId: "40"
+	},
+	{
+		QSid: "14",
+		QDes: "/微笑",
+		IQLid: "23",
+		AQLid: "23",
+		EMCode: "100"
+	},
+	{
+		QSid: "1",
+		QDes: "/撇嘴",
+		IQLid: "40",
+		AQLid: "40",
+		EMCode: "101"
+	},
+	{
+		QSid: "2",
+		QDes: "/色",
+		IQLid: "19",
+		AQLid: "19",
+		EMCode: "102"
+	},
+	{
+		QSid: "3",
+		QDes: "/发呆",
+		IQLid: "43",
+		AQLid: "43",
+		EMCode: "103"
+	},
+	{
+		QSid: "4",
+		QDes: "/得意",
+		IQLid: "21",
+		AQLid: "21",
+		EMCode: "104"
+	},
+	{
+		QSid: "6",
+		QDes: "/害羞",
+		IQLid: "20",
+		AQLid: "20",
+		EMCode: "106"
+	},
+	{
+		QSid: "7",
+		QDes: "/闭嘴",
+		IQLid: "104",
+		AQLid: "106",
+		EMCode: "107"
+	},
+	{
+		QSid: "8",
+		QDes: "/睡",
+		IQLid: "35",
+		AQLid: "35",
+		EMCode: "108"
+	},
+	{
+		QSid: "9",
+		QDes: "/大哭",
+		IQLid: "10",
+		AQLid: "10",
+		EMCode: "109"
+	},
+	{
+		QSid: "5",
+		QDes: "/流泪",
+		IQLid: "9",
+		AQLid: "9",
+		EMCode: "105",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "16"
+	},
+	{
+		QSid: "10",
+		QDes: "/尴尬",
+		IQLid: "25",
+		AQLid: "25",
+		EMCode: "110"
+	},
+	{
+		QSid: "11",
+		QDes: "/发怒",
+		IQLid: "24",
+		AQLid: "24",
+		EMCode: "111"
+	},
+	{
+		QSid: "12",
+		QDes: "/调皮",
+		IQLid: "1",
+		AQLid: "1",
+		EMCode: "112"
+	},
+	{
+		QSid: "13",
+		QDes: "/呲牙",
+		IQLid: "0",
+		AQLid: "0",
+		EMCode: "113"
+	},
+	{
+		QSid: "0",
+		QDes: "/惊讶",
+		IQLid: "33",
+		AQLid: "33",
+		EMCode: "114"
+	},
+	{
+		QSid: "15",
+		QDes: "/难过",
+		IQLid: "32",
+		AQLid: "32",
+		EMCode: "115"
+	},
+	{
+		QSid: "16",
+		QDes: "/酷",
+		IQLid: "12",
+		AQLid: "12",
+		EMCode: "116"
+	},
+	{
+		QSid: "96",
+		QDes: "/冷汗",
+		IQLid: "27",
+		AQLid: "27",
+		EMCode: "117"
+	},
+	{
+		QSid: "18",
+		QDes: "/抓狂",
+		IQLid: "13",
+		AQLid: "13",
+		EMCode: "118"
+	},
+	{
+		QSid: "19",
+		QDes: "/吐",
+		IQLid: "22",
+		AQLid: "22",
+		EMCode: "119"
+	},
+	{
+		QSid: "20",
+		QDes: "/偷笑",
+		IQLid: "3",
+		AQLid: "3",
+		EMCode: "120"
+	},
+	{
+		QSid: "21",
+		QDes: "/可爱",
+		IQLid: "18",
+		AQLid: "18",
+		EMCode: "121"
+	},
+	{
+		QSid: "22",
+		QDes: "/白眼",
+		IQLid: "30",
+		AQLid: "30",
+		EMCode: "122"
+	},
+	{
+		QSid: "23",
+		QDes: "/傲慢",
+		IQLid: "31",
+		AQLid: "31",
+		EMCode: "123"
+	},
+	{
+		QSid: "24",
+		QDes: "/饥饿",
+		IQLid: "79",
+		AQLid: "81",
+		EMCode: "124"
+	},
+	{
+		QSid: "25",
+		QDes: "/困",
+		IQLid: "80",
+		AQLid: "82",
+		EMCode: "125"
+	},
+	{
+		QSid: "26",
+		QDes: "/惊恐",
+		IQLid: "26",
+		AQLid: "26",
+		EMCode: "126"
+	},
+	{
+		QSid: "27",
+		QDes: "/流汗",
+		IQLid: "2",
+		AQLid: "2",
+		EMCode: "127"
+	},
+	{
+		QSid: "28",
+		QDes: "/憨笑",
+		IQLid: "37",
+		AQLid: "37",
+		EMCode: "128"
+	},
+	{
+		QSid: "29",
+		QDes: "/悠闲",
+		IQLid: "50",
+		AQLid: "50",
+		EMCode: "129"
+	},
+	{
+		QSid: "30",
+		QDes: "/奋斗",
+		IQLid: "42",
+		AQLid: "42",
+		EMCode: "130"
+	},
+	{
+		QSid: "31",
+		QDes: "/咒骂",
+		IQLid: "81",
+		AQLid: "83",
+		EMCode: "131"
+	},
+	{
+		QSid: "32",
+		QDes: "/疑问",
+		IQLid: "34",
+		AQLid: "34",
+		EMCode: "132"
+	},
+	{
+		QSid: "33",
+		QDes: "/嘘",
+		IQLid: "11",
+		AQLid: "11",
+		EMCode: "133"
+	},
+	{
+		QSid: "34",
+		QDes: "/晕",
+		IQLid: "49",
+		AQLid: "49",
+		EMCode: "134"
+	},
+	{
+		QSid: "35",
+		QDes: "/折磨",
+		IQLid: "82",
+		AQLid: "84",
+		EMCode: "135"
+	},
+	{
+		QSid: "36",
+		QDes: "/衰",
+		IQLid: "39",
+		AQLid: "39",
+		EMCode: "136"
+	},
+	{
+		QSid: "37",
+		QDes: "/骷髅",
+		isStatic: "1",
+		IQLid: "76",
+		AQLid: "78",
+		EMCode: "137"
+	},
+	{
+		QSid: "38",
+		QDes: "/敲打",
+		IQLid: "5",
+		AQLid: "5",
+		EMCode: "138"
+	},
+	{
+		QSid: "39",
+		QDes: "/再见",
+		IQLid: "4",
+		AQLid: "4",
+		EMCode: "139"
+	},
+	{
+		QSid: "97",
+		QDes: "/擦汗",
+		IQLid: "6",
+		AQLid: "6",
+		EMCode: "140"
+	},
+	{
+		QSid: "98",
+		QDes: "/抠鼻",
+		IQLid: "83",
+		AQLid: "85",
+		EMCode: "141"
+	},
+	{
+		QSid: "99",
+		QDes: "/鼓掌",
+		IQLid: "84",
+		AQLid: "86",
+		EMCode: "142"
+	},
+	{
+		QSid: "100",
+		QDes: "/糗大了",
+		IQLid: "85",
+		AQLid: "87",
+		EMCode: "143"
+	},
+	{
+		QSid: "101",
+		QDes: "/坏笑",
+		IQLid: "46",
+		AQLid: "46",
+		EMCode: "144"
+	},
+	{
+		QSid: "102",
+		QDes: "/左哼哼",
+		IQLid: "86",
+		AQLid: "88",
+		EMCode: "145"
+	},
+	{
+		QSid: "103",
+		QDes: "/右哼哼",
+		IQLid: "44",
+		AQLid: "44",
+		EMCode: "146"
+	},
+	{
+		QSid: "104",
+		QDes: "/哈欠",
+		IQLid: "87",
+		AQLid: "89",
+		EMCode: "147"
+	},
+	{
+		QSid: "105",
+		QDes: "/鄙视",
+		IQLid: "48",
+		AQLid: "48",
+		EMCode: "148"
+	},
+	{
+		QSid: "106",
+		QDes: "/委屈",
+		IQLid: "14",
+		AQLid: "14",
+		EMCode: "149"
+	},
+	{
+		QSid: "107",
+		QDes: "/快哭了",
+		IQLid: "88",
+		AQLid: "90",
+		EMCode: "150"
+	},
+	{
+		QSid: "108",
+		QDes: "/阴险",
+		IQLid: "41",
+		AQLid: "41",
+		EMCode: "151"
+	},
+	{
+		QSid: "305",
+		QDes: "/右亲亲",
+		IQLid: "305",
+		AQLid: "305",
+		EMCode: "10305"
+	},
+	{
+		QSid: "109",
+		QDes: "/左亲亲",
+		IQLid: "36",
+		AQLid: "36",
+		EMCode: "152"
+	},
+	{
+		QSid: "110",
+		QDes: "/吓",
+		IQLid: "89",
+		AQLid: "91",
+		EMCode: "153"
+	},
+	{
+		QSid: "111",
+		QDes: "/可怜",
+		IQLid: "51",
+		AQLid: "51",
+		EMCode: "154"
+	},
+	{
+		QSid: "172",
+		QDes: "/眨眼睛",
+		IQLid: "142",
+		AQLid: "164",
+		EMCode: "242"
+	},
+	{
+		QSid: "182",
+		QDes: "/笑哭",
+		IQLid: "152",
+		AQLid: "174",
+		EMCode: "252"
+	},
+	{
+		QSid: "179",
+		QDes: "/doge",
+		IQLid: "149",
+		AQLid: "171",
+		EMCode: "249"
+	},
+	{
+		QSid: "173",
+		QDes: "/泪奔",
+		IQLid: "143",
+		AQLid: "165",
+		EMCode: "243"
+	},
+	{
+		QSid: "174",
+		QDes: "/无奈",
+		IQLid: "144",
+		AQLid: "166",
+		EMCode: "244"
+	},
+	{
+		QSid: "212",
+		QDes: "/托腮",
+		IQLid: "182",
+		AQLid: "161",
+		EMCode: "282"
+	},
+	{
+		QSid: "175",
+		QDes: "/卖萌",
+		IQLid: "145",
+		AQLid: "167",
+		EMCode: "245"
+	},
+	{
+		QSid: "178",
+		QDes: "/斜眼笑",
+		IQLid: "148",
+		AQLid: "170",
+		EMCode: "248"
+	},
+	{
+		QSid: "177",
+		QDes: "/喷血",
+		IQLid: "147",
+		AQLid: "169",
+		EMCode: "247"
+	},
+	{
+		QSid: "176",
+		QDes: "/小纠结",
+		IQLid: "146",
+		AQLid: "168",
+		EMCode: "246"
+	},
+	{
+		QSid: "183",
+		QDes: "/我最美",
+		IQLid: "153",
+		AQLid: "175",
+		EMCode: "253"
+	},
+	{
+		QSid: "262",
+		QDes: "/脑阔疼",
+		IQLid: "262",
+		AQLid: "262",
+		EMCode: "10262"
+	},
+	{
+		QSid: "263",
+		QDes: "/沧桑",
+		IQLid: "263",
+		AQLid: "263",
+		EMCode: "10263"
+	},
+	{
+		QSid: "264",
+		QDes: "/捂脸",
+		IQLid: "264",
+		AQLid: "264",
+		EMCode: "10264"
+	},
+	{
+		QSid: "265",
+		QDes: "/辣眼睛",
+		IQLid: "265",
+		AQLid: "265",
+		EMCode: "10265"
+	},
+	{
+		QSid: "266",
+		QDes: "/哦哟",
+		IQLid: "266",
+		AQLid: "266",
+		EMCode: "10266"
+	},
+	{
+		QSid: "267",
+		QDes: "/头秃",
+		IQLid: "267",
+		AQLid: "267",
+		EMCode: "10267"
+	},
+	{
+		QSid: "268",
+		QDes: "/问号脸",
+		IQLid: "268",
+		AQLid: "268",
+		EMCode: "10268"
+	},
+	{
+		QSid: "269",
+		QDes: "/暗中观察",
+		IQLid: "269",
+		AQLid: "269",
+		EMCode: "10269"
+	},
+	{
+		QSid: "270",
+		QDes: "/emm",
+		IQLid: "270",
+		AQLid: "270",
+		EMCode: "10270"
+	},
+	{
+		QSid: "271",
+		QDes: "/吃瓜",
+		IQLid: "271",
+		AQLid: "271",
+		EMCode: "10271"
+	},
+	{
+		QSid: "272",
+		QDes: "/呵呵哒",
+		IQLid: "272",
+		AQLid: "272",
+		EMCode: "10272"
+	},
+	{
+		QSid: "277",
+		QDes: "/汪汪",
+		IQLid: "277",
+		AQLid: "277",
+		EMCode: "10277"
+	},
+	{
+		QSid: "307",
+		QDes: "/喵喵",
+		IQLid: "307",
+		AQLid: "307",
+		EMCode: "10307"
+	},
+	{
+		QSid: "306",
+		QDes: "/牛气冲天",
+		isStatic: "1",
+		IQLid: "306",
+		AQLid: "306",
+		EMCode: "10306"
+	},
+	{
+		QSid: "281",
+		QDes: "/无眼笑",
+		IQLid: "281",
+		AQLid: "281",
+		EMCode: "10281"
+	},
+	{
+		QSid: "282",
+		QDes: "/敬礼",
+		IQLid: "282",
+		AQLid: "282",
+		EMCode: "10282"
+	},
+	{
+		QSid: "283",
+		QDes: "/狂笑",
+		IQLid: "283",
+		AQLid: "283",
+		EMCode: "10283"
+	},
+	{
+		QSid: "284",
+		QDes: "/面无表情",
+		IQLid: "284",
+		AQLid: "284",
+		EMCode: "10284"
+	},
+	{
+		QSid: "285",
+		QDes: "/摸鱼",
+		IQLid: "285",
+		AQLid: "285",
+		EMCode: "10285"
+	},
+	{
+		QSid: "293",
+		QDes: "/摸锦鲤",
+		IQLid: "293",
+		AQLid: "293",
+		EMCode: "10293"
+	},
+	{
+		QSid: "286",
+		QDes: "/魔鬼笑",
+		IQLid: "286",
+		AQLid: "286",
+		EMCode: "10286"
+	},
+	{
+		QSid: "287",
+		QDes: "/哦",
+		IQLid: "287",
+		AQLid: "287",
+		EMCode: "10287"
+	},
+	{
+		QSid: "289",
+		QDes: "/睁眼",
+		IQLid: "289",
+		AQLid: "289",
+		EMCode: "10289"
+	},
+	{
+		QSid: "294",
+		QDes: "/期待",
+		IQLid: "294",
+		AQLid: "294",
+		EMCode: "10294"
+	},
+	{
+		QSid: "297",
+		QDes: "/拜谢",
+		IQLid: "297",
+		AQLid: "297",
+		EMCode: "10297"
+	},
+	{
+		QSid: "298",
+		QDes: "/元宝",
+		IQLid: "298",
+		AQLid: "298",
+		EMCode: "10298"
+	},
+	{
+		QSid: "299",
+		QDes: "/牛啊",
+		IQLid: "299",
+		AQLid: "299",
+		EMCode: "10299"
+	},
+	{
+		QSid: "300",
+		QDes: "/胖三斤",
+		IQLid: "300",
+		AQLid: "300",
+		EMCode: "10300"
+	},
+	{
+		QSid: "323",
+		QDes: "/嫌弃",
+		IQLid: "323",
+		AQLid: "323",
+		EMCode: "10323"
+	},
+	{
+		QSid: "332",
+		QDes: "/举牌牌",
+		IQLid: "332",
+		AQLid: "332",
+		EMCode: "10332"
+	},
+	{
+		QSid: "336",
+		QDes: "/豹富",
+		IQLid: "336",
+		AQLid: "336",
+		EMCode: "10336"
+	},
+	{
+		QSid: "353",
+		QDes: "/拜托",
+		IQLid: "353",
+		AQLid: "353",
+		EMCode: "10353"
+	},
+	{
+		QSid: "355",
+		QDes: "/耶",
+		IQLid: "355",
+		AQLid: "355",
+		EMCode: "10355"
+	},
+	{
+		QSid: "356",
+		QDes: "/666",
+		IQLid: "356",
+		AQLid: "356",
+		EMCode: "10356"
+	},
+	{
+		QSid: "354",
+		QDes: "/尊嘟假嘟",
+		IQLid: "354",
+		AQLid: "354",
+		EMCode: "10354"
+	},
+	{
+		QSid: "352",
+		QDes: "/咦",
+		IQLid: "352",
+		AQLid: "352",
+		EMCode: "10352"
+	},
+	{
+		QSid: "357",
+		QDes: "/裂开",
+		IQLid: "357",
+		AQLid: "357",
+		EMCode: "10357"
+	},
+	{
+		QSid: "334",
+		QDes: "/虎虎生威",
+		IQLid: "334",
+		AQLid: "334",
+		EMCode: "10334"
+	},
+	{
+		QSid: "347",
+		QDes: "/大展宏兔",
+		IQLid: "347",
+		AQLid: "347",
+		EMCode: "10347"
+	},
+	{
+		QSid: "303",
+		QDes: "/右拜年",
+		IQLid: "303",
+		AQLid: "303",
+		EMCode: "10303"
+	},
+	{
+		QSid: "302",
+		QDes: "/左拜年",
+		IQLid: "302",
+		AQLid: "302",
+		EMCode: "10302"
+	},
+	{
+		QSid: "295",
+		QDes: "/拿到红包",
+		IQLid: "295",
+		AQLid: "295",
+		EMCode: "10295"
+	},
+	{
+		QSid: "311",
+		QDes: "/打call",
+		IQLid: "311",
+		AQLid: "311",
+		EMCode: "10311",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "1"
+	},
+	{
+		QSid: "312",
+		QDes: "/变形",
+		IQLid: "312",
+		AQLid: "312",
+		EMCode: "10312",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "2"
+	},
+	{
+		QSid: "314",
+		QDes: "/仔细分析",
+		IQLid: "314",
+		AQLid: "314",
+		EMCode: "10314",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "4"
+	},
+	{
+		QSid: "317",
+		QDes: "/菜汪",
+		IQLid: "317",
+		AQLid: "317",
+		EMCode: "10317",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "7"
+	},
+	{
+		QSid: "318",
+		QDes: "/崇拜",
+		IQLid: "318",
+		AQLid: "318",
+		EMCode: "10318",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "8"
+	},
+	{
+		QSid: "319",
+		QDes: "/比心",
+		IQLid: "319",
+		AQLid: "319",
+		EMCode: "10319",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "9"
+	},
+	{
+		QSid: "320",
+		QDes: "/庆祝",
+		IQLid: "320",
+		AQLid: "320",
+		EMCode: "10320",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "10"
+	},
+	{
+		QSid: "324",
+		QDes: "/吃糖",
+		IQLid: "324",
+		AQLid: "324",
+		EMCode: "10324",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "12"
+	},
+	{
+		QSid: "325",
+		QDes: "/惊吓",
+		IQLid: "325",
+		AQLid: "325",
+		EMCode: "10325",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "14"
+	},
+	{
+		QSid: "337",
+		QDes: "/花朵脸",
+		IQLid: "337",
+		AQLid: "337",
+		EMCode: "10337",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "22"
+	},
+	{
+		QSid: "338",
+		QDes: "/我想开了",
+		IQLid: "338",
+		AQLid: "338",
+		EMCode: "10338",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "20"
+	},
+	{
+		QSid: "339",
+		QDes: "/舔屏",
+		IQLid: "339",
+		AQLid: "339",
+		EMCode: "10339",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "21"
+	},
+	{
+		QSid: "341",
+		QDes: "/打招呼",
+		IQLid: "341",
+		AQLid: "341",
+		EMCode: "10341",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "24"
+	},
+	{
+		QSid: "342",
+		QDes: "/酸Q",
+		IQLid: "342",
+		AQLid: "342",
+		EMCode: "10342",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "26"
+	},
+	{
+		QSid: "343",
+		QDes: "/我方了",
+		IQLid: "343",
+		AQLid: "343",
+		EMCode: "10343",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "27"
+	},
+	{
+		QSid: "344",
+		QDes: "/大怨种",
+		IQLid: "344",
+		AQLid: "344",
+		EMCode: "10344",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "28"
+	},
+	{
+		QSid: "345",
+		QDes: "/红包多多",
+		IQLid: "345",
+		AQLid: "345",
+		EMCode: "10345",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "29"
+	},
+	{
+		QSid: "346",
+		QDes: "/你真棒棒",
+		IQLid: "346",
+		AQLid: "346",
+		EMCode: "10346",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "25"
+	},
+	{
+		QSid: "181",
+		QDes: "/戳一戳",
+		IQLid: "151",
+		AQLid: "173",
+		EMCode: "251",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "37"
+	},
+	{
+		QSid: "74",
+		QDes: "/太阳",
+		isStatic: "1",
+		IQLid: "73",
+		AQLid: "75",
+		EMCode: "176",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "35"
+	},
+	{
+		QSid: "75",
+		QDes: "/月亮",
+		isStatic: "1",
+		IQLid: "67",
+		AQLid: "68",
+		EMCode: "175",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "36"
+	},
+	{
+		QSid: "351",
+		QDes: "/敲敲",
+		IQLid: "351",
+		AQLid: "351",
+		EMCode: "10351",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "30"
+	},
+	{
+		QSid: "349",
+		QDes: "/坚强",
+		IQLid: "349",
+		AQLid: "349",
+		EMCode: "10349",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "32"
+	},
+	{
+		QSid: "350",
+		QDes: "/贴贴",
+		IQLid: "350",
+		AQLid: "350",
+		EMCode: "10350",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "31"
+	},
+	{
+		QSid: "395",
+		QDes: "/略略略",
+		IQLid: "395",
+		AQLid: "395",
+		EMCode: "10395",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "41"
+	},
+	{
+		QSid: "114",
+		QDes: "/篮球",
+		IQLid: "90",
+		AQLid: "92",
+		EMCode: "158",
+		AniStickerType: 2,
+		AniStickerPackId: "1",
+		AniStickerId: "13"
+	},
+	{
+		QSid: "358",
+		QDes: "/骰子",
+		IQLid: "358",
+		AQLid: "358",
+		QHide: "1",
+		EMCode: "10358",
+		AniStickerType: 2,
+		AniStickerPackId: "1",
+		AniStickerId: "33"
+	},
+	{
+		QSid: "359",
+		QDes: "/包剪锤",
+		IQLid: "359",
+		AQLid: "359",
+		QHide: "1",
+		EMCode: "10359",
+		AniStickerType: 2,
+		AniStickerPackId: "1",
+		AniStickerId: "34"
+	},
+	{
+		QSid: "326",
+		QDes: "/生气",
+		IQLid: "326",
+		AQLid: "326",
+		EMCode: "10326",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "15"
+	},
+	{
+		QSid: "53",
+		QDes: "/蛋糕",
+		IQLid: "59",
+		AQLid: "59",
+		EMCode: "168",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "17"
+	},
+	{
+		QSid: "49",
+		QDes: "/拥抱",
+		IQLid: "45",
+		AQLid: "45",
+		EMCode: "178"
+	},
+	{
+		QSid: "66",
+		QDes: "/爱心",
+		IQLid: "28",
+		AQLid: "28",
+		EMCode: "166"
+	},
+	{
+		QSid: "63",
+		QDes: "/玫瑰",
+		IQLid: "8",
+		AQLid: "8",
+		EMCode: "163"
+	},
+	{
+		QSid: "64",
+		QDes: "/凋谢",
+		IQLid: "57",
+		AQLid: "57",
+		EMCode: "164"
+	},
+	{
+		QSid: "187",
+		QDes: "/幽灵",
+		IQLid: "157",
+		AQLid: "179",
+		EMCode: "257"
+	},
+	{
+		QSid: "146",
+		QDes: "/爆筋",
+		IQLid: "116",
+		AQLid: "118",
+		EMCode: "121011"
+	},
+	{
+		QSid: "116",
+		QDes: "/示爱",
+		IQLid: "29",
+		AQLid: "29",
+		EMCode: "165"
+	},
+	{
+		QSid: "67",
+		QDes: "/心碎",
+		IQLid: "72",
+		AQLid: "74",
+		EMCode: "167"
+	},
+	{
+		QSid: "60",
+		QDes: "/咖啡",
+		IQLid: "66",
+		AQLid: "66",
+		EMCode: "160"
+	},
+	{
+		QSid: "185",
+		QDes: "/羊驼",
+		IQLid: "155",
+		AQLid: "177",
+		EMCode: "255"
+	},
+	{
+		QSid: "137",
+		QDes: "/鞭炮",
+		isStatic: "1",
+		IQLid: "107",
+		AQLid: "109",
+		EMCode: "121002",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "18"
+	},
+	{
+		QSid: "333",
+		QDes: "/烟花",
+		isStatic: "1",
+		IQLid: "333",
+		AQLid: "333",
+		EMCode: "10333",
+		AniStickerType: 1,
+		AniStickerPackId: "1",
+		AniStickerId: "19"
+	},
+	{
+		QSid: "76",
+		QDes: "/赞",
+		IQLid: "52",
+		AQLid: "52",
+		EMCode: "179"
+	},
+	{
+		QSid: "124",
+		QDes: "/OK",
+		IQLid: "64",
+		AQLid: "64",
+		EMCode: "189"
+	},
+	{
+		QSid: "118",
+		QDes: "/抱拳",
+		IQLid: "56",
+		AQLid: "56",
+		EMCode: "183"
+	},
+	{
+		QSid: "78",
+		QDes: "/握手",
+		IQLid: "54",
+		AQLid: "54",
+		EMCode: "181"
+	},
+	{
+		QSid: "119",
+		QDes: "/勾引",
+		IQLid: "63",
+		AQLid: "63",
+		EMCode: "184"
+	},
+	{
+		QSid: "79",
+		QDes: "/胜利",
+		IQLid: "55",
+		AQLid: "55",
+		EMCode: "182"
+	},
+	{
+		QSid: "120",
+		QDes: "/拳头",
+		IQLid: "71",
+		AQLid: "73",
+		EMCode: "185"
+	},
+	{
+		QSid: "121",
+		QDes: "/差劲",
+		IQLid: "70",
+		AQLid: "72",
+		EMCode: "186"
+	},
+	{
+		QSid: "77",
+		QDes: "/踩",
+		IQLid: "53",
+		AQLid: "53",
+		EMCode: "180"
+	},
+	{
+		QSid: "123",
+		QDes: "/NO",
+		IQLid: "92",
+		AQLid: "94",
+		EMCode: "188"
+	},
+	{
+		QSid: "201",
+		QDes: "/点赞",
+		IQLid: "171",
+		AQLid: "150",
+		EMCode: "271"
+	},
+	{
+		QSid: "273",
+		QDes: "/我酸了",
+		isStatic: "1",
+		IQLid: "273",
+		AQLid: "273",
+		EMCode: "10273"
+	},
+	{
+		QSid: "46",
+		QDes: "/猪头",
+		isStatic: "1",
+		IQLid: "7",
+		AQLid: "7",
+		EMCode: "162"
+	},
+	{
+		QSid: "112",
+		QDes: "/菜刀",
+		IQLid: "17",
+		AQLid: "17",
+		EMCode: "155"
+	},
+	{
+		QSid: "56",
+		QDes: "/刀",
+		IQLid: "68",
+		AQLid: "70",
+		EMCode: "171"
+	},
+	{
+		QSid: "169",
+		QDes: "/手枪",
+		isStatic: "1",
+		IQLid: "139",
+		AQLid: "141",
+		EMCode: "121034"
+	},
+	{
+		QSid: "171",
+		QDes: "/茶",
+		IQLid: "141",
+		AQLid: "163",
+		EMCode: "241"
+	},
+	{
+		QSid: "59",
+		QDes: "/便便",
+		IQLid: "15",
+		AQLid: "15",
+		EMCode: "174"
+	},
+	{
+		QSid: "144",
+		QDes: "/喝彩",
+		isStatic: "1",
+		IQLid: "114",
+		AQLid: "116",
+		EMCode: "121009"
+	},
+	{
+		QSid: "147",
+		QDes: "/棒棒糖",
+		isStatic: "1",
+		IQLid: "117",
+		AQLid: "119",
+		EMCode: "121012"
+	},
+	{
+		QSid: "89",
+		QDes: "/西瓜",
+		isStatic: "1",
+		IQLid: "60",
+		AQLid: "60",
+		EMCode: "156"
+	},
+	{
+		QSid: "148",
+		QDes: "/喝奶",
+		isStatic: "1",
+		IQLid: "118",
+		AQLid: "120",
+		QHide: "1",
+		EMCode: "121013"
+	},
+	{
+		QSid: "55",
+		QDes: "/炸弹",
+		isStatic: "1",
+		IQLid: "16",
+		AQLid: "16",
+		QHide: "1",
+		EMCode: "170"
+	},
+	{
+		QSid: "41",
+		QDes: "/发抖",
+		isStatic: "1",
+		IQLid: "69",
+		AQLid: "71",
+		EMCode: "193"
+	},
+	{
+		QSid: "125",
+		QDes: "/转圈",
+		IQLid: "95",
+		AQLid: "97",
+		EMCode: "195"
+	},
+	{
+		QSid: "42",
+		QDes: "/爱情",
+		IQLid: "38",
+		AQLid: "38",
+		EMCode: "190"
+	},
+	{
+		QSid: "43",
+		QDes: "/跳跳",
+		IQLid: "93",
+		AQLid: "95",
+		EMCode: "192"
+	},
+	{
+		QSid: "86",
+		QDes: "/怄火",
+		IQLid: "94",
+		AQLid: "96",
+		EMCode: "194"
+	},
+	{
+		QSid: "129",
+		QDes: "/挥手",
+		IQLid: "77",
+		AQLid: "79",
+		EMCode: "199"
+	},
+	{
+		QSid: "226",
+		QDes: "/拍桌",
+		IQLid: "196",
+		isCMEmoji: "1",
+		AQLid: "198",
+		QHide: "1",
+		EMCode: "297"
+	},
+	{
+		QSid: "85",
+		QDes: "/飞吻",
+		isStatic: "1",
+		IQLid: "47",
+		AQLid: "47",
+		EMCode: "191"
+	},
+	{
+		QSid: "215",
+		QDes: "/糊脸",
+		IQLid: "185",
+		isCMEmoji: "1",
+		AQLid: "187",
+		QHide: "1",
+		EMCode: "285"
+	},
+	{
+		QSid: "214",
+		QDes: "/啵啵",
+		IQLid: "184",
+		isCMEmoji: "1",
+		AQLid: "186",
+		QHide: "1",
+		EMCode: "284"
+	},
+	{
+		QSid: "222",
+		QDes: "/抱抱",
+		IQLid: "192",
+		isCMEmoji: "1",
+		AQLid: "194",
+		QHide: "1",
+		EMCode: "292"
+	},
+	{
+		QSid: "203",
+		QDes: "/托脸",
+		IQLid: "173",
+		AQLid: "152",
+		QHide: "1",
+		EMCode: "273"
+	},
+	{
+		QSid: "235",
+		QDes: "/颤抖",
+		IQLid: "205",
+		isCMEmoji: "1",
+		AQLid: "207",
+		QHide: "1",
+		EMCode: "305"
+	},
+	{
+		QSid: "241",
+		QDes: "/生日快乐",
+		IQLid: "211",
+		isCMEmoji: "1",
+		AQLid: "213",
+		QHide: "1",
+		EMCode: "311"
+	},
+	{
+		QSid: "237",
+		QDes: "/偷看",
+		IQLid: "207",
+		isCMEmoji: "1",
+		AQLid: "209",
+		QHide: "1",
+		EMCode: "307"
+	},
+	{
+		QSid: "218",
+		QDes: "/舔一舔",
+		IQLid: "188",
+		isCMEmoji: "1",
+		AQLid: "190",
+		QHide: "1",
+		EMCode: "288"
+	},
+	{
+		QSid: "233",
+		QDes: "/掐一掐",
+		IQLid: "203",
+		isCMEmoji: "1",
+		AQLid: "205",
+		QHide: "1",
+		EMCode: "303"
+	},
+	{
+		QSid: "232",
+		QDes: "/佛系",
+		IQLid: "202",
+		isCMEmoji: "1",
+		AQLid: "204",
+		QHide: "1",
+		EMCode: "302"
+	},
+	{
+		QSid: "238",
+		QDes: "/扇脸",
+		IQLid: "208",
+		isCMEmoji: "1",
+		AQLid: "210",
+		QHide: "1",
+		EMCode: "308"
+	},
+	{
+		QSid: "217",
+		QDes: "/扯一扯",
+		IQLid: "187",
+		isCMEmoji: "1",
+		AQLid: "189",
+		QHide: "1",
+		EMCode: "287"
+	},
+	{
+		QSid: "225",
+		QDes: "/撩一撩",
+		IQLid: "195",
+		isCMEmoji: "1",
+		AQLid: "197",
+		QHide: "1",
+		EMCode: "296"
+	},
+	{
+		QSid: "230",
+		QDes: "/嘲讽",
+		IQLid: "200",
+		isCMEmoji: "1",
+		AQLid: "202",
+		QHide: "1",
+		EMCode: "300"
+	},
+	{
+		QSid: "194",
+		QDes: "/不开心",
+		IQLid: "164",
+		AQLid: "143",
+		QHide: "1",
+		EMCode: "264"
+	},
+	{
+		QSid: "210",
+		QDes: "/飙泪",
+		IQLid: "180",
+		AQLid: "159",
+		QHide: "1",
+		EMCode: "280"
+	},
+	{
+		QSid: "193",
+		QDes: "/大笑",
+		IQLid: "163",
+		AQLid: "185",
+		QHide: "1",
+		EMCode: "263"
+	},
+	{
+		QSid: "204",
+		QDes: "/吃",
+		IQLid: "174",
+		AQLid: "153",
+		QHide: "1",
+		EMCode: "274"
+	},
+	{
+		QSid: "200",
+		QDes: "/求求",
+		IQLid: "170",
+		AQLid: "149",
+		QHide: "1",
+		EMCode: "270"
+	},
+	{
+		QSid: "290",
+		QDes: "/敲开心",
+		IQLid: "290",
+		isCMEmoji: "1",
+		AQLid: "290",
+		QHide: "1",
+		EMCode: "20240"
+	},
+	{
+		QSid: "224",
+		QDes: "/开枪",
+		IQLid: "194",
+		isCMEmoji: "1",
+		AQLid: "196",
+		QHide: "1",
+		EMCode: "295"
+	},
+	{
+		QSid: "229",
+		QDes: "/干杯",
+		IQLid: "199",
+		isCMEmoji: "1",
+		AQLid: "201",
+		QHide: "1",
+		EMCode: "299"
+	},
+	{
+		QSid: "221",
+		QDes: "/顶呱呱",
+		IQLid: "191",
+		isCMEmoji: "1",
+		AQLid: "193",
+		QHide: "1",
+		EMCode: "291"
+	},
+	{
+		QSid: "219",
+		QDes: "/蹭一蹭",
+		IQLid: "189",
+		isCMEmoji: "1",
+		AQLid: "191",
+		QHide: "1",
+		EMCode: "289"
+	},
+	{
+		QSid: "227",
+		QDes: "/拍手",
+		IQLid: "197",
+		isCMEmoji: "1",
+		AQLid: "199",
+		QHide: "1",
+		EMCode: "294"
+	},
+	{
+		QSid: "216",
+		QDes: "/拍头",
+		IQLid: "186",
+		isCMEmoji: "1",
+		AQLid: "188",
+		QHide: "1",
+		EMCode: "286"
+	},
+	{
+		QSid: "231",
+		QDes: "/哼",
+		IQLid: "201",
+		isCMEmoji: "1",
+		AQLid: "203",
+		QHide: "1",
+		EMCode: "301"
+	},
+	{
+		QSid: "244",
+		QDes: "/扔狗",
+		IQLid: "214",
+		isCMEmoji: "1",
+		AQLid: "216",
+		QHide: "1",
+		EMCode: "312"
+	},
+	{
+		QSid: "223",
+		QDes: "/暴击",
+		IQLid: "193",
+		isCMEmoji: "1",
+		AQLid: "195",
+		QHide: "1",
+		EMCode: "293"
+	},
+	{
+		QSid: "243",
+		QDes: "/甩头",
+		IQLid: "213",
+		isCMEmoji: "1",
+		AQLid: "215",
+		QHide: "1",
+		EMCode: "313"
+	},
+	{
+		QSid: "211",
+		QDes: "/我不看",
+		IQLid: "181",
+		AQLid: "160",
+		QHide: "1",
+		EMCode: "281"
+	},
+	{
+		QSid: "292",
+		QDes: "/让我康康",
+		IQLid: "292",
+		isCMEmoji: "1",
+		AQLid: "292",
+		QHide: "1",
+		EMCode: "20242"
+	},
+	{
+		QSid: "240",
+		QDes: "/喷脸",
+		IQLid: "210",
+		isCMEmoji: "1",
+		AQLid: "212",
+		QHide: "1",
+		EMCode: "310"
+	},
+	{
+		QSid: "180",
+		QDes: "/惊喜",
+		IQLid: "150",
+		AQLid: "172",
+		QHide: "1",
+		EMCode: "250"
+	},
+	{
+		QSid: "122",
+		QDes: "/爱你",
+		IQLid: "65",
+		AQLid: "65",
+		QHide: "1",
+		EMCode: "187"
+	},
+	{
+		QSid: "202",
+		QDes: "/无聊",
+		IQLid: "172",
+		AQLid: "151",
+		QHide: "1",
+		EMCode: "272"
+	},
+	{
+		QSid: "278",
+		QDes: "/汗",
+		IQLid: "278",
+		isCMEmoji: "1",
+		AQLid: "278",
+		QHide: "1",
+		EMCode: "20237"
+	},
+	{
+		QSid: "301",
+		QDes: "/好闪",
+		IQLid: "301",
+		AQLid: "301",
+		QHide: "1",
+		EMCode: "10301"
+	},
+	{
+		QSid: "288",
+		QDes: "/请",
+		IQLid: "288",
+		AQLid: "288",
+		QHide: "1",
+		EMCode: "10288"
+	},
+	{
+		QSid: "322",
+		QDes: "/拒绝",
+		IQLid: "322",
+		AQLid: "322",
+		QHide: "1",
+		EMCode: "10322"
+	},
+	{
+		QSid: "198",
+		QDes: "/呃",
+		IQLid: "168",
+		AQLid: "147",
+		QHide: "1",
+		EMCode: "268"
+	},
+	{
+		QSid: "348",
+		QDes: "/福萝卜",
+		IQLid: "348",
+		AQLid: "348",
+		QHide: "1",
+		EMCode: "10348"
+	},
+	{
+		QSid: "206",
+		QDes: "/害怕",
+		IQLid: "176",
+		AQLid: "155",
+		QHide: "1",
+		EMCode: "276"
+	},
+	{
+		QSid: "239",
+		QDes: "/原谅",
+		IQLid: "209",
+		isCMEmoji: "1",
+		AQLid: "211",
+		QHide: "1",
+		EMCode: "309"
+	}
 ];
 const emoji = [
-  {
-    QSid: "😊",
-    QCid: "128522",
-    AQLid: "0",
-    QDes: "/嘿嘿",
-    EMCode: "400832"
-  },
-  {
-    QSid: "😌",
-    QCid: "128524",
-    AQLid: "1",
-    QDes: "/羞涩",
-    EMCode: "400834"
-  },
-  {
-    QSid: "😚",
-    QCid: "128538",
-    AQLid: "2",
-    QDes: "/亲亲",
-    EMCode: "400848"
-  },
-  {
-    QSid: "😓",
-    QCid: "128531",
-    AQLid: "3",
-    QDes: "/汗",
-    EMCode: "400841"
-  },
-  {
-    QSid: "😰",
-    QCid: "128560",
-    AQLid: "4",
-    QDes: "/紧张",
-    EMCode: "400870"
-  },
-  {
-    QSid: "😝",
-    QCid: "128541",
-    AQLid: "5",
-    QDes: "/吐舌",
-    EMCode: "400851"
-  },
-  {
-    QSid: "😁",
-    QCid: "128513",
-    AQLid: "6",
-    QDes: "/呲牙",
-    EMCode: "400823"
-  },
-  {
-    QSid: "😜",
-    QCid: "128540",
-    AQLid: "7",
-    QDes: "/淘气",
-    EMCode: "400850"
-  },
-  {
-    QSid: "☺",
-    QCid: "9786",
-    AQLid: "8",
-    QDes: "/可爱",
-    EMCode: "401181"
-  },
-  {
-    QSid: "😉",
-    QCid: "128521",
-    AQLid: "9",
-    QDes: "/媚眼",
-    QHide: "1",
-    EMCode: "400831"
-  },
-  {
-    QSid: "😍",
-    QCid: "128525",
-    AQLid: "10",
-    QDes: "/花痴",
-    EMCode: "400835"
-  },
-  {
-    QSid: "😔",
-    QCid: "128532",
-    AQLid: "11",
-    QDes: "/失落",
-    EMCode: "400842"
-  },
-  {
-    QSid: "😄",
-    QCid: "128516",
-    AQLid: "12",
-    QDes: "/高兴",
-    EMCode: "400826"
-  },
-  {
-    QSid: "😏",
-    QCid: "128527",
-    AQLid: "13",
-    QDes: "/哼哼",
-    EMCode: "400837"
-  },
-  {
-    QSid: "😒",
-    QCid: "128530",
-    AQLid: "14",
-    QDes: "/不屑",
-    EMCode: "400840"
-  },
-  {
-    QSid: "😳",
-    QCid: "128563",
-    AQLid: "15",
-    QDes: "/瞪眼",
-    EMCode: "400873"
-  },
-  {
-    QSid: "😘",
-    QCid: "128536",
-    AQLid: "16",
-    QDes: "/飞吻",
-    EMCode: "400846"
-  },
-  {
-    QSid: "😭",
-    QCid: "128557",
-    AQLid: "17",
-    QDes: "/大哭",
-    EMCode: "400867"
-  },
-  {
-    QSid: "😱",
-    QCid: "128561",
-    AQLid: "18",
-    QDes: "/害怕",
-    EMCode: "400871"
-  },
-  {
-    QSid: "😂",
-    QCid: "128514",
-    AQLid: "19",
-    QDes: "/激动",
-    EMCode: "400824"
-  },
-  {
-    QSid: "💪",
-    QCid: "128170",
-    AQLid: "20",
-    QDes: "/肌肉",
-    EMCode: "400644"
-  },
-  {
-    QSid: "👊",
-    QCid: "128074",
-    AQLid: "21",
-    QDes: "/拳头",
-    EMCode: "400390"
-  },
-  {
-    QSid: "👍",
-    QCid: "128077",
-    AQLid: "22",
-    QDes: "/厉害",
-    EMCode: "400408"
-  },
-  {
-    QSid: "☝",
-    QCid: "9757",
-    AQLid: "23",
-    QDes: "/向上",
-    QHide: "1",
-    EMCode: "401203"
-  },
-  {
-    QSid: "👏",
-    QCid: "128079",
-    AQLid: "24",
-    QDes: "/鼓掌",
-    EMCode: "400420"
-  },
-  {
-    QSid: "✌",
-    QCid: "9996",
-    AQLid: "25",
-    QDes: "/胜利",
-    QHide: "1",
-    EMCode: "401210"
-  },
-  {
-    QSid: "👎",
-    QCid: "128078",
-    AQLid: "26",
-    QDes: "/鄙视",
-    EMCode: "400414"
-  },
-  {
-    QSid: "🙏",
-    QCid: "128591",
-    AQLid: "27",
-    QDes: "/合十",
-    EMCode: "400396"
-  },
-  {
-    QSid: "👌",
-    QCid: "128076",
-    AQLid: "28",
-    QDes: "/好的",
-    EMCode: "400402"
-  },
-  {
-    QSid: "👈",
-    QCid: "128072",
-    AQLid: "29",
-    QDes: "/向左",
-    QHide: "1",
-    EMCode: "400378"
-  },
-  {
-    QSid: "👉",
-    QCid: "128073",
-    AQLid: "30",
-    QDes: "/向右",
-    QHide: "1",
-    EMCode: "400384"
-  },
-  {
-    QSid: "👆",
-    QCid: "128070",
-    AQLid: "31",
-    QDes: "/向上",
-    EMCode: "400366"
-  },
-  {
-    QSid: "👇",
-    QCid: "128071",
-    AQLid: "32",
-    QDes: "/向下",
-    QHide: "1",
-    EMCode: "400372"
-  },
-  {
-    QSid: "👀",
-    QCid: "128064",
-    AQLid: "33",
-    QDes: "/眼睛",
-    EMCode: "400351"
-  },
-  {
-    QSid: "👃",
-    QCid: "128067",
-    AQLid: "34",
-    QDes: "/鼻子",
-    QHide: "1",
-    EMCode: "400358"
-  },
-  {
-    QSid: "👄",
-    QCid: "128068",
-    AQLid: "35",
-    QDes: "/嘴唇",
-    QHide: "1",
-    EMCode: "400364"
-  },
-  {
-    QSid: "👂",
-    QCid: "128066",
-    AQLid: "36",
-    QDes: "/耳朵",
-    QHide: "1",
-    EMCode: "400352"
-  },
-  {
-    QSid: "🍚",
-    QCid: "127834",
-    AQLid: "37",
-    QDes: "/米饭",
-    QHide: "1",
-    EMCode: "400149"
-  },
-  {
-    QSid: "🍝",
-    QCid: "127837",
-    AQLid: "38",
-    QDes: "/意面",
-    QHide: "1",
-    EMCode: "400152"
-  },
-  {
-    QSid: "🍜",
-    QCid: "127836",
-    AQLid: "39",
-    QDes: "/拉面",
-    EMCode: "400151"
-  },
-  {
-    QSid: "🍙",
-    QCid: "127833",
-    AQLid: "40",
-    QDes: "/饭团",
-    QHide: "1",
-    EMCode: "400148"
-  },
-  {
-    QSid: "🍧",
-    QCid: "127847",
-    AQLid: "41",
-    QDes: "/刨冰",
-    EMCode: "400162"
-  },
-  {
-    QSid: "🍣",
-    QCid: "127843",
-    AQLid: "42",
-    QDes: "/寿司",
-    QHide: "1",
-    EMCode: "400158"
-  },
-  {
-    QSid: "🎂",
-    QCid: "127874",
-    AQLid: "43",
-    QDes: "/蛋糕",
-    QHide: "1",
-    EMCode: "400186"
-  },
-  {
-    QSid: "🍞",
-    QCid: "127838",
-    AQLid: "44",
-    QDes: "/面包",
-    EMCode: "400153"
-  },
-  {
-    QSid: "🍔",
-    QCid: "127828",
-    AQLid: "45",
-    QDes: "/汉堡",
-    QHide: "1",
-    EMCode: "400143"
-  },
-  {
-    QSid: "🍳",
-    QCid: "127859",
-    AQLid: "46",
-    QDes: "/煎蛋",
-    QHide: "1",
-    EMCode: "400174"
-  },
-  {
-    QSid: "🍟",
-    QCid: "127839",
-    AQLid: "47",
-    QDes: "/薯条",
-    QHide: "1",
-    EMCode: "400154"
-  },
-  {
-    QSid: "🍺",
-    QCid: "127866",
-    AQLid: "48",
-    QDes: "/啤酒",
-    EMCode: "400181"
-  },
-  {
-    QSid: "🍻",
-    QCid: "127867",
-    AQLid: "49",
-    QDes: "/干杯",
-    EMCode: "400182"
-  },
-  {
-    QSid: "🍸",
-    QCid: "127864",
-    AQLid: "50",
-    QDes: "/高脚杯",
-    QHide: "1",
-    EMCode: "400179"
-  },
-  {
-    QSid: "☕",
-    QCid: "9749",
-    AQLid: "51",
-    QDes: "/咖啡",
-    EMCode: "401262"
-  },
-  {
-    QSid: "🍎",
-    QCid: "127822",
-    AQLid: "52",
-    QDes: "/苹果",
-    EMCode: "400137"
-  },
-  {
-    QSid: "🍊",
-    QCid: "127818",
-    AQLid: "53",
-    QDes: "/橙子",
-    QHide: "1",
-    EMCode: "400133"
-  },
-  {
-    QSid: "🍓",
-    QCid: "127827",
-    AQLid: "54",
-    QDes: "/草莓",
-    EMCode: "400142"
-  },
-  {
-    QSid: "🍉",
-    QCid: "127817",
-    AQLid: "55",
-    QDes: "/西瓜",
-    EMCode: "400132"
-  },
-  {
-    QSid: "💊",
-    QCid: "128138",
-    AQLid: "56",
-    QDes: "/药丸",
-    QHide: "1",
-    EMCode: "400612"
-  },
-  {
-    QSid: "🚬",
-    QCid: "128684",
-    AQLid: "57",
-    QDes: "/吸烟",
-    EMCode: "400987"
-  },
-  {
-    QSid: "🎄",
-    QCid: "127876",
-    AQLid: "58",
-    QDes: "/圣诞树",
-    QHide: "1",
-    EMCode: "400188"
-  },
-  {
-    QSid: "🌹",
-    QCid: "127801",
-    AQLid: "59",
-    QDes: "/玫瑰",
-    EMCode: "400116"
-  },
-  {
-    QSid: "🎉",
-    QCid: "127881",
-    AQLid: "60",
-    QDes: "/庆祝",
-    EMCode: "400198"
-  },
-  {
-    QSid: "🌴",
-    QCid: "127796",
-    AQLid: "61",
-    QDes: "/椰子树",
-    QHide: "1",
-    EMCode: "400112"
-  },
-  {
-    QSid: "💝",
-    QCid: "128157",
-    AQLid: "62",
-    QDes: "/礼物",
-    EMCode: "400631"
-  },
-  {
-    QSid: "🎀",
-    QCid: "127872",
-    AQLid: "63",
-    QDes: "/蝴蝶结",
-    QHide: "1",
-    EMCode: "400184"
-  },
-  {
-    QSid: "🎈",
-    QCid: "127880",
-    AQLid: "64",
-    QDes: "/气球",
-    QHide: "1",
-    EMCode: "400197"
-  },
-  {
-    QSid: "🐚",
-    QCid: "128026",
-    AQLid: "65",
-    QDes: "/海螺",
-    QHide: "1",
-    EMCode: "400314"
-  },
-  {
-    QSid: "💍",
-    QCid: "128141",
-    AQLid: "66",
-    QDes: "/戒指",
-    QHide: "1",
-    EMCode: "400615"
-  },
-  {
-    QSid: "💣",
-    QCid: "128163",
-    AQLid: "67",
-    QDes: "/炸弹",
-    EMCode: "400637"
-  },
-  {
-    QSid: "👑",
-    QCid: "128081",
-    AQLid: "68",
-    QDes: "/皇冠",
-    QHide: "1",
-    EMCode: "400432"
-  },
-  {
-    QSid: "🔔",
-    QCid: "128276",
-    AQLid: "69",
-    QDes: "/铃铛",
-    QHide: "1",
-    EMCode: "400751"
-  },
-  {
-    QSid: "⭐",
-    QCid: "11088",
-    AQLid: "70",
-    QDes: "/星星",
-    QHide: "1",
-    EMCode: "401686"
-  },
-  {
-    QSid: "✨",
-    QCid: "10024",
-    AQLid: "71",
-    QDes: "/闪光",
-    EMCode: "401137"
-  },
-  {
-    QSid: "💨",
-    QCid: "128168",
-    AQLid: "72",
-    QDes: "/吹气",
-    EMCode: "400642"
-  },
-  {
-    QSid: "💦",
-    QCid: "128166",
-    AQLid: "73",
-    QDes: "/水",
-    EMCode: "400640"
-  },
-  {
-    QSid: "🔥",
-    QCid: "128293",
-    AQLid: "74",
-    QDes: "/火",
-    EMCode: "400768"
-  },
-  {
-    QSid: "🏆",
-    QCid: "127942",
-    AQLid: "75",
-    QDes: "/奖杯",
-    QHide: "1",
-    EMCode: "400256"
-  },
-  {
-    QSid: "💰",
-    QCid: "128176",
-    AQLid: "76",
-    QDes: "/钱",
-    QHide: "1",
-    EMCode: "400655"
-  },
-  {
-    QSid: "💤",
-    QCid: "128164",
-    AQLid: "77",
-    QDes: "/睡觉",
-    EMCode: "400638"
-  },
-  {
-    QSid: "⚡",
-    QCid: "9889",
-    AQLid: "78",
-    QDes: "/闪电",
-    QHide: "1",
-    EMCode: "401685"
-  },
-  {
-    QSid: "👣",
-    QCid: "128099",
-    AQLid: "79",
-    QDes: "/脚印",
-    QHide: "1",
-    EMCode: "400450"
-  },
-  {
-    QSid: "💩",
-    QCid: "128169",
-    AQLid: "80",
-    QDes: "/便便",
-    EMCode: "400643"
-  },
-  {
-    QSid: "💉",
-    QCid: "128137",
-    AQLid: "81",
-    QDes: "/打针",
-    EMCode: "400611"
-  },
-  {
-    QSid: "♨",
-    QCid: "9832",
-    AQLid: "82",
-    QDes: "/热",
-    QHide: "1",
-    EMCode: "401287"
-  },
-  {
-    QSid: "📫",
-    QCid: "128235",
-    AQLid: "83",
-    QDes: "/邮箱",
-    EMCode: "400714"
-  },
-  {
-    QSid: "🔑",
-    QCid: "128273",
-    AQLid: "84",
-    QDes: "/钥匙",
-    QHide: "1",
-    EMCode: "400748"
-  },
-  {
-    QSid: "🔒",
-    QCid: "128274",
-    AQLid: "85",
-    QDes: "/锁",
-    QHide: "1",
-    EMCode: "400749"
-  },
-  {
-    QSid: "✈",
-    QCid: "9992",
-    AQLid: "86",
-    QDes: "/飞机",
-    QHide: "1",
-    EMCode: "401298"
-  },
-  {
-    QSid: "🚄",
-    QCid: "128644",
-    AQLid: "87",
-    QDes: "/列车",
-    QHide: "1",
-    EMCode: "400942"
-  },
-  {
-    QSid: "🚗",
-    QCid: "128663",
-    AQLid: "88",
-    QDes: "/汽车",
-    QHide: "1",
-    EMCode: "400961"
-  },
-  {
-    QSid: "🚤",
-    QCid: "128676",
-    AQLid: "89",
-    QDes: "/快艇",
-    QHide: "1",
-    EMCode: "400979"
-  },
-  {
-    QSid: "🚲",
-    QCid: "128690",
-    AQLid: "90",
-    QDes: "/自行车",
-    QHide: "1",
-    EMCode: "400993"
-  },
-  {
-    QSid: "🐎",
-    QCid: "128014",
-    AQLid: "91",
-    QDes: "/骑马",
-    EMCode: "400302"
-  },
-  {
-    QSid: "🚀",
-    QCid: "128640",
-    AQLid: "92",
-    QDes: "/火箭",
-    QHide: "1",
-    EMCode: "400938"
-  },
-  {
-    QSid: "🚌",
-    QCid: "128652",
-    AQLid: "93",
-    QDes: "/公交",
-    QHide: "1",
-    EMCode: "400950"
-  },
-  {
-    QSid: "⛵",
-    QCid: "9973",
-    AQLid: "94",
-    QDes: "/船",
-    QHide: "1",
-    EMCode: "401294"
-  },
-  {
-    QSid: "👩",
-    QCid: "128105",
-    AQLid: "95",
-    QDes: "/妈妈",
-    QHide: "1",
-    EMCode: "400482"
-  },
-  {
-    QSid: "👨",
-    QCid: "128104",
-    AQLid: "96",
-    QDes: "/爸爸",
-    QHide: "1",
-    EMCode: "400465"
-  },
-  {
-    QSid: "👧",
-    QCid: "128103",
-    AQLid: "97",
-    QDes: "/女孩",
-    EMCode: "400459"
-  },
-  {
-    QSid: "👦",
-    QCid: "128102",
-    AQLid: "98",
-    QDes: "/男孩",
-    EMCode: "400453"
-  },
-  {
-    QSid: "🐵",
-    QCid: "128053",
-    AQLid: "99",
-    QDes: "/猴",
-    EMCode: "400341"
-  },
-  {
-    QSid: "🐙",
-    QCid: "128025",
-    AQLid: "100",
-    QDes: "/章鱼",
-    QHide: "1",
-    EMCode: "400313"
-  },
-  {
-    QSid: "🐷",
-    QCid: "128055",
-    AQLid: "101",
-    QDes: "/猪",
-    EMCode: "400343"
-  },
-  {
-    QSid: "💀",
-    QCid: "128128",
-    AQLid: "102",
-    QDes: "/骷髅",
-    QHide: "1",
-    EMCode: "400572"
-  },
-  {
-    QSid: "🐤",
-    QCid: "128036",
-    AQLid: "103",
-    QDes: "/小鸡",
-    QHide: "1",
-    EMCode: "400324"
-  },
-  {
-    QSid: "🐨",
-    QCid: "128040",
-    AQLid: "104",
-    QDes: "/树懒",
-    QHide: "1",
-    EMCode: "400328"
-  },
-  {
-    QSid: "🐮",
-    QCid: "128046",
-    AQLid: "105",
-    QDes: "/牛",
-    EMCode: "400334"
-  },
-  {
-    QSid: "🐔",
-    QCid: "128020",
-    AQLid: "106",
-    QDes: "/公鸡",
-    EMCode: "400308"
-  },
-  {
-    QSid: "🐸",
-    QCid: "128056",
-    AQLid: "107",
-    QDes: "/青蛙",
-    EMCode: "400344"
-  },
-  {
-    QSid: "👻",
-    QCid: "128123",
-    AQLid: "108",
-    QDes: "/幽灵",
-    EMCode: "400562"
-  },
-  {
-    QSid: "🐛",
-    QCid: "128027",
-    AQLid: "109",
-    QDes: "/虫",
-    EMCode: "400315"
-  },
-  {
-    QSid: "🐠",
-    QCid: "128032",
-    AQLid: "110",
-    QDes: "/鱼",
-    QHide: "1",
-    EMCode: "400320"
-  },
-  {
-    QSid: "🐶",
-    QCid: "128054",
-    AQLid: "111",
-    QDes: "/狗",
-    EMCode: "400342"
-  },
-  {
-    QSid: "🐯",
-    QCid: "128047",
-    AQLid: "112",
-    QDes: "/老虎",
-    QHide: "1",
-    EMCode: "400335"
-  },
-  {
-    QSid: "👼",
-    QCid: "128124",
-    AQLid: "113",
-    QDes: "/天使",
-    QHide: "1",
-    EMCode: "400563"
-  },
-  {
-    QSid: "🐧",
-    QCid: "128039",
-    AQLid: "114",
-    QDes: "/企鹅",
-    QHide: "1",
-    EMCode: "400327"
-  },
-  {
-    QSid: "🐳",
-    QCid: "128051",
-    AQLid: "115",
-    QDes: "/鲸鱼",
-    EMCode: "400339"
-  },
-  {
-    QSid: "🐭",
-    QCid: "128045",
-    AQLid: "116",
-    QDes: "/老鼠",
-    QHide: "1",
-    EMCode: "400333"
-  },
-  {
-    QSid: "👒",
-    QCid: "128082",
-    AQLid: "117",
-    QDes: "/帽子",
-    QHide: "1",
-    EMCode: "400433"
-  },
-  {
-    QSid: "👗",
-    QCid: "128087",
-    AQLid: "118",
-    QDes: "/连衣裙",
-    QHide: "1",
-    EMCode: "400438"
-  },
-  {
-    QSid: "💄",
-    QCid: "128132",
-    AQLid: "119",
-    QDes: "/口红",
-    QHide: "1",
-    EMCode: "400591"
-  },
-  {
-    QSid: "👠",
-    QCid: "128096",
-    AQLid: "120",
-    QDes: "/高跟鞋",
-    QHide: "1",
-    EMCode: "400447"
-  },
-  {
-    QSid: "👢",
-    QCid: "128098",
-    AQLid: "121",
-    QDes: "/靴子",
-    EMCode: "400449"
-  },
-  {
-    QSid: "🌂",
-    QCid: "127746",
-    AQLid: "122",
-    QDes: "/雨伞",
-    QHide: "1",
-    EMCode: "400077"
-  },
-  {
-    QSid: "👜",
-    QCid: "128092",
-    AQLid: "123",
-    QDes: "/包",
-    QHide: "1",
-    EMCode: "400443"
-  },
-  {
-    QSid: "👙",
-    QCid: "128089",
-    AQLid: "124",
-    QDes: "/内衣",
-    QHide: "1",
-    EMCode: "400440"
-  },
-  {
-    QSid: "👕",
-    QCid: "128085",
-    AQLid: "125",
-    QDes: "/衣服",
-    QHide: "1",
-    EMCode: "400436"
-  },
-  {
-    QSid: "👟",
-    QCid: "128095",
-    AQLid: "126",
-    QDes: "/鞋子",
-    QHide: "1",
-    EMCode: "400446"
-  },
-  {
-    QSid: "☁",
-    QCid: "9729",
-    AQLid: "127",
-    QDes: "/云朵",
-    QHide: "1",
-    EMCode: "401329"
-  },
-  {
-    QSid: "☀",
-    QCid: "9728",
-    AQLid: "128",
-    QDes: "/晴天",
-    EMCode: "401328"
-  },
-  {
-    QSid: "☔",
-    QCid: "9748",
-    AQLid: "129",
-    QDes: "/雨天",
-    QHide: "1",
-    EMCode: "401342"
-  },
-  {
-    QSid: "🌙",
-    QCid: "127769",
-    AQLid: "130",
-    QDes: "/月亮",
-    QHide: "1",
-    EMCode: "400100"
-  },
-  {
-    QSid: "⛄",
-    QCid: "9924",
-    AQLid: "131",
-    QDes: "/雪人",
-    QHide: "1",
-    EMCode: "401346"
-  },
-  {
-    QSid: "⭕",
-    QCid: "11093",
-    AQLid: "132",
-    QDes: "/正确",
-    QHide: "1",
-    EMCode: "401687"
-  },
-  {
-    QSid: "❌",
-    QCid: "10060",
-    AQLid: "133",
-    QDes: "/错误",
-    QHide: "1",
-    EMCode: "401142"
-  },
-  {
-    QSid: "❔",
-    QCid: "10068",
-    AQLid: "134",
-    QDes: "/问号",
-    EMCode: "401145"
-  },
-  {
-    QSid: "❕",
-    QCid: "10069",
-    AQLid: "135",
-    QDes: "/叹号",
-    QHide: "1",
-    EMCode: "401146"
-  },
-  {
-    QSid: "☎",
-    QCid: "9742",
-    AQLid: "136",
-    QDes: "/电话",
-    QHide: "1",
-    EMCode: "401398"
-  },
-  {
-    QSid: "📷",
-    QCid: "128247",
-    AQLid: "137",
-    QDes: "/相机",
-    QHide: "1",
-    EMCode: "400726"
-  },
-  {
-    QSid: "📱",
-    QCid: "128241",
-    AQLid: "138",
-    QDes: "/手机",
-    QHide: "1",
-    EMCode: "400720"
-  },
-  {
-    QSid: "📠",
-    QCid: "128224",
-    AQLid: "139",
-    QDes: "/传真",
-    QHide: "1",
-    EMCode: "400703"
-  },
-  {
-    QSid: "💻",
-    QCid: "128187",
-    AQLid: "140",
-    QDes: "/电脑",
-    QHide: "1",
-    EMCode: "400666"
-  },
-  {
-    QSid: "🎥",
-    QCid: "127909",
-    AQLid: "141",
-    QDes: "/摄影机",
-    QHide: "1",
-    EMCode: "400214"
-  },
-  {
-    QSid: "🎤",
-    QCid: "127908",
-    AQLid: "142",
-    QDes: "/话筒",
-    QHide: "1",
-    EMCode: "400213"
-  },
-  {
-    QSid: "🔫",
-    QCid: "128299",
-    AQLid: "143",
-    QDes: "/手枪",
-    EMCode: "400774"
-  },
-  {
-    QSid: "💿",
-    QCid: "128191",
-    AQLid: "144",
-    QDes: "/光碟",
-    QHide: "1",
-    EMCode: "400670"
-  },
-  {
-    QSid: "💓",
-    QCid: "128147",
-    AQLid: "145",
-    QDes: "/爱心",
-    EMCode: "400621"
-  },
-  {
-    QSid: "♣",
-    QCid: "9827",
-    AQLid: "146",
-    QDes: "/扑克",
-    QHide: "1",
-    EMCode: "401385"
-  },
-  {
-    QSid: "🀄",
-    QCid: "126980",
-    AQLid: "147",
-    QDes: "/麻将",
-    QHide: "1",
-    EMCode: "401386"
-  },
-  {
-    QSid: "〽",
-    QCid: "12349",
-    AQLid: "148",
-    QDes: "/股票",
-    QHide: "1",
-    EMCode: "401691"
-  },
-  {
-    QSid: "🎰",
-    QCid: "127920",
-    AQLid: "149",
-    QDes: "/老虎机",
-    QHide: "1",
-    EMCode: "400225"
-  },
-  {
-    QSid: "🚥",
-    QCid: "128677",
-    AQLid: "150",
-    QDes: "/信号灯",
-    QHide: "1",
-    EMCode: "400980"
-  },
-  {
-    QSid: "🚧",
-    QCid: "128679",
-    AQLid: "151",
-    QDes: "/路障",
-    QHide: "1",
-    EMCode: "400982"
-  },
-  {
-    QSid: "🎸",
-    QCid: "127928",
-    AQLid: "152",
-    QDes: "/吉他",
-    QHide: "1",
-    EMCode: "400233"
-  },
-  {
-    QSid: "💈",
-    QCid: "128136",
-    AQLid: "153",
-    QDes: "/理发厅",
-    QHide: "1",
-    EMCode: "400610"
-  },
-  {
-    QSid: "🛀",
-    QCid: "128704",
-    AQLid: "154",
-    QDes: "/浴缸",
-    QHide: "1",
-    EMCode: "401022"
-  },
-  {
-    QSid: "🚽",
-    QCid: "128701",
-    AQLid: "155",
-    QDes: "/马桶",
-    QHide: "1",
-    EMCode: "401019"
-  },
-  {
-    QSid: "🏠",
-    QCid: "127968",
-    AQLid: "156",
-    QDes: "/家",
-    QHide: "1",
-    EMCode: "400271"
-  },
-  {
-    QSid: "⛪",
-    QCid: "9962",
-    AQLid: "157",
-    QDes: "/教堂",
-    QHide: "1",
-    EMCode: "401281"
-  },
-  {
-    QSid: "🏦",
-    QCid: "127974",
-    AQLid: "158",
-    QDes: "/银行",
-    QHide: "1",
-    EMCode: "400277"
-  },
-  {
-    QSid: "🏥",
-    QCid: "127973",
-    AQLid: "159",
-    QDes: "/医院",
-    QHide: "1",
-    EMCode: "400276"
-  },
-  {
-    QSid: "🏨",
-    QCid: "127976",
-    AQLid: "160",
-    QDes: "/酒店",
-    QHide: "1",
-    EMCode: "400279"
-  },
-  {
-    QSid: "🏧",
-    QCid: "127975",
-    AQLid: "161",
-    QDes: "/取款机",
-    QHide: "1",
-    EMCode: "400278"
-  },
-  {
-    QSid: "🏪",
-    QCid: "127978",
-    AQLid: "162",
-    QDes: "/便利店",
-    EMCode: "400281"
-  },
-  {
-    QSid: "🚹",
-    QCid: "128697",
-    AQLid: "163",
-    QDes: "/男性",
-    QHide: "1",
-    EMCode: "401015"
-  },
-  {
-    QSid: "🚺",
-    QCid: "128698",
-    AQLid: "164",
-    QDes: "/女性",
-    QHide: "1",
-    EMCode: "401016"
-  }
+	{
+		QSid: "😊",
+		QCid: "128522",
+		AQLid: "0",
+		QDes: "/嘿嘿",
+		EMCode: "400832"
+	},
+	{
+		QSid: "😌",
+		QCid: "128524",
+		AQLid: "1",
+		QDes: "/羞涩",
+		EMCode: "400834"
+	},
+	{
+		QSid: "😚",
+		QCid: "128538",
+		AQLid: "2",
+		QDes: "/亲亲",
+		EMCode: "400848"
+	},
+	{
+		QSid: "😓",
+		QCid: "128531",
+		AQLid: "3",
+		QDes: "/汗",
+		EMCode: "400841"
+	},
+	{
+		QSid: "😰",
+		QCid: "128560",
+		AQLid: "4",
+		QDes: "/紧张",
+		EMCode: "400870"
+	},
+	{
+		QSid: "😝",
+		QCid: "128541",
+		AQLid: "5",
+		QDes: "/吐舌",
+		EMCode: "400851"
+	},
+	{
+		QSid: "😁",
+		QCid: "128513",
+		AQLid: "6",
+		QDes: "/呲牙",
+		EMCode: "400823"
+	},
+	{
+		QSid: "😜",
+		QCid: "128540",
+		AQLid: "7",
+		QDes: "/淘气",
+		EMCode: "400850"
+	},
+	{
+		QSid: "☺",
+		QCid: "9786",
+		AQLid: "8",
+		QDes: "/可爱",
+		EMCode: "401181"
+	},
+	{
+		QSid: "😉",
+		QCid: "128521",
+		AQLid: "9",
+		QDes: "/媚眼",
+		QHide: "1",
+		EMCode: "400831"
+	},
+	{
+		QSid: "😍",
+		QCid: "128525",
+		AQLid: "10",
+		QDes: "/花痴",
+		EMCode: "400835"
+	},
+	{
+		QSid: "😔",
+		QCid: "128532",
+		AQLid: "11",
+		QDes: "/失落",
+		EMCode: "400842"
+	},
+	{
+		QSid: "😄",
+		QCid: "128516",
+		AQLid: "12",
+		QDes: "/高兴",
+		EMCode: "400826"
+	},
+	{
+		QSid: "😏",
+		QCid: "128527",
+		AQLid: "13",
+		QDes: "/哼哼",
+		EMCode: "400837"
+	},
+	{
+		QSid: "😒",
+		QCid: "128530",
+		AQLid: "14",
+		QDes: "/不屑",
+		EMCode: "400840"
+	},
+	{
+		QSid: "😳",
+		QCid: "128563",
+		AQLid: "15",
+		QDes: "/瞪眼",
+		EMCode: "400873"
+	},
+	{
+		QSid: "😘",
+		QCid: "128536",
+		AQLid: "16",
+		QDes: "/飞吻",
+		EMCode: "400846"
+	},
+	{
+		QSid: "😭",
+		QCid: "128557",
+		AQLid: "17",
+		QDes: "/大哭",
+		EMCode: "400867"
+	},
+	{
+		QSid: "😱",
+		QCid: "128561",
+		AQLid: "18",
+		QDes: "/害怕",
+		EMCode: "400871"
+	},
+	{
+		QSid: "😂",
+		QCid: "128514",
+		AQLid: "19",
+		QDes: "/激动",
+		EMCode: "400824"
+	},
+	{
+		QSid: "💪",
+		QCid: "128170",
+		AQLid: "20",
+		QDes: "/肌肉",
+		EMCode: "400644"
+	},
+	{
+		QSid: "👊",
+		QCid: "128074",
+		AQLid: "21",
+		QDes: "/拳头",
+		EMCode: "400390"
+	},
+	{
+		QSid: "👍",
+		QCid: "128077",
+		AQLid: "22",
+		QDes: "/厉害",
+		EMCode: "400408"
+	},
+	{
+		QSid: "☝",
+		QCid: "9757",
+		AQLid: "23",
+		QDes: "/向上",
+		QHide: "1",
+		EMCode: "401203"
+	},
+	{
+		QSid: "👏",
+		QCid: "128079",
+		AQLid: "24",
+		QDes: "/鼓掌",
+		EMCode: "400420"
+	},
+	{
+		QSid: "✌",
+		QCid: "9996",
+		AQLid: "25",
+		QDes: "/胜利",
+		QHide: "1",
+		EMCode: "401210"
+	},
+	{
+		QSid: "👎",
+		QCid: "128078",
+		AQLid: "26",
+		QDes: "/鄙视",
+		EMCode: "400414"
+	},
+	{
+		QSid: "🙏",
+		QCid: "128591",
+		AQLid: "27",
+		QDes: "/合十",
+		EMCode: "400396"
+	},
+	{
+		QSid: "👌",
+		QCid: "128076",
+		AQLid: "28",
+		QDes: "/好的",
+		EMCode: "400402"
+	},
+	{
+		QSid: "👈",
+		QCid: "128072",
+		AQLid: "29",
+		QDes: "/向左",
+		QHide: "1",
+		EMCode: "400378"
+	},
+	{
+		QSid: "👉",
+		QCid: "128073",
+		AQLid: "30",
+		QDes: "/向右",
+		QHide: "1",
+		EMCode: "400384"
+	},
+	{
+		QSid: "👆",
+		QCid: "128070",
+		AQLid: "31",
+		QDes: "/向上",
+		EMCode: "400366"
+	},
+	{
+		QSid: "👇",
+		QCid: "128071",
+		AQLid: "32",
+		QDes: "/向下",
+		QHide: "1",
+		EMCode: "400372"
+	},
+	{
+		QSid: "👀",
+		QCid: "128064",
+		AQLid: "33",
+		QDes: "/眼睛",
+		EMCode: "400351"
+	},
+	{
+		QSid: "👃",
+		QCid: "128067",
+		AQLid: "34",
+		QDes: "/鼻子",
+		QHide: "1",
+		EMCode: "400358"
+	},
+	{
+		QSid: "👄",
+		QCid: "128068",
+		AQLid: "35",
+		QDes: "/嘴唇",
+		QHide: "1",
+		EMCode: "400364"
+	},
+	{
+		QSid: "👂",
+		QCid: "128066",
+		AQLid: "36",
+		QDes: "/耳朵",
+		QHide: "1",
+		EMCode: "400352"
+	},
+	{
+		QSid: "🍚",
+		QCid: "127834",
+		AQLid: "37",
+		QDes: "/米饭",
+		QHide: "1",
+		EMCode: "400149"
+	},
+	{
+		QSid: "🍝",
+		QCid: "127837",
+		AQLid: "38",
+		QDes: "/意面",
+		QHide: "1",
+		EMCode: "400152"
+	},
+	{
+		QSid: "🍜",
+		QCid: "127836",
+		AQLid: "39",
+		QDes: "/拉面",
+		EMCode: "400151"
+	},
+	{
+		QSid: "🍙",
+		QCid: "127833",
+		AQLid: "40",
+		QDes: "/饭团",
+		QHide: "1",
+		EMCode: "400148"
+	},
+	{
+		QSid: "🍧",
+		QCid: "127847",
+		AQLid: "41",
+		QDes: "/刨冰",
+		EMCode: "400162"
+	},
+	{
+		QSid: "🍣",
+		QCid: "127843",
+		AQLid: "42",
+		QDes: "/寿司",
+		QHide: "1",
+		EMCode: "400158"
+	},
+	{
+		QSid: "🎂",
+		QCid: "127874",
+		AQLid: "43",
+		QDes: "/蛋糕",
+		QHide: "1",
+		EMCode: "400186"
+	},
+	{
+		QSid: "🍞",
+		QCid: "127838",
+		AQLid: "44",
+		QDes: "/面包",
+		EMCode: "400153"
+	},
+	{
+		QSid: "🍔",
+		QCid: "127828",
+		AQLid: "45",
+		QDes: "/汉堡",
+		QHide: "1",
+		EMCode: "400143"
+	},
+	{
+		QSid: "🍳",
+		QCid: "127859",
+		AQLid: "46",
+		QDes: "/煎蛋",
+		QHide: "1",
+		EMCode: "400174"
+	},
+	{
+		QSid: "🍟",
+		QCid: "127839",
+		AQLid: "47",
+		QDes: "/薯条",
+		QHide: "1",
+		EMCode: "400154"
+	},
+	{
+		QSid: "🍺",
+		QCid: "127866",
+		AQLid: "48",
+		QDes: "/啤酒",
+		EMCode: "400181"
+	},
+	{
+		QSid: "🍻",
+		QCid: "127867",
+		AQLid: "49",
+		QDes: "/干杯",
+		EMCode: "400182"
+	},
+	{
+		QSid: "🍸",
+		QCid: "127864",
+		AQLid: "50",
+		QDes: "/高脚杯",
+		QHide: "1",
+		EMCode: "400179"
+	},
+	{
+		QSid: "☕",
+		QCid: "9749",
+		AQLid: "51",
+		QDes: "/咖啡",
+		EMCode: "401262"
+	},
+	{
+		QSid: "🍎",
+		QCid: "127822",
+		AQLid: "52",
+		QDes: "/苹果",
+		EMCode: "400137"
+	},
+	{
+		QSid: "🍊",
+		QCid: "127818",
+		AQLid: "53",
+		QDes: "/橙子",
+		QHide: "1",
+		EMCode: "400133"
+	},
+	{
+		QSid: "🍓",
+		QCid: "127827",
+		AQLid: "54",
+		QDes: "/草莓",
+		EMCode: "400142"
+	},
+	{
+		QSid: "🍉",
+		QCid: "127817",
+		AQLid: "55",
+		QDes: "/西瓜",
+		EMCode: "400132"
+	},
+	{
+		QSid: "💊",
+		QCid: "128138",
+		AQLid: "56",
+		QDes: "/药丸",
+		QHide: "1",
+		EMCode: "400612"
+	},
+	{
+		QSid: "🚬",
+		QCid: "128684",
+		AQLid: "57",
+		QDes: "/吸烟",
+		EMCode: "400987"
+	},
+	{
+		QSid: "🎄",
+		QCid: "127876",
+		AQLid: "58",
+		QDes: "/圣诞树",
+		QHide: "1",
+		EMCode: "400188"
+	},
+	{
+		QSid: "🌹",
+		QCid: "127801",
+		AQLid: "59",
+		QDes: "/玫瑰",
+		EMCode: "400116"
+	},
+	{
+		QSid: "🎉",
+		QCid: "127881",
+		AQLid: "60",
+		QDes: "/庆祝",
+		EMCode: "400198"
+	},
+	{
+		QSid: "🌴",
+		QCid: "127796",
+		AQLid: "61",
+		QDes: "/椰子树",
+		QHide: "1",
+		EMCode: "400112"
+	},
+	{
+		QSid: "💝",
+		QCid: "128157",
+		AQLid: "62",
+		QDes: "/礼物",
+		EMCode: "400631"
+	},
+	{
+		QSid: "🎀",
+		QCid: "127872",
+		AQLid: "63",
+		QDes: "/蝴蝶结",
+		QHide: "1",
+		EMCode: "400184"
+	},
+	{
+		QSid: "🎈",
+		QCid: "127880",
+		AQLid: "64",
+		QDes: "/气球",
+		QHide: "1",
+		EMCode: "400197"
+	},
+	{
+		QSid: "🐚",
+		QCid: "128026",
+		AQLid: "65",
+		QDes: "/海螺",
+		QHide: "1",
+		EMCode: "400314"
+	},
+	{
+		QSid: "💍",
+		QCid: "128141",
+		AQLid: "66",
+		QDes: "/戒指",
+		QHide: "1",
+		EMCode: "400615"
+	},
+	{
+		QSid: "💣",
+		QCid: "128163",
+		AQLid: "67",
+		QDes: "/炸弹",
+		EMCode: "400637"
+	},
+	{
+		QSid: "👑",
+		QCid: "128081",
+		AQLid: "68",
+		QDes: "/皇冠",
+		QHide: "1",
+		EMCode: "400432"
+	},
+	{
+		QSid: "🔔",
+		QCid: "128276",
+		AQLid: "69",
+		QDes: "/铃铛",
+		QHide: "1",
+		EMCode: "400751"
+	},
+	{
+		QSid: "⭐",
+		QCid: "11088",
+		AQLid: "70",
+		QDes: "/星星",
+		QHide: "1",
+		EMCode: "401686"
+	},
+	{
+		QSid: "✨",
+		QCid: "10024",
+		AQLid: "71",
+		QDes: "/闪光",
+		EMCode: "401137"
+	},
+	{
+		QSid: "💨",
+		QCid: "128168",
+		AQLid: "72",
+		QDes: "/吹气",
+		EMCode: "400642"
+	},
+	{
+		QSid: "💦",
+		QCid: "128166",
+		AQLid: "73",
+		QDes: "/水",
+		EMCode: "400640"
+	},
+	{
+		QSid: "🔥",
+		QCid: "128293",
+		AQLid: "74",
+		QDes: "/火",
+		EMCode: "400768"
+	},
+	{
+		QSid: "🏆",
+		QCid: "127942",
+		AQLid: "75",
+		QDes: "/奖杯",
+		QHide: "1",
+		EMCode: "400256"
+	},
+	{
+		QSid: "💰",
+		QCid: "128176",
+		AQLid: "76",
+		QDes: "/钱",
+		QHide: "1",
+		EMCode: "400655"
+	},
+	{
+		QSid: "💤",
+		QCid: "128164",
+		AQLid: "77",
+		QDes: "/睡觉",
+		EMCode: "400638"
+	},
+	{
+		QSid: "⚡",
+		QCid: "9889",
+		AQLid: "78",
+		QDes: "/闪电",
+		QHide: "1",
+		EMCode: "401685"
+	},
+	{
+		QSid: "👣",
+		QCid: "128099",
+		AQLid: "79",
+		QDes: "/脚印",
+		QHide: "1",
+		EMCode: "400450"
+	},
+	{
+		QSid: "💩",
+		QCid: "128169",
+		AQLid: "80",
+		QDes: "/便便",
+		EMCode: "400643"
+	},
+	{
+		QSid: "💉",
+		QCid: "128137",
+		AQLid: "81",
+		QDes: "/打针",
+		EMCode: "400611"
+	},
+	{
+		QSid: "♨",
+		QCid: "9832",
+		AQLid: "82",
+		QDes: "/热",
+		QHide: "1",
+		EMCode: "401287"
+	},
+	{
+		QSid: "📫",
+		QCid: "128235",
+		AQLid: "83",
+		QDes: "/邮箱",
+		EMCode: "400714"
+	},
+	{
+		QSid: "🔑",
+		QCid: "128273",
+		AQLid: "84",
+		QDes: "/钥匙",
+		QHide: "1",
+		EMCode: "400748"
+	},
+	{
+		QSid: "🔒",
+		QCid: "128274",
+		AQLid: "85",
+		QDes: "/锁",
+		QHide: "1",
+		EMCode: "400749"
+	},
+	{
+		QSid: "✈",
+		QCid: "9992",
+		AQLid: "86",
+		QDes: "/飞机",
+		QHide: "1",
+		EMCode: "401298"
+	},
+	{
+		QSid: "🚄",
+		QCid: "128644",
+		AQLid: "87",
+		QDes: "/列车",
+		QHide: "1",
+		EMCode: "400942"
+	},
+	{
+		QSid: "🚗",
+		QCid: "128663",
+		AQLid: "88",
+		QDes: "/汽车",
+		QHide: "1",
+		EMCode: "400961"
+	},
+	{
+		QSid: "🚤",
+		QCid: "128676",
+		AQLid: "89",
+		QDes: "/快艇",
+		QHide: "1",
+		EMCode: "400979"
+	},
+	{
+		QSid: "🚲",
+		QCid: "128690",
+		AQLid: "90",
+		QDes: "/自行车",
+		QHide: "1",
+		EMCode: "400993"
+	},
+	{
+		QSid: "🐎",
+		QCid: "128014",
+		AQLid: "91",
+		QDes: "/骑马",
+		EMCode: "400302"
+	},
+	{
+		QSid: "🚀",
+		QCid: "128640",
+		AQLid: "92",
+		QDes: "/火箭",
+		QHide: "1",
+		EMCode: "400938"
+	},
+	{
+		QSid: "🚌",
+		QCid: "128652",
+		AQLid: "93",
+		QDes: "/公交",
+		QHide: "1",
+		EMCode: "400950"
+	},
+	{
+		QSid: "⛵",
+		QCid: "9973",
+		AQLid: "94",
+		QDes: "/船",
+		QHide: "1",
+		EMCode: "401294"
+	},
+	{
+		QSid: "👩",
+		QCid: "128105",
+		AQLid: "95",
+		QDes: "/妈妈",
+		QHide: "1",
+		EMCode: "400482"
+	},
+	{
+		QSid: "👨",
+		QCid: "128104",
+		AQLid: "96",
+		QDes: "/爸爸",
+		QHide: "1",
+		EMCode: "400465"
+	},
+	{
+		QSid: "👧",
+		QCid: "128103",
+		AQLid: "97",
+		QDes: "/女孩",
+		EMCode: "400459"
+	},
+	{
+		QSid: "👦",
+		QCid: "128102",
+		AQLid: "98",
+		QDes: "/男孩",
+		EMCode: "400453"
+	},
+	{
+		QSid: "🐵",
+		QCid: "128053",
+		AQLid: "99",
+		QDes: "/猴",
+		EMCode: "400341"
+	},
+	{
+		QSid: "🐙",
+		QCid: "128025",
+		AQLid: "100",
+		QDes: "/章鱼",
+		QHide: "1",
+		EMCode: "400313"
+	},
+	{
+		QSid: "🐷",
+		QCid: "128055",
+		AQLid: "101",
+		QDes: "/猪",
+		EMCode: "400343"
+	},
+	{
+		QSid: "💀",
+		QCid: "128128",
+		AQLid: "102",
+		QDes: "/骷髅",
+		QHide: "1",
+		EMCode: "400572"
+	},
+	{
+		QSid: "🐤",
+		QCid: "128036",
+		AQLid: "103",
+		QDes: "/小鸡",
+		QHide: "1",
+		EMCode: "400324"
+	},
+	{
+		QSid: "🐨",
+		QCid: "128040",
+		AQLid: "104",
+		QDes: "/树懒",
+		QHide: "1",
+		EMCode: "400328"
+	},
+	{
+		QSid: "🐮",
+		QCid: "128046",
+		AQLid: "105",
+		QDes: "/牛",
+		EMCode: "400334"
+	},
+	{
+		QSid: "🐔",
+		QCid: "128020",
+		AQLid: "106",
+		QDes: "/公鸡",
+		EMCode: "400308"
+	},
+	{
+		QSid: "🐸",
+		QCid: "128056",
+		AQLid: "107",
+		QDes: "/青蛙",
+		EMCode: "400344"
+	},
+	{
+		QSid: "👻",
+		QCid: "128123",
+		AQLid: "108",
+		QDes: "/幽灵",
+		EMCode: "400562"
+	},
+	{
+		QSid: "🐛",
+		QCid: "128027",
+		AQLid: "109",
+		QDes: "/虫",
+		EMCode: "400315"
+	},
+	{
+		QSid: "🐠",
+		QCid: "128032",
+		AQLid: "110",
+		QDes: "/鱼",
+		QHide: "1",
+		EMCode: "400320"
+	},
+	{
+		QSid: "🐶",
+		QCid: "128054",
+		AQLid: "111",
+		QDes: "/狗",
+		EMCode: "400342"
+	},
+	{
+		QSid: "🐯",
+		QCid: "128047",
+		AQLid: "112",
+		QDes: "/老虎",
+		QHide: "1",
+		EMCode: "400335"
+	},
+	{
+		QSid: "👼",
+		QCid: "128124",
+		AQLid: "113",
+		QDes: "/天使",
+		QHide: "1",
+		EMCode: "400563"
+	},
+	{
+		QSid: "🐧",
+		QCid: "128039",
+		AQLid: "114",
+		QDes: "/企鹅",
+		QHide: "1",
+		EMCode: "400327"
+	},
+	{
+		QSid: "🐳",
+		QCid: "128051",
+		AQLid: "115",
+		QDes: "/鲸鱼",
+		EMCode: "400339"
+	},
+	{
+		QSid: "🐭",
+		QCid: "128045",
+		AQLid: "116",
+		QDes: "/老鼠",
+		QHide: "1",
+		EMCode: "400333"
+	},
+	{
+		QSid: "👒",
+		QCid: "128082",
+		AQLid: "117",
+		QDes: "/帽子",
+		QHide: "1",
+		EMCode: "400433"
+	},
+	{
+		QSid: "👗",
+		QCid: "128087",
+		AQLid: "118",
+		QDes: "/连衣裙",
+		QHide: "1",
+		EMCode: "400438"
+	},
+	{
+		QSid: "💄",
+		QCid: "128132",
+		AQLid: "119",
+		QDes: "/口红",
+		QHide: "1",
+		EMCode: "400591"
+	},
+	{
+		QSid: "👠",
+		QCid: "128096",
+		AQLid: "120",
+		QDes: "/高跟鞋",
+		QHide: "1",
+		EMCode: "400447"
+	},
+	{
+		QSid: "👢",
+		QCid: "128098",
+		AQLid: "121",
+		QDes: "/靴子",
+		EMCode: "400449"
+	},
+	{
+		QSid: "🌂",
+		QCid: "127746",
+		AQLid: "122",
+		QDes: "/雨伞",
+		QHide: "1",
+		EMCode: "400077"
+	},
+	{
+		QSid: "👜",
+		QCid: "128092",
+		AQLid: "123",
+		QDes: "/包",
+		QHide: "1",
+		EMCode: "400443"
+	},
+	{
+		QSid: "👙",
+		QCid: "128089",
+		AQLid: "124",
+		QDes: "/内衣",
+		QHide: "1",
+		EMCode: "400440"
+	},
+	{
+		QSid: "👕",
+		QCid: "128085",
+		AQLid: "125",
+		QDes: "/衣服",
+		QHide: "1",
+		EMCode: "400436"
+	},
+	{
+		QSid: "👟",
+		QCid: "128095",
+		AQLid: "126",
+		QDes: "/鞋子",
+		QHide: "1",
+		EMCode: "400446"
+	},
+	{
+		QSid: "☁",
+		QCid: "9729",
+		AQLid: "127",
+		QDes: "/云朵",
+		QHide: "1",
+		EMCode: "401329"
+	},
+	{
+		QSid: "☀",
+		QCid: "9728",
+		AQLid: "128",
+		QDes: "/晴天",
+		EMCode: "401328"
+	},
+	{
+		QSid: "☔",
+		QCid: "9748",
+		AQLid: "129",
+		QDes: "/雨天",
+		QHide: "1",
+		EMCode: "401342"
+	},
+	{
+		QSid: "🌙",
+		QCid: "127769",
+		AQLid: "130",
+		QDes: "/月亮",
+		QHide: "1",
+		EMCode: "400100"
+	},
+	{
+		QSid: "⛄",
+		QCid: "9924",
+		AQLid: "131",
+		QDes: "/雪人",
+		QHide: "1",
+		EMCode: "401346"
+	},
+	{
+		QSid: "⭕",
+		QCid: "11093",
+		AQLid: "132",
+		QDes: "/正确",
+		QHide: "1",
+		EMCode: "401687"
+	},
+	{
+		QSid: "❌",
+		QCid: "10060",
+		AQLid: "133",
+		QDes: "/错误",
+		QHide: "1",
+		EMCode: "401142"
+	},
+	{
+		QSid: "❔",
+		QCid: "10068",
+		AQLid: "134",
+		QDes: "/问号",
+		EMCode: "401145"
+	},
+	{
+		QSid: "❕",
+		QCid: "10069",
+		AQLid: "135",
+		QDes: "/叹号",
+		QHide: "1",
+		EMCode: "401146"
+	},
+	{
+		QSid: "☎",
+		QCid: "9742",
+		AQLid: "136",
+		QDes: "/电话",
+		QHide: "1",
+		EMCode: "401398"
+	},
+	{
+		QSid: "📷",
+		QCid: "128247",
+		AQLid: "137",
+		QDes: "/相机",
+		QHide: "1",
+		EMCode: "400726"
+	},
+	{
+		QSid: "📱",
+		QCid: "128241",
+		AQLid: "138",
+		QDes: "/手机",
+		QHide: "1",
+		EMCode: "400720"
+	},
+	{
+		QSid: "📠",
+		QCid: "128224",
+		AQLid: "139",
+		QDes: "/传真",
+		QHide: "1",
+		EMCode: "400703"
+	},
+	{
+		QSid: "💻",
+		QCid: "128187",
+		AQLid: "140",
+		QDes: "/电脑",
+		QHide: "1",
+		EMCode: "400666"
+	},
+	{
+		QSid: "🎥",
+		QCid: "127909",
+		AQLid: "141",
+		QDes: "/摄影机",
+		QHide: "1",
+		EMCode: "400214"
+	},
+	{
+		QSid: "🎤",
+		QCid: "127908",
+		AQLid: "142",
+		QDes: "/话筒",
+		QHide: "1",
+		EMCode: "400213"
+	},
+	{
+		QSid: "🔫",
+		QCid: "128299",
+		AQLid: "143",
+		QDes: "/手枪",
+		EMCode: "400774"
+	},
+	{
+		QSid: "💿",
+		QCid: "128191",
+		AQLid: "144",
+		QDes: "/光碟",
+		QHide: "1",
+		EMCode: "400670"
+	},
+	{
+		QSid: "💓",
+		QCid: "128147",
+		AQLid: "145",
+		QDes: "/爱心",
+		EMCode: "400621"
+	},
+	{
+		QSid: "♣",
+		QCid: "9827",
+		AQLid: "146",
+		QDes: "/扑克",
+		QHide: "1",
+		EMCode: "401385"
+	},
+	{
+		QSid: "🀄",
+		QCid: "126980",
+		AQLid: "147",
+		QDes: "/麻将",
+		QHide: "1",
+		EMCode: "401386"
+	},
+	{
+		QSid: "〽",
+		QCid: "12349",
+		AQLid: "148",
+		QDes: "/股票",
+		QHide: "1",
+		EMCode: "401691"
+	},
+	{
+		QSid: "🎰",
+		QCid: "127920",
+		AQLid: "149",
+		QDes: "/老虎机",
+		QHide: "1",
+		EMCode: "400225"
+	},
+	{
+		QSid: "🚥",
+		QCid: "128677",
+		AQLid: "150",
+		QDes: "/信号灯",
+		QHide: "1",
+		EMCode: "400980"
+	},
+	{
+		QSid: "🚧",
+		QCid: "128679",
+		AQLid: "151",
+		QDes: "/路障",
+		QHide: "1",
+		EMCode: "400982"
+	},
+	{
+		QSid: "🎸",
+		QCid: "127928",
+		AQLid: "152",
+		QDes: "/吉他",
+		QHide: "1",
+		EMCode: "400233"
+	},
+	{
+		QSid: "💈",
+		QCid: "128136",
+		AQLid: "153",
+		QDes: "/理发厅",
+		QHide: "1",
+		EMCode: "400610"
+	},
+	{
+		QSid: "🛀",
+		QCid: "128704",
+		AQLid: "154",
+		QDes: "/浴缸",
+		QHide: "1",
+		EMCode: "401022"
+	},
+	{
+		QSid: "🚽",
+		QCid: "128701",
+		AQLid: "155",
+		QDes: "/马桶",
+		QHide: "1",
+		EMCode: "401019"
+	},
+	{
+		QSid: "🏠",
+		QCid: "127968",
+		AQLid: "156",
+		QDes: "/家",
+		QHide: "1",
+		EMCode: "400271"
+	},
+	{
+		QSid: "⛪",
+		QCid: "9962",
+		AQLid: "157",
+		QDes: "/教堂",
+		QHide: "1",
+		EMCode: "401281"
+	},
+	{
+		QSid: "🏦",
+		QCid: "127974",
+		AQLid: "158",
+		QDes: "/银行",
+		QHide: "1",
+		EMCode: "400277"
+	},
+	{
+		QSid: "🏥",
+		QCid: "127973",
+		AQLid: "159",
+		QDes: "/医院",
+		QHide: "1",
+		EMCode: "400276"
+	},
+	{
+		QSid: "🏨",
+		QCid: "127976",
+		AQLid: "160",
+		QDes: "/酒店",
+		QHide: "1",
+		EMCode: "400279"
+	},
+	{
+		QSid: "🏧",
+		QCid: "127975",
+		AQLid: "161",
+		QDes: "/取款机",
+		QHide: "1",
+		EMCode: "400278"
+	},
+	{
+		QSid: "🏪",
+		QCid: "127978",
+		AQLid: "162",
+		QDes: "/便利店",
+		EMCode: "400281"
+	},
+	{
+		QSid: "🚹",
+		QCid: "128697",
+		AQLid: "163",
+		QDes: "/男性",
+		QHide: "1",
+		EMCode: "401015"
+	},
+	{
+		QSid: "🚺",
+		QCid: "128698",
+		AQLid: "164",
+		QDes: "/女性",
+		QHide: "1",
+		EMCode: "401016"
+	}
 ];
 const faceConfig = {
-  sysface: sysface,
-  emoji: emoji
+	sysface: sysface,
+	emoji: emoji
 };
 
 const mFaceCache = /* @__PURE__ */ new Map();
@@ -8479,11 +8478,11 @@ class ProfileListener {
   }
 }
 
-var dist = { exports: {} };
+var dist = {exports: {}};
 
-var queue = { exports: {} };
+var queue = {exports: {}};
 
-var inherits_browser = { exports: {} };
+var inherits_browser = {exports: {}};
 
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
@@ -8505,7 +8504,7 @@ if (typeof Object.create === 'function') {
   inherits_browser.exports = function inherits(ctor, superCtor) {
     if (superCtor) {
       ctor.super_ = superCtor;
-      var TempCtor = function () { };
+      var TempCtor = function () {};
       TempCtor.prototype = superCtor.prototype;
       ctor.prototype = new TempCtor();
       ctor.prototype.constructor = ctor;
@@ -8686,66 +8685,66 @@ var utils = {};
 
 (function (exports) {
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.findBox = exports.readUInt = exports.readUInt32LE = exports.readUInt32BE = exports.readInt32LE = exports.readUInt24LE = exports.readUInt16LE = exports.readUInt16BE = exports.readInt16LE = exports.toHexString = exports.toUTF8String = void 0;
-  const decoder = new TextDecoder();
-  const toUTF8String = (input, start = 0, end = input.length) => decoder.decode(input.slice(start, end));
-  exports.toUTF8String = toUTF8String;
-  const toHexString = (input, start = 0, end = input.length) => input.slice(start, end).reduce((memo, i) => memo + ('0' + i.toString(16)).slice(-2), '');
-  exports.toHexString = toHexString;
-  const readInt16LE = (input, offset = 0) => {
-    const val = input[offset] + input[offset + 1] * 2 ** 8;
-    return val | (val & 2 ** 15) * 0x1fffe;
-  };
-  exports.readInt16LE = readInt16LE;
-  const readUInt16BE = (input, offset = 0) => input[offset] * 2 ** 8 + input[offset + 1];
-  exports.readUInt16BE = readUInt16BE;
-  const readUInt16LE = (input, offset = 0) => input[offset] + input[offset + 1] * 2 ** 8;
-  exports.readUInt16LE = readUInt16LE;
-  const readUInt24LE = (input, offset = 0) => input[offset] + input[offset + 1] * 2 ** 8 + input[offset + 2] * 2 ** 16;
-  exports.readUInt24LE = readUInt24LE;
-  const readInt32LE = (input, offset = 0) => input[offset] + input[offset + 1] * 2 ** 8 + input[offset + 2] * 2 ** 16 + (input[offset + 3] << 24);
-  exports.readInt32LE = readInt32LE;
-  const readUInt32BE = (input, offset = 0) => input[offset] * 2 ** 24 + input[offset + 1] * 2 ** 16 + input[offset + 2] * 2 ** 8 + input[offset + 3];
-  exports.readUInt32BE = readUInt32BE;
-  const readUInt32LE = (input, offset = 0) => input[offset] + input[offset + 1] * 2 ** 8 + input[offset + 2] * 2 ** 16 + input[offset + 3] * 2 ** 24;
-  exports.readUInt32LE = readUInt32LE;
-  // Abstract reading multi-byte unsigned integers
-  const methods = {
-    readUInt16BE: exports.readUInt16BE,
-    readUInt16LE: exports.readUInt16LE,
-    readUInt32BE: exports.readUInt32BE,
-    readUInt32LE: exports.readUInt32LE
-  };
-  function readUInt(input, bits, offset, isBigEndian) {
-    offset = offset || 0;
-    const endian = isBigEndian ? 'BE' : 'LE';
-    const methodName = 'readUInt' + bits + endian;
-    return methods[methodName](input, offset);
-  }
-  exports.readUInt = readUInt;
-  function readBox(buffer, offset) {
-    if (buffer.length - offset < 4) return;
-    const boxSize = (0, exports.readUInt32BE)(buffer, offset);
-    if (buffer.length - offset < boxSize) return;
-    return {
-      name: (0, exports.toUTF8String)(buffer, 4 + offset, 8 + offset),
-      offset,
-      size: boxSize
-    };
-  }
-  function findBox(buffer, boxName, offset) {
-    while (offset < buffer.length) {
-      const box = readBox(buffer, offset);
-      if (!box) break;
-      if (box.name === boxName) return box;
-      offset += box.size;
-    }
-  }
-  exports.findBox = findBox;
-}(utils));
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.findBox = exports.readUInt = exports.readUInt32LE = exports.readUInt32BE = exports.readInt32LE = exports.readUInt24LE = exports.readUInt16LE = exports.readUInt16BE = exports.readInt16LE = exports.toHexString = exports.toUTF8String = void 0;
+	const decoder = new TextDecoder();
+	const toUTF8String = (input, start = 0, end = input.length) => decoder.decode(input.slice(start, end));
+	exports.toUTF8String = toUTF8String;
+	const toHexString = (input, start = 0, end = input.length) => input.slice(start, end).reduce((memo, i) => memo + ('0' + i.toString(16)).slice(-2), '');
+	exports.toHexString = toHexString;
+	const readInt16LE = (input, offset = 0) => {
+	  const val = input[offset] + input[offset + 1] * 2 ** 8;
+	  return val | (val & 2 ** 15) * 0x1fffe;
+	};
+	exports.readInt16LE = readInt16LE;
+	const readUInt16BE = (input, offset = 0) => input[offset] * 2 ** 8 + input[offset + 1];
+	exports.readUInt16BE = readUInt16BE;
+	const readUInt16LE = (input, offset = 0) => input[offset] + input[offset + 1] * 2 ** 8;
+	exports.readUInt16LE = readUInt16LE;
+	const readUInt24LE = (input, offset = 0) => input[offset] + input[offset + 1] * 2 ** 8 + input[offset + 2] * 2 ** 16;
+	exports.readUInt24LE = readUInt24LE;
+	const readInt32LE = (input, offset = 0) => input[offset] + input[offset + 1] * 2 ** 8 + input[offset + 2] * 2 ** 16 + (input[offset + 3] << 24);
+	exports.readInt32LE = readInt32LE;
+	const readUInt32BE = (input, offset = 0) => input[offset] * 2 ** 24 + input[offset + 1] * 2 ** 16 + input[offset + 2] * 2 ** 8 + input[offset + 3];
+	exports.readUInt32BE = readUInt32BE;
+	const readUInt32LE = (input, offset = 0) => input[offset] + input[offset + 1] * 2 ** 8 + input[offset + 2] * 2 ** 16 + input[offset + 3] * 2 ** 24;
+	exports.readUInt32LE = readUInt32LE;
+	// Abstract reading multi-byte unsigned integers
+	const methods = {
+	  readUInt16BE: exports.readUInt16BE,
+	  readUInt16LE: exports.readUInt16LE,
+	  readUInt32BE: exports.readUInt32BE,
+	  readUInt32LE: exports.readUInt32LE
+	};
+	function readUInt(input, bits, offset, isBigEndian) {
+	  offset = offset || 0;
+	  const endian = isBigEndian ? 'BE' : 'LE';
+	  const methodName = 'readUInt' + bits + endian;
+	  return methods[methodName](input, offset);
+	}
+	exports.readUInt = readUInt;
+	function readBox(buffer, offset) {
+	  if (buffer.length - offset < 4) return;
+	  const boxSize = (0, exports.readUInt32BE)(buffer, offset);
+	  if (buffer.length - offset < boxSize) return;
+	  return {
+	    name: (0, exports.toUTF8String)(buffer, 4 + offset, 8 + offset),
+	    offset,
+	    size: boxSize
+	  };
+	}
+	function findBox(buffer, boxName, offset) {
+	  while (offset < buffer.length) {
+	    const box = readBox(buffer, offset);
+	    if (!box) break;
+	    if (box.name === boxName) return box;
+	    offset += box.size;
+	  }
+	}
+	exports.findBox = findBox; 
+} (utils));
 
 Object.defineProperty(bmp, "__esModule", {
   value: true
@@ -9530,11 +9529,11 @@ function determineEndianness(input) {
   }
 }
 const signatures = [
-  // '492049', // currently not supported
-  '49492a00',
-  // Little endian
-  '4d4d002a' // Big Endian
-  // '4d4d002a', // BigTIFF > 4GB. currently not supported
+// '492049', // currently not supported
+'49492a00',
+// Little endian
+'4d4d002a' // Big Endian
+// '4d4d002a', // BigTIFF > 4GB. currently not supported
 ];
 tiff.TIFF = {
   validate: input => signatures.includes((0, utils_1$1.toHexString)(input, 0, 4)),
@@ -9702,139 +9701,139 @@ detector$1.detector = detector;
 
 (function (module, exports) {
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.types = exports.setConcurrency = exports.disableTypes = exports.disableFS = exports.imageSize = void 0;
-  const fs = fs$3;
-  const path = path$2;
-  const queue_1 = queueExports;
-  const index_1 = types$1;
-  const detector_1 = detector$1;
-  // Maximum input size, with a default of 512 kilobytes.
-  // TO-DO: make this adaptive based on the initial signature of the image
-  const MaxInputSize = 512 * 1024;
-  // This queue is for async `fs` operations, to avoid reaching file-descriptor limits
-  const queue = new queue_1.default({
-    concurrency: 100,
-    autostart: true
-  });
-  const globalOptions = {
-    disabledFS: false,
-    disabledTypes: []
-  };
-  /**
-   * Return size information based on an Uint8Array
-   *
-   * @param {Uint8Array} input
-   * @param {String} filepath
-   * @returns {Object}
-   */
-  function lookup(input, filepath) {
-    // detect the file type.. don't rely on the extension
-    const type = (0, detector_1.detector)(input);
-    if (typeof type !== 'undefined') {
-      if (globalOptions.disabledTypes.indexOf(type) > -1) {
-        throw new TypeError('disabled file type: ' + type);
-      }
-      // find an appropriate handler for this file type
-      if (type in index_1.typeHandlers) {
-        const size = index_1.typeHandlers[type].calculate(input, filepath);
-        if (size !== undefined) {
-          size.type = size.type ?? type;
-          return size;
-        }
-      }
-    }
-    // throw up, if we don't understand the file
-    throw new TypeError('unsupported file type: ' + type + ' (file: ' + filepath + ')');
-  }
-  /**
-   * Reads a file into an Uint8Array.
-   * @param {String} filepath
-   * @returns {Promise<Uint8Array>}
-   */
-  async function readFileAsync(filepath) {
-    const handle = await fs.promises.open(filepath, 'r');
-    try {
-      const {
-        size
-      } = await handle.stat();
-      if (size <= 0) {
-        throw new Error('Empty file');
-      }
-      const inputSize = Math.min(size, MaxInputSize);
-      const input = new Uint8Array(inputSize);
-      await handle.read(input, 0, inputSize, 0);
-      return input;
-    } finally {
-      await handle.close();
-    }
-  }
-  /**
-   * Synchronously reads a file into an Uint8Array, blocking the nodejs process.
-   *
-   * @param {String} filepath
-   * @returns {Uint8Array}
-   */
-  function readFileSync(filepath) {
-    // read from the file, synchronously
-    const descriptor = fs.openSync(filepath, 'r');
-    try {
-      const {
-        size
-      } = fs.fstatSync(descriptor);
-      if (size <= 0) {
-        throw new Error('Empty file');
-      }
-      const inputSize = Math.min(size, MaxInputSize);
-      const input = new Uint8Array(inputSize);
-      fs.readSync(descriptor, input, 0, inputSize, 0);
-      return input;
-    } finally {
-      fs.closeSync(descriptor);
-    }
-  }
-  // eslint-disable-next-line @typescript-eslint/no-use-before-define
-  module.exports = exports = imageSize; // backwards compatibility
-  exports.default = imageSize;
-  /**
-   * @param {Uint8Array|string} input - Uint8Array or relative/absolute path of the image file
-   * @param {Function=} [callback] - optional function for async detection
-   */
-  function imageSize(input, callback) {
-    // Handle Uint8Array input
-    if (input instanceof Uint8Array) {
-      return lookup(input);
-    }
-    // input should be a string at this point
-    if (typeof input !== 'string' || globalOptions.disabledFS) {
-      throw new TypeError('invalid invocation. input should be a Uint8Array');
-    }
-    // resolve the file path
-    const filepath = path.resolve(input);
-    if (typeof callback === 'function') {
-      queue.push(() => readFileAsync(filepath).then(input => process.nextTick(callback, null, lookup(input, filepath))).catch(callback));
-    } else {
-      const input = readFileSync(filepath);
-      return lookup(input, filepath);
-    }
-  }
-  exports.imageSize = imageSize;
-  const disableFS = v => {
-    globalOptions.disabledFS = v;
-  };
-  exports.disableFS = disableFS;
-  const disableTypes = types => {
-    globalOptions.disabledTypes = types;
-  };
-  exports.disableTypes = disableTypes;
-  const setConcurrency = c => {
-    queue.concurrency = c;
-  };
-  exports.setConcurrency = setConcurrency;
-  exports.types = Object.keys(index_1.typeHandlers);
-}(dist, dist.exports));
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.types = exports.setConcurrency = exports.disableTypes = exports.disableFS = exports.imageSize = void 0;
+	const fs = fs$3;
+	const path = path$2;
+	const queue_1 = queueExports;
+	const index_1 = types$1;
+	const detector_1 = detector$1;
+	// Maximum input size, with a default of 512 kilobytes.
+	// TO-DO: make this adaptive based on the initial signature of the image
+	const MaxInputSize = 512 * 1024;
+	// This queue is for async `fs` operations, to avoid reaching file-descriptor limits
+	const queue = new queue_1.default({
+	  concurrency: 100,
+	  autostart: true
+	});
+	const globalOptions = {
+	  disabledFS: false,
+	  disabledTypes: []
+	};
+	/**
+	 * Return size information based on an Uint8Array
+	 *
+	 * @param {Uint8Array} input
+	 * @param {String} filepath
+	 * @returns {Object}
+	 */
+	function lookup(input, filepath) {
+	  // detect the file type.. don't rely on the extension
+	  const type = (0, detector_1.detector)(input);
+	  if (typeof type !== 'undefined') {
+	    if (globalOptions.disabledTypes.indexOf(type) > -1) {
+	      throw new TypeError('disabled file type: ' + type);
+	    }
+	    // find an appropriate handler for this file type
+	    if (type in index_1.typeHandlers) {
+	      const size = index_1.typeHandlers[type].calculate(input, filepath);
+	      if (size !== undefined) {
+	        size.type = size.type ?? type;
+	        return size;
+	      }
+	    }
+	  }
+	  // throw up, if we don't understand the file
+	  throw new TypeError('unsupported file type: ' + type + ' (file: ' + filepath + ')');
+	}
+	/**
+	 * Reads a file into an Uint8Array.
+	 * @param {String} filepath
+	 * @returns {Promise<Uint8Array>}
+	 */
+	async function readFileAsync(filepath) {
+	  const handle = await fs.promises.open(filepath, 'r');
+	  try {
+	    const {
+	      size
+	    } = await handle.stat();
+	    if (size <= 0) {
+	      throw new Error('Empty file');
+	    }
+	    const inputSize = Math.min(size, MaxInputSize);
+	    const input = new Uint8Array(inputSize);
+	    await handle.read(input, 0, inputSize, 0);
+	    return input;
+	  } finally {
+	    await handle.close();
+	  }
+	}
+	/**
+	 * Synchronously reads a file into an Uint8Array, blocking the nodejs process.
+	 *
+	 * @param {String} filepath
+	 * @returns {Uint8Array}
+	 */
+	function readFileSync(filepath) {
+	  // read from the file, synchronously
+	  const descriptor = fs.openSync(filepath, 'r');
+	  try {
+	    const {
+	      size
+	    } = fs.fstatSync(descriptor);
+	    if (size <= 0) {
+	      throw new Error('Empty file');
+	    }
+	    const inputSize = Math.min(size, MaxInputSize);
+	    const input = new Uint8Array(inputSize);
+	    fs.readSync(descriptor, input, 0, inputSize, 0);
+	    return input;
+	  } finally {
+	    fs.closeSync(descriptor);
+	  }
+	}
+	// eslint-disable-next-line @typescript-eslint/no-use-before-define
+	module.exports = exports = imageSize; // backwards compatibility
+	exports.default = imageSize;
+	/**
+	 * @param {Uint8Array|string} input - Uint8Array or relative/absolute path of the image file
+	 * @param {Function=} [callback] - optional function for async detection
+	 */
+	function imageSize(input, callback) {
+	  // Handle Uint8Array input
+	  if (input instanceof Uint8Array) {
+	    return lookup(input);
+	  }
+	  // input should be a string at this point
+	  if (typeof input !== 'string' || globalOptions.disabledFS) {
+	    throw new TypeError('invalid invocation. input should be a Uint8Array');
+	  }
+	  // resolve the file path
+	  const filepath = path.resolve(input);
+	  if (typeof callback === 'function') {
+	    queue.push(() => readFileAsync(filepath).then(input => process.nextTick(callback, null, lookup(input, filepath))).catch(callback));
+	  } else {
+	    const input = readFileSync(filepath);
+	    return lookup(input, filepath);
+	  }
+	}
+	exports.imageSize = imageSize;
+	const disableFS = v => {
+	  globalOptions.disabledFS = v;
+	};
+	exports.disableFS = disableFS;
+	const disableTypes = types => {
+	  globalOptions.disabledTypes = types;
+	};
+	exports.disableTypes = disableTypes;
+	const setConcurrency = c => {
+	  queue.concurrency = c;
+	};
+	exports.setConcurrency = setConcurrency;
+	exports.types = Object.keys(index_1.typeHandlers); 
+} (dist, dist.exports));
 
 var distExports = dist.exports;
 const imageSize = /*@__PURE__*/getDefaultExportFromCjs(distExports);
@@ -10601,7 +10600,7 @@ class NTQQGroupApi {
   }
 }
 
-export const selfInfo = {
+const selfInfo = {
   uid: "",
   uin: "",
   nick: "",
@@ -10864,9 +10863,9 @@ class NTQQMsgApi {
 var _dec$1, _dec2$1, _dec3$1, _dec4, _dec5, _class$1;
 function _applyDecoratedDescriptor$1(i, e, r, n, l) {
   var a = {};
-  return Object.keys(n).forEach(function (i2) {
+  return Object.keys(n).forEach(function(i2) {
     a[i2] = n[i2];
-  }), a.enumerable = !!a.enumerable, a.configurable = !!a.configurable, ("value" in a || a.initializer) && (a.writable = true), a = r.slice().reverse().reduce(function (r2, n2) {
+  }), a.enumerable = !!a.enumerable, a.configurable = !!a.configurable, ("value" in a || a.initializer) && (a.writable = true), a = r.slice().reverse().reduce(function(r2, n2) {
     return n2(i, e, r2) || r2;
   }, a), l && void 0 !== a.initializer && (a.value = a.initializer ? a.initializer.call(l) : void 0, a.initializer = void 0), void 0 === a.initializer && (Object.defineProperty(i, e, a), a = null), a;
 }
@@ -11045,13 +11044,13 @@ let NTQQUserApi = (_dec$1 = CacheClassFuncAsync(1800 * 1e3), _dec2$1 = CacheClas
 var _dec, _dec2, _dec3, _class;
 function _applyDecoratedDescriptor(i, e, r, n, l) {
   var a = {};
-  return Object.keys(n).forEach(function (i2) {
+  return Object.keys(n).forEach(function(i2) {
     a[i2] = n[i2];
-  }), a.enumerable = !!a.enumerable, a.configurable = !!a.configurable, ("value" in a || a.initializer) && (a.writable = true), a = r.slice().reverse().reduce(function (r2, n2) {
+  }), a.enumerable = !!a.enumerable, a.configurable = !!a.configurable, ("value" in a || a.initializer) && (a.writable = true), a = r.slice().reverse().reduce(function(r2, n2) {
     return n2(i, e, r2) || r2;
   }, a), l && void 0 !== a.initializer && (a.value = a.initializer ? a.initializer.call(l) : void 0, a.initializer = void 0), void 0 === a.initializer && (Object.defineProperty(i, e, a), a = null), a;
 }
-let WebHonorType = /* @__PURE__ */ function (WebHonorType2) {
+let WebHonorType = /* @__PURE__ */ function(WebHonorType2) {
   WebHonorType2["ALL"] = "all";
   WebHonorType2["TALKACTIVE"] = "talkative";
   WebHonorType2["PERFROMER"] = "performer";
@@ -11835,7 +11834,7 @@ class NapCatCore {
     await sleep(1e3);
     const ret = await this.loginService.passwordLogin(loginArg);
     switch (ret.result) {
-    }
+          }
   }
   async getQuickLoginList() {
     const loginList = await this.loginService.getLoginList();
@@ -12180,8 +12179,8 @@ let Help$3 = class Help {
     // Legacy. Ignores custom usage string, and nested commands.
     const args = cmd.registeredArguments.map(arg => humanReadableArgName$1(arg)).join(' ');
     return cmd._name + (cmd._aliases[0] ? '|' + cmd._aliases[0] : '') + (cmd.options.length ? ' [options]' : '') + (
-      // simplistic check for non-help option
-      args ? ' ' + args : '');
+    // simplistic check for non-help option
+    args ? ' ' + args : '');
   }
 
   /**
@@ -12318,8 +12317,8 @@ let Help$3 = class Help {
     const extraInfo = [];
     if (option.argChoices) {
       extraInfo.push(
-        // use stringify to match the display of the default value
-        `choices: ${option.argChoices.map(choice => JSON.stringify(choice)).join(', ')}`);
+      // use stringify to match the display of the default value
+      `choices: ${option.argChoices.map(choice => JSON.stringify(choice)).join(', ')}`);
     }
     if (option.defaultValue !== undefined) {
       // default for boolean and negated more for programmer than end user,
@@ -12353,8 +12352,8 @@ let Help$3 = class Help {
     const extraInfo = [];
     if (argument.argChoices) {
       extraInfo.push(
-        // use stringify to match the display of the default value
-        `choices: ${argument.argChoices.map(choice => JSON.stringify(choice)).join(', ')}`);
+      // use stringify to match the display of the default value
+      `choices: ${argument.argChoices.map(choice => JSON.stringify(choice)).join(', ')}`);
     }
     if (argument.defaultValue !== undefined) {
       extraInfo.push(`default: ${argument.defaultValueDescription || JSON.stringify(argument.defaultValue)}`);
@@ -12852,10 +12851,10 @@ function editDistance(a, b) {
         cost = 1;
       }
       d[i][j] = Math.min(d[i - 1][j] + 1,
-        // deletion
-        d[i][j - 1] + 1,
-        // insertion
-        d[i - 1][j - 1] + cost // substitution
+      // deletion
+      d[i][j - 1] + 1,
+      // insertion
+      d[i - 1][j - 1] + cost // substitution
       );
       // transposition
       if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) {
@@ -15271,73 +15270,73 @@ var util$4 = {};
 
 (function (exports) {
 
-  const nameStartChar = ':A-Za-z_\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD';
-  const nameChar = nameStartChar + '\\-.\\d\\u00B7\\u0300-\\u036F\\u203F-\\u2040';
-  const nameRegexp = '[' + nameStartChar + '][' + nameChar + ']*';
-  const regexName = new RegExp('^' + nameRegexp + '$');
-  const getAllMatches = function (string, regex) {
-    const matches = [];
-    let match = regex.exec(string);
-    while (match) {
-      const allmatches = [];
-      allmatches.startIndex = regex.lastIndex - match[0].length;
-      const len = match.length;
-      for (let index = 0; index < len; index++) {
-        allmatches.push(match[index]);
-      }
-      matches.push(allmatches);
-      match = regex.exec(string);
-    }
-    return matches;
-  };
-  const isName = function (string) {
-    const match = regexName.exec(string);
-    return !(match === null || typeof match === 'undefined');
-  };
-  exports.isExist = function (v) {
-    return typeof v !== 'undefined';
-  };
-  exports.isEmptyObject = function (obj) {
-    return Object.keys(obj).length === 0;
-  };
+	const nameStartChar = ':A-Za-z_\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD';
+	const nameChar = nameStartChar + '\\-.\\d\\u00B7\\u0300-\\u036F\\u203F-\\u2040';
+	const nameRegexp = '[' + nameStartChar + '][' + nameChar + ']*';
+	const regexName = new RegExp('^' + nameRegexp + '$');
+	const getAllMatches = function (string, regex) {
+	  const matches = [];
+	  let match = regex.exec(string);
+	  while (match) {
+	    const allmatches = [];
+	    allmatches.startIndex = regex.lastIndex - match[0].length;
+	    const len = match.length;
+	    for (let index = 0; index < len; index++) {
+	      allmatches.push(match[index]);
+	    }
+	    matches.push(allmatches);
+	    match = regex.exec(string);
+	  }
+	  return matches;
+	};
+	const isName = function (string) {
+	  const match = regexName.exec(string);
+	  return !(match === null || typeof match === 'undefined');
+	};
+	exports.isExist = function (v) {
+	  return typeof v !== 'undefined';
+	};
+	exports.isEmptyObject = function (obj) {
+	  return Object.keys(obj).length === 0;
+	};
 
-  /**
-   * Copy all the properties of a into b.
-   * @param {*} target
-   * @param {*} a
-   */
-  exports.merge = function (target, a, arrayMode) {
-    if (a) {
-      const keys = Object.keys(a); // will return an array of own properties
-      const len = keys.length; //don't make it inline
-      for (let i = 0; i < len; i++) {
-        if (arrayMode === 'strict') {
-          target[keys[i]] = [a[keys[i]]];
-        } else {
-          target[keys[i]] = a[keys[i]];
-        }
-      }
-    }
-  };
-  /* exports.merge =function (b,a){
-    return Object.assign(b,a);
-  } */
+	/**
+	 * Copy all the properties of a into b.
+	 * @param {*} target
+	 * @param {*} a
+	 */
+	exports.merge = function (target, a, arrayMode) {
+	  if (a) {
+	    const keys = Object.keys(a); // will return an array of own properties
+	    const len = keys.length; //don't make it inline
+	    for (let i = 0; i < len; i++) {
+	      if (arrayMode === 'strict') {
+	        target[keys[i]] = [a[keys[i]]];
+	      } else {
+	        target[keys[i]] = a[keys[i]];
+	      }
+	    }
+	  }
+	};
+	/* exports.merge =function (b,a){
+	  return Object.assign(b,a);
+	} */
 
-  exports.getValue = function (v) {
-    if (exports.isExist(v)) {
-      return v;
-    } else {
-      return '';
-    }
-  };
+	exports.getValue = function (v) {
+	  if (exports.isExist(v)) {
+	    return v;
+	  } else {
+	    return '';
+	  }
+	};
 
-  // const fakeCall = function(a) {return a;};
-  // const fakeCallNoReturn = function() {};
+	// const fakeCall = function(a) {return a;};
+	// const fakeCallNoReturn = function() {};
 
-  exports.isName = isName;
-  exports.getAllMatches = getAllMatches;
-  exports.nameRegexp = nameRegexp;
-}(util$4));
+	exports.isName = isName;
+	exports.getAllMatches = getAllMatches;
+	exports.nameRegexp = nameRegexp; 
+} (util$4));
 
 const util$3 = util$4;
 const defaultOptions$2 = {
@@ -15456,7 +15455,7 @@ validator$2.validate = function (xmlData, options) {
           //if the root level has been reached before ...
           if (reachedRoot === true) {
             return getErrorObject('InvalidXml', 'Multiple possible root nodes found.', getLineNumberForPosition(xmlData, i));
-          } else if (options.unpairedTags.indexOf(tagName) !== -1); else {
+          } else if (options.unpairedTags.indexOf(tagName) !== -1) ; else {
             tags.push({
               tagName,
               tagStartPos
@@ -15587,7 +15586,7 @@ function readAttributeStr(xmlData, i) {
     if (xmlData[i] === doubleQuote || xmlData[i] === singleQuote) {
       if (startChar === '') {
         startChar = xmlData[i];
-      } else if (startChar !== xmlData[i]); else {
+      } else if (startChar !== xmlData[i]) ; else {
         startChar = '';
       }
     } else if (xmlData[i] === '>') {
@@ -15818,7 +15817,7 @@ function readDocType$1(xmlData, i) {
         } else if (hasBody && isElement(xmlData, i)) i += 8; //Not supported
         else if (hasBody && isAttlist(xmlData, i)) i += 8; //Not supported
         else if (hasBody && isNotation(xmlData, i)) i += 9; //Not supported
-        else if (isComment) comment = true; else throw new Error("Invalid DOCTYPE");
+        else if (isComment) comment = true;else throw new Error("Invalid DOCTYPE");
         angleBracketsCount++;
         exp = "";
       } else if (xmlData[i] === '>') {
@@ -15900,7 +15899,7 @@ function isNotation(xmlData, i) {
   return false;
 }
 function validateEntityName(name) {
-  if (util$2.isName(name)) return name; else throw new Error(`Invalid entity name ${name}`);
+  if (util$2.isName(name)) return name;else throw new Error(`Invalid entity name ${name}`);
 }
 var DocTypeReader = readDocType$1;
 
@@ -15938,7 +15937,7 @@ function toNumber$1(str, options = {}) {
   // else if(trimmedStr === "+0.0") return 0;
   // else if(trimmedStr === "-0.0") return -0;
 
-  if (options.skipLike !== undefined && options.skipLike.test(trimmedStr)) return str; else if (options.hex && hexRegex.test(trimmedStr)) {
+  if (options.skipLike !== undefined && options.skipLike.test(trimmedStr)) return str;else if (options.hex && hexRegex.test(trimmedStr)) {
     return Number.parseInt(trimmedStr, 16);
     // } else if (options.parseOct && octRegex.test(str)) {
     //     return Number.parseInt(val, 8);
@@ -15962,10 +15961,10 @@ function toNumber$1(str, options = {}) {
         const numStr = "" + num;
         if (numStr.search(/[eE]/) !== -1) {
           //given number is long and parsed to eNotation
-          if (options.eNotation) return num; else return str;
+          if (options.eNotation) return num;else return str;
         } else if (eNotation) {
           //given number has enotation
-          if (options.eNotation) return num; else return str;
+          if (options.eNotation) return num;else return str;
         } else if (trimmedStr.indexOf(".") !== -1) {
           //floating number
           // const decimalPart = match[5].substr(1);
@@ -15976,16 +15975,16 @@ function toNumber$1(str, options = {}) {
           // const givenDecPart = numStr.substr(p+1);
           if (numStr === "0" && numTrimmedByZeros === "") return num; //0.0
           else if (numStr === numTrimmedByZeros) return num; //0.456. 0.79000
-          else if (sign && numStr === "-" + numTrimmedByZeros) return num; else return str;
+          else if (sign && numStr === "-" + numTrimmedByZeros) return num;else return str;
         }
         if (leadingZeros) {
           // if(numTrimmedByZeros === numStr){
           //     if(options.leadingZeros) return num;
           //     else return str;
           // }else return str;
-          if (numTrimmedByZeros === numStr) return num; else if (sign + numTrimmedByZeros === numStr) return num; else return str;
+          if (numTrimmedByZeros === numStr) return num;else if (sign + numTrimmedByZeros === numStr) return num;else return str;
         }
-        if (trimmedStr === numStr) return num; else if (trimmedStr === sign + numStr) return num;
+        if (trimmedStr === numStr) return num;else if (trimmedStr === sign + numStr) return num;
         // else{
         //     //number with +/- sign
         //     trimmedStr.test(/[-+][0-9]);
@@ -16010,7 +16009,7 @@ function trimZeros(numStr) {
   if (numStr && numStr.indexOf(".") !== -1) {
     //float
     numStr = numStr.replace(/0+$/, ""); //remove ending zeros
-    if (numStr === ".") numStr = "0"; else if (numStr[0] === ".") numStr = "0" + numStr; else if (numStr[numStr.length - 1] === ".") numStr = numStr.substr(0, numStr.length - 1);
+    if (numStr === ".") numStr = "0";else if (numStr[0] === ".") numStr = "0" + numStr;else if (numStr[numStr.length - 1] === ".") numStr = numStr.substr(0, numStr.length - 1);
     return numStr;
   }
   return numStr;
@@ -16279,7 +16278,7 @@ const parseXml = function (xmlData) {
         let tagData = readTagExp(xmlData, i, false, "?>");
         if (!tagData) throw new Error("Pi Tag is not closed.");
         textData = this.saveTextToParentTag(textData, currentNode, jPath);
-        if (this.options.ignoreDeclaration && tagData.tagName === "?xml" || this.options.ignorePiTags); else {
+        if (this.options.ignoreDeclaration && tagData.tagName === "?xml" || this.options.ignorePiTags) ; else {
           const childNode = new xmlNode(tagData.tagName);
           childNode.add(this.options.textNodeName, "");
           if (tagData.tagName !== tagData.tagExp && tagData.attrExpPresent) {
@@ -16426,7 +16425,7 @@ const parseXml = function (xmlData) {
 };
 function addChild(currentNode, childNode, jPath) {
   const result = this.options.updateTag(childNode.tagname, jPath, childNode[":@"]);
-  if (result === false); else if (typeof result === "string") {
+  if (result === false) ; else if (typeof result === "string") {
     childNode.tagname = result;
     currentNode.addChild(childNode);
   } else {
@@ -16604,7 +16603,7 @@ function parseValue(val, shouldParse, options) {
   if (shouldParse && typeof val === 'string') {
     //console.log(options)
     const newval = val.trim();
-    if (newval === 'true') return true; else if (newval === 'false') return false; else return toNumber(val, options);
+    if (newval === 'true') return true;else if (newval === 'false') return false;else return toNumber(val, options);
   } else {
     if (util$1.isExist(val)) {
       return val;
@@ -16641,9 +16640,9 @@ function compress(arr, options, jPath) {
     const tagObj = arr[i];
     const property = propName$1(tagObj);
     let newJpath = "";
-    if (jPath === undefined) newJpath = property; else newJpath = jPath + "." + property;
+    if (jPath === undefined) newJpath = property;else newJpath = jPath + "." + property;
     if (property === options.textNodeName) {
-      if (text === undefined) text = tagObj[property]; else text += "" + tagObj[property];
+      if (text === undefined) text = tagObj[property];else text += "" + tagObj[property];
     } else if (property === undefined) {
       continue;
     } else if (tagObj[property]) {
@@ -16654,7 +16653,7 @@ function compress(arr, options, jPath) {
       } else if (Object.keys(val).length === 1 && val[options.textNodeName] !== undefined && !options.alwaysCreateTextNode) {
         val = val[options.textNodeName];
       } else if (Object.keys(val).length === 0) {
-        if (options.alwaysCreateTextNode) val[options.textNodeName] = ""; else val = "";
+        if (options.alwaysCreateTextNode) val[options.textNodeName] = "";else val = "";
       }
       if (compressedObj[property] !== undefined && compressedObj.hasOwnProperty(property)) {
         if (!Array.isArray(compressedObj[property])) {
@@ -16733,7 +16732,7 @@ let XMLParser$1 = class XMLParser {
    * @param {boolean|Object} validationOption 
    */
   parse(xmlData, validationOption) {
-    if (typeof xmlData === "string"); else if (xmlData.toString) {
+    if (typeof xmlData === "string") ; else if (xmlData.toString) {
       xmlData = xmlData.toString();
     } else {
       throw new Error("XML data is accepted in String or Bytes[] form.");
@@ -16749,7 +16748,7 @@ let XMLParser$1 = class XMLParser {
     const orderedObjParser = new OrderedObjParser(this.options);
     orderedObjParser.addExternalEntities(this.externalEntities);
     const orderedResult = orderedObjParser.parseXml(xmlData);
-    if (this.options.preserveOrder || orderedResult === undefined) return orderedResult; else return prettify(orderedResult, this.options);
+    if (this.options.preserveOrder || orderedResult === undefined) return orderedResult;else return prettify(orderedResult, this.options);
   }
 
   /**
@@ -16794,7 +16793,7 @@ function arrToStr(arr, options, jPath, indentation) {
     const tagName = propName(tagObj);
     if (tagName === undefined) continue;
     let newJPath = "";
-    if (jPath.length === 0) newJPath = tagName; else newJPath = `${jPath}.${tagName}`;
+    if (jPath.length === 0) newJPath = tagName;else newJPath = `${jPath}.${tagName}`;
     if (tagName === options.textNodeName) {
       let tagText = tagObj[tagName];
       if (!isStopNode(newJPath, options)) {
@@ -16835,7 +16834,7 @@ function arrToStr(arr, options, jPath, indentation) {
     const tagStart = indentation + `<${tagName}${attStr}`;
     const tagValue = arrToStr(tagObj[tagName], options, newJPath, newIdentation);
     if (options.unpairedTags.indexOf(tagName) !== -1) {
-      if (options.suppressUnpairedNode) xmlStr += tagStart + ">"; else xmlStr += tagStart + "/>";
+      if (options.suppressUnpairedNode) xmlStr += tagStart + ">";else xmlStr += tagStart + "/>";
     } else if ((!tagValue || tagValue.length === 0) && options.suppressEmptyNode) {
       xmlStr += tagStart + "/>";
     } else if (tagValue && tagValue.endsWith(">")) {
@@ -16946,7 +16945,7 @@ function Builder(options) {
   this.options = Object.assign({}, defaultOptions, options);
   if (this.options.ignoreAttributes || this.options.attributesGroupName) {
     this.isAttribute = function /*a*/
-      () {
+    () {
       return false;
     };
   } else {
@@ -17020,8 +17019,8 @@ Builder.prototype.j2x = function (jObj, level) {
       let listTagVal = "";
       for (let j = 0; j < arrLen; j++) {
         const item = jObj[key][j];
-        if (typeof item === 'undefined'); else if (item === null) {
-          if (key[0] === "?") val += this.indentate(level) + '<' + key + '?' + this.tagEndChar; else val += this.indentate(level) + '<' + key + '/' + this.tagEndChar;
+        if (typeof item === 'undefined') ; else if (item === null) {
+          if (key[0] === "?") val += this.indentate(level) + '<' + key + '?' + this.tagEndChar;else val += this.indentate(level) + '<' + key + '/' + this.tagEndChar;
           // val += this.indentate(level) + '<' + key + '/' + this.tagEndChar;
         } else if (typeof item === 'object') {
           if (this.options.oneListGroup) {
@@ -17072,7 +17071,7 @@ function processTextOrObjNode(object, key, level) {
 }
 Builder.prototype.buildObjectNode = function (val, key, attrStr, level) {
   if (val === "") {
-    if (key[0] === "?") return this.indentate(level) + '<' + key + attrStr + '?' + this.tagEndChar; else {
+    if (key[0] === "?") return this.indentate(level) + '<' + key + attrStr + '?' + this.tagEndChar;else {
       return this.indentate(level) + '<' + key + attrStr + this.closeTag(key) + this.tagEndChar;
     }
   } else {
@@ -17156,20 +17155,20 @@ var fxp = {
 
 const fastXmlParser = /*@__PURE__*/getDefaultExportFromCjs(fxp);
 
-let OB11UserSex = /* @__PURE__ */ function (OB11UserSex2) {
+let OB11UserSex = /* @__PURE__ */ function(OB11UserSex2) {
   OB11UserSex2["male"] = "male";
   OB11UserSex2["female"] = "female";
   OB11UserSex2["unknown"] = "unknown";
   return OB11UserSex2;
 }({});
-let OB11GroupMemberRole = /* @__PURE__ */ function (OB11GroupMemberRole2) {
+let OB11GroupMemberRole = /* @__PURE__ */ function(OB11GroupMemberRole2) {
   OB11GroupMemberRole2["owner"] = "owner";
   OB11GroupMemberRole2["admin"] = "admin";
   OB11GroupMemberRole2["member"] = "member";
   return OB11GroupMemberRole2;
 }({});
 
-let OB11MessageDataType = /* @__PURE__ */ function (OB11MessageDataType2) {
+let OB11MessageDataType = /* @__PURE__ */ function(OB11MessageDataType2) {
   OB11MessageDataType2["text"] = "text";
   OB11MessageDataType2["image"] = "image";
   OB11MessageDataType2["music"] = "music";
@@ -17209,7 +17208,7 @@ function _toPrimitive$1r(t, r) {
   }
   return ("string" === r ? String : Number)(t);
 }
-let EventType = /* @__PURE__ */ function (EventType2) {
+let EventType = /* @__PURE__ */ function(EventType2) {
   EventType2["META"] = "meta_event";
   EventType2["REQUEST"] = "request";
   EventType2["NOTICE"] = "notice";
@@ -18067,7 +18066,7 @@ class OB11Response {
   }
 }
 
-var ajv = { exports: {} };
+var ajv = {exports: {}};
 
 var core$2 = {};
 
@@ -18083,1044 +18082,1044 @@ var code$1 = {};
 
 (function (exports) {
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.regexpCode = exports.getEsmExportName = exports.getProperty = exports.safeStringify = exports.stringify = exports.strConcat = exports.addCodeArg = exports.str = exports._ = exports.nil = exports._Code = exports.Name = exports.IDENTIFIER = exports._CodeOrName = void 0;
-  class _CodeOrName { }
-  exports._CodeOrName = _CodeOrName;
-  exports.IDENTIFIER = /^[a-z$_][a-z$_0-9]*$/i;
-  class Name extends _CodeOrName {
-    constructor(s) {
-      super();
-      if (!exports.IDENTIFIER.test(s)) throw new Error("CodeGen: name must be a valid identifier");
-      this.str = s;
-    }
-    toString() {
-      return this.str;
-    }
-    emptyStr() {
-      return false;
-    }
-    get names() {
-      return {
-        [this.str]: 1
-      };
-    }
-  }
-  exports.Name = Name;
-  class _Code extends _CodeOrName {
-    constructor(code) {
-      super();
-      this._items = typeof code === "string" ? [code] : code;
-    }
-    toString() {
-      return this.str;
-    }
-    emptyStr() {
-      if (this._items.length > 1) return false;
-      const item = this._items[0];
-      return item === "" || item === '""';
-    }
-    get str() {
-      var _a;
-      return (_a = this._str) !== null && _a !== void 0 ? _a : this._str = this._items.reduce((s, c) => `${s}${c}`, "");
-    }
-    get names() {
-      var _a;
-      return (_a = this._names) !== null && _a !== void 0 ? _a : this._names = this._items.reduce((names, c) => {
-        if (c instanceof Name) names[c.str] = (names[c.str] || 0) + 1;
-        return names;
-      }, {});
-    }
-  }
-  exports._Code = _Code;
-  exports.nil = new _Code("");
-  function _(strs, ...args) {
-    const code = [strs[0]];
-    let i = 0;
-    while (i < args.length) {
-      addCodeArg(code, args[i]);
-      code.push(strs[++i]);
-    }
-    return new _Code(code);
-  }
-  exports._ = _;
-  const plus = new _Code("+");
-  function str(strs, ...args) {
-    const expr = [safeStringify(strs[0])];
-    let i = 0;
-    while (i < args.length) {
-      expr.push(plus);
-      addCodeArg(expr, args[i]);
-      expr.push(plus, safeStringify(strs[++i]));
-    }
-    optimize(expr);
-    return new _Code(expr);
-  }
-  exports.str = str;
-  function addCodeArg(code, arg) {
-    if (arg instanceof _Code) code.push(...arg._items); else if (arg instanceof Name) code.push(arg); else code.push(interpolate(arg));
-  }
-  exports.addCodeArg = addCodeArg;
-  function optimize(expr) {
-    let i = 1;
-    while (i < expr.length - 1) {
-      if (expr[i] === plus) {
-        const res = mergeExprItems(expr[i - 1], expr[i + 1]);
-        if (res !== undefined) {
-          expr.splice(i - 1, 3, res);
-          continue;
-        }
-        expr[i++] = "+";
-      }
-      i++;
-    }
-  }
-  function mergeExprItems(a, b) {
-    if (b === '""') return a;
-    if (a === '""') return b;
-    if (typeof a == "string") {
-      if (b instanceof Name || a[a.length - 1] !== '"') return;
-      if (typeof b != "string") return `${a.slice(0, -1)}${b}"`;
-      if (b[0] === '"') return a.slice(0, -1) + b.slice(1);
-      return;
-    }
-    if (typeof b == "string" && b[0] === '"' && !(a instanceof Name)) return `"${a}${b.slice(1)}`;
-    return;
-  }
-  function strConcat(c1, c2) {
-    return c2.emptyStr() ? c1 : c1.emptyStr() ? c2 : str`${c1}${c2}`;
-  }
-  exports.strConcat = strConcat;
-  // TODO do not allow arrays here
-  function interpolate(x) {
-    return typeof x == "number" || typeof x == "boolean" || x === null ? x : safeStringify(Array.isArray(x) ? x.join(",") : x);
-  }
-  function stringify(x) {
-    return new _Code(safeStringify(x));
-  }
-  exports.stringify = stringify;
-  function safeStringify(x) {
-    return JSON.stringify(x).replace(/\u2028/g, "\\u2028").replace(/\u2029/g, "\\u2029");
-  }
-  exports.safeStringify = safeStringify;
-  function getProperty(key) {
-    return typeof key == "string" && exports.IDENTIFIER.test(key) ? new _Code(`.${key}`) : _`[${key}]`;
-  }
-  exports.getProperty = getProperty;
-  //Does best effort to format the name properly
-  function getEsmExportName(key) {
-    if (typeof key == "string" && exports.IDENTIFIER.test(key)) {
-      return new _Code(`${key}`);
-    }
-    throw new Error(`CodeGen: invalid export name: ${key}, use explicit $id name mapping`);
-  }
-  exports.getEsmExportName = getEsmExportName;
-  function regexpCode(rx) {
-    return new _Code(rx.toString());
-  }
-  exports.regexpCode = regexpCode;
-}(code$1));
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.regexpCode = exports.getEsmExportName = exports.getProperty = exports.safeStringify = exports.stringify = exports.strConcat = exports.addCodeArg = exports.str = exports._ = exports.nil = exports._Code = exports.Name = exports.IDENTIFIER = exports._CodeOrName = void 0;
+	class _CodeOrName {}
+	exports._CodeOrName = _CodeOrName;
+	exports.IDENTIFIER = /^[a-z$_][a-z$_0-9]*$/i;
+	class Name extends _CodeOrName {
+	  constructor(s) {
+	    super();
+	    if (!exports.IDENTIFIER.test(s)) throw new Error("CodeGen: name must be a valid identifier");
+	    this.str = s;
+	  }
+	  toString() {
+	    return this.str;
+	  }
+	  emptyStr() {
+	    return false;
+	  }
+	  get names() {
+	    return {
+	      [this.str]: 1
+	    };
+	  }
+	}
+	exports.Name = Name;
+	class _Code extends _CodeOrName {
+	  constructor(code) {
+	    super();
+	    this._items = typeof code === "string" ? [code] : code;
+	  }
+	  toString() {
+	    return this.str;
+	  }
+	  emptyStr() {
+	    if (this._items.length > 1) return false;
+	    const item = this._items[0];
+	    return item === "" || item === '""';
+	  }
+	  get str() {
+	    var _a;
+	    return (_a = this._str) !== null && _a !== void 0 ? _a : this._str = this._items.reduce((s, c) => `${s}${c}`, "");
+	  }
+	  get names() {
+	    var _a;
+	    return (_a = this._names) !== null && _a !== void 0 ? _a : this._names = this._items.reduce((names, c) => {
+	      if (c instanceof Name) names[c.str] = (names[c.str] || 0) + 1;
+	      return names;
+	    }, {});
+	  }
+	}
+	exports._Code = _Code;
+	exports.nil = new _Code("");
+	function _(strs, ...args) {
+	  const code = [strs[0]];
+	  let i = 0;
+	  while (i < args.length) {
+	    addCodeArg(code, args[i]);
+	    code.push(strs[++i]);
+	  }
+	  return new _Code(code);
+	}
+	exports._ = _;
+	const plus = new _Code("+");
+	function str(strs, ...args) {
+	  const expr = [safeStringify(strs[0])];
+	  let i = 0;
+	  while (i < args.length) {
+	    expr.push(plus);
+	    addCodeArg(expr, args[i]);
+	    expr.push(plus, safeStringify(strs[++i]));
+	  }
+	  optimize(expr);
+	  return new _Code(expr);
+	}
+	exports.str = str;
+	function addCodeArg(code, arg) {
+	  if (arg instanceof _Code) code.push(...arg._items);else if (arg instanceof Name) code.push(arg);else code.push(interpolate(arg));
+	}
+	exports.addCodeArg = addCodeArg;
+	function optimize(expr) {
+	  let i = 1;
+	  while (i < expr.length - 1) {
+	    if (expr[i] === plus) {
+	      const res = mergeExprItems(expr[i - 1], expr[i + 1]);
+	      if (res !== undefined) {
+	        expr.splice(i - 1, 3, res);
+	        continue;
+	      }
+	      expr[i++] = "+";
+	    }
+	    i++;
+	  }
+	}
+	function mergeExprItems(a, b) {
+	  if (b === '""') return a;
+	  if (a === '""') return b;
+	  if (typeof a == "string") {
+	    if (b instanceof Name || a[a.length - 1] !== '"') return;
+	    if (typeof b != "string") return `${a.slice(0, -1)}${b}"`;
+	    if (b[0] === '"') return a.slice(0, -1) + b.slice(1);
+	    return;
+	  }
+	  if (typeof b == "string" && b[0] === '"' && !(a instanceof Name)) return `"${a}${b.slice(1)}`;
+	  return;
+	}
+	function strConcat(c1, c2) {
+	  return c2.emptyStr() ? c1 : c1.emptyStr() ? c2 : str`${c1}${c2}`;
+	}
+	exports.strConcat = strConcat;
+	// TODO do not allow arrays here
+	function interpolate(x) {
+	  return typeof x == "number" || typeof x == "boolean" || x === null ? x : safeStringify(Array.isArray(x) ? x.join(",") : x);
+	}
+	function stringify(x) {
+	  return new _Code(safeStringify(x));
+	}
+	exports.stringify = stringify;
+	function safeStringify(x) {
+	  return JSON.stringify(x).replace(/\u2028/g, "\\u2028").replace(/\u2029/g, "\\u2029");
+	}
+	exports.safeStringify = safeStringify;
+	function getProperty(key) {
+	  return typeof key == "string" && exports.IDENTIFIER.test(key) ? new _Code(`.${key}`) : _`[${key}]`;
+	}
+	exports.getProperty = getProperty;
+	//Does best effort to format the name properly
+	function getEsmExportName(key) {
+	  if (typeof key == "string" && exports.IDENTIFIER.test(key)) {
+	    return new _Code(`${key}`);
+	  }
+	  throw new Error(`CodeGen: invalid export name: ${key}, use explicit $id name mapping`);
+	}
+	exports.getEsmExportName = getEsmExportName;
+	function regexpCode(rx) {
+	  return new _Code(rx.toString());
+	}
+	exports.regexpCode = regexpCode; 
+} (code$1));
 
 var scope = {};
 
 (function (exports) {
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.ValueScope = exports.ValueScopeName = exports.Scope = exports.varKinds = exports.UsedValueState = void 0;
-  const code_1 = code$1;
-  class ValueError extends Error {
-    constructor(name) {
-      super(`CodeGen: "code" for ${name} not defined`);
-      this.value = name.value;
-    }
-  }
-  var UsedValueState;
-  (function (UsedValueState) {
-    UsedValueState[UsedValueState["Started"] = 0] = "Started";
-    UsedValueState[UsedValueState["Completed"] = 1] = "Completed";
-  })(UsedValueState || (exports.UsedValueState = UsedValueState = {}));
-  exports.varKinds = {
-    const: new code_1.Name("const"),
-    let: new code_1.Name("let"),
-    var: new code_1.Name("var")
-  };
-  class Scope {
-    constructor({
-      prefixes,
-      parent
-    } = {}) {
-      this._names = {};
-      this._prefixes = prefixes;
-      this._parent = parent;
-    }
-    toName(nameOrPrefix) {
-      return nameOrPrefix instanceof code_1.Name ? nameOrPrefix : this.name(nameOrPrefix);
-    }
-    name(prefix) {
-      return new code_1.Name(this._newName(prefix));
-    }
-    _newName(prefix) {
-      const ng = this._names[prefix] || this._nameGroup(prefix);
-      return `${prefix}${ng.index++}`;
-    }
-    _nameGroup(prefix) {
-      var _a, _b;
-      if (((_b = (_a = this._parent) === null || _a === void 0 ? void 0 : _a._prefixes) === null || _b === void 0 ? void 0 : _b.has(prefix)) || this._prefixes && !this._prefixes.has(prefix)) {
-        throw new Error(`CodeGen: prefix "${prefix}" is not allowed in this scope`);
-      }
-      return this._names[prefix] = {
-        prefix,
-        index: 0
-      };
-    }
-  }
-  exports.Scope = Scope;
-  class ValueScopeName extends code_1.Name {
-    constructor(prefix, nameStr) {
-      super(nameStr);
-      this.prefix = prefix;
-    }
-    setValue(value, {
-      property,
-      itemIndex
-    }) {
-      this.value = value;
-      this.scopePath = (0, code_1._)`.${new code_1.Name(property)}[${itemIndex}]`;
-    }
-  }
-  exports.ValueScopeName = ValueScopeName;
-  const line = (0, code_1._)`\n`;
-  class ValueScope extends Scope {
-    constructor(opts) {
-      super(opts);
-      this._values = {};
-      this._scope = opts.scope;
-      this.opts = {
-        ...opts,
-        _n: opts.lines ? line : code_1.nil
-      };
-    }
-    get() {
-      return this._scope;
-    }
-    name(prefix) {
-      return new ValueScopeName(prefix, this._newName(prefix));
-    }
-    value(nameOrPrefix, value) {
-      var _a;
-      if (value.ref === undefined) throw new Error("CodeGen: ref must be passed in value");
-      const name = this.toName(nameOrPrefix);
-      const {
-        prefix
-      } = name;
-      const valueKey = (_a = value.key) !== null && _a !== void 0 ? _a : value.ref;
-      let vs = this._values[prefix];
-      if (vs) {
-        const _name = vs.get(valueKey);
-        if (_name) return _name;
-      } else {
-        vs = this._values[prefix] = new Map();
-      }
-      vs.set(valueKey, name);
-      const s = this._scope[prefix] || (this._scope[prefix] = []);
-      const itemIndex = s.length;
-      s[itemIndex] = value.ref;
-      name.setValue(value, {
-        property: prefix,
-        itemIndex
-      });
-      return name;
-    }
-    getValue(prefix, keyOrRef) {
-      const vs = this._values[prefix];
-      if (!vs) return;
-      return vs.get(keyOrRef);
-    }
-    scopeRefs(scopeName, values = this._values) {
-      return this._reduceValues(values, name => {
-        if (name.scopePath === undefined) throw new Error(`CodeGen: name "${name}" has no value`);
-        return (0, code_1._)`${scopeName}${name.scopePath}`;
-      });
-    }
-    scopeCode(values = this._values, usedValues, getCode) {
-      return this._reduceValues(values, name => {
-        if (name.value === undefined) throw new Error(`CodeGen: name "${name}" has no value`);
-        return name.value.code;
-      }, usedValues, getCode);
-    }
-    _reduceValues(values, valueCode, usedValues = {}, getCode) {
-      let code = code_1.nil;
-      for (const prefix in values) {
-        const vs = values[prefix];
-        if (!vs) continue;
-        const nameSet = usedValues[prefix] = usedValues[prefix] || new Map();
-        vs.forEach(name => {
-          if (nameSet.has(name)) return;
-          nameSet.set(name, UsedValueState.Started);
-          let c = valueCode(name);
-          if (c) {
-            const def = this.opts.es5 ? exports.varKinds.var : exports.varKinds.const;
-            code = (0, code_1._)`${code}${def} ${name} = ${c};${this.opts._n}`;
-          } else if (c = getCode === null || getCode === void 0 ? void 0 : getCode(name)) {
-            code = (0, code_1._)`${code}${c}${this.opts._n}`;
-          } else {
-            throw new ValueError(name);
-          }
-          nameSet.set(name, UsedValueState.Completed);
-        });
-      }
-      return code;
-    }
-  }
-  exports.ValueScope = ValueScope;
-}(scope));
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.ValueScope = exports.ValueScopeName = exports.Scope = exports.varKinds = exports.UsedValueState = void 0;
+	const code_1 = code$1;
+	class ValueError extends Error {
+	  constructor(name) {
+	    super(`CodeGen: "code" for ${name} not defined`);
+	    this.value = name.value;
+	  }
+	}
+	var UsedValueState;
+	(function (UsedValueState) {
+	  UsedValueState[UsedValueState["Started"] = 0] = "Started";
+	  UsedValueState[UsedValueState["Completed"] = 1] = "Completed";
+	})(UsedValueState || (exports.UsedValueState = UsedValueState = {}));
+	exports.varKinds = {
+	  const: new code_1.Name("const"),
+	  let: new code_1.Name("let"),
+	  var: new code_1.Name("var")
+	};
+	class Scope {
+	  constructor({
+	    prefixes,
+	    parent
+	  } = {}) {
+	    this._names = {};
+	    this._prefixes = prefixes;
+	    this._parent = parent;
+	  }
+	  toName(nameOrPrefix) {
+	    return nameOrPrefix instanceof code_1.Name ? nameOrPrefix : this.name(nameOrPrefix);
+	  }
+	  name(prefix) {
+	    return new code_1.Name(this._newName(prefix));
+	  }
+	  _newName(prefix) {
+	    const ng = this._names[prefix] || this._nameGroup(prefix);
+	    return `${prefix}${ng.index++}`;
+	  }
+	  _nameGroup(prefix) {
+	    var _a, _b;
+	    if (((_b = (_a = this._parent) === null || _a === void 0 ? void 0 : _a._prefixes) === null || _b === void 0 ? void 0 : _b.has(prefix)) || this._prefixes && !this._prefixes.has(prefix)) {
+	      throw new Error(`CodeGen: prefix "${prefix}" is not allowed in this scope`);
+	    }
+	    return this._names[prefix] = {
+	      prefix,
+	      index: 0
+	    };
+	  }
+	}
+	exports.Scope = Scope;
+	class ValueScopeName extends code_1.Name {
+	  constructor(prefix, nameStr) {
+	    super(nameStr);
+	    this.prefix = prefix;
+	  }
+	  setValue(value, {
+	    property,
+	    itemIndex
+	  }) {
+	    this.value = value;
+	    this.scopePath = (0, code_1._)`.${new code_1.Name(property)}[${itemIndex}]`;
+	  }
+	}
+	exports.ValueScopeName = ValueScopeName;
+	const line = (0, code_1._)`\n`;
+	class ValueScope extends Scope {
+	  constructor(opts) {
+	    super(opts);
+	    this._values = {};
+	    this._scope = opts.scope;
+	    this.opts = {
+	      ...opts,
+	      _n: opts.lines ? line : code_1.nil
+	    };
+	  }
+	  get() {
+	    return this._scope;
+	  }
+	  name(prefix) {
+	    return new ValueScopeName(prefix, this._newName(prefix));
+	  }
+	  value(nameOrPrefix, value) {
+	    var _a;
+	    if (value.ref === undefined) throw new Error("CodeGen: ref must be passed in value");
+	    const name = this.toName(nameOrPrefix);
+	    const {
+	      prefix
+	    } = name;
+	    const valueKey = (_a = value.key) !== null && _a !== void 0 ? _a : value.ref;
+	    let vs = this._values[prefix];
+	    if (vs) {
+	      const _name = vs.get(valueKey);
+	      if (_name) return _name;
+	    } else {
+	      vs = this._values[prefix] = new Map();
+	    }
+	    vs.set(valueKey, name);
+	    const s = this._scope[prefix] || (this._scope[prefix] = []);
+	    const itemIndex = s.length;
+	    s[itemIndex] = value.ref;
+	    name.setValue(value, {
+	      property: prefix,
+	      itemIndex
+	    });
+	    return name;
+	  }
+	  getValue(prefix, keyOrRef) {
+	    const vs = this._values[prefix];
+	    if (!vs) return;
+	    return vs.get(keyOrRef);
+	  }
+	  scopeRefs(scopeName, values = this._values) {
+	    return this._reduceValues(values, name => {
+	      if (name.scopePath === undefined) throw new Error(`CodeGen: name "${name}" has no value`);
+	      return (0, code_1._)`${scopeName}${name.scopePath}`;
+	    });
+	  }
+	  scopeCode(values = this._values, usedValues, getCode) {
+	    return this._reduceValues(values, name => {
+	      if (name.value === undefined) throw new Error(`CodeGen: name "${name}" has no value`);
+	      return name.value.code;
+	    }, usedValues, getCode);
+	  }
+	  _reduceValues(values, valueCode, usedValues = {}, getCode) {
+	    let code = code_1.nil;
+	    for (const prefix in values) {
+	      const vs = values[prefix];
+	      if (!vs) continue;
+	      const nameSet = usedValues[prefix] = usedValues[prefix] || new Map();
+	      vs.forEach(name => {
+	        if (nameSet.has(name)) return;
+	        nameSet.set(name, UsedValueState.Started);
+	        let c = valueCode(name);
+	        if (c) {
+	          const def = this.opts.es5 ? exports.varKinds.var : exports.varKinds.const;
+	          code = (0, code_1._)`${code}${def} ${name} = ${c};${this.opts._n}`;
+	        } else if (c = getCode === null || getCode === void 0 ? void 0 : getCode(name)) {
+	          code = (0, code_1._)`${code}${c}${this.opts._n}`;
+	        } else {
+	          throw new ValueError(name);
+	        }
+	        nameSet.set(name, UsedValueState.Completed);
+	      });
+	    }
+	    return code;
+	  }
+	}
+	exports.ValueScope = ValueScope; 
+} (scope));
 
 (function (exports) {
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.or = exports.and = exports.not = exports.CodeGen = exports.operators = exports.varKinds = exports.ValueScopeName = exports.ValueScope = exports.Scope = exports.Name = exports.regexpCode = exports.stringify = exports.getProperty = exports.nil = exports.strConcat = exports.str = exports._ = void 0;
-  const code_1 = code$1;
-  const scope_1 = scope;
-  var code_2 = code$1;
-  Object.defineProperty(exports, "_", {
-    enumerable: true,
-    get: function () {
-      return code_2._;
-    }
-  });
-  Object.defineProperty(exports, "str", {
-    enumerable: true,
-    get: function () {
-      return code_2.str;
-    }
-  });
-  Object.defineProperty(exports, "strConcat", {
-    enumerable: true,
-    get: function () {
-      return code_2.strConcat;
-    }
-  });
-  Object.defineProperty(exports, "nil", {
-    enumerable: true,
-    get: function () {
-      return code_2.nil;
-    }
-  });
-  Object.defineProperty(exports, "getProperty", {
-    enumerable: true,
-    get: function () {
-      return code_2.getProperty;
-    }
-  });
-  Object.defineProperty(exports, "stringify", {
-    enumerable: true,
-    get: function () {
-      return code_2.stringify;
-    }
-  });
-  Object.defineProperty(exports, "regexpCode", {
-    enumerable: true,
-    get: function () {
-      return code_2.regexpCode;
-    }
-  });
-  Object.defineProperty(exports, "Name", {
-    enumerable: true,
-    get: function () {
-      return code_2.Name;
-    }
-  });
-  var scope_2 = scope;
-  Object.defineProperty(exports, "Scope", {
-    enumerable: true,
-    get: function () {
-      return scope_2.Scope;
-    }
-  });
-  Object.defineProperty(exports, "ValueScope", {
-    enumerable: true,
-    get: function () {
-      return scope_2.ValueScope;
-    }
-  });
-  Object.defineProperty(exports, "ValueScopeName", {
-    enumerable: true,
-    get: function () {
-      return scope_2.ValueScopeName;
-    }
-  });
-  Object.defineProperty(exports, "varKinds", {
-    enumerable: true,
-    get: function () {
-      return scope_2.varKinds;
-    }
-  });
-  exports.operators = {
-    GT: new code_1._Code(">"),
-    GTE: new code_1._Code(">="),
-    LT: new code_1._Code("<"),
-    LTE: new code_1._Code("<="),
-    EQ: new code_1._Code("==="),
-    NEQ: new code_1._Code("!=="),
-    NOT: new code_1._Code("!"),
-    OR: new code_1._Code("||"),
-    AND: new code_1._Code("&&"),
-    ADD: new code_1._Code("+")
-  };
-  class Node {
-    optimizeNodes() {
-      return this;
-    }
-    optimizeNames(_names, _constants) {
-      return this;
-    }
-  }
-  class Def extends Node {
-    constructor(varKind, name, rhs) {
-      super();
-      this.varKind = varKind;
-      this.name = name;
-      this.rhs = rhs;
-    }
-    render({
-      es5,
-      _n
-    }) {
-      const varKind = es5 ? scope_1.varKinds.var : this.varKind;
-      const rhs = this.rhs === undefined ? "" : ` = ${this.rhs}`;
-      return `${varKind} ${this.name}${rhs};` + _n;
-    }
-    optimizeNames(names, constants) {
-      if (!names[this.name.str]) return;
-      if (this.rhs) this.rhs = optimizeExpr(this.rhs, names, constants);
-      return this;
-    }
-    get names() {
-      return this.rhs instanceof code_1._CodeOrName ? this.rhs.names : {};
-    }
-  }
-  class Assign extends Node {
-    constructor(lhs, rhs, sideEffects) {
-      super();
-      this.lhs = lhs;
-      this.rhs = rhs;
-      this.sideEffects = sideEffects;
-    }
-    render({
-      _n
-    }) {
-      return `${this.lhs} = ${this.rhs};` + _n;
-    }
-    optimizeNames(names, constants) {
-      if (this.lhs instanceof code_1.Name && !names[this.lhs.str] && !this.sideEffects) return;
-      this.rhs = optimizeExpr(this.rhs, names, constants);
-      return this;
-    }
-    get names() {
-      const names = this.lhs instanceof code_1.Name ? {} : {
-        ...this.lhs.names
-      };
-      return addExprNames(names, this.rhs);
-    }
-  }
-  class AssignOp extends Assign {
-    constructor(lhs, op, rhs, sideEffects) {
-      super(lhs, rhs, sideEffects);
-      this.op = op;
-    }
-    render({
-      _n
-    }) {
-      return `${this.lhs} ${this.op}= ${this.rhs};` + _n;
-    }
-  }
-  class Label extends Node {
-    constructor(label) {
-      super();
-      this.label = label;
-      this.names = {};
-    }
-    render({
-      _n
-    }) {
-      return `${this.label}:` + _n;
-    }
-  }
-  class Break extends Node {
-    constructor(label) {
-      super();
-      this.label = label;
-      this.names = {};
-    }
-    render({
-      _n
-    }) {
-      const label = this.label ? ` ${this.label}` : "";
-      return `break${label};` + _n;
-    }
-  }
-  class Throw extends Node {
-    constructor(error) {
-      super();
-      this.error = error;
-    }
-    render({
-      _n
-    }) {
-      return `throw ${this.error};` + _n;
-    }
-    get names() {
-      return this.error.names;
-    }
-  }
-  class AnyCode extends Node {
-    constructor(code) {
-      super();
-      this.code = code;
-    }
-    render({
-      _n
-    }) {
-      return `${this.code};` + _n;
-    }
-    optimizeNodes() {
-      return `${this.code}` ? this : undefined;
-    }
-    optimizeNames(names, constants) {
-      this.code = optimizeExpr(this.code, names, constants);
-      return this;
-    }
-    get names() {
-      return this.code instanceof code_1._CodeOrName ? this.code.names : {};
-    }
-  }
-  class ParentNode extends Node {
-    constructor(nodes = []) {
-      super();
-      this.nodes = nodes;
-    }
-    render(opts) {
-      return this.nodes.reduce((code, n) => code + n.render(opts), "");
-    }
-    optimizeNodes() {
-      const {
-        nodes
-      } = this;
-      let i = nodes.length;
-      while (i--) {
-        const n = nodes[i].optimizeNodes();
-        if (Array.isArray(n)) nodes.splice(i, 1, ...n); else if (n) nodes[i] = n; else nodes.splice(i, 1);
-      }
-      return nodes.length > 0 ? this : undefined;
-    }
-    optimizeNames(names, constants) {
-      const {
-        nodes
-      } = this;
-      let i = nodes.length;
-      while (i--) {
-        // iterating backwards improves 1-pass optimization
-        const n = nodes[i];
-        if (n.optimizeNames(names, constants)) continue;
-        subtractNames(names, n.names);
-        nodes.splice(i, 1);
-      }
-      return nodes.length > 0 ? this : undefined;
-    }
-    get names() {
-      return this.nodes.reduce((names, n) => addNames(names, n.names), {});
-    }
-  }
-  class BlockNode extends ParentNode {
-    render(opts) {
-      return "{" + opts._n + super.render(opts) + "}" + opts._n;
-    }
-  }
-  class Root extends ParentNode { }
-  class Else extends BlockNode { }
-  Else.kind = "else";
-  class If extends BlockNode {
-    constructor(condition, nodes) {
-      super(nodes);
-      this.condition = condition;
-    }
-    render(opts) {
-      let code = `if(${this.condition})` + super.render(opts);
-      if (this.else) code += "else " + this.else.render(opts);
-      return code;
-    }
-    optimizeNodes() {
-      super.optimizeNodes();
-      const cond = this.condition;
-      if (cond === true) return this.nodes; // else is ignored here
-      let e = this.else;
-      if (e) {
-        const ns = e.optimizeNodes();
-        e = this.else = Array.isArray(ns) ? new Else(ns) : ns;
-      }
-      if (e) {
-        if (cond === false) return e instanceof If ? e : e.nodes;
-        if (this.nodes.length) return this;
-        return new If(not(cond), e instanceof If ? [e] : e.nodes);
-      }
-      if (cond === false || !this.nodes.length) return undefined;
-      return this;
-    }
-    optimizeNames(names, constants) {
-      var _a;
-      this.else = (_a = this.else) === null || _a === void 0 ? void 0 : _a.optimizeNames(names, constants);
-      if (!(super.optimizeNames(names, constants) || this.else)) return;
-      this.condition = optimizeExpr(this.condition, names, constants);
-      return this;
-    }
-    get names() {
-      const names = super.names;
-      addExprNames(names, this.condition);
-      if (this.else) addNames(names, this.else.names);
-      return names;
-    }
-  }
-  If.kind = "if";
-  class For extends BlockNode { }
-  For.kind = "for";
-  class ForLoop extends For {
-    constructor(iteration) {
-      super();
-      this.iteration = iteration;
-    }
-    render(opts) {
-      return `for(${this.iteration})` + super.render(opts);
-    }
-    optimizeNames(names, constants) {
-      if (!super.optimizeNames(names, constants)) return;
-      this.iteration = optimizeExpr(this.iteration, names, constants);
-      return this;
-    }
-    get names() {
-      return addNames(super.names, this.iteration.names);
-    }
-  }
-  class ForRange extends For {
-    constructor(varKind, name, from, to) {
-      super();
-      this.varKind = varKind;
-      this.name = name;
-      this.from = from;
-      this.to = to;
-    }
-    render(opts) {
-      const varKind = opts.es5 ? scope_1.varKinds.var : this.varKind;
-      const {
-        name,
-        from,
-        to
-      } = this;
-      return `for(${varKind} ${name}=${from}; ${name}<${to}; ${name}++)` + super.render(opts);
-    }
-    get names() {
-      const names = addExprNames(super.names, this.from);
-      return addExprNames(names, this.to);
-    }
-  }
-  class ForIter extends For {
-    constructor(loop, varKind, name, iterable) {
-      super();
-      this.loop = loop;
-      this.varKind = varKind;
-      this.name = name;
-      this.iterable = iterable;
-    }
-    render(opts) {
-      return `for(${this.varKind} ${this.name} ${this.loop} ${this.iterable})` + super.render(opts);
-    }
-    optimizeNames(names, constants) {
-      if (!super.optimizeNames(names, constants)) return;
-      this.iterable = optimizeExpr(this.iterable, names, constants);
-      return this;
-    }
-    get names() {
-      return addNames(super.names, this.iterable.names);
-    }
-  }
-  class Func extends BlockNode {
-    constructor(name, args, async) {
-      super();
-      this.name = name;
-      this.args = args;
-      this.async = async;
-    }
-    render(opts) {
-      const _async = this.async ? "async " : "";
-      return `${_async}function ${this.name}(${this.args})` + super.render(opts);
-    }
-  }
-  Func.kind = "func";
-  class Return extends ParentNode {
-    render(opts) {
-      return "return " + super.render(opts);
-    }
-  }
-  Return.kind = "return";
-  class Try extends BlockNode {
-    render(opts) {
-      let code = "try" + super.render(opts);
-      if (this.catch) code += this.catch.render(opts);
-      if (this.finally) code += this.finally.render(opts);
-      return code;
-    }
-    optimizeNodes() {
-      var _a, _b;
-      super.optimizeNodes();
-      (_a = this.catch) === null || _a === void 0 ? void 0 : _a.optimizeNodes();
-      (_b = this.finally) === null || _b === void 0 ? void 0 : _b.optimizeNodes();
-      return this;
-    }
-    optimizeNames(names, constants) {
-      var _a, _b;
-      super.optimizeNames(names, constants);
-      (_a = this.catch) === null || _a === void 0 ? void 0 : _a.optimizeNames(names, constants);
-      (_b = this.finally) === null || _b === void 0 ? void 0 : _b.optimizeNames(names, constants);
-      return this;
-    }
-    get names() {
-      const names = super.names;
-      if (this.catch) addNames(names, this.catch.names);
-      if (this.finally) addNames(names, this.finally.names);
-      return names;
-    }
-  }
-  class Catch extends BlockNode {
-    constructor(error) {
-      super();
-      this.error = error;
-    }
-    render(opts) {
-      return `catch(${this.error})` + super.render(opts);
-    }
-  }
-  Catch.kind = "catch";
-  class Finally extends BlockNode {
-    render(opts) {
-      return "finally" + super.render(opts);
-    }
-  }
-  Finally.kind = "finally";
-  class CodeGen {
-    constructor(extScope, opts = {}) {
-      this._values = {};
-      this._blockStarts = [];
-      this._constants = {};
-      this.opts = {
-        ...opts,
-        _n: opts.lines ? "\n" : ""
-      };
-      this._extScope = extScope;
-      this._scope = new scope_1.Scope({
-        parent: extScope
-      });
-      this._nodes = [new Root()];
-    }
-    toString() {
-      return this._root.render(this.opts);
-    }
-    // returns unique name in the internal scope
-    name(prefix) {
-      return this._scope.name(prefix);
-    }
-    // reserves unique name in the external scope
-    scopeName(prefix) {
-      return this._extScope.name(prefix);
-    }
-    // reserves unique name in the external scope and assigns value to it
-    scopeValue(prefixOrName, value) {
-      const name = this._extScope.value(prefixOrName, value);
-      const vs = this._values[name.prefix] || (this._values[name.prefix] = new Set());
-      vs.add(name);
-      return name;
-    }
-    getScopeValue(prefix, keyOrRef) {
-      return this._extScope.getValue(prefix, keyOrRef);
-    }
-    // return code that assigns values in the external scope to the names that are used internally
-    // (same names that were returned by gen.scopeName or gen.scopeValue)
-    scopeRefs(scopeName) {
-      return this._extScope.scopeRefs(scopeName, this._values);
-    }
-    scopeCode() {
-      return this._extScope.scopeCode(this._values);
-    }
-    _def(varKind, nameOrPrefix, rhs, constant) {
-      const name = this._scope.toName(nameOrPrefix);
-      if (rhs !== undefined && constant) this._constants[name.str] = rhs;
-      this._leafNode(new Def(varKind, name, rhs));
-      return name;
-    }
-    // `const` declaration (`var` in es5 mode)
-    const(nameOrPrefix, rhs, _constant) {
-      return this._def(scope_1.varKinds.const, nameOrPrefix, rhs, _constant);
-    }
-    // `let` declaration with optional assignment (`var` in es5 mode)
-    let(nameOrPrefix, rhs, _constant) {
-      return this._def(scope_1.varKinds.let, nameOrPrefix, rhs, _constant);
-    }
-    // `var` declaration with optional assignment
-    var(nameOrPrefix, rhs, _constant) {
-      return this._def(scope_1.varKinds.var, nameOrPrefix, rhs, _constant);
-    }
-    // assignment code
-    assign(lhs, rhs, sideEffects) {
-      return this._leafNode(new Assign(lhs, rhs, sideEffects));
-    }
-    // `+=` code
-    add(lhs, rhs) {
-      return this._leafNode(new AssignOp(lhs, exports.operators.ADD, rhs));
-    }
-    // appends passed SafeExpr to code or executes Block
-    code(c) {
-      if (typeof c == "function") c(); else if (c !== code_1.nil) this._leafNode(new AnyCode(c));
-      return this;
-    }
-    // returns code for object literal for the passed argument list of key-value pairs
-    object(...keyValues) {
-      const code = ["{"];
-      for (const [key, value] of keyValues) {
-        if (code.length > 1) code.push(",");
-        code.push(key);
-        if (key !== value || this.opts.es5) {
-          code.push(":");
-          (0, code_1.addCodeArg)(code, value);
-        }
-      }
-      code.push("}");
-      return new code_1._Code(code);
-    }
-    // `if` clause (or statement if `thenBody` and, optionally, `elseBody` are passed)
-    if(condition, thenBody, elseBody) {
-      this._blockNode(new If(condition));
-      if (thenBody && elseBody) {
-        this.code(thenBody).else().code(elseBody).endIf();
-      } else if (thenBody) {
-        this.code(thenBody).endIf();
-      } else if (elseBody) {
-        throw new Error('CodeGen: "else" body without "then" body');
-      }
-      return this;
-    }
-    // `else if` clause - invalid without `if` or after `else` clauses
-    elseIf(condition) {
-      return this._elseNode(new If(condition));
-    }
-    // `else` clause - only valid after `if` or `else if` clauses
-    else() {
-      return this._elseNode(new Else());
-    }
-    // end `if` statement (needed if gen.if was used only with condition)
-    endIf() {
-      return this._endBlockNode(If, Else);
-    }
-    _for(node, forBody) {
-      this._blockNode(node);
-      if (forBody) this.code(forBody).endFor();
-      return this;
-    }
-    // a generic `for` clause (or statement if `forBody` is passed)
-    for(iteration, forBody) {
-      return this._for(new ForLoop(iteration), forBody);
-    }
-    // `for` statement for a range of values
-    forRange(nameOrPrefix, from, to, forBody, varKind = this.opts.es5 ? scope_1.varKinds.var : scope_1.varKinds.let) {
-      const name = this._scope.toName(nameOrPrefix);
-      return this._for(new ForRange(varKind, name, from, to), () => forBody(name));
-    }
-    // `for-of` statement (in es5 mode replace with a normal for loop)
-    forOf(nameOrPrefix, iterable, forBody, varKind = scope_1.varKinds.const) {
-      const name = this._scope.toName(nameOrPrefix);
-      if (this.opts.es5) {
-        const arr = iterable instanceof code_1.Name ? iterable : this.var("_arr", iterable);
-        return this.forRange("_i", 0, (0, code_1._)`${arr}.length`, i => {
-          this.var(name, (0, code_1._)`${arr}[${i}]`);
-          forBody(name);
-        });
-      }
-      return this._for(new ForIter("of", varKind, name, iterable), () => forBody(name));
-    }
-    // `for-in` statement.
-    // With option `ownProperties` replaced with a `for-of` loop for object keys
-    forIn(nameOrPrefix, obj, forBody, varKind = this.opts.es5 ? scope_1.varKinds.var : scope_1.varKinds.const) {
-      if (this.opts.ownProperties) {
-        return this.forOf(nameOrPrefix, (0, code_1._)`Object.keys(${obj})`, forBody);
-      }
-      const name = this._scope.toName(nameOrPrefix);
-      return this._for(new ForIter("in", varKind, name, obj), () => forBody(name));
-    }
-    // end `for` loop
-    endFor() {
-      return this._endBlockNode(For);
-    }
-    // `label` statement
-    label(label) {
-      return this._leafNode(new Label(label));
-    }
-    // `break` statement
-    break(label) {
-      return this._leafNode(new Break(label));
-    }
-    // `return` statement
-    return(value) {
-      const node = new Return();
-      this._blockNode(node);
-      this.code(value);
-      if (node.nodes.length !== 1) throw new Error('CodeGen: "return" should have one node');
-      return this._endBlockNode(Return);
-    }
-    // `try` statement
-    try(tryBody, catchCode, finallyCode) {
-      if (!catchCode && !finallyCode) throw new Error('CodeGen: "try" without "catch" and "finally"');
-      const node = new Try();
-      this._blockNode(node);
-      this.code(tryBody);
-      if (catchCode) {
-        const error = this.name("e");
-        this._currNode = node.catch = new Catch(error);
-        catchCode(error);
-      }
-      if (finallyCode) {
-        this._currNode = node.finally = new Finally();
-        this.code(finallyCode);
-      }
-      return this._endBlockNode(Catch, Finally);
-    }
-    // `throw` statement
-    throw(error) {
-      return this._leafNode(new Throw(error));
-    }
-    // start self-balancing block
-    block(body, nodeCount) {
-      this._blockStarts.push(this._nodes.length);
-      if (body) this.code(body).endBlock(nodeCount);
-      return this;
-    }
-    // end the current self-balancing block
-    endBlock(nodeCount) {
-      const len = this._blockStarts.pop();
-      if (len === undefined) throw new Error("CodeGen: not in self-balancing block");
-      const toClose = this._nodes.length - len;
-      if (toClose < 0 || nodeCount !== undefined && toClose !== nodeCount) {
-        throw new Error(`CodeGen: wrong number of nodes: ${toClose} vs ${nodeCount} expected`);
-      }
-      this._nodes.length = len;
-      return this;
-    }
-    // `function` heading (or definition if funcBody is passed)
-    func(name, args = code_1.nil, async, funcBody) {
-      this._blockNode(new Func(name, args, async));
-      if (funcBody) this.code(funcBody).endFunc();
-      return this;
-    }
-    // end function definition
-    endFunc() {
-      return this._endBlockNode(Func);
-    }
-    optimize(n = 1) {
-      while (n-- > 0) {
-        this._root.optimizeNodes();
-        this._root.optimizeNames(this._root.names, this._constants);
-      }
-    }
-    _leafNode(node) {
-      this._currNode.nodes.push(node);
-      return this;
-    }
-    _blockNode(node) {
-      this._currNode.nodes.push(node);
-      this._nodes.push(node);
-    }
-    _endBlockNode(N1, N2) {
-      const n = this._currNode;
-      if (n instanceof N1 || N2 && n instanceof N2) {
-        this._nodes.pop();
-        return this;
-      }
-      throw new Error(`CodeGen: not in block "${N2 ? `${N1.kind}/${N2.kind}` : N1.kind}"`);
-    }
-    _elseNode(node) {
-      const n = this._currNode;
-      if (!(n instanceof If)) {
-        throw new Error('CodeGen: "else" without "if"');
-      }
-      this._currNode = n.else = node;
-      return this;
-    }
-    get _root() {
-      return this._nodes[0];
-    }
-    get _currNode() {
-      const ns = this._nodes;
-      return ns[ns.length - 1];
-    }
-    set _currNode(node) {
-      const ns = this._nodes;
-      ns[ns.length - 1] = node;
-    }
-  }
-  exports.CodeGen = CodeGen;
-  function addNames(names, from) {
-    for (const n in from) names[n] = (names[n] || 0) + (from[n] || 0);
-    return names;
-  }
-  function addExprNames(names, from) {
-    return from instanceof code_1._CodeOrName ? addNames(names, from.names) : names;
-  }
-  function optimizeExpr(expr, names, constants) {
-    if (expr instanceof code_1.Name) return replaceName(expr);
-    if (!canOptimize(expr)) return expr;
-    return new code_1._Code(expr._items.reduce((items, c) => {
-      if (c instanceof code_1.Name) c = replaceName(c);
-      if (c instanceof code_1._Code) items.push(...c._items); else items.push(c);
-      return items;
-    }, []));
-    function replaceName(n) {
-      const c = constants[n.str];
-      if (c === undefined || names[n.str] !== 1) return n;
-      delete names[n.str];
-      return c;
-    }
-    function canOptimize(e) {
-      return e instanceof code_1._Code && e._items.some(c => c instanceof code_1.Name && names[c.str] === 1 && constants[c.str] !== undefined);
-    }
-  }
-  function subtractNames(names, from) {
-    for (const n in from) names[n] = (names[n] || 0) - (from[n] || 0);
-  }
-  function not(x) {
-    return typeof x == "boolean" || typeof x == "number" || x === null ? !x : (0, code_1._)`!${par(x)}`;
-  }
-  exports.not = not;
-  const andCode = mappend(exports.operators.AND);
-  // boolean AND (&&) expression with the passed arguments
-  function and(...args) {
-    return args.reduce(andCode);
-  }
-  exports.and = and;
-  const orCode = mappend(exports.operators.OR);
-  // boolean OR (||) expression with the passed arguments
-  function or(...args) {
-    return args.reduce(orCode);
-  }
-  exports.or = or;
-  function mappend(op) {
-    return (x, y) => x === code_1.nil ? y : y === code_1.nil ? x : (0, code_1._)`${par(x)} ${op} ${par(y)}`;
-  }
-  function par(x) {
-    return x instanceof code_1.Name ? x : (0, code_1._)`(${x})`;
-  }
-}(codegen));
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.or = exports.and = exports.not = exports.CodeGen = exports.operators = exports.varKinds = exports.ValueScopeName = exports.ValueScope = exports.Scope = exports.Name = exports.regexpCode = exports.stringify = exports.getProperty = exports.nil = exports.strConcat = exports.str = exports._ = void 0;
+	const code_1 = code$1;
+	const scope_1 = scope;
+	var code_2 = code$1;
+	Object.defineProperty(exports, "_", {
+	  enumerable: true,
+	  get: function () {
+	    return code_2._;
+	  }
+	});
+	Object.defineProperty(exports, "str", {
+	  enumerable: true,
+	  get: function () {
+	    return code_2.str;
+	  }
+	});
+	Object.defineProperty(exports, "strConcat", {
+	  enumerable: true,
+	  get: function () {
+	    return code_2.strConcat;
+	  }
+	});
+	Object.defineProperty(exports, "nil", {
+	  enumerable: true,
+	  get: function () {
+	    return code_2.nil;
+	  }
+	});
+	Object.defineProperty(exports, "getProperty", {
+	  enumerable: true,
+	  get: function () {
+	    return code_2.getProperty;
+	  }
+	});
+	Object.defineProperty(exports, "stringify", {
+	  enumerable: true,
+	  get: function () {
+	    return code_2.stringify;
+	  }
+	});
+	Object.defineProperty(exports, "regexpCode", {
+	  enumerable: true,
+	  get: function () {
+	    return code_2.regexpCode;
+	  }
+	});
+	Object.defineProperty(exports, "Name", {
+	  enumerable: true,
+	  get: function () {
+	    return code_2.Name;
+	  }
+	});
+	var scope_2 = scope;
+	Object.defineProperty(exports, "Scope", {
+	  enumerable: true,
+	  get: function () {
+	    return scope_2.Scope;
+	  }
+	});
+	Object.defineProperty(exports, "ValueScope", {
+	  enumerable: true,
+	  get: function () {
+	    return scope_2.ValueScope;
+	  }
+	});
+	Object.defineProperty(exports, "ValueScopeName", {
+	  enumerable: true,
+	  get: function () {
+	    return scope_2.ValueScopeName;
+	  }
+	});
+	Object.defineProperty(exports, "varKinds", {
+	  enumerable: true,
+	  get: function () {
+	    return scope_2.varKinds;
+	  }
+	});
+	exports.operators = {
+	  GT: new code_1._Code(">"),
+	  GTE: new code_1._Code(">="),
+	  LT: new code_1._Code("<"),
+	  LTE: new code_1._Code("<="),
+	  EQ: new code_1._Code("==="),
+	  NEQ: new code_1._Code("!=="),
+	  NOT: new code_1._Code("!"),
+	  OR: new code_1._Code("||"),
+	  AND: new code_1._Code("&&"),
+	  ADD: new code_1._Code("+")
+	};
+	class Node {
+	  optimizeNodes() {
+	    return this;
+	  }
+	  optimizeNames(_names, _constants) {
+	    return this;
+	  }
+	}
+	class Def extends Node {
+	  constructor(varKind, name, rhs) {
+	    super();
+	    this.varKind = varKind;
+	    this.name = name;
+	    this.rhs = rhs;
+	  }
+	  render({
+	    es5,
+	    _n
+	  }) {
+	    const varKind = es5 ? scope_1.varKinds.var : this.varKind;
+	    const rhs = this.rhs === undefined ? "" : ` = ${this.rhs}`;
+	    return `${varKind} ${this.name}${rhs};` + _n;
+	  }
+	  optimizeNames(names, constants) {
+	    if (!names[this.name.str]) return;
+	    if (this.rhs) this.rhs = optimizeExpr(this.rhs, names, constants);
+	    return this;
+	  }
+	  get names() {
+	    return this.rhs instanceof code_1._CodeOrName ? this.rhs.names : {};
+	  }
+	}
+	class Assign extends Node {
+	  constructor(lhs, rhs, sideEffects) {
+	    super();
+	    this.lhs = lhs;
+	    this.rhs = rhs;
+	    this.sideEffects = sideEffects;
+	  }
+	  render({
+	    _n
+	  }) {
+	    return `${this.lhs} = ${this.rhs};` + _n;
+	  }
+	  optimizeNames(names, constants) {
+	    if (this.lhs instanceof code_1.Name && !names[this.lhs.str] && !this.sideEffects) return;
+	    this.rhs = optimizeExpr(this.rhs, names, constants);
+	    return this;
+	  }
+	  get names() {
+	    const names = this.lhs instanceof code_1.Name ? {} : {
+	      ...this.lhs.names
+	    };
+	    return addExprNames(names, this.rhs);
+	  }
+	}
+	class AssignOp extends Assign {
+	  constructor(lhs, op, rhs, sideEffects) {
+	    super(lhs, rhs, sideEffects);
+	    this.op = op;
+	  }
+	  render({
+	    _n
+	  }) {
+	    return `${this.lhs} ${this.op}= ${this.rhs};` + _n;
+	  }
+	}
+	class Label extends Node {
+	  constructor(label) {
+	    super();
+	    this.label = label;
+	    this.names = {};
+	  }
+	  render({
+	    _n
+	  }) {
+	    return `${this.label}:` + _n;
+	  }
+	}
+	class Break extends Node {
+	  constructor(label) {
+	    super();
+	    this.label = label;
+	    this.names = {};
+	  }
+	  render({
+	    _n
+	  }) {
+	    const label = this.label ? ` ${this.label}` : "";
+	    return `break${label};` + _n;
+	  }
+	}
+	class Throw extends Node {
+	  constructor(error) {
+	    super();
+	    this.error = error;
+	  }
+	  render({
+	    _n
+	  }) {
+	    return `throw ${this.error};` + _n;
+	  }
+	  get names() {
+	    return this.error.names;
+	  }
+	}
+	class AnyCode extends Node {
+	  constructor(code) {
+	    super();
+	    this.code = code;
+	  }
+	  render({
+	    _n
+	  }) {
+	    return `${this.code};` + _n;
+	  }
+	  optimizeNodes() {
+	    return `${this.code}` ? this : undefined;
+	  }
+	  optimizeNames(names, constants) {
+	    this.code = optimizeExpr(this.code, names, constants);
+	    return this;
+	  }
+	  get names() {
+	    return this.code instanceof code_1._CodeOrName ? this.code.names : {};
+	  }
+	}
+	class ParentNode extends Node {
+	  constructor(nodes = []) {
+	    super();
+	    this.nodes = nodes;
+	  }
+	  render(opts) {
+	    return this.nodes.reduce((code, n) => code + n.render(opts), "");
+	  }
+	  optimizeNodes() {
+	    const {
+	      nodes
+	    } = this;
+	    let i = nodes.length;
+	    while (i--) {
+	      const n = nodes[i].optimizeNodes();
+	      if (Array.isArray(n)) nodes.splice(i, 1, ...n);else if (n) nodes[i] = n;else nodes.splice(i, 1);
+	    }
+	    return nodes.length > 0 ? this : undefined;
+	  }
+	  optimizeNames(names, constants) {
+	    const {
+	      nodes
+	    } = this;
+	    let i = nodes.length;
+	    while (i--) {
+	      // iterating backwards improves 1-pass optimization
+	      const n = nodes[i];
+	      if (n.optimizeNames(names, constants)) continue;
+	      subtractNames(names, n.names);
+	      nodes.splice(i, 1);
+	    }
+	    return nodes.length > 0 ? this : undefined;
+	  }
+	  get names() {
+	    return this.nodes.reduce((names, n) => addNames(names, n.names), {});
+	  }
+	}
+	class BlockNode extends ParentNode {
+	  render(opts) {
+	    return "{" + opts._n + super.render(opts) + "}" + opts._n;
+	  }
+	}
+	class Root extends ParentNode {}
+	class Else extends BlockNode {}
+	Else.kind = "else";
+	class If extends BlockNode {
+	  constructor(condition, nodes) {
+	    super(nodes);
+	    this.condition = condition;
+	  }
+	  render(opts) {
+	    let code = `if(${this.condition})` + super.render(opts);
+	    if (this.else) code += "else " + this.else.render(opts);
+	    return code;
+	  }
+	  optimizeNodes() {
+	    super.optimizeNodes();
+	    const cond = this.condition;
+	    if (cond === true) return this.nodes; // else is ignored here
+	    let e = this.else;
+	    if (e) {
+	      const ns = e.optimizeNodes();
+	      e = this.else = Array.isArray(ns) ? new Else(ns) : ns;
+	    }
+	    if (e) {
+	      if (cond === false) return e instanceof If ? e : e.nodes;
+	      if (this.nodes.length) return this;
+	      return new If(not(cond), e instanceof If ? [e] : e.nodes);
+	    }
+	    if (cond === false || !this.nodes.length) return undefined;
+	    return this;
+	  }
+	  optimizeNames(names, constants) {
+	    var _a;
+	    this.else = (_a = this.else) === null || _a === void 0 ? void 0 : _a.optimizeNames(names, constants);
+	    if (!(super.optimizeNames(names, constants) || this.else)) return;
+	    this.condition = optimizeExpr(this.condition, names, constants);
+	    return this;
+	  }
+	  get names() {
+	    const names = super.names;
+	    addExprNames(names, this.condition);
+	    if (this.else) addNames(names, this.else.names);
+	    return names;
+	  }
+	}
+	If.kind = "if";
+	class For extends BlockNode {}
+	For.kind = "for";
+	class ForLoop extends For {
+	  constructor(iteration) {
+	    super();
+	    this.iteration = iteration;
+	  }
+	  render(opts) {
+	    return `for(${this.iteration})` + super.render(opts);
+	  }
+	  optimizeNames(names, constants) {
+	    if (!super.optimizeNames(names, constants)) return;
+	    this.iteration = optimizeExpr(this.iteration, names, constants);
+	    return this;
+	  }
+	  get names() {
+	    return addNames(super.names, this.iteration.names);
+	  }
+	}
+	class ForRange extends For {
+	  constructor(varKind, name, from, to) {
+	    super();
+	    this.varKind = varKind;
+	    this.name = name;
+	    this.from = from;
+	    this.to = to;
+	  }
+	  render(opts) {
+	    const varKind = opts.es5 ? scope_1.varKinds.var : this.varKind;
+	    const {
+	      name,
+	      from,
+	      to
+	    } = this;
+	    return `for(${varKind} ${name}=${from}; ${name}<${to}; ${name}++)` + super.render(opts);
+	  }
+	  get names() {
+	    const names = addExprNames(super.names, this.from);
+	    return addExprNames(names, this.to);
+	  }
+	}
+	class ForIter extends For {
+	  constructor(loop, varKind, name, iterable) {
+	    super();
+	    this.loop = loop;
+	    this.varKind = varKind;
+	    this.name = name;
+	    this.iterable = iterable;
+	  }
+	  render(opts) {
+	    return `for(${this.varKind} ${this.name} ${this.loop} ${this.iterable})` + super.render(opts);
+	  }
+	  optimizeNames(names, constants) {
+	    if (!super.optimizeNames(names, constants)) return;
+	    this.iterable = optimizeExpr(this.iterable, names, constants);
+	    return this;
+	  }
+	  get names() {
+	    return addNames(super.names, this.iterable.names);
+	  }
+	}
+	class Func extends BlockNode {
+	  constructor(name, args, async) {
+	    super();
+	    this.name = name;
+	    this.args = args;
+	    this.async = async;
+	  }
+	  render(opts) {
+	    const _async = this.async ? "async " : "";
+	    return `${_async}function ${this.name}(${this.args})` + super.render(opts);
+	  }
+	}
+	Func.kind = "func";
+	class Return extends ParentNode {
+	  render(opts) {
+	    return "return " + super.render(opts);
+	  }
+	}
+	Return.kind = "return";
+	class Try extends BlockNode {
+	  render(opts) {
+	    let code = "try" + super.render(opts);
+	    if (this.catch) code += this.catch.render(opts);
+	    if (this.finally) code += this.finally.render(opts);
+	    return code;
+	  }
+	  optimizeNodes() {
+	    var _a, _b;
+	    super.optimizeNodes();
+	    (_a = this.catch) === null || _a === void 0 ? void 0 : _a.optimizeNodes();
+	    (_b = this.finally) === null || _b === void 0 ? void 0 : _b.optimizeNodes();
+	    return this;
+	  }
+	  optimizeNames(names, constants) {
+	    var _a, _b;
+	    super.optimizeNames(names, constants);
+	    (_a = this.catch) === null || _a === void 0 ? void 0 : _a.optimizeNames(names, constants);
+	    (_b = this.finally) === null || _b === void 0 ? void 0 : _b.optimizeNames(names, constants);
+	    return this;
+	  }
+	  get names() {
+	    const names = super.names;
+	    if (this.catch) addNames(names, this.catch.names);
+	    if (this.finally) addNames(names, this.finally.names);
+	    return names;
+	  }
+	}
+	class Catch extends BlockNode {
+	  constructor(error) {
+	    super();
+	    this.error = error;
+	  }
+	  render(opts) {
+	    return `catch(${this.error})` + super.render(opts);
+	  }
+	}
+	Catch.kind = "catch";
+	class Finally extends BlockNode {
+	  render(opts) {
+	    return "finally" + super.render(opts);
+	  }
+	}
+	Finally.kind = "finally";
+	class CodeGen {
+	  constructor(extScope, opts = {}) {
+	    this._values = {};
+	    this._blockStarts = [];
+	    this._constants = {};
+	    this.opts = {
+	      ...opts,
+	      _n: opts.lines ? "\n" : ""
+	    };
+	    this._extScope = extScope;
+	    this._scope = new scope_1.Scope({
+	      parent: extScope
+	    });
+	    this._nodes = [new Root()];
+	  }
+	  toString() {
+	    return this._root.render(this.opts);
+	  }
+	  // returns unique name in the internal scope
+	  name(prefix) {
+	    return this._scope.name(prefix);
+	  }
+	  // reserves unique name in the external scope
+	  scopeName(prefix) {
+	    return this._extScope.name(prefix);
+	  }
+	  // reserves unique name in the external scope and assigns value to it
+	  scopeValue(prefixOrName, value) {
+	    const name = this._extScope.value(prefixOrName, value);
+	    const vs = this._values[name.prefix] || (this._values[name.prefix] = new Set());
+	    vs.add(name);
+	    return name;
+	  }
+	  getScopeValue(prefix, keyOrRef) {
+	    return this._extScope.getValue(prefix, keyOrRef);
+	  }
+	  // return code that assigns values in the external scope to the names that are used internally
+	  // (same names that were returned by gen.scopeName or gen.scopeValue)
+	  scopeRefs(scopeName) {
+	    return this._extScope.scopeRefs(scopeName, this._values);
+	  }
+	  scopeCode() {
+	    return this._extScope.scopeCode(this._values);
+	  }
+	  _def(varKind, nameOrPrefix, rhs, constant) {
+	    const name = this._scope.toName(nameOrPrefix);
+	    if (rhs !== undefined && constant) this._constants[name.str] = rhs;
+	    this._leafNode(new Def(varKind, name, rhs));
+	    return name;
+	  }
+	  // `const` declaration (`var` in es5 mode)
+	  const(nameOrPrefix, rhs, _constant) {
+	    return this._def(scope_1.varKinds.const, nameOrPrefix, rhs, _constant);
+	  }
+	  // `let` declaration with optional assignment (`var` in es5 mode)
+	  let(nameOrPrefix, rhs, _constant) {
+	    return this._def(scope_1.varKinds.let, nameOrPrefix, rhs, _constant);
+	  }
+	  // `var` declaration with optional assignment
+	  var(nameOrPrefix, rhs, _constant) {
+	    return this._def(scope_1.varKinds.var, nameOrPrefix, rhs, _constant);
+	  }
+	  // assignment code
+	  assign(lhs, rhs, sideEffects) {
+	    return this._leafNode(new Assign(lhs, rhs, sideEffects));
+	  }
+	  // `+=` code
+	  add(lhs, rhs) {
+	    return this._leafNode(new AssignOp(lhs, exports.operators.ADD, rhs));
+	  }
+	  // appends passed SafeExpr to code or executes Block
+	  code(c) {
+	    if (typeof c == "function") c();else if (c !== code_1.nil) this._leafNode(new AnyCode(c));
+	    return this;
+	  }
+	  // returns code for object literal for the passed argument list of key-value pairs
+	  object(...keyValues) {
+	    const code = ["{"];
+	    for (const [key, value] of keyValues) {
+	      if (code.length > 1) code.push(",");
+	      code.push(key);
+	      if (key !== value || this.opts.es5) {
+	        code.push(":");
+	        (0, code_1.addCodeArg)(code, value);
+	      }
+	    }
+	    code.push("}");
+	    return new code_1._Code(code);
+	  }
+	  // `if` clause (or statement if `thenBody` and, optionally, `elseBody` are passed)
+	  if(condition, thenBody, elseBody) {
+	    this._blockNode(new If(condition));
+	    if (thenBody && elseBody) {
+	      this.code(thenBody).else().code(elseBody).endIf();
+	    } else if (thenBody) {
+	      this.code(thenBody).endIf();
+	    } else if (elseBody) {
+	      throw new Error('CodeGen: "else" body without "then" body');
+	    }
+	    return this;
+	  }
+	  // `else if` clause - invalid without `if` or after `else` clauses
+	  elseIf(condition) {
+	    return this._elseNode(new If(condition));
+	  }
+	  // `else` clause - only valid after `if` or `else if` clauses
+	  else() {
+	    return this._elseNode(new Else());
+	  }
+	  // end `if` statement (needed if gen.if was used only with condition)
+	  endIf() {
+	    return this._endBlockNode(If, Else);
+	  }
+	  _for(node, forBody) {
+	    this._blockNode(node);
+	    if (forBody) this.code(forBody).endFor();
+	    return this;
+	  }
+	  // a generic `for` clause (or statement if `forBody` is passed)
+	  for(iteration, forBody) {
+	    return this._for(new ForLoop(iteration), forBody);
+	  }
+	  // `for` statement for a range of values
+	  forRange(nameOrPrefix, from, to, forBody, varKind = this.opts.es5 ? scope_1.varKinds.var : scope_1.varKinds.let) {
+	    const name = this._scope.toName(nameOrPrefix);
+	    return this._for(new ForRange(varKind, name, from, to), () => forBody(name));
+	  }
+	  // `for-of` statement (in es5 mode replace with a normal for loop)
+	  forOf(nameOrPrefix, iterable, forBody, varKind = scope_1.varKinds.const) {
+	    const name = this._scope.toName(nameOrPrefix);
+	    if (this.opts.es5) {
+	      const arr = iterable instanceof code_1.Name ? iterable : this.var("_arr", iterable);
+	      return this.forRange("_i", 0, (0, code_1._)`${arr}.length`, i => {
+	        this.var(name, (0, code_1._)`${arr}[${i}]`);
+	        forBody(name);
+	      });
+	    }
+	    return this._for(new ForIter("of", varKind, name, iterable), () => forBody(name));
+	  }
+	  // `for-in` statement.
+	  // With option `ownProperties` replaced with a `for-of` loop for object keys
+	  forIn(nameOrPrefix, obj, forBody, varKind = this.opts.es5 ? scope_1.varKinds.var : scope_1.varKinds.const) {
+	    if (this.opts.ownProperties) {
+	      return this.forOf(nameOrPrefix, (0, code_1._)`Object.keys(${obj})`, forBody);
+	    }
+	    const name = this._scope.toName(nameOrPrefix);
+	    return this._for(new ForIter("in", varKind, name, obj), () => forBody(name));
+	  }
+	  // end `for` loop
+	  endFor() {
+	    return this._endBlockNode(For);
+	  }
+	  // `label` statement
+	  label(label) {
+	    return this._leafNode(new Label(label));
+	  }
+	  // `break` statement
+	  break(label) {
+	    return this._leafNode(new Break(label));
+	  }
+	  // `return` statement
+	  return(value) {
+	    const node = new Return();
+	    this._blockNode(node);
+	    this.code(value);
+	    if (node.nodes.length !== 1) throw new Error('CodeGen: "return" should have one node');
+	    return this._endBlockNode(Return);
+	  }
+	  // `try` statement
+	  try(tryBody, catchCode, finallyCode) {
+	    if (!catchCode && !finallyCode) throw new Error('CodeGen: "try" without "catch" and "finally"');
+	    const node = new Try();
+	    this._blockNode(node);
+	    this.code(tryBody);
+	    if (catchCode) {
+	      const error = this.name("e");
+	      this._currNode = node.catch = new Catch(error);
+	      catchCode(error);
+	    }
+	    if (finallyCode) {
+	      this._currNode = node.finally = new Finally();
+	      this.code(finallyCode);
+	    }
+	    return this._endBlockNode(Catch, Finally);
+	  }
+	  // `throw` statement
+	  throw(error) {
+	    return this._leafNode(new Throw(error));
+	  }
+	  // start self-balancing block
+	  block(body, nodeCount) {
+	    this._blockStarts.push(this._nodes.length);
+	    if (body) this.code(body).endBlock(nodeCount);
+	    return this;
+	  }
+	  // end the current self-balancing block
+	  endBlock(nodeCount) {
+	    const len = this._blockStarts.pop();
+	    if (len === undefined) throw new Error("CodeGen: not in self-balancing block");
+	    const toClose = this._nodes.length - len;
+	    if (toClose < 0 || nodeCount !== undefined && toClose !== nodeCount) {
+	      throw new Error(`CodeGen: wrong number of nodes: ${toClose} vs ${nodeCount} expected`);
+	    }
+	    this._nodes.length = len;
+	    return this;
+	  }
+	  // `function` heading (or definition if funcBody is passed)
+	  func(name, args = code_1.nil, async, funcBody) {
+	    this._blockNode(new Func(name, args, async));
+	    if (funcBody) this.code(funcBody).endFunc();
+	    return this;
+	  }
+	  // end function definition
+	  endFunc() {
+	    return this._endBlockNode(Func);
+	  }
+	  optimize(n = 1) {
+	    while (n-- > 0) {
+	      this._root.optimizeNodes();
+	      this._root.optimizeNames(this._root.names, this._constants);
+	    }
+	  }
+	  _leafNode(node) {
+	    this._currNode.nodes.push(node);
+	    return this;
+	  }
+	  _blockNode(node) {
+	    this._currNode.nodes.push(node);
+	    this._nodes.push(node);
+	  }
+	  _endBlockNode(N1, N2) {
+	    const n = this._currNode;
+	    if (n instanceof N1 || N2 && n instanceof N2) {
+	      this._nodes.pop();
+	      return this;
+	    }
+	    throw new Error(`CodeGen: not in block "${N2 ? `${N1.kind}/${N2.kind}` : N1.kind}"`);
+	  }
+	  _elseNode(node) {
+	    const n = this._currNode;
+	    if (!(n instanceof If)) {
+	      throw new Error('CodeGen: "else" without "if"');
+	    }
+	    this._currNode = n.else = node;
+	    return this;
+	  }
+	  get _root() {
+	    return this._nodes[0];
+	  }
+	  get _currNode() {
+	    const ns = this._nodes;
+	    return ns[ns.length - 1];
+	  }
+	  set _currNode(node) {
+	    const ns = this._nodes;
+	    ns[ns.length - 1] = node;
+	  }
+	}
+	exports.CodeGen = CodeGen;
+	function addNames(names, from) {
+	  for (const n in from) names[n] = (names[n] || 0) + (from[n] || 0);
+	  return names;
+	}
+	function addExprNames(names, from) {
+	  return from instanceof code_1._CodeOrName ? addNames(names, from.names) : names;
+	}
+	function optimizeExpr(expr, names, constants) {
+	  if (expr instanceof code_1.Name) return replaceName(expr);
+	  if (!canOptimize(expr)) return expr;
+	  return new code_1._Code(expr._items.reduce((items, c) => {
+	    if (c instanceof code_1.Name) c = replaceName(c);
+	    if (c instanceof code_1._Code) items.push(...c._items);else items.push(c);
+	    return items;
+	  }, []));
+	  function replaceName(n) {
+	    const c = constants[n.str];
+	    if (c === undefined || names[n.str] !== 1) return n;
+	    delete names[n.str];
+	    return c;
+	  }
+	  function canOptimize(e) {
+	    return e instanceof code_1._Code && e._items.some(c => c instanceof code_1.Name && names[c.str] === 1 && constants[c.str] !== undefined);
+	  }
+	}
+	function subtractNames(names, from) {
+	  for (const n in from) names[n] = (names[n] || 0) - (from[n] || 0);
+	}
+	function not(x) {
+	  return typeof x == "boolean" || typeof x == "number" || x === null ? !x : (0, code_1._)`!${par(x)}`;
+	}
+	exports.not = not;
+	const andCode = mappend(exports.operators.AND);
+	// boolean AND (&&) expression with the passed arguments
+	function and(...args) {
+	  return args.reduce(andCode);
+	}
+	exports.and = and;
+	const orCode = mappend(exports.operators.OR);
+	// boolean OR (||) expression with the passed arguments
+	function or(...args) {
+	  return args.reduce(orCode);
+	}
+	exports.or = or;
+	function mappend(op) {
+	  return (x, y) => x === code_1.nil ? y : y === code_1.nil ? x : (0, code_1._)`${par(x)} ${op} ${par(y)}`;
+	}
+	function par(x) {
+	  return x instanceof code_1.Name ? x : (0, code_1._)`(${x})`;
+	} 
+} (codegen));
 
 var util = {};
 
@@ -19322,177 +19321,177 @@ names$1.default = names;
 
 (function (exports) {
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.extendErrors = exports.resetErrorsCount = exports.reportExtraError = exports.reportError = exports.keyword$DataError = exports.keywordError = void 0;
-  const codegen_1 = codegen;
-  const util_1 = util;
-  const names_1 = names$1;
-  exports.keywordError = {
-    message: ({
-      keyword
-    }) => (0, codegen_1.str)`must pass "${keyword}" keyword validation`
-  };
-  exports.keyword$DataError = {
-    message: ({
-      keyword,
-      schemaType
-    }) => schemaType ? (0, codegen_1.str)`"${keyword}" keyword must be ${schemaType} ($data)` : (0, codegen_1.str)`"${keyword}" keyword is invalid ($data)`
-  };
-  function reportError(cxt, error = exports.keywordError, errorPaths, overrideAllErrors) {
-    const {
-      it
-    } = cxt;
-    const {
-      gen,
-      compositeRule,
-      allErrors
-    } = it;
-    const errObj = errorObjectCode(cxt, error, errorPaths);
-    if (overrideAllErrors !== null && overrideAllErrors !== void 0 ? overrideAllErrors : compositeRule || allErrors) {
-      addError(gen, errObj);
-    } else {
-      returnErrors(it, (0, codegen_1._)`[${errObj}]`);
-    }
-  }
-  exports.reportError = reportError;
-  function reportExtraError(cxt, error = exports.keywordError, errorPaths) {
-    const {
-      it
-    } = cxt;
-    const {
-      gen,
-      compositeRule,
-      allErrors
-    } = it;
-    const errObj = errorObjectCode(cxt, error, errorPaths);
-    addError(gen, errObj);
-    if (!(compositeRule || allErrors)) {
-      returnErrors(it, names_1.default.vErrors);
-    }
-  }
-  exports.reportExtraError = reportExtraError;
-  function resetErrorsCount(gen, errsCount) {
-    gen.assign(names_1.default.errors, errsCount);
-    gen.if((0, codegen_1._)`${names_1.default.vErrors} !== null`, () => gen.if(errsCount, () => gen.assign((0, codegen_1._)`${names_1.default.vErrors}.length`, errsCount), () => gen.assign(names_1.default.vErrors, null)));
-  }
-  exports.resetErrorsCount = resetErrorsCount;
-  function extendErrors({
-    gen,
-    keyword,
-    schemaValue,
-    data,
-    errsCount,
-    it
-  }) {
-    /* istanbul ignore if */
-    if (errsCount === undefined) throw new Error("ajv implementation error");
-    const err = gen.name("err");
-    gen.forRange("i", errsCount, names_1.default.errors, i => {
-      gen.const(err, (0, codegen_1._)`${names_1.default.vErrors}[${i}]`);
-      gen.if((0, codegen_1._)`${err}.instancePath === undefined`, () => gen.assign((0, codegen_1._)`${err}.instancePath`, (0, codegen_1.strConcat)(names_1.default.instancePath, it.errorPath)));
-      gen.assign((0, codegen_1._)`${err}.schemaPath`, (0, codegen_1.str)`${it.errSchemaPath}/${keyword}`);
-      if (it.opts.verbose) {
-        gen.assign((0, codegen_1._)`${err}.schema`, schemaValue);
-        gen.assign((0, codegen_1._)`${err}.data`, data);
-      }
-    });
-  }
-  exports.extendErrors = extendErrors;
-  function addError(gen, errObj) {
-    const err = gen.const("err", errObj);
-    gen.if((0, codegen_1._)`${names_1.default.vErrors} === null`, () => gen.assign(names_1.default.vErrors, (0, codegen_1._)`[${err}]`), (0, codegen_1._)`${names_1.default.vErrors}.push(${err})`);
-    gen.code((0, codegen_1._)`${names_1.default.errors}++`);
-  }
-  function returnErrors(it, errs) {
-    const {
-      gen,
-      validateName,
-      schemaEnv
-    } = it;
-    if (schemaEnv.$async) {
-      gen.throw((0, codegen_1._)`new ${it.ValidationError}(${errs})`);
-    } else {
-      gen.assign((0, codegen_1._)`${validateName}.errors`, errs);
-      gen.return(false);
-    }
-  }
-  const E = {
-    keyword: new codegen_1.Name("keyword"),
-    schemaPath: new codegen_1.Name("schemaPath"),
-    // also used in JTD errors
-    params: new codegen_1.Name("params"),
-    propertyName: new codegen_1.Name("propertyName"),
-    message: new codegen_1.Name("message"),
-    schema: new codegen_1.Name("schema"),
-    parentSchema: new codegen_1.Name("parentSchema")
-  };
-  function errorObjectCode(cxt, error, errorPaths) {
-    const {
-      createErrors
-    } = cxt.it;
-    if (createErrors === false) return (0, codegen_1._)`{}`;
-    return errorObject(cxt, error, errorPaths);
-  }
-  function errorObject(cxt, error, errorPaths = {}) {
-    const {
-      gen,
-      it
-    } = cxt;
-    const keyValues = [errorInstancePath(it, errorPaths), errorSchemaPath(cxt, errorPaths)];
-    extraErrorProps(cxt, error, keyValues);
-    return gen.object(...keyValues);
-  }
-  function errorInstancePath({
-    errorPath
-  }, {
-    instancePath
-  }) {
-    const instPath = instancePath ? (0, codegen_1.str)`${errorPath}${(0, util_1.getErrorPath)(instancePath, util_1.Type.Str)}` : errorPath;
-    return [names_1.default.instancePath, (0, codegen_1.strConcat)(names_1.default.instancePath, instPath)];
-  }
-  function errorSchemaPath({
-    keyword,
-    it: {
-      errSchemaPath
-    }
-  }, {
-    schemaPath,
-    parentSchema
-  }) {
-    let schPath = parentSchema ? errSchemaPath : (0, codegen_1.str)`${errSchemaPath}/${keyword}`;
-    if (schemaPath) {
-      schPath = (0, codegen_1.str)`${schPath}${(0, util_1.getErrorPath)(schemaPath, util_1.Type.Str)}`;
-    }
-    return [E.schemaPath, schPath];
-  }
-  function extraErrorProps(cxt, {
-    params,
-    message
-  }, keyValues) {
-    const {
-      keyword,
-      data,
-      schemaValue,
-      it
-    } = cxt;
-    const {
-      opts,
-      propertyName,
-      topSchemaRef,
-      schemaPath
-    } = it;
-    keyValues.push([E.keyword, keyword], [E.params, typeof params == "function" ? params(cxt) : params || (0, codegen_1._)`{}`]);
-    if (opts.messages) {
-      keyValues.push([E.message, typeof message == "function" ? message(cxt) : message]);
-    }
-    if (opts.verbose) {
-      keyValues.push([E.schema, schemaValue], [E.parentSchema, (0, codegen_1._)`${topSchemaRef}${schemaPath}`], [names_1.default.data, data]);
-    }
-    if (propertyName) keyValues.push([E.propertyName, propertyName]);
-  }
-}(errors));
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.extendErrors = exports.resetErrorsCount = exports.reportExtraError = exports.reportError = exports.keyword$DataError = exports.keywordError = void 0;
+	const codegen_1 = codegen;
+	const util_1 = util;
+	const names_1 = names$1;
+	exports.keywordError = {
+	  message: ({
+	    keyword
+	  }) => (0, codegen_1.str)`must pass "${keyword}" keyword validation`
+	};
+	exports.keyword$DataError = {
+	  message: ({
+	    keyword,
+	    schemaType
+	  }) => schemaType ? (0, codegen_1.str)`"${keyword}" keyword must be ${schemaType} ($data)` : (0, codegen_1.str)`"${keyword}" keyword is invalid ($data)`
+	};
+	function reportError(cxt, error = exports.keywordError, errorPaths, overrideAllErrors) {
+	  const {
+	    it
+	  } = cxt;
+	  const {
+	    gen,
+	    compositeRule,
+	    allErrors
+	  } = it;
+	  const errObj = errorObjectCode(cxt, error, errorPaths);
+	  if (overrideAllErrors !== null && overrideAllErrors !== void 0 ? overrideAllErrors : compositeRule || allErrors) {
+	    addError(gen, errObj);
+	  } else {
+	    returnErrors(it, (0, codegen_1._)`[${errObj}]`);
+	  }
+	}
+	exports.reportError = reportError;
+	function reportExtraError(cxt, error = exports.keywordError, errorPaths) {
+	  const {
+	    it
+	  } = cxt;
+	  const {
+	    gen,
+	    compositeRule,
+	    allErrors
+	  } = it;
+	  const errObj = errorObjectCode(cxt, error, errorPaths);
+	  addError(gen, errObj);
+	  if (!(compositeRule || allErrors)) {
+	    returnErrors(it, names_1.default.vErrors);
+	  }
+	}
+	exports.reportExtraError = reportExtraError;
+	function resetErrorsCount(gen, errsCount) {
+	  gen.assign(names_1.default.errors, errsCount);
+	  gen.if((0, codegen_1._)`${names_1.default.vErrors} !== null`, () => gen.if(errsCount, () => gen.assign((0, codegen_1._)`${names_1.default.vErrors}.length`, errsCount), () => gen.assign(names_1.default.vErrors, null)));
+	}
+	exports.resetErrorsCount = resetErrorsCount;
+	function extendErrors({
+	  gen,
+	  keyword,
+	  schemaValue,
+	  data,
+	  errsCount,
+	  it
+	}) {
+	  /* istanbul ignore if */
+	  if (errsCount === undefined) throw new Error("ajv implementation error");
+	  const err = gen.name("err");
+	  gen.forRange("i", errsCount, names_1.default.errors, i => {
+	    gen.const(err, (0, codegen_1._)`${names_1.default.vErrors}[${i}]`);
+	    gen.if((0, codegen_1._)`${err}.instancePath === undefined`, () => gen.assign((0, codegen_1._)`${err}.instancePath`, (0, codegen_1.strConcat)(names_1.default.instancePath, it.errorPath)));
+	    gen.assign((0, codegen_1._)`${err}.schemaPath`, (0, codegen_1.str)`${it.errSchemaPath}/${keyword}`);
+	    if (it.opts.verbose) {
+	      gen.assign((0, codegen_1._)`${err}.schema`, schemaValue);
+	      gen.assign((0, codegen_1._)`${err}.data`, data);
+	    }
+	  });
+	}
+	exports.extendErrors = extendErrors;
+	function addError(gen, errObj) {
+	  const err = gen.const("err", errObj);
+	  gen.if((0, codegen_1._)`${names_1.default.vErrors} === null`, () => gen.assign(names_1.default.vErrors, (0, codegen_1._)`[${err}]`), (0, codegen_1._)`${names_1.default.vErrors}.push(${err})`);
+	  gen.code((0, codegen_1._)`${names_1.default.errors}++`);
+	}
+	function returnErrors(it, errs) {
+	  const {
+	    gen,
+	    validateName,
+	    schemaEnv
+	  } = it;
+	  if (schemaEnv.$async) {
+	    gen.throw((0, codegen_1._)`new ${it.ValidationError}(${errs})`);
+	  } else {
+	    gen.assign((0, codegen_1._)`${validateName}.errors`, errs);
+	    gen.return(false);
+	  }
+	}
+	const E = {
+	  keyword: new codegen_1.Name("keyword"),
+	  schemaPath: new codegen_1.Name("schemaPath"),
+	  // also used in JTD errors
+	  params: new codegen_1.Name("params"),
+	  propertyName: new codegen_1.Name("propertyName"),
+	  message: new codegen_1.Name("message"),
+	  schema: new codegen_1.Name("schema"),
+	  parentSchema: new codegen_1.Name("parentSchema")
+	};
+	function errorObjectCode(cxt, error, errorPaths) {
+	  const {
+	    createErrors
+	  } = cxt.it;
+	  if (createErrors === false) return (0, codegen_1._)`{}`;
+	  return errorObject(cxt, error, errorPaths);
+	}
+	function errorObject(cxt, error, errorPaths = {}) {
+	  const {
+	    gen,
+	    it
+	  } = cxt;
+	  const keyValues = [errorInstancePath(it, errorPaths), errorSchemaPath(cxt, errorPaths)];
+	  extraErrorProps(cxt, error, keyValues);
+	  return gen.object(...keyValues);
+	}
+	function errorInstancePath({
+	  errorPath
+	}, {
+	  instancePath
+	}) {
+	  const instPath = instancePath ? (0, codegen_1.str)`${errorPath}${(0, util_1.getErrorPath)(instancePath, util_1.Type.Str)}` : errorPath;
+	  return [names_1.default.instancePath, (0, codegen_1.strConcat)(names_1.default.instancePath, instPath)];
+	}
+	function errorSchemaPath({
+	  keyword,
+	  it: {
+	    errSchemaPath
+	  }
+	}, {
+	  schemaPath,
+	  parentSchema
+	}) {
+	  let schPath = parentSchema ? errSchemaPath : (0, codegen_1.str)`${errSchemaPath}/${keyword}`;
+	  if (schemaPath) {
+	    schPath = (0, codegen_1.str)`${schPath}${(0, util_1.getErrorPath)(schemaPath, util_1.Type.Str)}`;
+	  }
+	  return [E.schemaPath, schPath];
+	}
+	function extraErrorProps(cxt, {
+	  params,
+	  message
+	}, keyValues) {
+	  const {
+	    keyword,
+	    data,
+	    schemaValue,
+	    it
+	  } = cxt;
+	  const {
+	    opts,
+	    propertyName,
+	    topSchemaRef,
+	    schemaPath
+	  } = it;
+	  keyValues.push([E.keyword, keyword], [E.params, typeof params == "function" ? params(cxt) : params || (0, codegen_1._)`{}`]);
+	  if (opts.messages) {
+	    keyValues.push([E.message, typeof message == "function" ? message(cxt) : message]);
+	  }
+	  if (opts.verbose) {
+	    keyValues.push([E.schema, schemaValue], [E.parentSchema, (0, codegen_1._)`${topSchemaRef}${schemaPath}`], [names_1.default.data, data]);
+	  }
+	  if (propertyName) keyValues.push([E.propertyName, propertyName]);
+	} 
+} (errors));
 
 Object.defineProperty(boolSchema, "__esModule", {
   value: true
@@ -19674,7 +19673,7 @@ function coerceAndCheckDataType(it, types) {
   if (checkTypes) {
     const wrongType = checkDataTypes(types, data, opts.strictNumbers, DataType.Wrong);
     gen.if(wrongType, () => {
-      if (coerceTo.length) coerceData(it, types, coerceTo); else reportTypeError(it);
+      if (coerceTo.length) coerceData(it, types, coerceTo);else reportTypeError(it);
     });
   }
   return checkTypes;
@@ -20168,7 +20167,7 @@ function validateKeywordUsage({
     const valid = def.validateSchema(schema[keyword]);
     if (!valid) {
       const msg = `keyword "${keyword}" value is invalid at path "${errSchemaPath}": ` + self.errorsText(def.validateSchema.errors);
-      if (opts.validateSchema === "log") self.logger.error(msg); else throw new Error(msg);
+      if (opts.validateSchema === "log") self.logger.error(msg);else throw new Error(msg);
     }
   }
 }
@@ -20308,7 +20307,7 @@ var fastDeepEqual = function equal(a, b) {
   return a !== a && b !== b;
 };
 
-var jsonSchemaTraverse = { exports: {} };
+var jsonSchemaTraverse = {exports: {}};
 
 var traverse$1 = jsonSchemaTraverse.exports = function (schema, opts, cb) {
   // Legacy support for v0.3.1 and earlier.
@@ -20317,8 +20316,8 @@ var traverse$1 = jsonSchemaTraverse.exports = function (schema, opts, cb) {
     opts = {};
   }
   cb = opts.cb || cb;
-  var pre = typeof cb == 'function' ? cb : cb.pre || function () { };
-  var post = cb.post || function () { };
+  var pre = typeof cb == 'function' ? cb : cb.pre || function () {};
+  var post = cb.post || function () {};
   _traverse(opts, pre, post, schema, '', schema);
 };
 traverse$1.keywords = {
@@ -20825,7 +20824,7 @@ function includesType(ts, t) {
 function narrowSchemaTypes(it, withTypes) {
   const ts = [];
   for (const t of it.dataTypes) {
-    if (includesType(withTypes, t)) ts.push(t); else if (withTypes.includes("integer") && t === "number") ts.push("integer");
+    if (includesType(withTypes, t)) ts.push(t);else if (withTypes.includes("integer") && t === "number") ts.push("integer");
   }
   it.dataTypes = ts;
 }
@@ -20866,13 +20865,13 @@ class KeywordCxt {
   }
   failResult(condition, successAction, failAction) {
     this.gen.if(condition);
-    if (failAction) failAction(); else this.error();
+    if (failAction) failAction();else this.error();
     if (successAction) {
       this.gen.else();
       successAction();
       if (this.allErrors) this.gen.endIf();
     } else {
-      if (this.allErrors) this.gen.endIf(); else this.gen.else();
+      if (this.allErrors) this.gen.endIf();else this.gen.else();
     }
   }
   pass(condition, failAction) {
@@ -20886,7 +20885,7 @@ class KeywordCxt {
     }
     this.gen.if(condition);
     this.error();
-    if (this.allErrors) this.gen.endIf(); else this.gen.else();
+    if (this.allErrors) this.gen.endIf();else this.gen.else();
   }
   fail$data(condition) {
     if (!this.$data) return this.fail(condition);
@@ -20918,7 +20917,7 @@ class KeywordCxt {
     if (!this.allErrors) this.gen.if(cond);
   }
   setParams(obj, assign) {
-    if (assign) Object.assign(this.params, obj); else this.params = obj;
+    if (assign) Object.assign(this.params, obj);else this.params = obj;
   }
   block$data(valid, codeBlock, $dataValid = codegen_1$n.nil) {
     this.gen.block(() => {
@@ -21274,8 +21273,8 @@ function sameSchemaEnv(s1, s2) {
 // resolve and compile the references ($ref)
 // TODO returns AnySchemaObject (if the schema can be inlined) or validation function
 function resolve(root,
-  // information about the root schema for the current schema
-  ref // reference to resolve
+// information about the root schema for the current schema
+ref // reference to resolve
 ) {
   let sch;
   while (typeof (sch = this.refs[ref]) == "string") ref = sch;
@@ -21283,8 +21282,8 @@ function resolve(root,
 }
 // Resolve schema, its root and baseId
 function resolveSchema(root,
-  // root object with properties schema, refs TODO below SchemaEnv is assigned to it
-  ref // reference to resolve
+// root object with properties schema, refs TODO below SchemaEnv is assigned to it
+ref // reference to resolve
 ) {
   const p = this.opts.uriResolver.parse(ref);
   const refPath = (0, resolve_1._getFullPath)(this.opts.uriResolver, p);
@@ -21364,1370 +21363,1370 @@ const $id$1 = "https://raw.githubusercontent.com/ajv-validator/ajv/master/lib/re
 const description = "Meta-schema for $data reference (JSON AnySchema extension proposal)";
 const type$1 = "object";
 const required$1 = [
-  "$data"
+	"$data"
 ];
 const properties$2 = {
-  $data: {
-    type: "string",
-    anyOf: [
-      {
-        format: "relative-json-pointer"
-      },
-      {
-        format: "json-pointer"
-      }
-    ]
-  }
+	$data: {
+		type: "string",
+		anyOf: [
+			{
+				format: "relative-json-pointer"
+			},
+			{
+				format: "json-pointer"
+			}
+		]
+	}
 };
 const additionalProperties$1 = false;
 const require$$9 = {
-  $id: $id$1,
-  description: description,
-  type: type$1,
-  required: required$1,
-  properties: properties$2,
-  additionalProperties: additionalProperties$1
+	$id: $id$1,
+	description: description,
+	type: type$1,
+	required: required$1,
+	properties: properties$2,
+	additionalProperties: additionalProperties$1
 };
 
 var uri$1 = {};
 
-var uri_all = { exports: {} };
+var uri_all = {exports: {}};
 
 /** @license URI.js v4.4.1 (c) 2011 Gary Court. License: http://github.com/garycourt/uri-js */
 
 (function (module, exports) {
-  (function (global, factory) {
-    factory(exports);
-  })(commonjsGlobal, function (exports) {
+	(function (global, factory) {
+	  factory(exports) ;
+	})(commonjsGlobal, function (exports) {
 
-    function merge() {
-      for (var _len = arguments.length, sets = Array(_len), _key = 0; _key < _len; _key++) {
-        sets[_key] = arguments[_key];
-      }
-      if (sets.length > 1) {
-        sets[0] = sets[0].slice(0, -1);
-        var xl = sets.length - 1;
-        for (var x = 1; x < xl; ++x) {
-          sets[x] = sets[x].slice(1, -1);
-        }
-        sets[xl] = sets[xl].slice(1);
-        return sets.join('');
-      } else {
-        return sets[0];
-      }
-    }
-    function subexp(str) {
-      return "(?:" + str + ")";
-    }
-    function typeOf(o) {
-      return o === undefined ? "undefined" : o === null ? "null" : Object.prototype.toString.call(o).split(" ").pop().split("]").shift().toLowerCase();
-    }
-    function toUpperCase(str) {
-      return str.toUpperCase();
-    }
-    function toArray(obj) {
-      return obj !== undefined && obj !== null ? obj instanceof Array ? obj : typeof obj.length !== "number" || obj.split || obj.setInterval || obj.call ? [obj] : Array.prototype.slice.call(obj) : [];
-    }
-    function assign(target, source) {
-      var obj = target;
-      if (source) {
-        for (var key in source) {
-          obj[key] = source[key];
-        }
-      }
-      return obj;
-    }
-    function buildExps(isIRI) {
-      var ALPHA$$ = "[A-Za-z]",
-        DIGIT$$ = "[0-9]",
-        HEXDIG$$ = merge(DIGIT$$, "[A-Fa-f]"),
-        PCT_ENCODED$ = subexp(subexp("%[EFef]" + HEXDIG$$ + "%" + HEXDIG$$ + HEXDIG$$ + "%" + HEXDIG$$ + HEXDIG$$) + "|" + subexp("%[89A-Fa-f]" + HEXDIG$$ + "%" + HEXDIG$$ + HEXDIG$$) + "|" + subexp("%" + HEXDIG$$ + HEXDIG$$)),
-        //expanded
-        GEN_DELIMS$$ = "[\\:\\/\\?\\#\\[\\]\\@]",
-        SUB_DELIMS$$ = "[\\!\\$\\&\\'\\(\\)\\*\\+\\,\\;\\=]",
-        RESERVED$$ = merge(GEN_DELIMS$$, SUB_DELIMS$$),
-        UCSCHAR$$ = isIRI ? "[\\xA0-\\u200D\\u2010-\\u2029\\u202F-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF]" : "[]",
-        //subset, excludes bidi control characters
-        IPRIVATE$$ = isIRI ? "[\\uE000-\\uF8FF]" : "[]",
-        //subset
-        UNRESERVED$$ = merge(ALPHA$$, DIGIT$$, "[\\-\\.\\_\\~]", UCSCHAR$$);
-      subexp(ALPHA$$ + merge(ALPHA$$, DIGIT$$, "[\\+\\-\\.]") + "*");
-      subexp(subexp(PCT_ENCODED$ + "|" + merge(UNRESERVED$$, SUB_DELIMS$$, "[\\:]")) + "*");
-      var DEC_OCTET_RELAXED$ = subexp(subexp("25[0-5]") + "|" + subexp("2[0-4]" + DIGIT$$) + "|" + subexp("1" + DIGIT$$ + DIGIT$$) + "|" + subexp("0?[1-9]" + DIGIT$$) + "|0?0?" + DIGIT$$),
-        //relaxed parsing rules
-        IPV4ADDRESS$ = subexp(DEC_OCTET_RELAXED$ + "\\." + DEC_OCTET_RELAXED$ + "\\." + DEC_OCTET_RELAXED$ + "\\." + DEC_OCTET_RELAXED$),
-        H16$ = subexp(HEXDIG$$ + "{1,4}"),
-        LS32$ = subexp(subexp(H16$ + "\\:" + H16$) + "|" + IPV4ADDRESS$),
-        IPV6ADDRESS1$ = subexp(subexp(H16$ + "\\:") + "{6}" + LS32$),
-        //                           6( h16 ":" ) ls32
-        IPV6ADDRESS2$ = subexp("\\:\\:" + subexp(H16$ + "\\:") + "{5}" + LS32$),
-        //                      "::" 5( h16 ":" ) ls32
-        IPV6ADDRESS3$ = subexp(subexp(H16$) + "?\\:\\:" + subexp(H16$ + "\\:") + "{4}" + LS32$),
-        //[               h16 ] "::" 4( h16 ":" ) ls32
-        IPV6ADDRESS4$ = subexp(subexp(subexp(H16$ + "\\:") + "{0,1}" + H16$) + "?\\:\\:" + subexp(H16$ + "\\:") + "{3}" + LS32$),
-        //[ *1( h16 ":" ) h16 ] "::" 3( h16 ":" ) ls32
-        IPV6ADDRESS5$ = subexp(subexp(subexp(H16$ + "\\:") + "{0,2}" + H16$) + "?\\:\\:" + subexp(H16$ + "\\:") + "{2}" + LS32$),
-        //[ *2( h16 ":" ) h16 ] "::" 2( h16 ":" ) ls32
-        IPV6ADDRESS6$ = subexp(subexp(subexp(H16$ + "\\:") + "{0,3}" + H16$) + "?\\:\\:" + H16$ + "\\:" + LS32$),
-        //[ *3( h16 ":" ) h16 ] "::"    h16 ":"   ls32
-        IPV6ADDRESS7$ = subexp(subexp(subexp(H16$ + "\\:") + "{0,4}" + H16$) + "?\\:\\:" + LS32$),
-        //[ *4( h16 ":" ) h16 ] "::"              ls32
-        IPV6ADDRESS8$ = subexp(subexp(subexp(H16$ + "\\:") + "{0,5}" + H16$) + "?\\:\\:" + H16$),
-        //[ *5( h16 ":" ) h16 ] "::"              h16
-        IPV6ADDRESS9$ = subexp(subexp(subexp(H16$ + "\\:") + "{0,6}" + H16$) + "?\\:\\:"),
-        //[ *6( h16 ":" ) h16 ] "::"
-        IPV6ADDRESS$ = subexp([IPV6ADDRESS1$, IPV6ADDRESS2$, IPV6ADDRESS3$, IPV6ADDRESS4$, IPV6ADDRESS5$, IPV6ADDRESS6$, IPV6ADDRESS7$, IPV6ADDRESS8$, IPV6ADDRESS9$].join("|")),
-        ZONEID$ = subexp(subexp(UNRESERVED$$ + "|" + PCT_ENCODED$) + "+");
-      //RFC 6874, with relaxed parsing rules
-      subexp("[vV]" + HEXDIG$$ + "+\\." + merge(UNRESERVED$$, SUB_DELIMS$$, "[\\:]") + "+");
-      //RFC 6874
-      subexp(subexp(PCT_ENCODED$ + "|" + merge(UNRESERVED$$, SUB_DELIMS$$)) + "*");
-      var PCHAR$ = subexp(PCT_ENCODED$ + "|" + merge(UNRESERVED$$, SUB_DELIMS$$, "[\\:\\@]"));
-      subexp(subexp(PCT_ENCODED$ + "|" + merge(UNRESERVED$$, SUB_DELIMS$$, "[\\@]")) + "+");
-      subexp(subexp(PCHAR$ + "|" + merge("[\\/\\?]", IPRIVATE$$)) + "*");
-      return {
-        NOT_SCHEME: new RegExp(merge("[^]", ALPHA$$, DIGIT$$, "[\\+\\-\\.]"), "g"),
-        NOT_USERINFO: new RegExp(merge("[^\\%\\:]", UNRESERVED$$, SUB_DELIMS$$), "g"),
-        NOT_HOST: new RegExp(merge("[^\\%\\[\\]\\:]", UNRESERVED$$, SUB_DELIMS$$), "g"),
-        NOT_PATH: new RegExp(merge("[^\\%\\/\\:\\@]", UNRESERVED$$, SUB_DELIMS$$), "g"),
-        NOT_PATH_NOSCHEME: new RegExp(merge("[^\\%\\/\\@]", UNRESERVED$$, SUB_DELIMS$$), "g"),
-        NOT_QUERY: new RegExp(merge("[^\\%]", UNRESERVED$$, SUB_DELIMS$$, "[\\:\\@\\/\\?]", IPRIVATE$$), "g"),
-        NOT_FRAGMENT: new RegExp(merge("[^\\%]", UNRESERVED$$, SUB_DELIMS$$, "[\\:\\@\\/\\?]"), "g"),
-        ESCAPE: new RegExp(merge("[^]", UNRESERVED$$, SUB_DELIMS$$), "g"),
-        UNRESERVED: new RegExp(UNRESERVED$$, "g"),
-        OTHER_CHARS: new RegExp(merge("[^\\%]", UNRESERVED$$, RESERVED$$), "g"),
-        PCT_ENCODED: new RegExp(PCT_ENCODED$, "g"),
-        IPV4ADDRESS: new RegExp("^(" + IPV4ADDRESS$ + ")$"),
-        IPV6ADDRESS: new RegExp("^\\[?(" + IPV6ADDRESS$ + ")" + subexp(subexp("\\%25|\\%(?!" + HEXDIG$$ + "{2})") + "(" + ZONEID$ + ")") + "?\\]?$") //RFC 6874, with relaxed parsing rules
-      };
-    }
-    var URI_PROTOCOL = buildExps(false);
-    var IRI_PROTOCOL = buildExps(true);
-    var slicedToArray = function () {
-      function sliceIterator(arr, i) {
-        var _arr = [];
-        var _n = true;
-        var _d = false;
-        var _e = undefined;
-        try {
-          for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-            _arr.push(_s.value);
-            if (i && _arr.length === i) break;
-          }
-        } catch (err) {
-          _d = true;
-          _e = err;
-        } finally {
-          try {
-            if (!_n && _i["return"]) _i["return"]();
-          } finally {
-            if (_d) throw _e;
-          }
-        }
-        return _arr;
-      }
-      return function (arr, i) {
-        if (Array.isArray(arr)) {
-          return arr;
-        } else if (Symbol.iterator in Object(arr)) {
-          return sliceIterator(arr, i);
-        } else {
-          throw new TypeError("Invalid attempt to destructure non-iterable instance");
-        }
-      };
-    }();
-    var toConsumableArray = function (arr) {
-      if (Array.isArray(arr)) {
-        for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
-        return arr2;
-      } else {
-        return Array.from(arr);
-      }
-    };
+	  function merge() {
+	    for (var _len = arguments.length, sets = Array(_len), _key = 0; _key < _len; _key++) {
+	      sets[_key] = arguments[_key];
+	    }
+	    if (sets.length > 1) {
+	      sets[0] = sets[0].slice(0, -1);
+	      var xl = sets.length - 1;
+	      for (var x = 1; x < xl; ++x) {
+	        sets[x] = sets[x].slice(1, -1);
+	      }
+	      sets[xl] = sets[xl].slice(1);
+	      return sets.join('');
+	    } else {
+	      return sets[0];
+	    }
+	  }
+	  function subexp(str) {
+	    return "(?:" + str + ")";
+	  }
+	  function typeOf(o) {
+	    return o === undefined ? "undefined" : o === null ? "null" : Object.prototype.toString.call(o).split(" ").pop().split("]").shift().toLowerCase();
+	  }
+	  function toUpperCase(str) {
+	    return str.toUpperCase();
+	  }
+	  function toArray(obj) {
+	    return obj !== undefined && obj !== null ? obj instanceof Array ? obj : typeof obj.length !== "number" || obj.split || obj.setInterval || obj.call ? [obj] : Array.prototype.slice.call(obj) : [];
+	  }
+	  function assign(target, source) {
+	    var obj = target;
+	    if (source) {
+	      for (var key in source) {
+	        obj[key] = source[key];
+	      }
+	    }
+	    return obj;
+	  }
+	  function buildExps(isIRI) {
+	    var ALPHA$$ = "[A-Za-z]",
+	      DIGIT$$ = "[0-9]",
+	      HEXDIG$$ = merge(DIGIT$$, "[A-Fa-f]"),
+	      PCT_ENCODED$ = subexp(subexp("%[EFef]" + HEXDIG$$ + "%" + HEXDIG$$ + HEXDIG$$ + "%" + HEXDIG$$ + HEXDIG$$) + "|" + subexp("%[89A-Fa-f]" + HEXDIG$$ + "%" + HEXDIG$$ + HEXDIG$$) + "|" + subexp("%" + HEXDIG$$ + HEXDIG$$)),
+	      //expanded
+	      GEN_DELIMS$$ = "[\\:\\/\\?\\#\\[\\]\\@]",
+	      SUB_DELIMS$$ = "[\\!\\$\\&\\'\\(\\)\\*\\+\\,\\;\\=]",
+	      RESERVED$$ = merge(GEN_DELIMS$$, SUB_DELIMS$$),
+	      UCSCHAR$$ = isIRI ? "[\\xA0-\\u200D\\u2010-\\u2029\\u202F-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF]" : "[]",
+	      //subset, excludes bidi control characters
+	      IPRIVATE$$ = isIRI ? "[\\uE000-\\uF8FF]" : "[]",
+	      //subset
+	      UNRESERVED$$ = merge(ALPHA$$, DIGIT$$, "[\\-\\.\\_\\~]", UCSCHAR$$);
+	      subexp(ALPHA$$ + merge(ALPHA$$, DIGIT$$, "[\\+\\-\\.]") + "*");
+	      subexp(subexp(PCT_ENCODED$ + "|" + merge(UNRESERVED$$, SUB_DELIMS$$, "[\\:]")) + "*");
+	      var DEC_OCTET_RELAXED$ = subexp(subexp("25[0-5]") + "|" + subexp("2[0-4]" + DIGIT$$) + "|" + subexp("1" + DIGIT$$ + DIGIT$$) + "|" + subexp("0?[1-9]" + DIGIT$$) + "|0?0?" + DIGIT$$),
+	      //relaxed parsing rules
+	      IPV4ADDRESS$ = subexp(DEC_OCTET_RELAXED$ + "\\." + DEC_OCTET_RELAXED$ + "\\." + DEC_OCTET_RELAXED$ + "\\." + DEC_OCTET_RELAXED$),
+	      H16$ = subexp(HEXDIG$$ + "{1,4}"),
+	      LS32$ = subexp(subexp(H16$ + "\\:" + H16$) + "|" + IPV4ADDRESS$),
+	      IPV6ADDRESS1$ = subexp(subexp(H16$ + "\\:") + "{6}" + LS32$),
+	      //                           6( h16 ":" ) ls32
+	      IPV6ADDRESS2$ = subexp("\\:\\:" + subexp(H16$ + "\\:") + "{5}" + LS32$),
+	      //                      "::" 5( h16 ":" ) ls32
+	      IPV6ADDRESS3$ = subexp(subexp(H16$) + "?\\:\\:" + subexp(H16$ + "\\:") + "{4}" + LS32$),
+	      //[               h16 ] "::" 4( h16 ":" ) ls32
+	      IPV6ADDRESS4$ = subexp(subexp(subexp(H16$ + "\\:") + "{0,1}" + H16$) + "?\\:\\:" + subexp(H16$ + "\\:") + "{3}" + LS32$),
+	      //[ *1( h16 ":" ) h16 ] "::" 3( h16 ":" ) ls32
+	      IPV6ADDRESS5$ = subexp(subexp(subexp(H16$ + "\\:") + "{0,2}" + H16$) + "?\\:\\:" + subexp(H16$ + "\\:") + "{2}" + LS32$),
+	      //[ *2( h16 ":" ) h16 ] "::" 2( h16 ":" ) ls32
+	      IPV6ADDRESS6$ = subexp(subexp(subexp(H16$ + "\\:") + "{0,3}" + H16$) + "?\\:\\:" + H16$ + "\\:" + LS32$),
+	      //[ *3( h16 ":" ) h16 ] "::"    h16 ":"   ls32
+	      IPV6ADDRESS7$ = subexp(subexp(subexp(H16$ + "\\:") + "{0,4}" + H16$) + "?\\:\\:" + LS32$),
+	      //[ *4( h16 ":" ) h16 ] "::"              ls32
+	      IPV6ADDRESS8$ = subexp(subexp(subexp(H16$ + "\\:") + "{0,5}" + H16$) + "?\\:\\:" + H16$),
+	      //[ *5( h16 ":" ) h16 ] "::"              h16
+	      IPV6ADDRESS9$ = subexp(subexp(subexp(H16$ + "\\:") + "{0,6}" + H16$) + "?\\:\\:"),
+	      //[ *6( h16 ":" ) h16 ] "::"
+	      IPV6ADDRESS$ = subexp([IPV6ADDRESS1$, IPV6ADDRESS2$, IPV6ADDRESS3$, IPV6ADDRESS4$, IPV6ADDRESS5$, IPV6ADDRESS6$, IPV6ADDRESS7$, IPV6ADDRESS8$, IPV6ADDRESS9$].join("|")),
+	      ZONEID$ = subexp(subexp(UNRESERVED$$ + "|" + PCT_ENCODED$) + "+");
+	      //RFC 6874, with relaxed parsing rules
+	      subexp("[vV]" + HEXDIG$$ + "+\\." + merge(UNRESERVED$$, SUB_DELIMS$$, "[\\:]") + "+");
+	      //RFC 6874
+	      subexp(subexp(PCT_ENCODED$ + "|" + merge(UNRESERVED$$, SUB_DELIMS$$)) + "*");
+	      var PCHAR$ = subexp(PCT_ENCODED$ + "|" + merge(UNRESERVED$$, SUB_DELIMS$$, "[\\:\\@]"));
+	      subexp(subexp(PCT_ENCODED$ + "|" + merge(UNRESERVED$$, SUB_DELIMS$$, "[\\@]")) + "+");
+	      subexp(subexp(PCHAR$ + "|" + merge("[\\/\\?]", IPRIVATE$$)) + "*");
+	    return {
+	      NOT_SCHEME: new RegExp(merge("[^]", ALPHA$$, DIGIT$$, "[\\+\\-\\.]"), "g"),
+	      NOT_USERINFO: new RegExp(merge("[^\\%\\:]", UNRESERVED$$, SUB_DELIMS$$), "g"),
+	      NOT_HOST: new RegExp(merge("[^\\%\\[\\]\\:]", UNRESERVED$$, SUB_DELIMS$$), "g"),
+	      NOT_PATH: new RegExp(merge("[^\\%\\/\\:\\@]", UNRESERVED$$, SUB_DELIMS$$), "g"),
+	      NOT_PATH_NOSCHEME: new RegExp(merge("[^\\%\\/\\@]", UNRESERVED$$, SUB_DELIMS$$), "g"),
+	      NOT_QUERY: new RegExp(merge("[^\\%]", UNRESERVED$$, SUB_DELIMS$$, "[\\:\\@\\/\\?]", IPRIVATE$$), "g"),
+	      NOT_FRAGMENT: new RegExp(merge("[^\\%]", UNRESERVED$$, SUB_DELIMS$$, "[\\:\\@\\/\\?]"), "g"),
+	      ESCAPE: new RegExp(merge("[^]", UNRESERVED$$, SUB_DELIMS$$), "g"),
+	      UNRESERVED: new RegExp(UNRESERVED$$, "g"),
+	      OTHER_CHARS: new RegExp(merge("[^\\%]", UNRESERVED$$, RESERVED$$), "g"),
+	      PCT_ENCODED: new RegExp(PCT_ENCODED$, "g"),
+	      IPV4ADDRESS: new RegExp("^(" + IPV4ADDRESS$ + ")$"),
+	      IPV6ADDRESS: new RegExp("^\\[?(" + IPV6ADDRESS$ + ")" + subexp(subexp("\\%25|\\%(?!" + HEXDIG$$ + "{2})") + "(" + ZONEID$ + ")") + "?\\]?$") //RFC 6874, with relaxed parsing rules
+	    };
+	  }
+	  var URI_PROTOCOL = buildExps(false);
+	  var IRI_PROTOCOL = buildExps(true);
+	  var slicedToArray = function () {
+	    function sliceIterator(arr, i) {
+	      var _arr = [];
+	      var _n = true;
+	      var _d = false;
+	      var _e = undefined;
+	      try {
+	        for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+	          _arr.push(_s.value);
+	          if (i && _arr.length === i) break;
+	        }
+	      } catch (err) {
+	        _d = true;
+	        _e = err;
+	      } finally {
+	        try {
+	          if (!_n && _i["return"]) _i["return"]();
+	        } finally {
+	          if (_d) throw _e;
+	        }
+	      }
+	      return _arr;
+	    }
+	    return function (arr, i) {
+	      if (Array.isArray(arr)) {
+	        return arr;
+	      } else if (Symbol.iterator in Object(arr)) {
+	        return sliceIterator(arr, i);
+	      } else {
+	        throw new TypeError("Invalid attempt to destructure non-iterable instance");
+	      }
+	    };
+	  }();
+	  var toConsumableArray = function (arr) {
+	    if (Array.isArray(arr)) {
+	      for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+	      return arr2;
+	    } else {
+	      return Array.from(arr);
+	    }
+	  };
 
-    /** Highest positive signed 32-bit float value */
+	  /** Highest positive signed 32-bit float value */
 
-    var maxInt = 2147483647; // aka. 0x7FFFFFFF or 2^31-1
+	  var maxInt = 2147483647; // aka. 0x7FFFFFFF or 2^31-1
 
-    /** Bootstring parameters */
-    var base = 36;
-    var tMin = 1;
-    var tMax = 26;
-    var skew = 38;
-    var damp = 700;
-    var initialBias = 72;
-    var initialN = 128; // 0x80
-    var delimiter = '-'; // '\x2D'
+	  /** Bootstring parameters */
+	  var base = 36;
+	  var tMin = 1;
+	  var tMax = 26;
+	  var skew = 38;
+	  var damp = 700;
+	  var initialBias = 72;
+	  var initialN = 128; // 0x80
+	  var delimiter = '-'; // '\x2D'
 
-    /** Regular expressions */
-    var regexPunycode = /^xn--/;
-    var regexNonASCII = /[^\0-\x7E]/; // non-ASCII chars
-    var regexSeparators = /[\x2E\u3002\uFF0E\uFF61]/g; // RFC 3490 separators
+	  /** Regular expressions */
+	  var regexPunycode = /^xn--/;
+	  var regexNonASCII = /[^\0-\x7E]/; // non-ASCII chars
+	  var regexSeparators = /[\x2E\u3002\uFF0E\uFF61]/g; // RFC 3490 separators
 
-    /** Error messages */
-    var errors = {
-      'overflow': 'Overflow: input needs wider integers to process',
-      'not-basic': 'Illegal input >= 0x80 (not a basic code point)',
-      'invalid-input': 'Invalid input'
-    };
+	  /** Error messages */
+	  var errors = {
+	    'overflow': 'Overflow: input needs wider integers to process',
+	    'not-basic': 'Illegal input >= 0x80 (not a basic code point)',
+	    'invalid-input': 'Invalid input'
+	  };
 
-    /** Convenience shortcuts */
-    var baseMinusTMin = base - tMin;
-    var floor = Math.floor;
-    var stringFromCharCode = String.fromCharCode;
+	  /** Convenience shortcuts */
+	  var baseMinusTMin = base - tMin;
+	  var floor = Math.floor;
+	  var stringFromCharCode = String.fromCharCode;
 
-    /*--------------------------------------------------------------------------*/
+	  /*--------------------------------------------------------------------------*/
 
-    /**
-     * A generic error utility function.
-     * @private
-     * @param {String} type The error type.
-     * @returns {Error} Throws a `RangeError` with the applicable error message.
-     */
-    function error$1(type) {
-      throw new RangeError(errors[type]);
-    }
+	  /**
+	   * A generic error utility function.
+	   * @private
+	   * @param {String} type The error type.
+	   * @returns {Error} Throws a `RangeError` with the applicable error message.
+	   */
+	  function error$1(type) {
+	    throw new RangeError(errors[type]);
+	  }
 
-    /**
-     * A generic `Array#map` utility function.
-     * @private
-     * @param {Array} array The array to iterate over.
-     * @param {Function} callback The function that gets called for every array
-     * item.
-     * @returns {Array} A new array of values returned by the callback function.
-     */
-    function map(array, fn) {
-      var result = [];
-      var length = array.length;
-      while (length--) {
-        result[length] = fn(array[length]);
-      }
-      return result;
-    }
+	  /**
+	   * A generic `Array#map` utility function.
+	   * @private
+	   * @param {Array} array The array to iterate over.
+	   * @param {Function} callback The function that gets called for every array
+	   * item.
+	   * @returns {Array} A new array of values returned by the callback function.
+	   */
+	  function map(array, fn) {
+	    var result = [];
+	    var length = array.length;
+	    while (length--) {
+	      result[length] = fn(array[length]);
+	    }
+	    return result;
+	  }
 
-    /**
-     * A simple `Array#map`-like wrapper to work with domain name strings or email
-     * addresses.
-     * @private
-     * @param {String} domain The domain name or email address.
-     * @param {Function} callback The function that gets called for every
-     * character.
-     * @returns {Array} A new string of characters returned by the callback
-     * function.
-     */
-    function mapDomain(string, fn) {
-      var parts = string.split('@');
-      var result = '';
-      if (parts.length > 1) {
-        // In email addresses, only the domain name should be punycoded. Leave
-        // the local part (i.e. everything up to `@`) intact.
-        result = parts[0] + '@';
-        string = parts[1];
-      }
-      // Avoid `split(regex)` for IE8 compatibility. See #17.
-      string = string.replace(regexSeparators, '\x2E');
-      var labels = string.split('.');
-      var encoded = map(labels, fn).join('.');
-      return result + encoded;
-    }
+	  /**
+	   * A simple `Array#map`-like wrapper to work with domain name strings or email
+	   * addresses.
+	   * @private
+	   * @param {String} domain The domain name or email address.
+	   * @param {Function} callback The function that gets called for every
+	   * character.
+	   * @returns {Array} A new string of characters returned by the callback
+	   * function.
+	   */
+	  function mapDomain(string, fn) {
+	    var parts = string.split('@');
+	    var result = '';
+	    if (parts.length > 1) {
+	      // In email addresses, only the domain name should be punycoded. Leave
+	      // the local part (i.e. everything up to `@`) intact.
+	      result = parts[0] + '@';
+	      string = parts[1];
+	    }
+	    // Avoid `split(regex)` for IE8 compatibility. See #17.
+	    string = string.replace(regexSeparators, '\x2E');
+	    var labels = string.split('.');
+	    var encoded = map(labels, fn).join('.');
+	    return result + encoded;
+	  }
 
-    /**
-     * Creates an array containing the numeric code points of each Unicode
-     * character in the string. While JavaScript uses UCS-2 internally,
-     * this function will convert a pair of surrogate halves (each of which
-     * UCS-2 exposes as separate characters) into a single code point,
-     * matching UTF-16.
-     * @see `punycode.ucs2.encode`
-     * @see <https://mathiasbynens.be/notes/javascript-encoding>
-     * @memberOf punycode.ucs2
-     * @name decode
-     * @param {String} string The Unicode input string (UCS-2).
-     * @returns {Array} The new array of code points.
-     */
-    function ucs2decode(string) {
-      var output = [];
-      var counter = 0;
-      var length = string.length;
-      while (counter < length) {
-        var value = string.charCodeAt(counter++);
-        if (value >= 0xD800 && value <= 0xDBFF && counter < length) {
-          // It's a high surrogate, and there is a next character.
-          var extra = string.charCodeAt(counter++);
-          if ((extra & 0xFC00) == 0xDC00) {
-            // Low surrogate.
-            output.push(((value & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000);
-          } else {
-            // It's an unmatched surrogate; only append this code unit, in case the
-            // next code unit is the high surrogate of a surrogate pair.
-            output.push(value);
-            counter--;
-          }
-        } else {
-          output.push(value);
-        }
-      }
-      return output;
-    }
+	  /**
+	   * Creates an array containing the numeric code points of each Unicode
+	   * character in the string. While JavaScript uses UCS-2 internally,
+	   * this function will convert a pair of surrogate halves (each of which
+	   * UCS-2 exposes as separate characters) into a single code point,
+	   * matching UTF-16.
+	   * @see `punycode.ucs2.encode`
+	   * @see <https://mathiasbynens.be/notes/javascript-encoding>
+	   * @memberOf punycode.ucs2
+	   * @name decode
+	   * @param {String} string The Unicode input string (UCS-2).
+	   * @returns {Array} The new array of code points.
+	   */
+	  function ucs2decode(string) {
+	    var output = [];
+	    var counter = 0;
+	    var length = string.length;
+	    while (counter < length) {
+	      var value = string.charCodeAt(counter++);
+	      if (value >= 0xD800 && value <= 0xDBFF && counter < length) {
+	        // It's a high surrogate, and there is a next character.
+	        var extra = string.charCodeAt(counter++);
+	        if ((extra & 0xFC00) == 0xDC00) {
+	          // Low surrogate.
+	          output.push(((value & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000);
+	        } else {
+	          // It's an unmatched surrogate; only append this code unit, in case the
+	          // next code unit is the high surrogate of a surrogate pair.
+	          output.push(value);
+	          counter--;
+	        }
+	      } else {
+	        output.push(value);
+	      }
+	    }
+	    return output;
+	  }
 
-    /**
-     * Creates a string based on an array of numeric code points.
-     * @see `punycode.ucs2.decode`
-     * @memberOf punycode.ucs2
-     * @name encode
-     * @param {Array} codePoints The array of numeric code points.
-     * @returns {String} The new Unicode string (UCS-2).
-     */
-    var ucs2encode = function ucs2encode(array) {
-      return String.fromCodePoint.apply(String, toConsumableArray(array));
-    };
+	  /**
+	   * Creates a string based on an array of numeric code points.
+	   * @see `punycode.ucs2.decode`
+	   * @memberOf punycode.ucs2
+	   * @name encode
+	   * @param {Array} codePoints The array of numeric code points.
+	   * @returns {String} The new Unicode string (UCS-2).
+	   */
+	  var ucs2encode = function ucs2encode(array) {
+	    return String.fromCodePoint.apply(String, toConsumableArray(array));
+	  };
 
-    /**
-     * Converts a basic code point into a digit/integer.
-     * @see `digitToBasic()`
-     * @private
-     * @param {Number} codePoint The basic numeric code point value.
-     * @returns {Number} The numeric value of a basic code point (for use in
-     * representing integers) in the range `0` to `base - 1`, or `base` if
-     * the code point does not represent a value.
-     */
-    var basicToDigit = function basicToDigit(codePoint) {
-      if (codePoint - 0x30 < 0x0A) {
-        return codePoint - 0x16;
-      }
-      if (codePoint - 0x41 < 0x1A) {
-        return codePoint - 0x41;
-      }
-      if (codePoint - 0x61 < 0x1A) {
-        return codePoint - 0x61;
-      }
-      return base;
-    };
+	  /**
+	   * Converts a basic code point into a digit/integer.
+	   * @see `digitToBasic()`
+	   * @private
+	   * @param {Number} codePoint The basic numeric code point value.
+	   * @returns {Number} The numeric value of a basic code point (for use in
+	   * representing integers) in the range `0` to `base - 1`, or `base` if
+	   * the code point does not represent a value.
+	   */
+	  var basicToDigit = function basicToDigit(codePoint) {
+	    if (codePoint - 0x30 < 0x0A) {
+	      return codePoint - 0x16;
+	    }
+	    if (codePoint - 0x41 < 0x1A) {
+	      return codePoint - 0x41;
+	    }
+	    if (codePoint - 0x61 < 0x1A) {
+	      return codePoint - 0x61;
+	    }
+	    return base;
+	  };
 
-    /**
-     * Converts a digit/integer into a basic code point.
-     * @see `basicToDigit()`
-     * @private
-     * @param {Number} digit The numeric value of a basic code point.
-     * @returns {Number} The basic code point whose value (when used for
-     * representing integers) is `digit`, which needs to be in the range
-     * `0` to `base - 1`. If `flag` is non-zero, the uppercase form is
-     * used; else, the lowercase form is used. The behavior is undefined
-     * if `flag` is non-zero and `digit` has no uppercase form.
-     */
-    var digitToBasic = function digitToBasic(digit, flag) {
-      //  0..25 map to ASCII a..z or A..Z
-      // 26..35 map to ASCII 0..9
-      return digit + 22 + 75 * (digit < 26) - ((flag != 0) << 5);
-    };
+	  /**
+	   * Converts a digit/integer into a basic code point.
+	   * @see `basicToDigit()`
+	   * @private
+	   * @param {Number} digit The numeric value of a basic code point.
+	   * @returns {Number} The basic code point whose value (when used for
+	   * representing integers) is `digit`, which needs to be in the range
+	   * `0` to `base - 1`. If `flag` is non-zero, the uppercase form is
+	   * used; else, the lowercase form is used. The behavior is undefined
+	   * if `flag` is non-zero and `digit` has no uppercase form.
+	   */
+	  var digitToBasic = function digitToBasic(digit, flag) {
+	    //  0..25 map to ASCII a..z or A..Z
+	    // 26..35 map to ASCII 0..9
+	    return digit + 22 + 75 * (digit < 26) - ((flag != 0) << 5);
+	  };
 
-    /**
-     * Bias adaptation function as per section 3.4 of RFC 3492.
-     * https://tools.ietf.org/html/rfc3492#section-3.4
-     * @private
-     */
-    var adapt = function adapt(delta, numPoints, firstTime) {
-      var k = 0;
-      delta = firstTime ? floor(delta / damp) : delta >> 1;
-      delta += floor(delta / numPoints);
-      for (; /* no initialization */delta > baseMinusTMin * tMax >> 1; k += base) {
-        delta = floor(delta / baseMinusTMin);
-      }
-      return floor(k + (baseMinusTMin + 1) * delta / (delta + skew));
-    };
+	  /**
+	   * Bias adaptation function as per section 3.4 of RFC 3492.
+	   * https://tools.ietf.org/html/rfc3492#section-3.4
+	   * @private
+	   */
+	  var adapt = function adapt(delta, numPoints, firstTime) {
+	    var k = 0;
+	    delta = firstTime ? floor(delta / damp) : delta >> 1;
+	    delta += floor(delta / numPoints);
+	    for (; /* no initialization */delta > baseMinusTMin * tMax >> 1; k += base) {
+	      delta = floor(delta / baseMinusTMin);
+	    }
+	    return floor(k + (baseMinusTMin + 1) * delta / (delta + skew));
+	  };
 
-    /**
-     * Converts a Punycode string of ASCII-only symbols to a string of Unicode
-     * symbols.
-     * @memberOf punycode
-     * @param {String} input The Punycode string of ASCII-only symbols.
-     * @returns {String} The resulting string of Unicode symbols.
-     */
-    var decode = function decode(input) {
-      // Don't use UCS-2.
-      var output = [];
-      var inputLength = input.length;
-      var i = 0;
-      var n = initialN;
-      var bias = initialBias;
+	  /**
+	   * Converts a Punycode string of ASCII-only symbols to a string of Unicode
+	   * symbols.
+	   * @memberOf punycode
+	   * @param {String} input The Punycode string of ASCII-only symbols.
+	   * @returns {String} The resulting string of Unicode symbols.
+	   */
+	  var decode = function decode(input) {
+	    // Don't use UCS-2.
+	    var output = [];
+	    var inputLength = input.length;
+	    var i = 0;
+	    var n = initialN;
+	    var bias = initialBias;
 
-      // Handle the basic code points: let `basic` be the number of input code
-      // points before the last delimiter, or `0` if there is none, then copy
-      // the first basic code points to the output.
+	    // Handle the basic code points: let `basic` be the number of input code
+	    // points before the last delimiter, or `0` if there is none, then copy
+	    // the first basic code points to the output.
 
-      var basic = input.lastIndexOf(delimiter);
-      if (basic < 0) {
-        basic = 0;
-      }
-      for (var j = 0; j < basic; ++j) {
-        // if it's not a basic code point
-        if (input.charCodeAt(j) >= 0x80) {
-          error$1('not-basic');
-        }
-        output.push(input.charCodeAt(j));
-      }
+	    var basic = input.lastIndexOf(delimiter);
+	    if (basic < 0) {
+	      basic = 0;
+	    }
+	    for (var j = 0; j < basic; ++j) {
+	      // if it's not a basic code point
+	      if (input.charCodeAt(j) >= 0x80) {
+	        error$1('not-basic');
+	      }
+	      output.push(input.charCodeAt(j));
+	    }
 
-      // Main decoding loop: start just after the last delimiter if any basic code
-      // points were copied; start at the beginning otherwise.
+	    // Main decoding loop: start just after the last delimiter if any basic code
+	    // points were copied; start at the beginning otherwise.
 
-      for (var index = basic > 0 ? basic + 1 : 0; index < inputLength;) /* no final expression */ {
-        // `index` is the index of the next character to be consumed.
-        // Decode a generalized variable-length integer into `delta`,
-        // which gets added to `i`. The overflow checking is easier
-        // if we increase `i` as we go, then subtract off its starting
-        // value at the end to obtain `delta`.
-        var oldi = i;
-        for (var w = 1, k = base; ; /* no condition */k += base) {
-          if (index >= inputLength) {
-            error$1('invalid-input');
-          }
-          var digit = basicToDigit(input.charCodeAt(index++));
-          if (digit >= base || digit > floor((maxInt - i) / w)) {
-            error$1('overflow');
-          }
-          i += digit * w;
-          var t = k <= bias ? tMin : k >= bias + tMax ? tMax : k - bias;
-          if (digit < t) {
-            break;
-          }
-          var baseMinusT = base - t;
-          if (w > floor(maxInt / baseMinusT)) {
-            error$1('overflow');
-          }
-          w *= baseMinusT;
-        }
-        var out = output.length + 1;
-        bias = adapt(i - oldi, out, oldi == 0);
+	    for (var index = basic > 0 ? basic + 1 : 0; index < inputLength;) /* no final expression */{
+	      // `index` is the index of the next character to be consumed.
+	      // Decode a generalized variable-length integer into `delta`,
+	      // which gets added to `i`. The overflow checking is easier
+	      // if we increase `i` as we go, then subtract off its starting
+	      // value at the end to obtain `delta`.
+	      var oldi = i;
+	      for (var w = 1, k = base;; /* no condition */k += base) {
+	        if (index >= inputLength) {
+	          error$1('invalid-input');
+	        }
+	        var digit = basicToDigit(input.charCodeAt(index++));
+	        if (digit >= base || digit > floor((maxInt - i) / w)) {
+	          error$1('overflow');
+	        }
+	        i += digit * w;
+	        var t = k <= bias ? tMin : k >= bias + tMax ? tMax : k - bias;
+	        if (digit < t) {
+	          break;
+	        }
+	        var baseMinusT = base - t;
+	        if (w > floor(maxInt / baseMinusT)) {
+	          error$1('overflow');
+	        }
+	        w *= baseMinusT;
+	      }
+	      var out = output.length + 1;
+	      bias = adapt(i - oldi, out, oldi == 0);
 
-        // `i` was supposed to wrap around from `out` to `0`,
-        // incrementing `n` each time, so we'll fix that now:
-        if (floor(i / out) > maxInt - n) {
-          error$1('overflow');
-        }
-        n += floor(i / out);
-        i %= out;
+	      // `i` was supposed to wrap around from `out` to `0`,
+	      // incrementing `n` each time, so we'll fix that now:
+	      if (floor(i / out) > maxInt - n) {
+	        error$1('overflow');
+	      }
+	      n += floor(i / out);
+	      i %= out;
 
-        // Insert `n` at position `i` of the output.
-        output.splice(i++, 0, n);
-      }
-      return String.fromCodePoint.apply(String, output);
-    };
+	      // Insert `n` at position `i` of the output.
+	      output.splice(i++, 0, n);
+	    }
+	    return String.fromCodePoint.apply(String, output);
+	  };
 
-    /**
-     * Converts a string of Unicode symbols (e.g. a domain name label) to a
-     * Punycode string of ASCII-only symbols.
-     * @memberOf punycode
-     * @param {String} input The string of Unicode symbols.
-     * @returns {String} The resulting Punycode string of ASCII-only symbols.
-     */
-    var encode = function encode(input) {
-      var output = [];
+	  /**
+	   * Converts a string of Unicode symbols (e.g. a domain name label) to a
+	   * Punycode string of ASCII-only symbols.
+	   * @memberOf punycode
+	   * @param {String} input The string of Unicode symbols.
+	   * @returns {String} The resulting Punycode string of ASCII-only symbols.
+	   */
+	  var encode = function encode(input) {
+	    var output = [];
 
-      // Convert the input in UCS-2 to an array of Unicode code points.
-      input = ucs2decode(input);
+	    // Convert the input in UCS-2 to an array of Unicode code points.
+	    input = ucs2decode(input);
 
-      // Cache the length.
-      var inputLength = input.length;
+	    // Cache the length.
+	    var inputLength = input.length;
 
-      // Initialize the state.
-      var n = initialN;
-      var delta = 0;
-      var bias = initialBias;
+	    // Initialize the state.
+	    var n = initialN;
+	    var delta = 0;
+	    var bias = initialBias;
 
-      // Handle the basic code points.
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
-      try {
-        for (var _iterator = input[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var _currentValue2 = _step.value;
-          if (_currentValue2 < 0x80) {
-            output.push(stringFromCharCode(_currentValue2));
-          }
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
-      }
-      var basicLength = output.length;
-      var handledCPCount = basicLength;
+	    // Handle the basic code points.
+	    var _iteratorNormalCompletion = true;
+	    var _didIteratorError = false;
+	    var _iteratorError = undefined;
+	    try {
+	      for (var _iterator = input[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	        var _currentValue2 = _step.value;
+	        if (_currentValue2 < 0x80) {
+	          output.push(stringFromCharCode(_currentValue2));
+	        }
+	      }
+	    } catch (err) {
+	      _didIteratorError = true;
+	      _iteratorError = err;
+	    } finally {
+	      try {
+	        if (!_iteratorNormalCompletion && _iterator.return) {
+	          _iterator.return();
+	        }
+	      } finally {
+	        if (_didIteratorError) {
+	          throw _iteratorError;
+	        }
+	      }
+	    }
+	    var basicLength = output.length;
+	    var handledCPCount = basicLength;
 
-      // `handledCPCount` is the number of code points that have been handled;
-      // `basicLength` is the number of basic code points.
+	    // `handledCPCount` is the number of code points that have been handled;
+	    // `basicLength` is the number of basic code points.
 
-      // Finish the basic string with a delimiter unless it's empty.
-      if (basicLength) {
-        output.push(delimiter);
-      }
+	    // Finish the basic string with a delimiter unless it's empty.
+	    if (basicLength) {
+	      output.push(delimiter);
+	    }
 
-      // Main encoding loop:
-      while (handledCPCount < inputLength) {
-        // All non-basic code points < n have been handled already. Find the next
-        // larger one:
-        var m = maxInt;
-        var _iteratorNormalCompletion2 = true;
-        var _didIteratorError2 = false;
-        var _iteratorError2 = undefined;
-        try {
-          for (var _iterator2 = input[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-            var currentValue = _step2.value;
-            if (currentValue >= n && currentValue < m) {
-              m = currentValue;
-            }
-          }
+	    // Main encoding loop:
+	    while (handledCPCount < inputLength) {
+	      // All non-basic code points < n have been handled already. Find the next
+	      // larger one:
+	      var m = maxInt;
+	      var _iteratorNormalCompletion2 = true;
+	      var _didIteratorError2 = false;
+	      var _iteratorError2 = undefined;
+	      try {
+	        for (var _iterator2 = input[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	          var currentValue = _step2.value;
+	          if (currentValue >= n && currentValue < m) {
+	            m = currentValue;
+	          }
+	        }
 
-          // Increase `delta` enough to advance the decoder's <n,i> state to <m,0>,
-          // but guard against overflow.
-        } catch (err) {
-          _didIteratorError2 = true;
-          _iteratorError2 = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion2 && _iterator2.return) {
-              _iterator2.return();
-            }
-          } finally {
-            if (_didIteratorError2) {
-              throw _iteratorError2;
-            }
-          }
-        }
-        var handledCPCountPlusOne = handledCPCount + 1;
-        if (m - n > floor((maxInt - delta) / handledCPCountPlusOne)) {
-          error$1('overflow');
-        }
-        delta += (m - n) * handledCPCountPlusOne;
-        n = m;
-        var _iteratorNormalCompletion3 = true;
-        var _didIteratorError3 = false;
-        var _iteratorError3 = undefined;
-        try {
-          for (var _iterator3 = input[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-            var _currentValue = _step3.value;
-            if (_currentValue < n && ++delta > maxInt) {
-              error$1('overflow');
-            }
-            if (_currentValue == n) {
-              // Represent delta as a generalized variable-length integer.
-              var q = delta;
-              for (var k = base; ; /* no condition */k += base) {
-                var t = k <= bias ? tMin : k >= bias + tMax ? tMax : k - bias;
-                if (q < t) {
-                  break;
-                }
-                var qMinusT = q - t;
-                var baseMinusT = base - t;
-                output.push(stringFromCharCode(digitToBasic(t + qMinusT % baseMinusT, 0)));
-                q = floor(qMinusT / baseMinusT);
-              }
-              output.push(stringFromCharCode(digitToBasic(q, 0)));
-              bias = adapt(delta, handledCPCountPlusOne, handledCPCount == basicLength);
-              delta = 0;
-              ++handledCPCount;
-            }
-          }
-        } catch (err) {
-          _didIteratorError3 = true;
-          _iteratorError3 = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion3 && _iterator3.return) {
-              _iterator3.return();
-            }
-          } finally {
-            if (_didIteratorError3) {
-              throw _iteratorError3;
-            }
-          }
-        }
-        ++delta;
-        ++n;
-      }
-      return output.join('');
-    };
+	        // Increase `delta` enough to advance the decoder's <n,i> state to <m,0>,
+	        // but guard against overflow.
+	      } catch (err) {
+	        _didIteratorError2 = true;
+	        _iteratorError2 = err;
+	      } finally {
+	        try {
+	          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	            _iterator2.return();
+	          }
+	        } finally {
+	          if (_didIteratorError2) {
+	            throw _iteratorError2;
+	          }
+	        }
+	      }
+	      var handledCPCountPlusOne = handledCPCount + 1;
+	      if (m - n > floor((maxInt - delta) / handledCPCountPlusOne)) {
+	        error$1('overflow');
+	      }
+	      delta += (m - n) * handledCPCountPlusOne;
+	      n = m;
+	      var _iteratorNormalCompletion3 = true;
+	      var _didIteratorError3 = false;
+	      var _iteratorError3 = undefined;
+	      try {
+	        for (var _iterator3 = input[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+	          var _currentValue = _step3.value;
+	          if (_currentValue < n && ++delta > maxInt) {
+	            error$1('overflow');
+	          }
+	          if (_currentValue == n) {
+	            // Represent delta as a generalized variable-length integer.
+	            var q = delta;
+	            for (var k = base;; /* no condition */k += base) {
+	              var t = k <= bias ? tMin : k >= bias + tMax ? tMax : k - bias;
+	              if (q < t) {
+	                break;
+	              }
+	              var qMinusT = q - t;
+	              var baseMinusT = base - t;
+	              output.push(stringFromCharCode(digitToBasic(t + qMinusT % baseMinusT, 0)));
+	              q = floor(qMinusT / baseMinusT);
+	            }
+	            output.push(stringFromCharCode(digitToBasic(q, 0)));
+	            bias = adapt(delta, handledCPCountPlusOne, handledCPCount == basicLength);
+	            delta = 0;
+	            ++handledCPCount;
+	          }
+	        }
+	      } catch (err) {
+	        _didIteratorError3 = true;
+	        _iteratorError3 = err;
+	      } finally {
+	        try {
+	          if (!_iteratorNormalCompletion3 && _iterator3.return) {
+	            _iterator3.return();
+	          }
+	        } finally {
+	          if (_didIteratorError3) {
+	            throw _iteratorError3;
+	          }
+	        }
+	      }
+	      ++delta;
+	      ++n;
+	    }
+	    return output.join('');
+	  };
 
-    /**
-     * Converts a Punycode string representing a domain name or an email address
-     * to Unicode. Only the Punycoded parts of the input will be converted, i.e.
-     * it doesn't matter if you call it on a string that has already been
-     * converted to Unicode.
-     * @memberOf punycode
-     * @param {String} input The Punycoded domain name or email address to
-     * convert to Unicode.
-     * @returns {String} The Unicode representation of the given Punycode
-     * string.
-     */
-    var toUnicode = function toUnicode(input) {
-      return mapDomain(input, function (string) {
-        return regexPunycode.test(string) ? decode(string.slice(4).toLowerCase()) : string;
-      });
-    };
+	  /**
+	   * Converts a Punycode string representing a domain name or an email address
+	   * to Unicode. Only the Punycoded parts of the input will be converted, i.e.
+	   * it doesn't matter if you call it on a string that has already been
+	   * converted to Unicode.
+	   * @memberOf punycode
+	   * @param {String} input The Punycoded domain name or email address to
+	   * convert to Unicode.
+	   * @returns {String} The Unicode representation of the given Punycode
+	   * string.
+	   */
+	  var toUnicode = function toUnicode(input) {
+	    return mapDomain(input, function (string) {
+	      return regexPunycode.test(string) ? decode(string.slice(4).toLowerCase()) : string;
+	    });
+	  };
 
-    /**
-     * Converts a Unicode string representing a domain name or an email address to
-     * Punycode. Only the non-ASCII parts of the domain name will be converted,
-     * i.e. it doesn't matter if you call it with a domain that's already in
-     * ASCII.
-     * @memberOf punycode
-     * @param {String} input The domain name or email address to convert, as a
-     * Unicode string.
-     * @returns {String} The Punycode representation of the given domain name or
-     * email address.
-     */
-    var toASCII = function toASCII(input) {
-      return mapDomain(input, function (string) {
-        return regexNonASCII.test(string) ? 'xn--' + encode(string) : string;
-      });
-    };
+	  /**
+	   * Converts a Unicode string representing a domain name or an email address to
+	   * Punycode. Only the non-ASCII parts of the domain name will be converted,
+	   * i.e. it doesn't matter if you call it with a domain that's already in
+	   * ASCII.
+	   * @memberOf punycode
+	   * @param {String} input The domain name or email address to convert, as a
+	   * Unicode string.
+	   * @returns {String} The Punycode representation of the given domain name or
+	   * email address.
+	   */
+	  var toASCII = function toASCII(input) {
+	    return mapDomain(input, function (string) {
+	      return regexNonASCII.test(string) ? 'xn--' + encode(string) : string;
+	    });
+	  };
 
-    /*--------------------------------------------------------------------------*/
+	  /*--------------------------------------------------------------------------*/
 
-    /** Define the public API */
-    var punycode = {
-      /**
-       * A string representing the current Punycode.js version number.
-       * @memberOf punycode
-       * @type String
-       */
-      'version': '2.1.0',
-      /**
-       * An object of methods to convert from JavaScript's internal character
-       * representation (UCS-2) to Unicode code points, and back.
-       * @see <https://mathiasbynens.be/notes/javascript-encoding>
-       * @memberOf punycode
-       * @type Object
-       */
-      'ucs2': {
-        'decode': ucs2decode,
-        'encode': ucs2encode
-      },
-      'decode': decode,
-      'encode': encode,
-      'toASCII': toASCII,
-      'toUnicode': toUnicode
-    };
+	  /** Define the public API */
+	  var punycode = {
+	    /**
+	     * A string representing the current Punycode.js version number.
+	     * @memberOf punycode
+	     * @type String
+	     */
+	    'version': '2.1.0',
+	    /**
+	     * An object of methods to convert from JavaScript's internal character
+	     * representation (UCS-2) to Unicode code points, and back.
+	     * @see <https://mathiasbynens.be/notes/javascript-encoding>
+	     * @memberOf punycode
+	     * @type Object
+	     */
+	    'ucs2': {
+	      'decode': ucs2decode,
+	      'encode': ucs2encode
+	    },
+	    'decode': decode,
+	    'encode': encode,
+	    'toASCII': toASCII,
+	    'toUnicode': toUnicode
+	  };
 
-    /**
-     * URI.js
-     *
-     * @fileoverview An RFC 3986 compliant, scheme extendable URI parsing/validating/resolving library for JavaScript.
-     * @author <a href="mailto:gary.court@gmail.com">Gary Court</a>
-     * @see http://github.com/garycourt/uri-js
-     */
-    /**
-     * Copyright 2011 Gary Court. All rights reserved.
-     *
-     * Redistribution and use in source and binary forms, with or without modification, are
-     * permitted provided that the following conditions are met:
-     *
-     *    1. Redistributions of source code must retain the above copyright notice, this list of
-     *       conditions and the following disclaimer.
-     *
-     *    2. Redistributions in binary form must reproduce the above copyright notice, this list
-     *       of conditions and the following disclaimer in the documentation and/or other materials
-     *       provided with the distribution.
-     *
-     * THIS SOFTWARE IS PROVIDED BY GARY COURT ``AS IS'' AND ANY EXPRESS OR IMPLIED
-     * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-     * FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL GARY COURT OR
-     * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-     * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-     * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-     * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-     * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-     * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-     *
-     * The views and conclusions contained in the software and documentation are those of the
-     * authors and should not be interpreted as representing official policies, either expressed
-     * or implied, of Gary Court.
-     */
-    var SCHEMES = {};
-    function pctEncChar(chr) {
-      var c = chr.charCodeAt(0);
-      var e = void 0;
-      if (c < 16) e = "%0" + c.toString(16).toUpperCase(); else if (c < 128) e = "%" + c.toString(16).toUpperCase(); else if (c < 2048) e = "%" + (c >> 6 | 192).toString(16).toUpperCase() + "%" + (c & 63 | 128).toString(16).toUpperCase(); else e = "%" + (c >> 12 | 224).toString(16).toUpperCase() + "%" + (c >> 6 & 63 | 128).toString(16).toUpperCase() + "%" + (c & 63 | 128).toString(16).toUpperCase();
-      return e;
-    }
-    function pctDecChars(str) {
-      var newStr = "";
-      var i = 0;
-      var il = str.length;
-      while (i < il) {
-        var c = parseInt(str.substr(i + 1, 2), 16);
-        if (c < 128) {
-          newStr += String.fromCharCode(c);
-          i += 3;
-        } else if (c >= 194 && c < 224) {
-          if (il - i >= 6) {
-            var c2 = parseInt(str.substr(i + 4, 2), 16);
-            newStr += String.fromCharCode((c & 31) << 6 | c2 & 63);
-          } else {
-            newStr += str.substr(i, 6);
-          }
-          i += 6;
-        } else if (c >= 224) {
-          if (il - i >= 9) {
-            var _c = parseInt(str.substr(i + 4, 2), 16);
-            var c3 = parseInt(str.substr(i + 7, 2), 16);
-            newStr += String.fromCharCode((c & 15) << 12 | (_c & 63) << 6 | c3 & 63);
-          } else {
-            newStr += str.substr(i, 9);
-          }
-          i += 9;
-        } else {
-          newStr += str.substr(i, 3);
-          i += 3;
-        }
-      }
-      return newStr;
-    }
-    function _normalizeComponentEncoding(components, protocol) {
-      function decodeUnreserved(str) {
-        var decStr = pctDecChars(str);
-        return !decStr.match(protocol.UNRESERVED) ? str : decStr;
-      }
-      if (components.scheme) components.scheme = String(components.scheme).replace(protocol.PCT_ENCODED, decodeUnreserved).toLowerCase().replace(protocol.NOT_SCHEME, "");
-      if (components.userinfo !== undefined) components.userinfo = String(components.userinfo).replace(protocol.PCT_ENCODED, decodeUnreserved).replace(protocol.NOT_USERINFO, pctEncChar).replace(protocol.PCT_ENCODED, toUpperCase);
-      if (components.host !== undefined) components.host = String(components.host).replace(protocol.PCT_ENCODED, decodeUnreserved).toLowerCase().replace(protocol.NOT_HOST, pctEncChar).replace(protocol.PCT_ENCODED, toUpperCase);
-      if (components.path !== undefined) components.path = String(components.path).replace(protocol.PCT_ENCODED, decodeUnreserved).replace(components.scheme ? protocol.NOT_PATH : protocol.NOT_PATH_NOSCHEME, pctEncChar).replace(protocol.PCT_ENCODED, toUpperCase);
-      if (components.query !== undefined) components.query = String(components.query).replace(protocol.PCT_ENCODED, decodeUnreserved).replace(protocol.NOT_QUERY, pctEncChar).replace(protocol.PCT_ENCODED, toUpperCase);
-      if (components.fragment !== undefined) components.fragment = String(components.fragment).replace(protocol.PCT_ENCODED, decodeUnreserved).replace(protocol.NOT_FRAGMENT, pctEncChar).replace(protocol.PCT_ENCODED, toUpperCase);
-      return components;
-    }
-    function _stripLeadingZeros(str) {
-      return str.replace(/^0*(.*)/, "$1") || "0";
-    }
-    function _normalizeIPv4(host, protocol) {
-      var matches = host.match(protocol.IPV4ADDRESS) || [];
-      var _matches = slicedToArray(matches, 2),
-        address = _matches[1];
-      if (address) {
-        return address.split(".").map(_stripLeadingZeros).join(".");
-      } else {
-        return host;
-      }
-    }
-    function _normalizeIPv6(host, protocol) {
-      var matches = host.match(protocol.IPV6ADDRESS) || [];
-      var _matches2 = slicedToArray(matches, 3),
-        address = _matches2[1],
-        zone = _matches2[2];
-      if (address) {
-        var _address$toLowerCase$ = address.toLowerCase().split('::').reverse(),
-          _address$toLowerCase$2 = slicedToArray(_address$toLowerCase$, 2),
-          last = _address$toLowerCase$2[0],
-          first = _address$toLowerCase$2[1];
-        var firstFields = first ? first.split(":").map(_stripLeadingZeros) : [];
-        var lastFields = last.split(":").map(_stripLeadingZeros);
-        var isLastFieldIPv4Address = protocol.IPV4ADDRESS.test(lastFields[lastFields.length - 1]);
-        var fieldCount = isLastFieldIPv4Address ? 7 : 8;
-        var lastFieldsStart = lastFields.length - fieldCount;
-        var fields = Array(fieldCount);
-        for (var x = 0; x < fieldCount; ++x) {
-          fields[x] = firstFields[x] || lastFields[lastFieldsStart + x] || '';
-        }
-        if (isLastFieldIPv4Address) {
-          fields[fieldCount - 1] = _normalizeIPv4(fields[fieldCount - 1], protocol);
-        }
-        var allZeroFields = fields.reduce(function (acc, field, index) {
-          if (!field || field === "0") {
-            var lastLongest = acc[acc.length - 1];
-            if (lastLongest && lastLongest.index + lastLongest.length === index) {
-              lastLongest.length++;
-            } else {
-              acc.push({
-                index: index,
-                length: 1
-              });
-            }
-          }
-          return acc;
-        }, []);
-        var longestZeroFields = allZeroFields.sort(function (a, b) {
-          return b.length - a.length;
-        })[0];
-        var newHost = void 0;
-        if (longestZeroFields && longestZeroFields.length > 1) {
-          var newFirst = fields.slice(0, longestZeroFields.index);
-          var newLast = fields.slice(longestZeroFields.index + longestZeroFields.length);
-          newHost = newFirst.join(":") + "::" + newLast.join(":");
-        } else {
-          newHost = fields.join(":");
-        }
-        if (zone) {
-          newHost += "%" + zone;
-        }
-        return newHost;
-      } else {
-        return host;
-      }
-    }
-    var URI_PARSE = /^(?:([^:\/?#]+):)?(?:\/\/((?:([^\/?#@]*)@)?(\[[^\/?#\]]+\]|[^\/?#:]*)(?:\:(\d*))?))?([^?#]*)(?:\?([^#]*))?(?:#((?:.|\n|\r)*))?/i;
-    var NO_MATCH_IS_UNDEFINED = "".match(/(){0}/)[1] === undefined;
-    function parse(uriString) {
-      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      var components = {};
-      var protocol = options.iri !== false ? IRI_PROTOCOL : URI_PROTOCOL;
-      if (options.reference === "suffix") uriString = (options.scheme ? options.scheme + ":" : "") + "//" + uriString;
-      var matches = uriString.match(URI_PARSE);
-      if (matches) {
-        if (NO_MATCH_IS_UNDEFINED) {
-          //store each component
-          components.scheme = matches[1];
-          components.userinfo = matches[3];
-          components.host = matches[4];
-          components.port = parseInt(matches[5], 10);
-          components.path = matches[6] || "";
-          components.query = matches[7];
-          components.fragment = matches[8];
-          //fix port number
-          if (isNaN(components.port)) {
-            components.port = matches[5];
-          }
-        } else {
-          //IE FIX for improper RegExp matching
-          //store each component
-          components.scheme = matches[1] || undefined;
-          components.userinfo = uriString.indexOf("@") !== -1 ? matches[3] : undefined;
-          components.host = uriString.indexOf("//") !== -1 ? matches[4] : undefined;
-          components.port = parseInt(matches[5], 10);
-          components.path = matches[6] || "";
-          components.query = uriString.indexOf("?") !== -1 ? matches[7] : undefined;
-          components.fragment = uriString.indexOf("#") !== -1 ? matches[8] : undefined;
-          //fix port number
-          if (isNaN(components.port)) {
-            components.port = uriString.match(/\/\/(?:.|\n)*\:(?:\/|\?|\#|$)/) ? matches[4] : undefined;
-          }
-        }
-        if (components.host) {
-          //normalize IP hosts
-          components.host = _normalizeIPv6(_normalizeIPv4(components.host, protocol), protocol);
-        }
-        //determine reference type
-        if (components.scheme === undefined && components.userinfo === undefined && components.host === undefined && components.port === undefined && !components.path && components.query === undefined) {
-          components.reference = "same-document";
-        } else if (components.scheme === undefined) {
-          components.reference = "relative";
-        } else if (components.fragment === undefined) {
-          components.reference = "absolute";
-        } else {
-          components.reference = "uri";
-        }
-        //check for reference errors
-        if (options.reference && options.reference !== "suffix" && options.reference !== components.reference) {
-          components.error = components.error || "URI is not a " + options.reference + " reference.";
-        }
-        //find scheme handler
-        var schemeHandler = SCHEMES[(options.scheme || components.scheme || "").toLowerCase()];
-        //check if scheme can't handle IRIs
-        if (!options.unicodeSupport && (!schemeHandler || !schemeHandler.unicodeSupport)) {
-          //if host component is a domain name
-          if (components.host && (options.domainHost || schemeHandler && schemeHandler.domainHost)) {
-            //convert Unicode IDN -> ASCII IDN
-            try {
-              components.host = punycode.toASCII(components.host.replace(protocol.PCT_ENCODED, pctDecChars).toLowerCase());
-            } catch (e) {
-              components.error = components.error || "Host's domain name can not be converted to ASCII via punycode: " + e;
-            }
-          }
-          //convert IRI -> URI
-          _normalizeComponentEncoding(components, URI_PROTOCOL);
-        } else {
-          //normalize encodings
-          _normalizeComponentEncoding(components, protocol);
-        }
-        //perform scheme specific parsing
-        if (schemeHandler && schemeHandler.parse) {
-          schemeHandler.parse(components, options);
-        }
-      } else {
-        components.error = components.error || "URI can not be parsed.";
-      }
-      return components;
-    }
-    function _recomposeAuthority(components, options) {
-      var protocol = options.iri !== false ? IRI_PROTOCOL : URI_PROTOCOL;
-      var uriTokens = [];
-      if (components.userinfo !== undefined) {
-        uriTokens.push(components.userinfo);
-        uriTokens.push("@");
-      }
-      if (components.host !== undefined) {
-        //normalize IP hosts, add brackets and escape zone separator for IPv6
-        uriTokens.push(_normalizeIPv6(_normalizeIPv4(String(components.host), protocol), protocol).replace(protocol.IPV6ADDRESS, function (_, $1, $2) {
-          return "[" + $1 + ($2 ? "%25" + $2 : "") + "]";
-        }));
-      }
-      if (typeof components.port === "number" || typeof components.port === "string") {
-        uriTokens.push(":");
-        uriTokens.push(String(components.port));
-      }
-      return uriTokens.length ? uriTokens.join("") : undefined;
-    }
-    var RDS1 = /^\.\.?\//;
-    var RDS2 = /^\/\.(\/|$)/;
-    var RDS3 = /^\/\.\.(\/|$)/;
-    var RDS5 = /^\/?(?:.|\n)*?(?=\/|$)/;
-    function removeDotSegments(input) {
-      var output = [];
-      while (input.length) {
-        if (input.match(RDS1)) {
-          input = input.replace(RDS1, "");
-        } else if (input.match(RDS2)) {
-          input = input.replace(RDS2, "/");
-        } else if (input.match(RDS3)) {
-          input = input.replace(RDS3, "/");
-          output.pop();
-        } else if (input === "." || input === "..") {
-          input = "";
-        } else {
-          var im = input.match(RDS5);
-          if (im) {
-            var s = im[0];
-            input = input.slice(s.length);
-            output.push(s);
-          } else {
-            throw new Error("Unexpected dot segment condition");
-          }
-        }
-      }
-      return output.join("");
-    }
-    function serialize(components) {
-      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      var protocol = options.iri ? IRI_PROTOCOL : URI_PROTOCOL;
-      var uriTokens = [];
-      //find scheme handler
-      var schemeHandler = SCHEMES[(options.scheme || components.scheme || "").toLowerCase()];
-      //perform scheme specific serialization
-      if (schemeHandler && schemeHandler.serialize) schemeHandler.serialize(components, options);
-      if (components.host) {
-        //if host component is an IPv6 address
-        if (protocol.IPV6ADDRESS.test(components.host));
-        //TODO: normalize IPv6 address as per RFC 5952
+	  /**
+	   * URI.js
+	   *
+	   * @fileoverview An RFC 3986 compliant, scheme extendable URI parsing/validating/resolving library for JavaScript.
+	   * @author <a href="mailto:gary.court@gmail.com">Gary Court</a>
+	   * @see http://github.com/garycourt/uri-js
+	   */
+	  /**
+	   * Copyright 2011 Gary Court. All rights reserved.
+	   *
+	   * Redistribution and use in source and binary forms, with or without modification, are
+	   * permitted provided that the following conditions are met:
+	   *
+	   *    1. Redistributions of source code must retain the above copyright notice, this list of
+	   *       conditions and the following disclaimer.
+	   *
+	   *    2. Redistributions in binary form must reproduce the above copyright notice, this list
+	   *       of conditions and the following disclaimer in the documentation and/or other materials
+	   *       provided with the distribution.
+	   *
+	   * THIS SOFTWARE IS PROVIDED BY GARY COURT ``AS IS'' AND ANY EXPRESS OR IMPLIED
+	   * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+	   * FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL GARY COURT OR
+	   * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+	   * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+	   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+	   * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+	   * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+	   * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	   *
+	   * The views and conclusions contained in the software and documentation are those of the
+	   * authors and should not be interpreted as representing official policies, either expressed
+	   * or implied, of Gary Court.
+	   */
+	  var SCHEMES = {};
+	  function pctEncChar(chr) {
+	    var c = chr.charCodeAt(0);
+	    var e = void 0;
+	    if (c < 16) e = "%0" + c.toString(16).toUpperCase();else if (c < 128) e = "%" + c.toString(16).toUpperCase();else if (c < 2048) e = "%" + (c >> 6 | 192).toString(16).toUpperCase() + "%" + (c & 63 | 128).toString(16).toUpperCase();else e = "%" + (c >> 12 | 224).toString(16).toUpperCase() + "%" + (c >> 6 & 63 | 128).toString(16).toUpperCase() + "%" + (c & 63 | 128).toString(16).toUpperCase();
+	    return e;
+	  }
+	  function pctDecChars(str) {
+	    var newStr = "";
+	    var i = 0;
+	    var il = str.length;
+	    while (i < il) {
+	      var c = parseInt(str.substr(i + 1, 2), 16);
+	      if (c < 128) {
+	        newStr += String.fromCharCode(c);
+	        i += 3;
+	      } else if (c >= 194 && c < 224) {
+	        if (il - i >= 6) {
+	          var c2 = parseInt(str.substr(i + 4, 2), 16);
+	          newStr += String.fromCharCode((c & 31) << 6 | c2 & 63);
+	        } else {
+	          newStr += str.substr(i, 6);
+	        }
+	        i += 6;
+	      } else if (c >= 224) {
+	        if (il - i >= 9) {
+	          var _c = parseInt(str.substr(i + 4, 2), 16);
+	          var c3 = parseInt(str.substr(i + 7, 2), 16);
+	          newStr += String.fromCharCode((c & 15) << 12 | (_c & 63) << 6 | c3 & 63);
+	        } else {
+	          newStr += str.substr(i, 9);
+	        }
+	        i += 9;
+	      } else {
+	        newStr += str.substr(i, 3);
+	        i += 3;
+	      }
+	    }
+	    return newStr;
+	  }
+	  function _normalizeComponentEncoding(components, protocol) {
+	    function decodeUnreserved(str) {
+	      var decStr = pctDecChars(str);
+	      return !decStr.match(protocol.UNRESERVED) ? str : decStr;
+	    }
+	    if (components.scheme) components.scheme = String(components.scheme).replace(protocol.PCT_ENCODED, decodeUnreserved).toLowerCase().replace(protocol.NOT_SCHEME, "");
+	    if (components.userinfo !== undefined) components.userinfo = String(components.userinfo).replace(protocol.PCT_ENCODED, decodeUnreserved).replace(protocol.NOT_USERINFO, pctEncChar).replace(protocol.PCT_ENCODED, toUpperCase);
+	    if (components.host !== undefined) components.host = String(components.host).replace(protocol.PCT_ENCODED, decodeUnreserved).toLowerCase().replace(protocol.NOT_HOST, pctEncChar).replace(protocol.PCT_ENCODED, toUpperCase);
+	    if (components.path !== undefined) components.path = String(components.path).replace(protocol.PCT_ENCODED, decodeUnreserved).replace(components.scheme ? protocol.NOT_PATH : protocol.NOT_PATH_NOSCHEME, pctEncChar).replace(protocol.PCT_ENCODED, toUpperCase);
+	    if (components.query !== undefined) components.query = String(components.query).replace(protocol.PCT_ENCODED, decodeUnreserved).replace(protocol.NOT_QUERY, pctEncChar).replace(protocol.PCT_ENCODED, toUpperCase);
+	    if (components.fragment !== undefined) components.fragment = String(components.fragment).replace(protocol.PCT_ENCODED, decodeUnreserved).replace(protocol.NOT_FRAGMENT, pctEncChar).replace(protocol.PCT_ENCODED, toUpperCase);
+	    return components;
+	  }
+	  function _stripLeadingZeros(str) {
+	    return str.replace(/^0*(.*)/, "$1") || "0";
+	  }
+	  function _normalizeIPv4(host, protocol) {
+	    var matches = host.match(protocol.IPV4ADDRESS) || [];
+	    var _matches = slicedToArray(matches, 2),
+	      address = _matches[1];
+	    if (address) {
+	      return address.split(".").map(_stripLeadingZeros).join(".");
+	    } else {
+	      return host;
+	    }
+	  }
+	  function _normalizeIPv6(host, protocol) {
+	    var matches = host.match(protocol.IPV6ADDRESS) || [];
+	    var _matches2 = slicedToArray(matches, 3),
+	      address = _matches2[1],
+	      zone = _matches2[2];
+	    if (address) {
+	      var _address$toLowerCase$ = address.toLowerCase().split('::').reverse(),
+	        _address$toLowerCase$2 = slicedToArray(_address$toLowerCase$, 2),
+	        last = _address$toLowerCase$2[0],
+	        first = _address$toLowerCase$2[1];
+	      var firstFields = first ? first.split(":").map(_stripLeadingZeros) : [];
+	      var lastFields = last.split(":").map(_stripLeadingZeros);
+	      var isLastFieldIPv4Address = protocol.IPV4ADDRESS.test(lastFields[lastFields.length - 1]);
+	      var fieldCount = isLastFieldIPv4Address ? 7 : 8;
+	      var lastFieldsStart = lastFields.length - fieldCount;
+	      var fields = Array(fieldCount);
+	      for (var x = 0; x < fieldCount; ++x) {
+	        fields[x] = firstFields[x] || lastFields[lastFieldsStart + x] || '';
+	      }
+	      if (isLastFieldIPv4Address) {
+	        fields[fieldCount - 1] = _normalizeIPv4(fields[fieldCount - 1], protocol);
+	      }
+	      var allZeroFields = fields.reduce(function (acc, field, index) {
+	        if (!field || field === "0") {
+	          var lastLongest = acc[acc.length - 1];
+	          if (lastLongest && lastLongest.index + lastLongest.length === index) {
+	            lastLongest.length++;
+	          } else {
+	            acc.push({
+	              index: index,
+	              length: 1
+	            });
+	          }
+	        }
+	        return acc;
+	      }, []);
+	      var longestZeroFields = allZeroFields.sort(function (a, b) {
+	        return b.length - a.length;
+	      })[0];
+	      var newHost = void 0;
+	      if (longestZeroFields && longestZeroFields.length > 1) {
+	        var newFirst = fields.slice(0, longestZeroFields.index);
+	        var newLast = fields.slice(longestZeroFields.index + longestZeroFields.length);
+	        newHost = newFirst.join(":") + "::" + newLast.join(":");
+	      } else {
+	        newHost = fields.join(":");
+	      }
+	      if (zone) {
+	        newHost += "%" + zone;
+	      }
+	      return newHost;
+	    } else {
+	      return host;
+	    }
+	  }
+	  var URI_PARSE = /^(?:([^:\/?#]+):)?(?:\/\/((?:([^\/?#@]*)@)?(\[[^\/?#\]]+\]|[^\/?#:]*)(?:\:(\d*))?))?([^?#]*)(?:\?([^#]*))?(?:#((?:.|\n|\r)*))?/i;
+	  var NO_MATCH_IS_UNDEFINED = "".match(/(){0}/)[1] === undefined;
+	  function parse(uriString) {
+	    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+	    var components = {};
+	    var protocol = options.iri !== false ? IRI_PROTOCOL : URI_PROTOCOL;
+	    if (options.reference === "suffix") uriString = (options.scheme ? options.scheme + ":" : "") + "//" + uriString;
+	    var matches = uriString.match(URI_PARSE);
+	    if (matches) {
+	      if (NO_MATCH_IS_UNDEFINED) {
+	        //store each component
+	        components.scheme = matches[1];
+	        components.userinfo = matches[3];
+	        components.host = matches[4];
+	        components.port = parseInt(matches[5], 10);
+	        components.path = matches[6] || "";
+	        components.query = matches[7];
+	        components.fragment = matches[8];
+	        //fix port number
+	        if (isNaN(components.port)) {
+	          components.port = matches[5];
+	        }
+	      } else {
+	        //IE FIX for improper RegExp matching
+	        //store each component
+	        components.scheme = matches[1] || undefined;
+	        components.userinfo = uriString.indexOf("@") !== -1 ? matches[3] : undefined;
+	        components.host = uriString.indexOf("//") !== -1 ? matches[4] : undefined;
+	        components.port = parseInt(matches[5], 10);
+	        components.path = matches[6] || "";
+	        components.query = uriString.indexOf("?") !== -1 ? matches[7] : undefined;
+	        components.fragment = uriString.indexOf("#") !== -1 ? matches[8] : undefined;
+	        //fix port number
+	        if (isNaN(components.port)) {
+	          components.port = uriString.match(/\/\/(?:.|\n)*\:(?:\/|\?|\#|$)/) ? matches[4] : undefined;
+	        }
+	      }
+	      if (components.host) {
+	        //normalize IP hosts
+	        components.host = _normalizeIPv6(_normalizeIPv4(components.host, protocol), protocol);
+	      }
+	      //determine reference type
+	      if (components.scheme === undefined && components.userinfo === undefined && components.host === undefined && components.port === undefined && !components.path && components.query === undefined) {
+	        components.reference = "same-document";
+	      } else if (components.scheme === undefined) {
+	        components.reference = "relative";
+	      } else if (components.fragment === undefined) {
+	        components.reference = "absolute";
+	      } else {
+	        components.reference = "uri";
+	      }
+	      //check for reference errors
+	      if (options.reference && options.reference !== "suffix" && options.reference !== components.reference) {
+	        components.error = components.error || "URI is not a " + options.reference + " reference.";
+	      }
+	      //find scheme handler
+	      var schemeHandler = SCHEMES[(options.scheme || components.scheme || "").toLowerCase()];
+	      //check if scheme can't handle IRIs
+	      if (!options.unicodeSupport && (!schemeHandler || !schemeHandler.unicodeSupport)) {
+	        //if host component is a domain name
+	        if (components.host && (options.domainHost || schemeHandler && schemeHandler.domainHost)) {
+	          //convert Unicode IDN -> ASCII IDN
+	          try {
+	            components.host = punycode.toASCII(components.host.replace(protocol.PCT_ENCODED, pctDecChars).toLowerCase());
+	          } catch (e) {
+	            components.error = components.error || "Host's domain name can not be converted to ASCII via punycode: " + e;
+	          }
+	        }
+	        //convert IRI -> URI
+	        _normalizeComponentEncoding(components, URI_PROTOCOL);
+	      } else {
+	        //normalize encodings
+	        _normalizeComponentEncoding(components, protocol);
+	      }
+	      //perform scheme specific parsing
+	      if (schemeHandler && schemeHandler.parse) {
+	        schemeHandler.parse(components, options);
+	      }
+	    } else {
+	      components.error = components.error || "URI can not be parsed.";
+	    }
+	    return components;
+	  }
+	  function _recomposeAuthority(components, options) {
+	    var protocol = options.iri !== false ? IRI_PROTOCOL : URI_PROTOCOL;
+	    var uriTokens = [];
+	    if (components.userinfo !== undefined) {
+	      uriTokens.push(components.userinfo);
+	      uriTokens.push("@");
+	    }
+	    if (components.host !== undefined) {
+	      //normalize IP hosts, add brackets and escape zone separator for IPv6
+	      uriTokens.push(_normalizeIPv6(_normalizeIPv4(String(components.host), protocol), protocol).replace(protocol.IPV6ADDRESS, function (_, $1, $2) {
+	        return "[" + $1 + ($2 ? "%25" + $2 : "") + "]";
+	      }));
+	    }
+	    if (typeof components.port === "number" || typeof components.port === "string") {
+	      uriTokens.push(":");
+	      uriTokens.push(String(components.port));
+	    }
+	    return uriTokens.length ? uriTokens.join("") : undefined;
+	  }
+	  var RDS1 = /^\.\.?\//;
+	  var RDS2 = /^\/\.(\/|$)/;
+	  var RDS3 = /^\/\.\.(\/|$)/;
+	  var RDS5 = /^\/?(?:.|\n)*?(?=\/|$)/;
+	  function removeDotSegments(input) {
+	    var output = [];
+	    while (input.length) {
+	      if (input.match(RDS1)) {
+	        input = input.replace(RDS1, "");
+	      } else if (input.match(RDS2)) {
+	        input = input.replace(RDS2, "/");
+	      } else if (input.match(RDS3)) {
+	        input = input.replace(RDS3, "/");
+	        output.pop();
+	      } else if (input === "." || input === "..") {
+	        input = "";
+	      } else {
+	        var im = input.match(RDS5);
+	        if (im) {
+	          var s = im[0];
+	          input = input.slice(s.length);
+	          output.push(s);
+	        } else {
+	          throw new Error("Unexpected dot segment condition");
+	        }
+	      }
+	    }
+	    return output.join("");
+	  }
+	  function serialize(components) {
+	    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+	    var protocol = options.iri ? IRI_PROTOCOL : URI_PROTOCOL;
+	    var uriTokens = [];
+	    //find scheme handler
+	    var schemeHandler = SCHEMES[(options.scheme || components.scheme || "").toLowerCase()];
+	    //perform scheme specific serialization
+	    if (schemeHandler && schemeHandler.serialize) schemeHandler.serialize(components, options);
+	    if (components.host) {
+	      //if host component is an IPv6 address
+	      if (protocol.IPV6ADDRESS.test(components.host)) ;
+	      //TODO: normalize IPv6 address as per RFC 5952
 
-        //if host component is a domain name
-        else if (options.domainHost || schemeHandler && schemeHandler.domainHost) {
-          //convert IDN via punycode
-          try {
-            components.host = !options.iri ? punycode.toASCII(components.host.replace(protocol.PCT_ENCODED, pctDecChars).toLowerCase()) : punycode.toUnicode(components.host);
-          } catch (e) {
-            components.error = components.error || "Host's domain name can not be converted to " + (!options.iri ? "ASCII" : "Unicode") + " via punycode: " + e;
-          }
-        }
-      }
-      //normalize encoding
-      _normalizeComponentEncoding(components, protocol);
-      if (options.reference !== "suffix" && components.scheme) {
-        uriTokens.push(components.scheme);
-        uriTokens.push(":");
-      }
-      var authority = _recomposeAuthority(components, options);
-      if (authority !== undefined) {
-        if (options.reference !== "suffix") {
-          uriTokens.push("//");
-        }
-        uriTokens.push(authority);
-        if (components.path && components.path.charAt(0) !== "/") {
-          uriTokens.push("/");
-        }
-      }
-      if (components.path !== undefined) {
-        var s = components.path;
-        if (!options.absolutePath && (!schemeHandler || !schemeHandler.absolutePath)) {
-          s = removeDotSegments(s);
-        }
-        if (authority === undefined) {
-          s = s.replace(/^\/\//, "/%2F"); //don't allow the path to start with "//"
-        }
-        uriTokens.push(s);
-      }
-      if (components.query !== undefined) {
-        uriTokens.push("?");
-        uriTokens.push(components.query);
-      }
-      if (components.fragment !== undefined) {
-        uriTokens.push("#");
-        uriTokens.push(components.fragment);
-      }
-      return uriTokens.join(""); //merge tokens into a string
-    }
-    function resolveComponents(base, relative) {
-      var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-      var skipNormalization = arguments[3];
-      var target = {};
-      if (!skipNormalization) {
-        base = parse(serialize(base, options), options); //normalize base components
-        relative = parse(serialize(relative, options), options); //normalize relative components
-      }
-      options = options || {};
-      if (!options.tolerant && relative.scheme) {
-        target.scheme = relative.scheme;
-        //target.authority = relative.authority;
-        target.userinfo = relative.userinfo;
-        target.host = relative.host;
-        target.port = relative.port;
-        target.path = removeDotSegments(relative.path || "");
-        target.query = relative.query;
-      } else {
-        if (relative.userinfo !== undefined || relative.host !== undefined || relative.port !== undefined) {
-          //target.authority = relative.authority;
-          target.userinfo = relative.userinfo;
-          target.host = relative.host;
-          target.port = relative.port;
-          target.path = removeDotSegments(relative.path || "");
-          target.query = relative.query;
-        } else {
-          if (!relative.path) {
-            target.path = base.path;
-            if (relative.query !== undefined) {
-              target.query = relative.query;
-            } else {
-              target.query = base.query;
-            }
-          } else {
-            if (relative.path.charAt(0) === "/") {
-              target.path = removeDotSegments(relative.path);
-            } else {
-              if ((base.userinfo !== undefined || base.host !== undefined || base.port !== undefined) && !base.path) {
-                target.path = "/" + relative.path;
-              } else if (!base.path) {
-                target.path = relative.path;
-              } else {
-                target.path = base.path.slice(0, base.path.lastIndexOf("/") + 1) + relative.path;
-              }
-              target.path = removeDotSegments(target.path);
-            }
-            target.query = relative.query;
-          }
-          //target.authority = base.authority;
-          target.userinfo = base.userinfo;
-          target.host = base.host;
-          target.port = base.port;
-        }
-        target.scheme = base.scheme;
-      }
-      target.fragment = relative.fragment;
-      return target;
-    }
-    function resolve(baseURI, relativeURI, options) {
-      var schemelessOptions = assign({
-        scheme: 'null'
-      }, options);
-      return serialize(resolveComponents(parse(baseURI, schemelessOptions), parse(relativeURI, schemelessOptions), schemelessOptions, true), schemelessOptions);
-    }
-    function normalize(uri, options) {
-      if (typeof uri === "string") {
-        uri = serialize(parse(uri, options), options);
-      } else if (typeOf(uri) === "object") {
-        uri = parse(serialize(uri, options), options);
-      }
-      return uri;
-    }
-    function equal(uriA, uriB, options) {
-      if (typeof uriA === "string") {
-        uriA = serialize(parse(uriA, options), options);
-      } else if (typeOf(uriA) === "object") {
-        uriA = serialize(uriA, options);
-      }
-      if (typeof uriB === "string") {
-        uriB = serialize(parse(uriB, options), options);
-      } else if (typeOf(uriB) === "object") {
-        uriB = serialize(uriB, options);
-      }
-      return uriA === uriB;
-    }
-    function escapeComponent(str, options) {
-      return str && str.toString().replace(!options || !options.iri ? URI_PROTOCOL.ESCAPE : IRI_PROTOCOL.ESCAPE, pctEncChar);
-    }
-    function unescapeComponent(str, options) {
-      return str && str.toString().replace(!options || !options.iri ? URI_PROTOCOL.PCT_ENCODED : IRI_PROTOCOL.PCT_ENCODED, pctDecChars);
-    }
-    var handler = {
-      scheme: "http",
-      domainHost: true,
-      parse: function parse(components, options) {
-        //report missing host
-        if (!components.host) {
-          components.error = components.error || "HTTP URIs must have a host.";
-        }
-        return components;
-      },
-      serialize: function serialize(components, options) {
-        var secure = String(components.scheme).toLowerCase() === "https";
-        //normalize the default port
-        if (components.port === (secure ? 443 : 80) || components.port === "") {
-          components.port = undefined;
-        }
-        //normalize the empty path
-        if (!components.path) {
-          components.path = "/";
-        }
-        //NOTE: We do not parse query strings for HTTP URIs
-        //as WWW Form Url Encoded query strings are part of the HTML4+ spec,
-        //and not the HTTP spec.
-        return components;
-      }
-    };
-    var handler$1 = {
-      scheme: "https",
-      domainHost: handler.domainHost,
-      parse: handler.parse,
-      serialize: handler.serialize
-    };
-    function isSecure(wsComponents) {
-      return typeof wsComponents.secure === 'boolean' ? wsComponents.secure : String(wsComponents.scheme).toLowerCase() === "wss";
-    }
-    //RFC 6455
-    var handler$2 = {
-      scheme: "ws",
-      domainHost: true,
-      parse: function parse(components, options) {
-        var wsComponents = components;
-        //indicate if the secure flag is set
-        wsComponents.secure = isSecure(wsComponents);
-        //construct resouce name
-        wsComponents.resourceName = (wsComponents.path || '/') + (wsComponents.query ? '?' + wsComponents.query : '');
-        wsComponents.path = undefined;
-        wsComponents.query = undefined;
-        return wsComponents;
-      },
-      serialize: function serialize(wsComponents, options) {
-        //normalize the default port
-        if (wsComponents.port === (isSecure(wsComponents) ? 443 : 80) || wsComponents.port === "") {
-          wsComponents.port = undefined;
-        }
-        //ensure scheme matches secure flag
-        if (typeof wsComponents.secure === 'boolean') {
-          wsComponents.scheme = wsComponents.secure ? 'wss' : 'ws';
-          wsComponents.secure = undefined;
-        }
-        //reconstruct path from resource name
-        if (wsComponents.resourceName) {
-          var _wsComponents$resourc = wsComponents.resourceName.split('?'),
-            _wsComponents$resourc2 = slicedToArray(_wsComponents$resourc, 2),
-            path = _wsComponents$resourc2[0],
-            query = _wsComponents$resourc2[1];
-          wsComponents.path = path && path !== '/' ? path : undefined;
-          wsComponents.query = query;
-          wsComponents.resourceName = undefined;
-        }
-        //forbid fragment component
-        wsComponents.fragment = undefined;
-        return wsComponents;
-      }
-    };
-    var handler$3 = {
-      scheme: "wss",
-      domainHost: handler$2.domainHost,
-      parse: handler$2.parse,
-      serialize: handler$2.serialize
-    };
-    var O = {};
-    //RFC 3986
-    var UNRESERVED$$ = "[A-Za-z0-9\\-\\.\\_\\~" + ("\\xA0-\\u200D\\u2010-\\u2029\\u202F-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF") + "]";
-    var HEXDIG$$ = "[0-9A-Fa-f]"; //case-insensitive
-    var PCT_ENCODED$ = subexp(subexp("%[EFef]" + HEXDIG$$ + "%" + HEXDIG$$ + HEXDIG$$ + "%" + HEXDIG$$ + HEXDIG$$) + "|" + subexp("%[89A-Fa-f]" + HEXDIG$$ + "%" + HEXDIG$$ + HEXDIG$$) + "|" + subexp("%" + HEXDIG$$ + HEXDIG$$)); //expanded
-    //RFC 5322, except these symbols as per RFC 6068: @ : / ? # [ ] & ; =
-    //const ATEXT$$ = "[A-Za-z0-9\\!\\#\\$\\%\\&\\'\\*\\+\\-\\/\\=\\?\\^\\_\\`\\{\\|\\}\\~]";
-    //const WSP$$ = "[\\x20\\x09]";
-    //const OBS_QTEXT$$ = "[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x7F]";  //(%d1-8 / %d11-12 / %d14-31 / %d127)
-    //const QTEXT$$ = merge("[\\x21\\x23-\\x5B\\x5D-\\x7E]", OBS_QTEXT$$);  //%d33 / %d35-91 / %d93-126 / obs-qtext
-    //const VCHAR$$ = "[\\x21-\\x7E]";
-    //const WSP$$ = "[\\x20\\x09]";
-    //const OBS_QP$ = subexp("\\\\" + merge("[\\x00\\x0D\\x0A]", OBS_QTEXT$$));  //%d0 / CR / LF / obs-qtext
-    //const FWS$ = subexp(subexp(WSP$$ + "*" + "\\x0D\\x0A") + "?" + WSP$$ + "+");
-    //const QUOTED_PAIR$ = subexp(subexp("\\\\" + subexp(VCHAR$$ + "|" + WSP$$)) + "|" + OBS_QP$);
-    //const QUOTED_STRING$ = subexp('\\"' + subexp(FWS$ + "?" + QCONTENT$) + "*" + FWS$ + "?" + '\\"');
-    var ATEXT$$ = "[A-Za-z0-9\\!\\$\\%\\'\\*\\+\\-\\^\\_\\`\\{\\|\\}\\~]";
-    var QTEXT$$ = "[\\!\\$\\%\\'\\(\\)\\*\\+\\,\\-\\.0-9\\<\\>A-Z\\x5E-\\x7E]";
-    var VCHAR$$ = merge(QTEXT$$, "[\\\"\\\\]");
-    var SOME_DELIMS$$ = "[\\!\\$\\'\\(\\)\\*\\+\\,\\;\\:\\@]";
-    var UNRESERVED = new RegExp(UNRESERVED$$, "g");
-    var PCT_ENCODED = new RegExp(PCT_ENCODED$, "g");
-    var NOT_LOCAL_PART = new RegExp(merge("[^]", ATEXT$$, "[\\.]", '[\\"]', VCHAR$$), "g");
-    var NOT_HFNAME = new RegExp(merge("[^]", UNRESERVED$$, SOME_DELIMS$$), "g");
-    var NOT_HFVALUE = NOT_HFNAME;
-    function decodeUnreserved(str) {
-      var decStr = pctDecChars(str);
-      return !decStr.match(UNRESERVED) ? str : decStr;
-    }
-    var handler$4 = {
-      scheme: "mailto",
-      parse: function parse$$1(components, options) {
-        var mailtoComponents = components;
-        var to = mailtoComponents.to = mailtoComponents.path ? mailtoComponents.path.split(",") : [];
-        mailtoComponents.path = undefined;
-        if (mailtoComponents.query) {
-          var unknownHeaders = false;
-          var headers = {};
-          var hfields = mailtoComponents.query.split("&");
-          for (var x = 0, xl = hfields.length; x < xl; ++x) {
-            var hfield = hfields[x].split("=");
-            switch (hfield[0]) {
-              case "to":
-                var toAddrs = hfield[1].split(",");
-                for (var _x = 0, _xl = toAddrs.length; _x < _xl; ++_x) {
-                  to.push(toAddrs[_x]);
-                }
-                break;
-              case "subject":
-                mailtoComponents.subject = unescapeComponent(hfield[1], options);
-                break;
-              case "body":
-                mailtoComponents.body = unescapeComponent(hfield[1], options);
-                break;
-              default:
-                unknownHeaders = true;
-                headers[unescapeComponent(hfield[0], options)] = unescapeComponent(hfield[1], options);
-                break;
-            }
-          }
-          if (unknownHeaders) mailtoComponents.headers = headers;
-        }
-        mailtoComponents.query = undefined;
-        for (var _x2 = 0, _xl2 = to.length; _x2 < _xl2; ++_x2) {
-          var addr = to[_x2].split("@");
-          addr[0] = unescapeComponent(addr[0]);
-          if (!options.unicodeSupport) {
-            //convert Unicode IDN -> ASCII IDN
-            try {
-              addr[1] = punycode.toASCII(unescapeComponent(addr[1], options).toLowerCase());
-            } catch (e) {
-              mailtoComponents.error = mailtoComponents.error || "Email address's domain name can not be converted to ASCII via punycode: " + e;
-            }
-          } else {
-            addr[1] = unescapeComponent(addr[1], options).toLowerCase();
-          }
-          to[_x2] = addr.join("@");
-        }
-        return mailtoComponents;
-      },
-      serialize: function serialize$$1(mailtoComponents, options) {
-        var components = mailtoComponents;
-        var to = toArray(mailtoComponents.to);
-        if (to) {
-          for (var x = 0, xl = to.length; x < xl; ++x) {
-            var toAddr = String(to[x]);
-            var atIdx = toAddr.lastIndexOf("@");
-            var localPart = toAddr.slice(0, atIdx).replace(PCT_ENCODED, decodeUnreserved).replace(PCT_ENCODED, toUpperCase).replace(NOT_LOCAL_PART, pctEncChar);
-            var domain = toAddr.slice(atIdx + 1);
-            //convert IDN via punycode
-            try {
-              domain = !options.iri ? punycode.toASCII(unescapeComponent(domain, options).toLowerCase()) : punycode.toUnicode(domain);
-            } catch (e) {
-              components.error = components.error || "Email address's domain name can not be converted to " + (!options.iri ? "ASCII" : "Unicode") + " via punycode: " + e;
-            }
-            to[x] = localPart + "@" + domain;
-          }
-          components.path = to.join(",");
-        }
-        var headers = mailtoComponents.headers = mailtoComponents.headers || {};
-        if (mailtoComponents.subject) headers["subject"] = mailtoComponents.subject;
-        if (mailtoComponents.body) headers["body"] = mailtoComponents.body;
-        var fields = [];
-        for (var name in headers) {
-          if (headers[name] !== O[name]) {
-            fields.push(name.replace(PCT_ENCODED, decodeUnreserved).replace(PCT_ENCODED, toUpperCase).replace(NOT_HFNAME, pctEncChar) + "=" + headers[name].replace(PCT_ENCODED, decodeUnreserved).replace(PCT_ENCODED, toUpperCase).replace(NOT_HFVALUE, pctEncChar));
-          }
-        }
-        if (fields.length) {
-          components.query = fields.join("&");
-        }
-        return components;
-      }
-    };
-    var URN_PARSE = /^([^\:]+)\:(.*)/;
-    //RFC 2141
-    var handler$5 = {
-      scheme: "urn",
-      parse: function parse$$1(components, options) {
-        var matches = components.path && components.path.match(URN_PARSE);
-        var urnComponents = components;
-        if (matches) {
-          var scheme = options.scheme || urnComponents.scheme || "urn";
-          var nid = matches[1].toLowerCase();
-          var nss = matches[2];
-          var urnScheme = scheme + ":" + (options.nid || nid);
-          var schemeHandler = SCHEMES[urnScheme];
-          urnComponents.nid = nid;
-          urnComponents.nss = nss;
-          urnComponents.path = undefined;
-          if (schemeHandler) {
-            urnComponents = schemeHandler.parse(urnComponents, options);
-          }
-        } else {
-          urnComponents.error = urnComponents.error || "URN can not be parsed.";
-        }
-        return urnComponents;
-      },
-      serialize: function serialize$$1(urnComponents, options) {
-        var scheme = options.scheme || urnComponents.scheme || "urn";
-        var nid = urnComponents.nid;
-        var urnScheme = scheme + ":" + (options.nid || nid);
-        var schemeHandler = SCHEMES[urnScheme];
-        if (schemeHandler) {
-          urnComponents = schemeHandler.serialize(urnComponents, options);
-        }
-        var uriComponents = urnComponents;
-        var nss = urnComponents.nss;
-        uriComponents.path = (nid || options.nid) + ":" + nss;
-        return uriComponents;
-      }
-    };
-    var UUID = /^[0-9A-Fa-f]{8}(?:\-[0-9A-Fa-f]{4}){3}\-[0-9A-Fa-f]{12}$/;
-    //RFC 4122
-    var handler$6 = {
-      scheme: "urn:uuid",
-      parse: function parse(urnComponents, options) {
-        var uuidComponents = urnComponents;
-        uuidComponents.uuid = uuidComponents.nss;
-        uuidComponents.nss = undefined;
-        if (!options.tolerant && (!uuidComponents.uuid || !uuidComponents.uuid.match(UUID))) {
-          uuidComponents.error = uuidComponents.error || "UUID is not valid.";
-        }
-        return uuidComponents;
-      },
-      serialize: function serialize(uuidComponents, options) {
-        var urnComponents = uuidComponents;
-        //normalize UUID
-        urnComponents.nss = (uuidComponents.uuid || "").toLowerCase();
-        return urnComponents;
-      }
-    };
-    SCHEMES[handler.scheme] = handler;
-    SCHEMES[handler$1.scheme] = handler$1;
-    SCHEMES[handler$2.scheme] = handler$2;
-    SCHEMES[handler$3.scheme] = handler$3;
-    SCHEMES[handler$4.scheme] = handler$4;
-    SCHEMES[handler$5.scheme] = handler$5;
-    SCHEMES[handler$6.scheme] = handler$6;
-    exports.SCHEMES = SCHEMES;
-    exports.pctEncChar = pctEncChar;
-    exports.pctDecChars = pctDecChars;
-    exports.parse = parse;
-    exports.removeDotSegments = removeDotSegments;
-    exports.serialize = serialize;
-    exports.resolveComponents = resolveComponents;
-    exports.resolve = resolve;
-    exports.normalize = normalize;
-    exports.equal = equal;
-    exports.escapeComponent = escapeComponent;
-    exports.unescapeComponent = unescapeComponent;
-    Object.defineProperty(exports, '__esModule', {
-      value: true
-    });
-  });
-}(uri_all, uri_all.exports));
+	      //if host component is a domain name
+	      else if (options.domainHost || schemeHandler && schemeHandler.domainHost) {
+	        //convert IDN via punycode
+	        try {
+	          components.host = !options.iri ? punycode.toASCII(components.host.replace(protocol.PCT_ENCODED, pctDecChars).toLowerCase()) : punycode.toUnicode(components.host);
+	        } catch (e) {
+	          components.error = components.error || "Host's domain name can not be converted to " + (!options.iri ? "ASCII" : "Unicode") + " via punycode: " + e;
+	        }
+	      }
+	    }
+	    //normalize encoding
+	    _normalizeComponentEncoding(components, protocol);
+	    if (options.reference !== "suffix" && components.scheme) {
+	      uriTokens.push(components.scheme);
+	      uriTokens.push(":");
+	    }
+	    var authority = _recomposeAuthority(components, options);
+	    if (authority !== undefined) {
+	      if (options.reference !== "suffix") {
+	        uriTokens.push("//");
+	      }
+	      uriTokens.push(authority);
+	      if (components.path && components.path.charAt(0) !== "/") {
+	        uriTokens.push("/");
+	      }
+	    }
+	    if (components.path !== undefined) {
+	      var s = components.path;
+	      if (!options.absolutePath && (!schemeHandler || !schemeHandler.absolutePath)) {
+	        s = removeDotSegments(s);
+	      }
+	      if (authority === undefined) {
+	        s = s.replace(/^\/\//, "/%2F"); //don't allow the path to start with "//"
+	      }
+	      uriTokens.push(s);
+	    }
+	    if (components.query !== undefined) {
+	      uriTokens.push("?");
+	      uriTokens.push(components.query);
+	    }
+	    if (components.fragment !== undefined) {
+	      uriTokens.push("#");
+	      uriTokens.push(components.fragment);
+	    }
+	    return uriTokens.join(""); //merge tokens into a string
+	  }
+	  function resolveComponents(base, relative) {
+	    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+	    var skipNormalization = arguments[3];
+	    var target = {};
+	    if (!skipNormalization) {
+	      base = parse(serialize(base, options), options); //normalize base components
+	      relative = parse(serialize(relative, options), options); //normalize relative components
+	    }
+	    options = options || {};
+	    if (!options.tolerant && relative.scheme) {
+	      target.scheme = relative.scheme;
+	      //target.authority = relative.authority;
+	      target.userinfo = relative.userinfo;
+	      target.host = relative.host;
+	      target.port = relative.port;
+	      target.path = removeDotSegments(relative.path || "");
+	      target.query = relative.query;
+	    } else {
+	      if (relative.userinfo !== undefined || relative.host !== undefined || relative.port !== undefined) {
+	        //target.authority = relative.authority;
+	        target.userinfo = relative.userinfo;
+	        target.host = relative.host;
+	        target.port = relative.port;
+	        target.path = removeDotSegments(relative.path || "");
+	        target.query = relative.query;
+	      } else {
+	        if (!relative.path) {
+	          target.path = base.path;
+	          if (relative.query !== undefined) {
+	            target.query = relative.query;
+	          } else {
+	            target.query = base.query;
+	          }
+	        } else {
+	          if (relative.path.charAt(0) === "/") {
+	            target.path = removeDotSegments(relative.path);
+	          } else {
+	            if ((base.userinfo !== undefined || base.host !== undefined || base.port !== undefined) && !base.path) {
+	              target.path = "/" + relative.path;
+	            } else if (!base.path) {
+	              target.path = relative.path;
+	            } else {
+	              target.path = base.path.slice(0, base.path.lastIndexOf("/") + 1) + relative.path;
+	            }
+	            target.path = removeDotSegments(target.path);
+	          }
+	          target.query = relative.query;
+	        }
+	        //target.authority = base.authority;
+	        target.userinfo = base.userinfo;
+	        target.host = base.host;
+	        target.port = base.port;
+	      }
+	      target.scheme = base.scheme;
+	    }
+	    target.fragment = relative.fragment;
+	    return target;
+	  }
+	  function resolve(baseURI, relativeURI, options) {
+	    var schemelessOptions = assign({
+	      scheme: 'null'
+	    }, options);
+	    return serialize(resolveComponents(parse(baseURI, schemelessOptions), parse(relativeURI, schemelessOptions), schemelessOptions, true), schemelessOptions);
+	  }
+	  function normalize(uri, options) {
+	    if (typeof uri === "string") {
+	      uri = serialize(parse(uri, options), options);
+	    } else if (typeOf(uri) === "object") {
+	      uri = parse(serialize(uri, options), options);
+	    }
+	    return uri;
+	  }
+	  function equal(uriA, uriB, options) {
+	    if (typeof uriA === "string") {
+	      uriA = serialize(parse(uriA, options), options);
+	    } else if (typeOf(uriA) === "object") {
+	      uriA = serialize(uriA, options);
+	    }
+	    if (typeof uriB === "string") {
+	      uriB = serialize(parse(uriB, options), options);
+	    } else if (typeOf(uriB) === "object") {
+	      uriB = serialize(uriB, options);
+	    }
+	    return uriA === uriB;
+	  }
+	  function escapeComponent(str, options) {
+	    return str && str.toString().replace(!options || !options.iri ? URI_PROTOCOL.ESCAPE : IRI_PROTOCOL.ESCAPE, pctEncChar);
+	  }
+	  function unescapeComponent(str, options) {
+	    return str && str.toString().replace(!options || !options.iri ? URI_PROTOCOL.PCT_ENCODED : IRI_PROTOCOL.PCT_ENCODED, pctDecChars);
+	  }
+	  var handler = {
+	    scheme: "http",
+	    domainHost: true,
+	    parse: function parse(components, options) {
+	      //report missing host
+	      if (!components.host) {
+	        components.error = components.error || "HTTP URIs must have a host.";
+	      }
+	      return components;
+	    },
+	    serialize: function serialize(components, options) {
+	      var secure = String(components.scheme).toLowerCase() === "https";
+	      //normalize the default port
+	      if (components.port === (secure ? 443 : 80) || components.port === "") {
+	        components.port = undefined;
+	      }
+	      //normalize the empty path
+	      if (!components.path) {
+	        components.path = "/";
+	      }
+	      //NOTE: We do not parse query strings for HTTP URIs
+	      //as WWW Form Url Encoded query strings are part of the HTML4+ spec,
+	      //and not the HTTP spec.
+	      return components;
+	    }
+	  };
+	  var handler$1 = {
+	    scheme: "https",
+	    domainHost: handler.domainHost,
+	    parse: handler.parse,
+	    serialize: handler.serialize
+	  };
+	  function isSecure(wsComponents) {
+	    return typeof wsComponents.secure === 'boolean' ? wsComponents.secure : String(wsComponents.scheme).toLowerCase() === "wss";
+	  }
+	  //RFC 6455
+	  var handler$2 = {
+	    scheme: "ws",
+	    domainHost: true,
+	    parse: function parse(components, options) {
+	      var wsComponents = components;
+	      //indicate if the secure flag is set
+	      wsComponents.secure = isSecure(wsComponents);
+	      //construct resouce name
+	      wsComponents.resourceName = (wsComponents.path || '/') + (wsComponents.query ? '?' + wsComponents.query : '');
+	      wsComponents.path = undefined;
+	      wsComponents.query = undefined;
+	      return wsComponents;
+	    },
+	    serialize: function serialize(wsComponents, options) {
+	      //normalize the default port
+	      if (wsComponents.port === (isSecure(wsComponents) ? 443 : 80) || wsComponents.port === "") {
+	        wsComponents.port = undefined;
+	      }
+	      //ensure scheme matches secure flag
+	      if (typeof wsComponents.secure === 'boolean') {
+	        wsComponents.scheme = wsComponents.secure ? 'wss' : 'ws';
+	        wsComponents.secure = undefined;
+	      }
+	      //reconstruct path from resource name
+	      if (wsComponents.resourceName) {
+	        var _wsComponents$resourc = wsComponents.resourceName.split('?'),
+	          _wsComponents$resourc2 = slicedToArray(_wsComponents$resourc, 2),
+	          path = _wsComponents$resourc2[0],
+	          query = _wsComponents$resourc2[1];
+	        wsComponents.path = path && path !== '/' ? path : undefined;
+	        wsComponents.query = query;
+	        wsComponents.resourceName = undefined;
+	      }
+	      //forbid fragment component
+	      wsComponents.fragment = undefined;
+	      return wsComponents;
+	    }
+	  };
+	  var handler$3 = {
+	    scheme: "wss",
+	    domainHost: handler$2.domainHost,
+	    parse: handler$2.parse,
+	    serialize: handler$2.serialize
+	  };
+	  var O = {};
+	  //RFC 3986
+	  var UNRESERVED$$ = "[A-Za-z0-9\\-\\.\\_\\~" + ("\\xA0-\\u200D\\u2010-\\u2029\\u202F-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF" ) + "]";
+	  var HEXDIG$$ = "[0-9A-Fa-f]"; //case-insensitive
+	  var PCT_ENCODED$ = subexp(subexp("%[EFef]" + HEXDIG$$ + "%" + HEXDIG$$ + HEXDIG$$ + "%" + HEXDIG$$ + HEXDIG$$) + "|" + subexp("%[89A-Fa-f]" + HEXDIG$$ + "%" + HEXDIG$$ + HEXDIG$$) + "|" + subexp("%" + HEXDIG$$ + HEXDIG$$)); //expanded
+	  //RFC 5322, except these symbols as per RFC 6068: @ : / ? # [ ] & ; =
+	  //const ATEXT$$ = "[A-Za-z0-9\\!\\#\\$\\%\\&\\'\\*\\+\\-\\/\\=\\?\\^\\_\\`\\{\\|\\}\\~]";
+	  //const WSP$$ = "[\\x20\\x09]";
+	  //const OBS_QTEXT$$ = "[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x7F]";  //(%d1-8 / %d11-12 / %d14-31 / %d127)
+	  //const QTEXT$$ = merge("[\\x21\\x23-\\x5B\\x5D-\\x7E]", OBS_QTEXT$$);  //%d33 / %d35-91 / %d93-126 / obs-qtext
+	  //const VCHAR$$ = "[\\x21-\\x7E]";
+	  //const WSP$$ = "[\\x20\\x09]";
+	  //const OBS_QP$ = subexp("\\\\" + merge("[\\x00\\x0D\\x0A]", OBS_QTEXT$$));  //%d0 / CR / LF / obs-qtext
+	  //const FWS$ = subexp(subexp(WSP$$ + "*" + "\\x0D\\x0A") + "?" + WSP$$ + "+");
+	  //const QUOTED_PAIR$ = subexp(subexp("\\\\" + subexp(VCHAR$$ + "|" + WSP$$)) + "|" + OBS_QP$);
+	  //const QUOTED_STRING$ = subexp('\\"' + subexp(FWS$ + "?" + QCONTENT$) + "*" + FWS$ + "?" + '\\"');
+	  var ATEXT$$ = "[A-Za-z0-9\\!\\$\\%\\'\\*\\+\\-\\^\\_\\`\\{\\|\\}\\~]";
+	  var QTEXT$$ = "[\\!\\$\\%\\'\\(\\)\\*\\+\\,\\-\\.0-9\\<\\>A-Z\\x5E-\\x7E]";
+	  var VCHAR$$ = merge(QTEXT$$, "[\\\"\\\\]");
+	  var SOME_DELIMS$$ = "[\\!\\$\\'\\(\\)\\*\\+\\,\\;\\:\\@]";
+	  var UNRESERVED = new RegExp(UNRESERVED$$, "g");
+	  var PCT_ENCODED = new RegExp(PCT_ENCODED$, "g");
+	  var NOT_LOCAL_PART = new RegExp(merge("[^]", ATEXT$$, "[\\.]", '[\\"]', VCHAR$$), "g");
+	  var NOT_HFNAME = new RegExp(merge("[^]", UNRESERVED$$, SOME_DELIMS$$), "g");
+	  var NOT_HFVALUE = NOT_HFNAME;
+	  function decodeUnreserved(str) {
+	    var decStr = pctDecChars(str);
+	    return !decStr.match(UNRESERVED) ? str : decStr;
+	  }
+	  var handler$4 = {
+	    scheme: "mailto",
+	    parse: function parse$$1(components, options) {
+	      var mailtoComponents = components;
+	      var to = mailtoComponents.to = mailtoComponents.path ? mailtoComponents.path.split(",") : [];
+	      mailtoComponents.path = undefined;
+	      if (mailtoComponents.query) {
+	        var unknownHeaders = false;
+	        var headers = {};
+	        var hfields = mailtoComponents.query.split("&");
+	        for (var x = 0, xl = hfields.length; x < xl; ++x) {
+	          var hfield = hfields[x].split("=");
+	          switch (hfield[0]) {
+	            case "to":
+	              var toAddrs = hfield[1].split(",");
+	              for (var _x = 0, _xl = toAddrs.length; _x < _xl; ++_x) {
+	                to.push(toAddrs[_x]);
+	              }
+	              break;
+	            case "subject":
+	              mailtoComponents.subject = unescapeComponent(hfield[1], options);
+	              break;
+	            case "body":
+	              mailtoComponents.body = unescapeComponent(hfield[1], options);
+	              break;
+	            default:
+	              unknownHeaders = true;
+	              headers[unescapeComponent(hfield[0], options)] = unescapeComponent(hfield[1], options);
+	              break;
+	          }
+	        }
+	        if (unknownHeaders) mailtoComponents.headers = headers;
+	      }
+	      mailtoComponents.query = undefined;
+	      for (var _x2 = 0, _xl2 = to.length; _x2 < _xl2; ++_x2) {
+	        var addr = to[_x2].split("@");
+	        addr[0] = unescapeComponent(addr[0]);
+	        if (!options.unicodeSupport) {
+	          //convert Unicode IDN -> ASCII IDN
+	          try {
+	            addr[1] = punycode.toASCII(unescapeComponent(addr[1], options).toLowerCase());
+	          } catch (e) {
+	            mailtoComponents.error = mailtoComponents.error || "Email address's domain name can not be converted to ASCII via punycode: " + e;
+	          }
+	        } else {
+	          addr[1] = unescapeComponent(addr[1], options).toLowerCase();
+	        }
+	        to[_x2] = addr.join("@");
+	      }
+	      return mailtoComponents;
+	    },
+	    serialize: function serialize$$1(mailtoComponents, options) {
+	      var components = mailtoComponents;
+	      var to = toArray(mailtoComponents.to);
+	      if (to) {
+	        for (var x = 0, xl = to.length; x < xl; ++x) {
+	          var toAddr = String(to[x]);
+	          var atIdx = toAddr.lastIndexOf("@");
+	          var localPart = toAddr.slice(0, atIdx).replace(PCT_ENCODED, decodeUnreserved).replace(PCT_ENCODED, toUpperCase).replace(NOT_LOCAL_PART, pctEncChar);
+	          var domain = toAddr.slice(atIdx + 1);
+	          //convert IDN via punycode
+	          try {
+	            domain = !options.iri ? punycode.toASCII(unescapeComponent(domain, options).toLowerCase()) : punycode.toUnicode(domain);
+	          } catch (e) {
+	            components.error = components.error || "Email address's domain name can not be converted to " + (!options.iri ? "ASCII" : "Unicode") + " via punycode: " + e;
+	          }
+	          to[x] = localPart + "@" + domain;
+	        }
+	        components.path = to.join(",");
+	      }
+	      var headers = mailtoComponents.headers = mailtoComponents.headers || {};
+	      if (mailtoComponents.subject) headers["subject"] = mailtoComponents.subject;
+	      if (mailtoComponents.body) headers["body"] = mailtoComponents.body;
+	      var fields = [];
+	      for (var name in headers) {
+	        if (headers[name] !== O[name]) {
+	          fields.push(name.replace(PCT_ENCODED, decodeUnreserved).replace(PCT_ENCODED, toUpperCase).replace(NOT_HFNAME, pctEncChar) + "=" + headers[name].replace(PCT_ENCODED, decodeUnreserved).replace(PCT_ENCODED, toUpperCase).replace(NOT_HFVALUE, pctEncChar));
+	        }
+	      }
+	      if (fields.length) {
+	        components.query = fields.join("&");
+	      }
+	      return components;
+	    }
+	  };
+	  var URN_PARSE = /^([^\:]+)\:(.*)/;
+	  //RFC 2141
+	  var handler$5 = {
+	    scheme: "urn",
+	    parse: function parse$$1(components, options) {
+	      var matches = components.path && components.path.match(URN_PARSE);
+	      var urnComponents = components;
+	      if (matches) {
+	        var scheme = options.scheme || urnComponents.scheme || "urn";
+	        var nid = matches[1].toLowerCase();
+	        var nss = matches[2];
+	        var urnScheme = scheme + ":" + (options.nid || nid);
+	        var schemeHandler = SCHEMES[urnScheme];
+	        urnComponents.nid = nid;
+	        urnComponents.nss = nss;
+	        urnComponents.path = undefined;
+	        if (schemeHandler) {
+	          urnComponents = schemeHandler.parse(urnComponents, options);
+	        }
+	      } else {
+	        urnComponents.error = urnComponents.error || "URN can not be parsed.";
+	      }
+	      return urnComponents;
+	    },
+	    serialize: function serialize$$1(urnComponents, options) {
+	      var scheme = options.scheme || urnComponents.scheme || "urn";
+	      var nid = urnComponents.nid;
+	      var urnScheme = scheme + ":" + (options.nid || nid);
+	      var schemeHandler = SCHEMES[urnScheme];
+	      if (schemeHandler) {
+	        urnComponents = schemeHandler.serialize(urnComponents, options);
+	      }
+	      var uriComponents = urnComponents;
+	      var nss = urnComponents.nss;
+	      uriComponents.path = (nid || options.nid) + ":" + nss;
+	      return uriComponents;
+	    }
+	  };
+	  var UUID = /^[0-9A-Fa-f]{8}(?:\-[0-9A-Fa-f]{4}){3}\-[0-9A-Fa-f]{12}$/;
+	  //RFC 4122
+	  var handler$6 = {
+	    scheme: "urn:uuid",
+	    parse: function parse(urnComponents, options) {
+	      var uuidComponents = urnComponents;
+	      uuidComponents.uuid = uuidComponents.nss;
+	      uuidComponents.nss = undefined;
+	      if (!options.tolerant && (!uuidComponents.uuid || !uuidComponents.uuid.match(UUID))) {
+	        uuidComponents.error = uuidComponents.error || "UUID is not valid.";
+	      }
+	      return uuidComponents;
+	    },
+	    serialize: function serialize(uuidComponents, options) {
+	      var urnComponents = uuidComponents;
+	      //normalize UUID
+	      urnComponents.nss = (uuidComponents.uuid || "").toLowerCase();
+	      return urnComponents;
+	    }
+	  };
+	  SCHEMES[handler.scheme] = handler;
+	  SCHEMES[handler$1.scheme] = handler$1;
+	  SCHEMES[handler$2.scheme] = handler$2;
+	  SCHEMES[handler$3.scheme] = handler$3;
+	  SCHEMES[handler$4.scheme] = handler$4;
+	  SCHEMES[handler$5.scheme] = handler$5;
+	  SCHEMES[handler$6.scheme] = handler$6;
+	  exports.SCHEMES = SCHEMES;
+	  exports.pctEncChar = pctEncChar;
+	  exports.pctDecChars = pctDecChars;
+	  exports.parse = parse;
+	  exports.removeDotSegments = removeDotSegments;
+	  exports.serialize = serialize;
+	  exports.resolveComponents = resolveComponents;
+	  exports.resolve = resolve;
+	  exports.normalize = normalize;
+	  exports.equal = equal;
+	  exports.escapeComponent = escapeComponent;
+	  exports.unescapeComponent = unescapeComponent;
+	  Object.defineProperty(exports, '__esModule', {
+	    value: true
+	  });
+	}); 
+} (uri_all, uri_all.exports));
 
 var uri_allExports = uri_all.exports;
 
@@ -22740,659 +22739,659 @@ uri$1.default = uri;
 
 (function (exports) {
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.CodeGen = exports.Name = exports.nil = exports.stringify = exports.str = exports._ = exports.KeywordCxt = void 0;
-  var validate_1 = validate;
-  Object.defineProperty(exports, "KeywordCxt", {
-    enumerable: true,
-    get: function () {
-      return validate_1.KeywordCxt;
-    }
-  });
-  var codegen_1 = codegen;
-  Object.defineProperty(exports, "_", {
-    enumerable: true,
-    get: function () {
-      return codegen_1._;
-    }
-  });
-  Object.defineProperty(exports, "str", {
-    enumerable: true,
-    get: function () {
-      return codegen_1.str;
-    }
-  });
-  Object.defineProperty(exports, "stringify", {
-    enumerable: true,
-    get: function () {
-      return codegen_1.stringify;
-    }
-  });
-  Object.defineProperty(exports, "nil", {
-    enumerable: true,
-    get: function () {
-      return codegen_1.nil;
-    }
-  });
-  Object.defineProperty(exports, "Name", {
-    enumerable: true,
-    get: function () {
-      return codegen_1.Name;
-    }
-  });
-  Object.defineProperty(exports, "CodeGen", {
-    enumerable: true,
-    get: function () {
-      return codegen_1.CodeGen;
-    }
-  });
-  const validation_error_1 = validation_error;
-  const ref_error_1 = ref_error;
-  const rules_1 = rules;
-  const compile_1 = compile;
-  const codegen_2 = codegen;
-  const resolve_1 = resolve$1;
-  const dataType_1 = dataType;
-  const util_1 = util;
-  const $dataRefSchema = require$$9;
-  const uri_1 = uri$1;
-  const defaultRegExp = (str, flags) => new RegExp(str, flags);
-  defaultRegExp.code = "new RegExp";
-  const META_IGNORE_OPTIONS = ["removeAdditional", "useDefaults", "coerceTypes"];
-  const EXT_SCOPE_NAMES = new Set(["validate", "serialize", "parse", "wrapper", "root", "schema", "keyword", "pattern", "formats", "validate$data", "func", "obj", "Error"]);
-  const removedOptions = {
-    errorDataPath: "",
-    format: "`validateFormats: false` can be used instead.",
-    nullable: '"nullable" keyword is supported by default.',
-    jsonPointers: "Deprecated jsPropertySyntax can be used instead.",
-    extendRefs: "Deprecated ignoreKeywordsWithRef can be used instead.",
-    missingRefs: "Pass empty schema with $id that should be ignored to ajv.addSchema.",
-    processCode: "Use option `code: {process: (code, schemaEnv: object) => string}`",
-    sourceCode: "Use option `code: {source: true}`",
-    strictDefaults: "It is default now, see option `strict`.",
-    strictKeywords: "It is default now, see option `strict`.",
-    uniqueItems: '"uniqueItems" keyword is always validated.',
-    unknownFormats: "Disable strict mode or pass `true` to `ajv.addFormat` (or `formats` option).",
-    cache: "Map is used as cache, schema object as key.",
-    serialize: "Map is used as cache, schema object as key.",
-    ajvErrors: "It is default now."
-  };
-  const deprecatedOptions = {
-    ignoreKeywordsWithRef: "",
-    jsPropertySyntax: "",
-    unicode: '"minLength"/"maxLength" account for unicode characters by default.'
-  };
-  const MAX_EXPRESSION = 200;
-  // eslint-disable-next-line complexity
-  function requiredOptions(o) {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0;
-    const s = o.strict;
-    const _optz = (_a = o.code) === null || _a === void 0 ? void 0 : _a.optimize;
-    const optimize = _optz === true || _optz === undefined ? 1 : _optz || 0;
-    const regExp = (_c = (_b = o.code) === null || _b === void 0 ? void 0 : _b.regExp) !== null && _c !== void 0 ? _c : defaultRegExp;
-    const uriResolver = (_d = o.uriResolver) !== null && _d !== void 0 ? _d : uri_1.default;
-    return {
-      strictSchema: (_f = (_e = o.strictSchema) !== null && _e !== void 0 ? _e : s) !== null && _f !== void 0 ? _f : true,
-      strictNumbers: (_h = (_g = o.strictNumbers) !== null && _g !== void 0 ? _g : s) !== null && _h !== void 0 ? _h : true,
-      strictTypes: (_k = (_j = o.strictTypes) !== null && _j !== void 0 ? _j : s) !== null && _k !== void 0 ? _k : "log",
-      strictTuples: (_m = (_l = o.strictTuples) !== null && _l !== void 0 ? _l : s) !== null && _m !== void 0 ? _m : "log",
-      strictRequired: (_p = (_o = o.strictRequired) !== null && _o !== void 0 ? _o : s) !== null && _p !== void 0 ? _p : false,
-      code: o.code ? {
-        ...o.code,
-        optimize,
-        regExp
-      } : {
-        optimize,
-        regExp
-      },
-      loopRequired: (_q = o.loopRequired) !== null && _q !== void 0 ? _q : MAX_EXPRESSION,
-      loopEnum: (_r = o.loopEnum) !== null && _r !== void 0 ? _r : MAX_EXPRESSION,
-      meta: (_s = o.meta) !== null && _s !== void 0 ? _s : true,
-      messages: (_t = o.messages) !== null && _t !== void 0 ? _t : true,
-      inlineRefs: (_u = o.inlineRefs) !== null && _u !== void 0 ? _u : true,
-      schemaId: (_v = o.schemaId) !== null && _v !== void 0 ? _v : "$id",
-      addUsedSchema: (_w = o.addUsedSchema) !== null && _w !== void 0 ? _w : true,
-      validateSchema: (_x = o.validateSchema) !== null && _x !== void 0 ? _x : true,
-      validateFormats: (_y = o.validateFormats) !== null && _y !== void 0 ? _y : true,
-      unicodeRegExp: (_z = o.unicodeRegExp) !== null && _z !== void 0 ? _z : true,
-      int32range: (_0 = o.int32range) !== null && _0 !== void 0 ? _0 : true,
-      uriResolver: uriResolver
-    };
-  }
-  class Ajv {
-    constructor(opts = {}) {
-      this.schemas = {};
-      this.refs = {};
-      this.formats = {};
-      this._compilations = new Set();
-      this._loading = {};
-      this._cache = new Map();
-      opts = this.opts = {
-        ...opts,
-        ...requiredOptions(opts)
-      };
-      const {
-        es5,
-        lines
-      } = this.opts.code;
-      this.scope = new codegen_2.ValueScope({
-        scope: {},
-        prefixes: EXT_SCOPE_NAMES,
-        es5,
-        lines
-      });
-      this.logger = getLogger(opts.logger);
-      const formatOpt = opts.validateFormats;
-      opts.validateFormats = false;
-      this.RULES = (0, rules_1.getRules)();
-      checkOptions.call(this, removedOptions, opts, "NOT SUPPORTED");
-      checkOptions.call(this, deprecatedOptions, opts, "DEPRECATED", "warn");
-      this._metaOpts = getMetaSchemaOptions.call(this);
-      if (opts.formats) addInitialFormats.call(this);
-      this._addVocabularies();
-      this._addDefaultMetaSchema();
-      if (opts.keywords) addInitialKeywords.call(this, opts.keywords);
-      if (typeof opts.meta == "object") this.addMetaSchema(opts.meta);
-      addInitialSchemas.call(this);
-      opts.validateFormats = formatOpt;
-    }
-    _addVocabularies() {
-      this.addKeyword("$async");
-    }
-    _addDefaultMetaSchema() {
-      const {
-        $data,
-        meta,
-        schemaId
-      } = this.opts;
-      let _dataRefSchema = $dataRefSchema;
-      if (schemaId === "id") {
-        _dataRefSchema = {
-          ...$dataRefSchema
-        };
-        _dataRefSchema.id = _dataRefSchema.$id;
-        delete _dataRefSchema.$id;
-      }
-      if (meta && $data) this.addMetaSchema(_dataRefSchema, _dataRefSchema[schemaId], false);
-    }
-    defaultMeta() {
-      const {
-        meta,
-        schemaId
-      } = this.opts;
-      return this.opts.defaultMeta = typeof meta == "object" ? meta[schemaId] || meta : undefined;
-    }
-    validate(schemaKeyRef,
-      // key, ref or schema object
-      // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-      data // to be validated
-    ) {
-      let v;
-      if (typeof schemaKeyRef == "string") {
-        v = this.getSchema(schemaKeyRef);
-        if (!v) throw new Error(`no schema with key or ref "${schemaKeyRef}"`);
-      } else {
-        v = this.compile(schemaKeyRef);
-      }
-      const valid = v(data);
-      if (!("$async" in v)) this.errors = v.errors;
-      return valid;
-    }
-    compile(schema, _meta) {
-      const sch = this._addSchema(schema, _meta);
-      return sch.validate || this._compileSchemaEnv(sch);
-    }
-    compileAsync(schema, meta) {
-      if (typeof this.opts.loadSchema != "function") {
-        throw new Error("options.loadSchema should be a function");
-      }
-      const {
-        loadSchema
-      } = this.opts;
-      return runCompileAsync.call(this, schema, meta);
-      async function runCompileAsync(_schema, _meta) {
-        await loadMetaSchema.call(this, _schema.$schema);
-        const sch = this._addSchema(_schema, _meta);
-        return sch.validate || _compileAsync.call(this, sch);
-      }
-      async function loadMetaSchema($ref) {
-        if ($ref && !this.getSchema($ref)) {
-          await runCompileAsync.call(this, {
-            $ref
-          }, true);
-        }
-      }
-      async function _compileAsync(sch) {
-        try {
-          return this._compileSchemaEnv(sch);
-        } catch (e) {
-          if (!(e instanceof ref_error_1.default)) throw e;
-          checkLoaded.call(this, e);
-          await loadMissingSchema.call(this, e.missingSchema);
-          return _compileAsync.call(this, sch);
-        }
-      }
-      function checkLoaded({
-        missingSchema: ref,
-        missingRef
-      }) {
-        if (this.refs[ref]) {
-          throw new Error(`AnySchema ${ref} is loaded but ${missingRef} cannot be resolved`);
-        }
-      }
-      async function loadMissingSchema(ref) {
-        const _schema = await _loadSchema.call(this, ref);
-        if (!this.refs[ref]) await loadMetaSchema.call(this, _schema.$schema);
-        if (!this.refs[ref]) this.addSchema(_schema, ref, meta);
-      }
-      async function _loadSchema(ref) {
-        const p = this._loading[ref];
-        if (p) return p;
-        try {
-          return await (this._loading[ref] = loadSchema(ref));
-        } finally {
-          delete this._loading[ref];
-        }
-      }
-    }
-    // Adds schema to the instance
-    addSchema(schema,
-      // If array is passed, `key` will be ignored
-      key,
-      // Optional schema key. Can be passed to `validate` method instead of schema object or id/ref. One schema per instance can have empty `id` and `key`.
-      _meta,
-      // true if schema is a meta-schema. Used internally, addMetaSchema should be used instead.
-      _validateSchema = this.opts.validateSchema // false to skip schema validation. Used internally, option validateSchema should be used instead.
-    ) {
-      if (Array.isArray(schema)) {
-        for (const sch of schema) this.addSchema(sch, undefined, _meta, _validateSchema);
-        return this;
-      }
-      let id;
-      if (typeof schema === "object") {
-        const {
-          schemaId
-        } = this.opts;
-        id = schema[schemaId];
-        if (id !== undefined && typeof id != "string") {
-          throw new Error(`schema ${schemaId} must be string`);
-        }
-      }
-      key = (0, resolve_1.normalizeId)(key || id);
-      this._checkUnique(key);
-      this.schemas[key] = this._addSchema(schema, _meta, key, _validateSchema, true);
-      return this;
-    }
-    // Add schema that will be used to validate other schemas
-    // options in META_IGNORE_OPTIONS are alway set to false
-    addMetaSchema(schema, key,
-      // schema key
-      _validateSchema = this.opts.validateSchema // false to skip schema validation, can be used to override validateSchema option for meta-schema
-    ) {
-      this.addSchema(schema, key, true, _validateSchema);
-      return this;
-    }
-    //  Validate schema against its meta-schema
-    validateSchema(schema, throwOrLogError) {
-      if (typeof schema == "boolean") return true;
-      let $schema;
-      $schema = schema.$schema;
-      if ($schema !== undefined && typeof $schema != "string") {
-        throw new Error("$schema must be a string");
-      }
-      $schema = $schema || this.opts.defaultMeta || this.defaultMeta();
-      if (!$schema) {
-        this.logger.warn("meta-schema not available");
-        this.errors = null;
-        return true;
-      }
-      const valid = this.validate($schema, schema);
-      if (!valid && throwOrLogError) {
-        const message = "schema is invalid: " + this.errorsText();
-        if (this.opts.validateSchema === "log") this.logger.error(message); else throw new Error(message);
-      }
-      return valid;
-    }
-    // Get compiled schema by `key` or `ref`.
-    // (`key` that was passed to `addSchema` or full schema reference - `schema.$id` or resolved id)
-    getSchema(keyRef) {
-      let sch;
-      while (typeof (sch = getSchEnv.call(this, keyRef)) == "string") keyRef = sch;
-      if (sch === undefined) {
-        const {
-          schemaId
-        } = this.opts;
-        const root = new compile_1.SchemaEnv({
-          schema: {},
-          schemaId
-        });
-        sch = compile_1.resolveSchema.call(this, root, keyRef);
-        if (!sch) return;
-        this.refs[keyRef] = sch;
-      }
-      return sch.validate || this._compileSchemaEnv(sch);
-    }
-    // Remove cached schema(s).
-    // If no parameter is passed all schemas but meta-schemas are removed.
-    // If RegExp is passed all schemas with key/id matching pattern but meta-schemas are removed.
-    // Even if schema is referenced by other schemas it still can be removed as other schemas have local references.
-    removeSchema(schemaKeyRef) {
-      if (schemaKeyRef instanceof RegExp) {
-        this._removeAllSchemas(this.schemas, schemaKeyRef);
-        this._removeAllSchemas(this.refs, schemaKeyRef);
-        return this;
-      }
-      switch (typeof schemaKeyRef) {
-        case "undefined":
-          this._removeAllSchemas(this.schemas);
-          this._removeAllSchemas(this.refs);
-          this._cache.clear();
-          return this;
-        case "string":
-          {
-            const sch = getSchEnv.call(this, schemaKeyRef);
-            if (typeof sch == "object") this._cache.delete(sch.schema);
-            delete this.schemas[schemaKeyRef];
-            delete this.refs[schemaKeyRef];
-            return this;
-          }
-        case "object":
-          {
-            const cacheKey = schemaKeyRef;
-            this._cache.delete(cacheKey);
-            let id = schemaKeyRef[this.opts.schemaId];
-            if (id) {
-              id = (0, resolve_1.normalizeId)(id);
-              delete this.schemas[id];
-              delete this.refs[id];
-            }
-            return this;
-          }
-        default:
-          throw new Error("ajv.removeSchema: invalid parameter");
-      }
-    }
-    // add "vocabulary" - a collection of keywords
-    addVocabulary(definitions) {
-      for (const def of definitions) this.addKeyword(def);
-      return this;
-    }
-    addKeyword(kwdOrDef, def // deprecated
-    ) {
-      let keyword;
-      if (typeof kwdOrDef == "string") {
-        keyword = kwdOrDef;
-        if (typeof def == "object") {
-          this.logger.warn("these parameters are deprecated, see docs for addKeyword");
-          def.keyword = keyword;
-        }
-      } else if (typeof kwdOrDef == "object" && def === undefined) {
-        def = kwdOrDef;
-        keyword = def.keyword;
-        if (Array.isArray(keyword) && !keyword.length) {
-          throw new Error("addKeywords: keyword must be string or non-empty array");
-        }
-      } else {
-        throw new Error("invalid addKeywords parameters");
-      }
-      checkKeyword.call(this, keyword, def);
-      if (!def) {
-        (0, util_1.eachItem)(keyword, kwd => addRule.call(this, kwd));
-        return this;
-      }
-      keywordMetaschema.call(this, def);
-      const definition = {
-        ...def,
-        type: (0, dataType_1.getJSONTypes)(def.type),
-        schemaType: (0, dataType_1.getJSONTypes)(def.schemaType)
-      };
-      (0, util_1.eachItem)(keyword, definition.type.length === 0 ? k => addRule.call(this, k, definition) : k => definition.type.forEach(t => addRule.call(this, k, definition, t)));
-      return this;
-    }
-    getKeyword(keyword) {
-      const rule = this.RULES.all[keyword];
-      return typeof rule == "object" ? rule.definition : !!rule;
-    }
-    // Remove keyword
-    removeKeyword(keyword) {
-      // TODO return type should be Ajv
-      const {
-        RULES
-      } = this;
-      delete RULES.keywords[keyword];
-      delete RULES.all[keyword];
-      for (const group of RULES.rules) {
-        const i = group.rules.findIndex(rule => rule.keyword === keyword);
-        if (i >= 0) group.rules.splice(i, 1);
-      }
-      return this;
-    }
-    // Add format
-    addFormat(name, format) {
-      if (typeof format == "string") format = new RegExp(format);
-      this.formats[name] = format;
-      return this;
-    }
-    errorsText(errors = this.errors,
-      // optional array of validation errors
-      {
-        separator = ", ",
-        dataVar = "data"
-      } = {} // optional options with properties `separator` and `dataVar`
-    ) {
-      if (!errors || errors.length === 0) return "No errors";
-      return errors.map(e => `${dataVar}${e.instancePath} ${e.message}`).reduce((text, msg) => text + separator + msg);
-    }
-    $dataMetaSchema(metaSchema, keywordsJsonPointers) {
-      const rules = this.RULES.all;
-      metaSchema = JSON.parse(JSON.stringify(metaSchema));
-      for (const jsonPointer of keywordsJsonPointers) {
-        const segments = jsonPointer.split("/").slice(1); // first segment is an empty string
-        let keywords = metaSchema;
-        for (const seg of segments) keywords = keywords[seg];
-        for (const key in rules) {
-          const rule = rules[key];
-          if (typeof rule != "object") continue;
-          const {
-            $data
-          } = rule.definition;
-          const schema = keywords[key];
-          if ($data && schema) keywords[key] = schemaOrData(schema);
-        }
-      }
-      return metaSchema;
-    }
-    _removeAllSchemas(schemas, regex) {
-      for (const keyRef in schemas) {
-        const sch = schemas[keyRef];
-        if (!regex || regex.test(keyRef)) {
-          if (typeof sch == "string") {
-            delete schemas[keyRef];
-          } else if (sch && !sch.meta) {
-            this._cache.delete(sch.schema);
-            delete schemas[keyRef];
-          }
-        }
-      }
-    }
-    _addSchema(schema, meta, baseId, validateSchema = this.opts.validateSchema, addSchema = this.opts.addUsedSchema) {
-      let id;
-      const {
-        schemaId
-      } = this.opts;
-      if (typeof schema == "object") {
-        id = schema[schemaId];
-      } else {
-        if (this.opts.jtd) throw new Error("schema must be object"); else if (typeof schema != "boolean") throw new Error("schema must be object or boolean");
-      }
-      let sch = this._cache.get(schema);
-      if (sch !== undefined) return sch;
-      baseId = (0, resolve_1.normalizeId)(id || baseId);
-      const localRefs = resolve_1.getSchemaRefs.call(this, schema, baseId);
-      sch = new compile_1.SchemaEnv({
-        schema,
-        schemaId,
-        meta,
-        baseId,
-        localRefs
-      });
-      this._cache.set(sch.schema, sch);
-      if (addSchema && !baseId.startsWith("#")) {
-        // TODO atm it is allowed to overwrite schemas without id (instead of not adding them)
-        if (baseId) this._checkUnique(baseId);
-        this.refs[baseId] = sch;
-      }
-      if (validateSchema) this.validateSchema(schema, true);
-      return sch;
-    }
-    _checkUnique(id) {
-      if (this.schemas[id] || this.refs[id]) {
-        throw new Error(`schema with key or id "${id}" already exists`);
-      }
-    }
-    _compileSchemaEnv(sch) {
-      if (sch.meta) this._compileMetaSchema(sch); else compile_1.compileSchema.call(this, sch);
-      /* istanbul ignore if */
-      if (!sch.validate) throw new Error("ajv implementation error");
-      return sch.validate;
-    }
-    _compileMetaSchema(sch) {
-      const currentOpts = this.opts;
-      this.opts = this._metaOpts;
-      try {
-        compile_1.compileSchema.call(this, sch);
-      } finally {
-        this.opts = currentOpts;
-      }
-    }
-  }
-  Ajv.ValidationError = validation_error_1.default;
-  Ajv.MissingRefError = ref_error_1.default;
-  exports.default = Ajv;
-  function checkOptions(checkOpts, options, msg, log = "error") {
-    for (const key in checkOpts) {
-      const opt = key;
-      if (opt in options) this.logger[log](`${msg}: option ${key}. ${checkOpts[opt]}`);
-    }
-  }
-  function getSchEnv(keyRef) {
-    keyRef = (0, resolve_1.normalizeId)(keyRef); // TODO tests fail without this line
-    return this.schemas[keyRef] || this.refs[keyRef];
-  }
-  function addInitialSchemas() {
-    const optsSchemas = this.opts.schemas;
-    if (!optsSchemas) return;
-    if (Array.isArray(optsSchemas)) this.addSchema(optsSchemas); else for (const key in optsSchemas) this.addSchema(optsSchemas[key], key);
-  }
-  function addInitialFormats() {
-    for (const name in this.opts.formats) {
-      const format = this.opts.formats[name];
-      if (format) this.addFormat(name, format);
-    }
-  }
-  function addInitialKeywords(defs) {
-    if (Array.isArray(defs)) {
-      this.addVocabulary(defs);
-      return;
-    }
-    this.logger.warn("keywords option as map is deprecated, pass array");
-    for (const keyword in defs) {
-      const def = defs[keyword];
-      if (!def.keyword) def.keyword = keyword;
-      this.addKeyword(def);
-    }
-  }
-  function getMetaSchemaOptions() {
-    const metaOpts = {
-      ...this.opts
-    };
-    for (const opt of META_IGNORE_OPTIONS) delete metaOpts[opt];
-    return metaOpts;
-  }
-  const noLogs = {
-    log() { },
-    warn() { },
-    error() { }
-  };
-  function getLogger(logger) {
-    if (logger === false) return noLogs;
-    if (logger === undefined) return console;
-    if (logger.log && logger.warn && logger.error) return logger;
-    throw new Error("logger must implement log, warn and error methods");
-  }
-  const KEYWORD_NAME = /^[a-z_$][a-z0-9_$:-]*$/i;
-  function checkKeyword(keyword, def) {
-    const {
-      RULES
-    } = this;
-    (0, util_1.eachItem)(keyword, kwd => {
-      if (RULES.keywords[kwd]) throw new Error(`Keyword ${kwd} is already defined`);
-      if (!KEYWORD_NAME.test(kwd)) throw new Error(`Keyword ${kwd} has invalid name`);
-    });
-    if (!def) return;
-    if (def.$data && !("code" in def || "validate" in def)) {
-      throw new Error('$data keyword must have "code" or "validate" function');
-    }
-  }
-  function addRule(keyword, definition, dataType) {
-    var _a;
-    const post = definition === null || definition === void 0 ? void 0 : definition.post;
-    if (dataType && post) throw new Error('keyword with "post" flag cannot have "type"');
-    const {
-      RULES
-    } = this;
-    let ruleGroup = post ? RULES.post : RULES.rules.find(({
-      type: t
-    }) => t === dataType);
-    if (!ruleGroup) {
-      ruleGroup = {
-        type: dataType,
-        rules: []
-      };
-      RULES.rules.push(ruleGroup);
-    }
-    RULES.keywords[keyword] = true;
-    if (!definition) return;
-    const rule = {
-      keyword,
-      definition: {
-        ...definition,
-        type: (0, dataType_1.getJSONTypes)(definition.type),
-        schemaType: (0, dataType_1.getJSONTypes)(definition.schemaType)
-      }
-    };
-    if (definition.before) addBeforeRule.call(this, ruleGroup, rule, definition.before); else ruleGroup.rules.push(rule);
-    RULES.all[keyword] = rule;
-    (_a = definition.implements) === null || _a === void 0 ? void 0 : _a.forEach(kwd => this.addKeyword(kwd));
-  }
-  function addBeforeRule(ruleGroup, rule, before) {
-    const i = ruleGroup.rules.findIndex(_rule => _rule.keyword === before);
-    if (i >= 0) {
-      ruleGroup.rules.splice(i, 0, rule);
-    } else {
-      ruleGroup.rules.push(rule);
-      this.logger.warn(`rule ${before} is not defined`);
-    }
-  }
-  function keywordMetaschema(def) {
-    let {
-      metaSchema
-    } = def;
-    if (metaSchema === undefined) return;
-    if (def.$data && this.opts.$data) metaSchema = schemaOrData(metaSchema);
-    def.validateSchema = this.compile(metaSchema, true);
-  }
-  const $dataRef = {
-    $ref: "https://raw.githubusercontent.com/ajv-validator/ajv/master/lib/refs/data.json#"
-  };
-  function schemaOrData(schema) {
-    return {
-      anyOf: [schema, $dataRef]
-    };
-  }
-}(core$2));
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.CodeGen = exports.Name = exports.nil = exports.stringify = exports.str = exports._ = exports.KeywordCxt = void 0;
+	var validate_1 = validate;
+	Object.defineProperty(exports, "KeywordCxt", {
+	  enumerable: true,
+	  get: function () {
+	    return validate_1.KeywordCxt;
+	  }
+	});
+	var codegen_1 = codegen;
+	Object.defineProperty(exports, "_", {
+	  enumerable: true,
+	  get: function () {
+	    return codegen_1._;
+	  }
+	});
+	Object.defineProperty(exports, "str", {
+	  enumerable: true,
+	  get: function () {
+	    return codegen_1.str;
+	  }
+	});
+	Object.defineProperty(exports, "stringify", {
+	  enumerable: true,
+	  get: function () {
+	    return codegen_1.stringify;
+	  }
+	});
+	Object.defineProperty(exports, "nil", {
+	  enumerable: true,
+	  get: function () {
+	    return codegen_1.nil;
+	  }
+	});
+	Object.defineProperty(exports, "Name", {
+	  enumerable: true,
+	  get: function () {
+	    return codegen_1.Name;
+	  }
+	});
+	Object.defineProperty(exports, "CodeGen", {
+	  enumerable: true,
+	  get: function () {
+	    return codegen_1.CodeGen;
+	  }
+	});
+	const validation_error_1 = validation_error;
+	const ref_error_1 = ref_error;
+	const rules_1 = rules;
+	const compile_1 = compile;
+	const codegen_2 = codegen;
+	const resolve_1 = resolve$1;
+	const dataType_1 = dataType;
+	const util_1 = util;
+	const $dataRefSchema = require$$9;
+	const uri_1 = uri$1;
+	const defaultRegExp = (str, flags) => new RegExp(str, flags);
+	defaultRegExp.code = "new RegExp";
+	const META_IGNORE_OPTIONS = ["removeAdditional", "useDefaults", "coerceTypes"];
+	const EXT_SCOPE_NAMES = new Set(["validate", "serialize", "parse", "wrapper", "root", "schema", "keyword", "pattern", "formats", "validate$data", "func", "obj", "Error"]);
+	const removedOptions = {
+	  errorDataPath: "",
+	  format: "`validateFormats: false` can be used instead.",
+	  nullable: '"nullable" keyword is supported by default.',
+	  jsonPointers: "Deprecated jsPropertySyntax can be used instead.",
+	  extendRefs: "Deprecated ignoreKeywordsWithRef can be used instead.",
+	  missingRefs: "Pass empty schema with $id that should be ignored to ajv.addSchema.",
+	  processCode: "Use option `code: {process: (code, schemaEnv: object) => string}`",
+	  sourceCode: "Use option `code: {source: true}`",
+	  strictDefaults: "It is default now, see option `strict`.",
+	  strictKeywords: "It is default now, see option `strict`.",
+	  uniqueItems: '"uniqueItems" keyword is always validated.',
+	  unknownFormats: "Disable strict mode or pass `true` to `ajv.addFormat` (or `formats` option).",
+	  cache: "Map is used as cache, schema object as key.",
+	  serialize: "Map is used as cache, schema object as key.",
+	  ajvErrors: "It is default now."
+	};
+	const deprecatedOptions = {
+	  ignoreKeywordsWithRef: "",
+	  jsPropertySyntax: "",
+	  unicode: '"minLength"/"maxLength" account for unicode characters by default.'
+	};
+	const MAX_EXPRESSION = 200;
+	// eslint-disable-next-line complexity
+	function requiredOptions(o) {
+	  var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0;
+	  const s = o.strict;
+	  const _optz = (_a = o.code) === null || _a === void 0 ? void 0 : _a.optimize;
+	  const optimize = _optz === true || _optz === undefined ? 1 : _optz || 0;
+	  const regExp = (_c = (_b = o.code) === null || _b === void 0 ? void 0 : _b.regExp) !== null && _c !== void 0 ? _c : defaultRegExp;
+	  const uriResolver = (_d = o.uriResolver) !== null && _d !== void 0 ? _d : uri_1.default;
+	  return {
+	    strictSchema: (_f = (_e = o.strictSchema) !== null && _e !== void 0 ? _e : s) !== null && _f !== void 0 ? _f : true,
+	    strictNumbers: (_h = (_g = o.strictNumbers) !== null && _g !== void 0 ? _g : s) !== null && _h !== void 0 ? _h : true,
+	    strictTypes: (_k = (_j = o.strictTypes) !== null && _j !== void 0 ? _j : s) !== null && _k !== void 0 ? _k : "log",
+	    strictTuples: (_m = (_l = o.strictTuples) !== null && _l !== void 0 ? _l : s) !== null && _m !== void 0 ? _m : "log",
+	    strictRequired: (_p = (_o = o.strictRequired) !== null && _o !== void 0 ? _o : s) !== null && _p !== void 0 ? _p : false,
+	    code: o.code ? {
+	      ...o.code,
+	      optimize,
+	      regExp
+	    } : {
+	      optimize,
+	      regExp
+	    },
+	    loopRequired: (_q = o.loopRequired) !== null && _q !== void 0 ? _q : MAX_EXPRESSION,
+	    loopEnum: (_r = o.loopEnum) !== null && _r !== void 0 ? _r : MAX_EXPRESSION,
+	    meta: (_s = o.meta) !== null && _s !== void 0 ? _s : true,
+	    messages: (_t = o.messages) !== null && _t !== void 0 ? _t : true,
+	    inlineRefs: (_u = o.inlineRefs) !== null && _u !== void 0 ? _u : true,
+	    schemaId: (_v = o.schemaId) !== null && _v !== void 0 ? _v : "$id",
+	    addUsedSchema: (_w = o.addUsedSchema) !== null && _w !== void 0 ? _w : true,
+	    validateSchema: (_x = o.validateSchema) !== null && _x !== void 0 ? _x : true,
+	    validateFormats: (_y = o.validateFormats) !== null && _y !== void 0 ? _y : true,
+	    unicodeRegExp: (_z = o.unicodeRegExp) !== null && _z !== void 0 ? _z : true,
+	    int32range: (_0 = o.int32range) !== null && _0 !== void 0 ? _0 : true,
+	    uriResolver: uriResolver
+	  };
+	}
+	class Ajv {
+	  constructor(opts = {}) {
+	    this.schemas = {};
+	    this.refs = {};
+	    this.formats = {};
+	    this._compilations = new Set();
+	    this._loading = {};
+	    this._cache = new Map();
+	    opts = this.opts = {
+	      ...opts,
+	      ...requiredOptions(opts)
+	    };
+	    const {
+	      es5,
+	      lines
+	    } = this.opts.code;
+	    this.scope = new codegen_2.ValueScope({
+	      scope: {},
+	      prefixes: EXT_SCOPE_NAMES,
+	      es5,
+	      lines
+	    });
+	    this.logger = getLogger(opts.logger);
+	    const formatOpt = opts.validateFormats;
+	    opts.validateFormats = false;
+	    this.RULES = (0, rules_1.getRules)();
+	    checkOptions.call(this, removedOptions, opts, "NOT SUPPORTED");
+	    checkOptions.call(this, deprecatedOptions, opts, "DEPRECATED", "warn");
+	    this._metaOpts = getMetaSchemaOptions.call(this);
+	    if (opts.formats) addInitialFormats.call(this);
+	    this._addVocabularies();
+	    this._addDefaultMetaSchema();
+	    if (opts.keywords) addInitialKeywords.call(this, opts.keywords);
+	    if (typeof opts.meta == "object") this.addMetaSchema(opts.meta);
+	    addInitialSchemas.call(this);
+	    opts.validateFormats = formatOpt;
+	  }
+	  _addVocabularies() {
+	    this.addKeyword("$async");
+	  }
+	  _addDefaultMetaSchema() {
+	    const {
+	      $data,
+	      meta,
+	      schemaId
+	    } = this.opts;
+	    let _dataRefSchema = $dataRefSchema;
+	    if (schemaId === "id") {
+	      _dataRefSchema = {
+	        ...$dataRefSchema
+	      };
+	      _dataRefSchema.id = _dataRefSchema.$id;
+	      delete _dataRefSchema.$id;
+	    }
+	    if (meta && $data) this.addMetaSchema(_dataRefSchema, _dataRefSchema[schemaId], false);
+	  }
+	  defaultMeta() {
+	    const {
+	      meta,
+	      schemaId
+	    } = this.opts;
+	    return this.opts.defaultMeta = typeof meta == "object" ? meta[schemaId] || meta : undefined;
+	  }
+	  validate(schemaKeyRef,
+	  // key, ref or schema object
+	  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+	  data // to be validated
+	  ) {
+	    let v;
+	    if (typeof schemaKeyRef == "string") {
+	      v = this.getSchema(schemaKeyRef);
+	      if (!v) throw new Error(`no schema with key or ref "${schemaKeyRef}"`);
+	    } else {
+	      v = this.compile(schemaKeyRef);
+	    }
+	    const valid = v(data);
+	    if (!("$async" in v)) this.errors = v.errors;
+	    return valid;
+	  }
+	  compile(schema, _meta) {
+	    const sch = this._addSchema(schema, _meta);
+	    return sch.validate || this._compileSchemaEnv(sch);
+	  }
+	  compileAsync(schema, meta) {
+	    if (typeof this.opts.loadSchema != "function") {
+	      throw new Error("options.loadSchema should be a function");
+	    }
+	    const {
+	      loadSchema
+	    } = this.opts;
+	    return runCompileAsync.call(this, schema, meta);
+	    async function runCompileAsync(_schema, _meta) {
+	      await loadMetaSchema.call(this, _schema.$schema);
+	      const sch = this._addSchema(_schema, _meta);
+	      return sch.validate || _compileAsync.call(this, sch);
+	    }
+	    async function loadMetaSchema($ref) {
+	      if ($ref && !this.getSchema($ref)) {
+	        await runCompileAsync.call(this, {
+	          $ref
+	        }, true);
+	      }
+	    }
+	    async function _compileAsync(sch) {
+	      try {
+	        return this._compileSchemaEnv(sch);
+	      } catch (e) {
+	        if (!(e instanceof ref_error_1.default)) throw e;
+	        checkLoaded.call(this, e);
+	        await loadMissingSchema.call(this, e.missingSchema);
+	        return _compileAsync.call(this, sch);
+	      }
+	    }
+	    function checkLoaded({
+	      missingSchema: ref,
+	      missingRef
+	    }) {
+	      if (this.refs[ref]) {
+	        throw new Error(`AnySchema ${ref} is loaded but ${missingRef} cannot be resolved`);
+	      }
+	    }
+	    async function loadMissingSchema(ref) {
+	      const _schema = await _loadSchema.call(this, ref);
+	      if (!this.refs[ref]) await loadMetaSchema.call(this, _schema.$schema);
+	      if (!this.refs[ref]) this.addSchema(_schema, ref, meta);
+	    }
+	    async function _loadSchema(ref) {
+	      const p = this._loading[ref];
+	      if (p) return p;
+	      try {
+	        return await (this._loading[ref] = loadSchema(ref));
+	      } finally {
+	        delete this._loading[ref];
+	      }
+	    }
+	  }
+	  // Adds schema to the instance
+	  addSchema(schema,
+	  // If array is passed, `key` will be ignored
+	  key,
+	  // Optional schema key. Can be passed to `validate` method instead of schema object or id/ref. One schema per instance can have empty `id` and `key`.
+	  _meta,
+	  // true if schema is a meta-schema. Used internally, addMetaSchema should be used instead.
+	  _validateSchema = this.opts.validateSchema // false to skip schema validation. Used internally, option validateSchema should be used instead.
+	  ) {
+	    if (Array.isArray(schema)) {
+	      for (const sch of schema) this.addSchema(sch, undefined, _meta, _validateSchema);
+	      return this;
+	    }
+	    let id;
+	    if (typeof schema === "object") {
+	      const {
+	        schemaId
+	      } = this.opts;
+	      id = schema[schemaId];
+	      if (id !== undefined && typeof id != "string") {
+	        throw new Error(`schema ${schemaId} must be string`);
+	      }
+	    }
+	    key = (0, resolve_1.normalizeId)(key || id);
+	    this._checkUnique(key);
+	    this.schemas[key] = this._addSchema(schema, _meta, key, _validateSchema, true);
+	    return this;
+	  }
+	  // Add schema that will be used to validate other schemas
+	  // options in META_IGNORE_OPTIONS are alway set to false
+	  addMetaSchema(schema, key,
+	  // schema key
+	  _validateSchema = this.opts.validateSchema // false to skip schema validation, can be used to override validateSchema option for meta-schema
+	  ) {
+	    this.addSchema(schema, key, true, _validateSchema);
+	    return this;
+	  }
+	  //  Validate schema against its meta-schema
+	  validateSchema(schema, throwOrLogError) {
+	    if (typeof schema == "boolean") return true;
+	    let $schema;
+	    $schema = schema.$schema;
+	    if ($schema !== undefined && typeof $schema != "string") {
+	      throw new Error("$schema must be a string");
+	    }
+	    $schema = $schema || this.opts.defaultMeta || this.defaultMeta();
+	    if (!$schema) {
+	      this.logger.warn("meta-schema not available");
+	      this.errors = null;
+	      return true;
+	    }
+	    const valid = this.validate($schema, schema);
+	    if (!valid && throwOrLogError) {
+	      const message = "schema is invalid: " + this.errorsText();
+	      if (this.opts.validateSchema === "log") this.logger.error(message);else throw new Error(message);
+	    }
+	    return valid;
+	  }
+	  // Get compiled schema by `key` or `ref`.
+	  // (`key` that was passed to `addSchema` or full schema reference - `schema.$id` or resolved id)
+	  getSchema(keyRef) {
+	    let sch;
+	    while (typeof (sch = getSchEnv.call(this, keyRef)) == "string") keyRef = sch;
+	    if (sch === undefined) {
+	      const {
+	        schemaId
+	      } = this.opts;
+	      const root = new compile_1.SchemaEnv({
+	        schema: {},
+	        schemaId
+	      });
+	      sch = compile_1.resolveSchema.call(this, root, keyRef);
+	      if (!sch) return;
+	      this.refs[keyRef] = sch;
+	    }
+	    return sch.validate || this._compileSchemaEnv(sch);
+	  }
+	  // Remove cached schema(s).
+	  // If no parameter is passed all schemas but meta-schemas are removed.
+	  // If RegExp is passed all schemas with key/id matching pattern but meta-schemas are removed.
+	  // Even if schema is referenced by other schemas it still can be removed as other schemas have local references.
+	  removeSchema(schemaKeyRef) {
+	    if (schemaKeyRef instanceof RegExp) {
+	      this._removeAllSchemas(this.schemas, schemaKeyRef);
+	      this._removeAllSchemas(this.refs, schemaKeyRef);
+	      return this;
+	    }
+	    switch (typeof schemaKeyRef) {
+	      case "undefined":
+	        this._removeAllSchemas(this.schemas);
+	        this._removeAllSchemas(this.refs);
+	        this._cache.clear();
+	        return this;
+	      case "string":
+	        {
+	          const sch = getSchEnv.call(this, schemaKeyRef);
+	          if (typeof sch == "object") this._cache.delete(sch.schema);
+	          delete this.schemas[schemaKeyRef];
+	          delete this.refs[schemaKeyRef];
+	          return this;
+	        }
+	      case "object":
+	        {
+	          const cacheKey = schemaKeyRef;
+	          this._cache.delete(cacheKey);
+	          let id = schemaKeyRef[this.opts.schemaId];
+	          if (id) {
+	            id = (0, resolve_1.normalizeId)(id);
+	            delete this.schemas[id];
+	            delete this.refs[id];
+	          }
+	          return this;
+	        }
+	      default:
+	        throw new Error("ajv.removeSchema: invalid parameter");
+	    }
+	  }
+	  // add "vocabulary" - a collection of keywords
+	  addVocabulary(definitions) {
+	    for (const def of definitions) this.addKeyword(def);
+	    return this;
+	  }
+	  addKeyword(kwdOrDef, def // deprecated
+	  ) {
+	    let keyword;
+	    if (typeof kwdOrDef == "string") {
+	      keyword = kwdOrDef;
+	      if (typeof def == "object") {
+	        this.logger.warn("these parameters are deprecated, see docs for addKeyword");
+	        def.keyword = keyword;
+	      }
+	    } else if (typeof kwdOrDef == "object" && def === undefined) {
+	      def = kwdOrDef;
+	      keyword = def.keyword;
+	      if (Array.isArray(keyword) && !keyword.length) {
+	        throw new Error("addKeywords: keyword must be string or non-empty array");
+	      }
+	    } else {
+	      throw new Error("invalid addKeywords parameters");
+	    }
+	    checkKeyword.call(this, keyword, def);
+	    if (!def) {
+	      (0, util_1.eachItem)(keyword, kwd => addRule.call(this, kwd));
+	      return this;
+	    }
+	    keywordMetaschema.call(this, def);
+	    const definition = {
+	      ...def,
+	      type: (0, dataType_1.getJSONTypes)(def.type),
+	      schemaType: (0, dataType_1.getJSONTypes)(def.schemaType)
+	    };
+	    (0, util_1.eachItem)(keyword, definition.type.length === 0 ? k => addRule.call(this, k, definition) : k => definition.type.forEach(t => addRule.call(this, k, definition, t)));
+	    return this;
+	  }
+	  getKeyword(keyword) {
+	    const rule = this.RULES.all[keyword];
+	    return typeof rule == "object" ? rule.definition : !!rule;
+	  }
+	  // Remove keyword
+	  removeKeyword(keyword) {
+	    // TODO return type should be Ajv
+	    const {
+	      RULES
+	    } = this;
+	    delete RULES.keywords[keyword];
+	    delete RULES.all[keyword];
+	    for (const group of RULES.rules) {
+	      const i = group.rules.findIndex(rule => rule.keyword === keyword);
+	      if (i >= 0) group.rules.splice(i, 1);
+	    }
+	    return this;
+	  }
+	  // Add format
+	  addFormat(name, format) {
+	    if (typeof format == "string") format = new RegExp(format);
+	    this.formats[name] = format;
+	    return this;
+	  }
+	  errorsText(errors = this.errors,
+	  // optional array of validation errors
+	  {
+	    separator = ", ",
+	    dataVar = "data"
+	  } = {} // optional options with properties `separator` and `dataVar`
+	  ) {
+	    if (!errors || errors.length === 0) return "No errors";
+	    return errors.map(e => `${dataVar}${e.instancePath} ${e.message}`).reduce((text, msg) => text + separator + msg);
+	  }
+	  $dataMetaSchema(metaSchema, keywordsJsonPointers) {
+	    const rules = this.RULES.all;
+	    metaSchema = JSON.parse(JSON.stringify(metaSchema));
+	    for (const jsonPointer of keywordsJsonPointers) {
+	      const segments = jsonPointer.split("/").slice(1); // first segment is an empty string
+	      let keywords = metaSchema;
+	      for (const seg of segments) keywords = keywords[seg];
+	      for (const key in rules) {
+	        const rule = rules[key];
+	        if (typeof rule != "object") continue;
+	        const {
+	          $data
+	        } = rule.definition;
+	        const schema = keywords[key];
+	        if ($data && schema) keywords[key] = schemaOrData(schema);
+	      }
+	    }
+	    return metaSchema;
+	  }
+	  _removeAllSchemas(schemas, regex) {
+	    for (const keyRef in schemas) {
+	      const sch = schemas[keyRef];
+	      if (!regex || regex.test(keyRef)) {
+	        if (typeof sch == "string") {
+	          delete schemas[keyRef];
+	        } else if (sch && !sch.meta) {
+	          this._cache.delete(sch.schema);
+	          delete schemas[keyRef];
+	        }
+	      }
+	    }
+	  }
+	  _addSchema(schema, meta, baseId, validateSchema = this.opts.validateSchema, addSchema = this.opts.addUsedSchema) {
+	    let id;
+	    const {
+	      schemaId
+	    } = this.opts;
+	    if (typeof schema == "object") {
+	      id = schema[schemaId];
+	    } else {
+	      if (this.opts.jtd) throw new Error("schema must be object");else if (typeof schema != "boolean") throw new Error("schema must be object or boolean");
+	    }
+	    let sch = this._cache.get(schema);
+	    if (sch !== undefined) return sch;
+	    baseId = (0, resolve_1.normalizeId)(id || baseId);
+	    const localRefs = resolve_1.getSchemaRefs.call(this, schema, baseId);
+	    sch = new compile_1.SchemaEnv({
+	      schema,
+	      schemaId,
+	      meta,
+	      baseId,
+	      localRefs
+	    });
+	    this._cache.set(sch.schema, sch);
+	    if (addSchema && !baseId.startsWith("#")) {
+	      // TODO atm it is allowed to overwrite schemas without id (instead of not adding them)
+	      if (baseId) this._checkUnique(baseId);
+	      this.refs[baseId] = sch;
+	    }
+	    if (validateSchema) this.validateSchema(schema, true);
+	    return sch;
+	  }
+	  _checkUnique(id) {
+	    if (this.schemas[id] || this.refs[id]) {
+	      throw new Error(`schema with key or id "${id}" already exists`);
+	    }
+	  }
+	  _compileSchemaEnv(sch) {
+	    if (sch.meta) this._compileMetaSchema(sch);else compile_1.compileSchema.call(this, sch);
+	    /* istanbul ignore if */
+	    if (!sch.validate) throw new Error("ajv implementation error");
+	    return sch.validate;
+	  }
+	  _compileMetaSchema(sch) {
+	    const currentOpts = this.opts;
+	    this.opts = this._metaOpts;
+	    try {
+	      compile_1.compileSchema.call(this, sch);
+	    } finally {
+	      this.opts = currentOpts;
+	    }
+	  }
+	}
+	Ajv.ValidationError = validation_error_1.default;
+	Ajv.MissingRefError = ref_error_1.default;
+	exports.default = Ajv;
+	function checkOptions(checkOpts, options, msg, log = "error") {
+	  for (const key in checkOpts) {
+	    const opt = key;
+	    if (opt in options) this.logger[log](`${msg}: option ${key}. ${checkOpts[opt]}`);
+	  }
+	}
+	function getSchEnv(keyRef) {
+	  keyRef = (0, resolve_1.normalizeId)(keyRef); // TODO tests fail without this line
+	  return this.schemas[keyRef] || this.refs[keyRef];
+	}
+	function addInitialSchemas() {
+	  const optsSchemas = this.opts.schemas;
+	  if (!optsSchemas) return;
+	  if (Array.isArray(optsSchemas)) this.addSchema(optsSchemas);else for (const key in optsSchemas) this.addSchema(optsSchemas[key], key);
+	}
+	function addInitialFormats() {
+	  for (const name in this.opts.formats) {
+	    const format = this.opts.formats[name];
+	    if (format) this.addFormat(name, format);
+	  }
+	}
+	function addInitialKeywords(defs) {
+	  if (Array.isArray(defs)) {
+	    this.addVocabulary(defs);
+	    return;
+	  }
+	  this.logger.warn("keywords option as map is deprecated, pass array");
+	  for (const keyword in defs) {
+	    const def = defs[keyword];
+	    if (!def.keyword) def.keyword = keyword;
+	    this.addKeyword(def);
+	  }
+	}
+	function getMetaSchemaOptions() {
+	  const metaOpts = {
+	    ...this.opts
+	  };
+	  for (const opt of META_IGNORE_OPTIONS) delete metaOpts[opt];
+	  return metaOpts;
+	}
+	const noLogs = {
+	  log() {},
+	  warn() {},
+	  error() {}
+	};
+	function getLogger(logger) {
+	  if (logger === false) return noLogs;
+	  if (logger === undefined) return console;
+	  if (logger.log && logger.warn && logger.error) return logger;
+	  throw new Error("logger must implement log, warn and error methods");
+	}
+	const KEYWORD_NAME = /^[a-z_$][a-z0-9_$:-]*$/i;
+	function checkKeyword(keyword, def) {
+	  const {
+	    RULES
+	  } = this;
+	  (0, util_1.eachItem)(keyword, kwd => {
+	    if (RULES.keywords[kwd]) throw new Error(`Keyword ${kwd} is already defined`);
+	    if (!KEYWORD_NAME.test(kwd)) throw new Error(`Keyword ${kwd} has invalid name`);
+	  });
+	  if (!def) return;
+	  if (def.$data && !("code" in def || "validate" in def)) {
+	    throw new Error('$data keyword must have "code" or "validate" function');
+	  }
+	}
+	function addRule(keyword, definition, dataType) {
+	  var _a;
+	  const post = definition === null || definition === void 0 ? void 0 : definition.post;
+	  if (dataType && post) throw new Error('keyword with "post" flag cannot have "type"');
+	  const {
+	    RULES
+	  } = this;
+	  let ruleGroup = post ? RULES.post : RULES.rules.find(({
+	    type: t
+	  }) => t === dataType);
+	  if (!ruleGroup) {
+	    ruleGroup = {
+	      type: dataType,
+	      rules: []
+	    };
+	    RULES.rules.push(ruleGroup);
+	  }
+	  RULES.keywords[keyword] = true;
+	  if (!definition) return;
+	  const rule = {
+	    keyword,
+	    definition: {
+	      ...definition,
+	      type: (0, dataType_1.getJSONTypes)(definition.type),
+	      schemaType: (0, dataType_1.getJSONTypes)(definition.schemaType)
+	    }
+	  };
+	  if (definition.before) addBeforeRule.call(this, ruleGroup, rule, definition.before);else ruleGroup.rules.push(rule);
+	  RULES.all[keyword] = rule;
+	  (_a = definition.implements) === null || _a === void 0 ? void 0 : _a.forEach(kwd => this.addKeyword(kwd));
+	}
+	function addBeforeRule(ruleGroup, rule, before) {
+	  const i = ruleGroup.rules.findIndex(_rule => _rule.keyword === before);
+	  if (i >= 0) {
+	    ruleGroup.rules.splice(i, 0, rule);
+	  } else {
+	    ruleGroup.rules.push(rule);
+	    this.logger.warn(`rule ${before} is not defined`);
+	  }
+	}
+	function keywordMetaschema(def) {
+	  let {
+	    metaSchema
+	  } = def;
+	  if (metaSchema === undefined) return;
+	  if (def.$data && this.opts.$data) metaSchema = schemaOrData(metaSchema);
+	  def.validateSchema = this.compile(metaSchema, true);
+	}
+	const $dataRef = {
+	  $ref: "https://raw.githubusercontent.com/ajv-validator/ajv/master/lib/refs/data.json#"
+	};
+	function schemaOrData(schema) {
+	  return {
+	    anyOf: [schema, $dataRef]
+	  };
+	} 
+} (core$2));
 
 var draft7 = {};
 
@@ -23500,7 +23499,7 @@ function callRef(cxt, v, sch, $async) {
     opts
   } = it;
   const passCxt = opts.passContext ? names_1$1.default.this : codegen_1$l.nil;
-  if ($async) callAsyncRef(); else callSyncRef();
+  if ($async) callAsyncRef();else callSyncRef();
   function callAsyncRef() {
     if (!env.$async) throw new Error("async schema referenced by sync schema");
     const valid = gen.let("valid");
@@ -23836,7 +23835,7 @@ const def$l = {
     } = it;
     if (!$data && schema.length === 0) return;
     const useLoop = schema.length >= opts.loopRequired;
-    if (it.allErrors) allErrorsMode(); else exitOnErrorMode();
+    if (it.allErrors) allErrorsMode();else exitOnErrorMode();
     if (opts.strictRequired) {
       const props = cxt.parentSchema.properties;
       const {
@@ -24129,22 +24128,22 @@ const uniqueItems_1 = uniqueItems;
 const const_1 = _const;
 const enum_1 = _enum;
 const validation = [
-  // number
-  limitNumber_1.default, multipleOf_1.default,
-  // string
-  limitLength_1.default, pattern_1.default,
-  // object
-  limitProperties_1.default, required_1.default,
-  // array
-  limitItems_1.default, uniqueItems_1.default,
-  // any
-  {
-    keyword: "type",
-    schemaType: ["string", "array"]
-  }, {
-    keyword: "nullable",
-    schemaType: "boolean"
-  }, const_1.default, enum_1.default];
+// number
+limitNumber_1.default, multipleOf_1.default,
+// string
+limitLength_1.default, pattern_1.default,
+// object
+limitProperties_1.default, required_1.default,
+// array
+limitItems_1.default, uniqueItems_1.default,
+// any
+{
+  keyword: "type",
+  schemaType: ["string", "array"]
+}, {
+  keyword: "nullable",
+  schemaType: "boolean"
+}, const_1.default, enum_1.default];
 validation$1.default = validation;
 
 var applicator = {};
@@ -24341,7 +24340,7 @@ const def$d = {
     } = parentSchema;
     it.items = true;
     if ((0, util_1$b.alwaysValidSchema)(it, schema)) return;
-    if (prefixItems) (0, additionalItems_1$1.validateAdditionalItems)(cxt, prefixItems); else cxt.ok((0, code_1$4.validateArray)(cxt));
+    if (prefixItems) (0, additionalItems_1$1.validateAdditionalItems)(cxt, prefixItems);else cxt.ok((0, code_1$4.validateArray)(cxt));
   }
 };
 items2020.default = def$d;
@@ -24448,7 +24447,7 @@ const def$c = {
         gen.if((0, codegen_1$7._)`${count} >= ${min}`, () => gen.assign(valid, true).break());
       } else {
         gen.if((0, codegen_1$7._)`${count} > ${max}`, () => gen.assign(valid, false).break());
-        if (min === 1) gen.assign(valid, true); else gen.if((0, codegen_1$7._)`${count} >= ${min}`, () => gen.assign(valid, true));
+        if (min === 1) gen.assign(valid, true);else gen.if((0, codegen_1$7._)`${count} >= ${min}`, () => gen.assign(valid, true));
       }
     }
   }
@@ -24459,114 +24458,114 @@ var dependencies = {};
 
 (function (exports) {
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.validateSchemaDeps = exports.validatePropertyDeps = exports.error = void 0;
-  const codegen_1 = codegen;
-  const util_1 = util;
-  const code_1 = code;
-  exports.error = {
-    message: ({
-      params: {
-        property,
-        depsCount,
-        deps
-      }
-    }) => {
-      const property_ies = depsCount === 1 ? "property" : "properties";
-      return (0, codegen_1.str)`must have ${property_ies} ${deps} when property ${property} is present`;
-    },
-    params: ({
-      params: {
-        property,
-        depsCount,
-        deps,
-        missingProperty
-      }
-    }) => (0, codegen_1._)`{property: ${property},
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.validateSchemaDeps = exports.validatePropertyDeps = exports.error = void 0;
+	const codegen_1 = codegen;
+	const util_1 = util;
+	const code_1 = code;
+	exports.error = {
+	  message: ({
+	    params: {
+	      property,
+	      depsCount,
+	      deps
+	    }
+	  }) => {
+	    const property_ies = depsCount === 1 ? "property" : "properties";
+	    return (0, codegen_1.str)`must have ${property_ies} ${deps} when property ${property} is present`;
+	  },
+	  params: ({
+	    params: {
+	      property,
+	      depsCount,
+	      deps,
+	      missingProperty
+	    }
+	  }) => (0, codegen_1._)`{property: ${property},
     missingProperty: ${missingProperty},
     depsCount: ${depsCount},
     deps: ${deps}}` // TODO change to reference
-  };
-  const def = {
-    keyword: "dependencies",
-    type: "object",
-    schemaType: "object",
-    error: exports.error,
-    code(cxt) {
-      const [propDeps, schDeps] = splitDependencies(cxt);
-      validatePropertyDeps(cxt, propDeps);
-      validateSchemaDeps(cxt, schDeps);
-    }
-  };
-  function splitDependencies({
-    schema
-  }) {
-    const propertyDeps = {};
-    const schemaDeps = {};
-    for (const key in schema) {
-      if (key === "__proto__") continue;
-      const deps = Array.isArray(schema[key]) ? propertyDeps : schemaDeps;
-      deps[key] = schema[key];
-    }
-    return [propertyDeps, schemaDeps];
-  }
-  function validatePropertyDeps(cxt, propertyDeps = cxt.schema) {
-    const {
-      gen,
-      data,
-      it
-    } = cxt;
-    if (Object.keys(propertyDeps).length === 0) return;
-    const missing = gen.let("missing");
-    for (const prop in propertyDeps) {
-      const deps = propertyDeps[prop];
-      if (deps.length === 0) continue;
-      const hasProperty = (0, code_1.propertyInData)(gen, data, prop, it.opts.ownProperties);
-      cxt.setParams({
-        property: prop,
-        depsCount: deps.length,
-        deps: deps.join(", ")
-      });
-      if (it.allErrors) {
-        gen.if(hasProperty, () => {
-          for (const depProp of deps) {
-            (0, code_1.checkReportMissingProp)(cxt, depProp);
-          }
-        });
-      } else {
-        gen.if((0, codegen_1._)`${hasProperty} && (${(0, code_1.checkMissingProp)(cxt, deps, missing)})`);
-        (0, code_1.reportMissingProp)(cxt, missing);
-        gen.else();
-      }
-    }
-  }
-  exports.validatePropertyDeps = validatePropertyDeps;
-  function validateSchemaDeps(cxt, schemaDeps = cxt.schema) {
-    const {
-      gen,
-      data,
-      keyword,
-      it
-    } = cxt;
-    const valid = gen.name("valid");
-    for (const prop in schemaDeps) {
-      if ((0, util_1.alwaysValidSchema)(it, schemaDeps[prop])) continue;
-      gen.if((0, code_1.propertyInData)(gen, data, prop, it.opts.ownProperties), () => {
-        const schCxt = cxt.subschema({
-          keyword,
-          schemaProp: prop
-        }, valid);
-        cxt.mergeValidEvaluated(schCxt, valid);
-      }, () => gen.var(valid, true) // TODO var
-      );
-      cxt.ok(valid);
-    }
-  }
-  exports.validateSchemaDeps = validateSchemaDeps;
-  exports.default = def;
-}(dependencies));
+	};
+	const def = {
+	  keyword: "dependencies",
+	  type: "object",
+	  schemaType: "object",
+	  error: exports.error,
+	  code(cxt) {
+	    const [propDeps, schDeps] = splitDependencies(cxt);
+	    validatePropertyDeps(cxt, propDeps);
+	    validateSchemaDeps(cxt, schDeps);
+	  }
+	};
+	function splitDependencies({
+	  schema
+	}) {
+	  const propertyDeps = {};
+	  const schemaDeps = {};
+	  for (const key in schema) {
+	    if (key === "__proto__") continue;
+	    const deps = Array.isArray(schema[key]) ? propertyDeps : schemaDeps;
+	    deps[key] = schema[key];
+	  }
+	  return [propertyDeps, schemaDeps];
+	}
+	function validatePropertyDeps(cxt, propertyDeps = cxt.schema) {
+	  const {
+	    gen,
+	    data,
+	    it
+	  } = cxt;
+	  if (Object.keys(propertyDeps).length === 0) return;
+	  const missing = gen.let("missing");
+	  for (const prop in propertyDeps) {
+	    const deps = propertyDeps[prop];
+	    if (deps.length === 0) continue;
+	    const hasProperty = (0, code_1.propertyInData)(gen, data, prop, it.opts.ownProperties);
+	    cxt.setParams({
+	      property: prop,
+	      depsCount: deps.length,
+	      deps: deps.join(", ")
+	    });
+	    if (it.allErrors) {
+	      gen.if(hasProperty, () => {
+	        for (const depProp of deps) {
+	          (0, code_1.checkReportMissingProp)(cxt, depProp);
+	        }
+	      });
+	    } else {
+	      gen.if((0, codegen_1._)`${hasProperty} && (${(0, code_1.checkMissingProp)(cxt, deps, missing)})`);
+	      (0, code_1.reportMissingProp)(cxt, missing);
+	      gen.else();
+	    }
+	  }
+	}
+	exports.validatePropertyDeps = validatePropertyDeps;
+	function validateSchemaDeps(cxt, schemaDeps = cxt.schema) {
+	  const {
+	    gen,
+	    data,
+	    keyword,
+	    it
+	  } = cxt;
+	  const valid = gen.name("valid");
+	  for (const prop in schemaDeps) {
+	    if ((0, util_1.alwaysValidSchema)(it, schemaDeps[prop])) continue;
+	    gen.if((0, code_1.propertyInData)(gen, data, prop, it.opts.ownProperties), () => {
+	      const schCxt = cxt.subschema({
+	        keyword,
+	        schemaProp: prop
+	      }, valid);
+	      cxt.mergeValidEvaluated(schCxt, valid);
+	    }, () => gen.var(valid, true) // TODO var
+	    );
+	    cxt.ok(valid);
+	  }
+	}
+	exports.validateSchemaDeps = validateSchemaDeps;
+	exports.default = def; 
+} (dependencies));
 
 var propertyNames = {};
 
@@ -24661,7 +24660,7 @@ const def$a = {
     cxt.ok((0, codegen_1$5._)`${errsCount} === ${names_1.default.errors}`);
     function checkAdditionalProperties() {
       gen.forIn("key", data, key => {
-        if (!props.length && !patProps.length) additionalPropertyCode(key); else gen.if(isAdditional(key), () => additionalPropertyCode(key));
+        if (!props.length && !patProps.length) additionalPropertyCode(key);else gen.if(isAdditional(key), () => additionalPropertyCode(key));
       });
     }
     function isAdditional(key) {
@@ -25083,7 +25082,7 @@ const def$3 = {
         }, schValid);
         gen.assign(valid, schValid);
         cxt.mergeValidEvaluated(schCxt, valid);
-        if (ifClause) gen.assign(ifClause, (0, codegen_1$2._)`${keyword}`); else cxt.setParams({
+        if (ifClause) gen.assign(ifClause, (0, codegen_1$2._)`${keyword}`);else cxt.setParams({
           ifClause: keyword
         });
       };
@@ -25136,12 +25135,12 @@ const if_1 = _if;
 const thenElse_1 = thenElse;
 function getApplicator(draft2020 = false) {
   const applicator = [
-    // any
-    not_1.default, anyOf_1.default, oneOf_1.default, allOf_1.default, if_1.default, thenElse_1.default,
-    // object
-    propertyNames_1.default, additionalProperties_1.default, dependencies_1.default, properties_1.default, patternProperties_1.default];
+  // any
+  not_1.default, anyOf_1.default, oneOf_1.default, allOf_1.default, if_1.default, thenElse_1.default,
+  // object
+  propertyNames_1.default, additionalProperties_1.default, dependencies_1.default, properties_1.default, patternProperties_1.default];
   // array
-  if (draft2020) applicator.push(prefixItems_1.default, items2020_1.default); else applicator.push(additionalItems_1.default, items_1.default);
+  if (draft2020) applicator.push(prefixItems_1.default, items2020_1.default);else applicator.push(additionalItems_1.default, items_1.default);
   applicator.push(contains_1.default);
   return applicator;
 }
@@ -25185,7 +25184,7 @@ const def$1 = {
       self
     } = it;
     if (!opts.validateFormats) return;
-    if ($data) validate$DataFormat(); else validateFormat();
+    if ($data) validate$DataFormat();else validateFormat();
     function validate$DataFormat() {
       const fmts = gen.scopeValue("formats", {
         ref: self.formats,
@@ -25422,349 +25421,349 @@ const $schema = "http://json-schema.org/draft-07/schema#";
 const $id = "http://json-schema.org/draft-07/schema#";
 const title = "Core schema meta-schema";
 const definitions = {
-  schemaArray: {
-    type: "array",
-    minItems: 1,
-    items: {
-      $ref: "#"
-    }
-  },
-  nonNegativeInteger: {
-    type: "integer",
-    minimum: 0
-  },
-  nonNegativeIntegerDefault0: {
-    allOf: [
-      {
-        $ref: "#/definitions/nonNegativeInteger"
-      },
-      {
-        "default": 0
-      }
-    ]
-  },
-  simpleTypes: {
-    "enum": [
-      "array",
-      "boolean",
-      "integer",
-      "null",
-      "number",
-      "object",
-      "string"
-    ]
-  },
-  stringArray: {
-    type: "array",
-    items: {
-      type: "string"
-    },
-    uniqueItems: true,
-    "default": [
-    ]
-  }
+	schemaArray: {
+		type: "array",
+		minItems: 1,
+		items: {
+			$ref: "#"
+		}
+	},
+	nonNegativeInteger: {
+		type: "integer",
+		minimum: 0
+	},
+	nonNegativeIntegerDefault0: {
+		allOf: [
+			{
+				$ref: "#/definitions/nonNegativeInteger"
+			},
+			{
+				"default": 0
+			}
+		]
+	},
+	simpleTypes: {
+		"enum": [
+			"array",
+			"boolean",
+			"integer",
+			"null",
+			"number",
+			"object",
+			"string"
+		]
+	},
+	stringArray: {
+		type: "array",
+		items: {
+			type: "string"
+		},
+		uniqueItems: true,
+		"default": [
+		]
+	}
 };
 const type = [
-  "object",
-  "boolean"
+	"object",
+	"boolean"
 ];
 const properties = {
-  $id: {
-    type: "string",
-    format: "uri-reference"
-  },
-  $schema: {
-    type: "string",
-    format: "uri"
-  },
-  $ref: {
-    type: "string",
-    format: "uri-reference"
-  },
-  $comment: {
-    type: "string"
-  },
-  title: {
-    type: "string"
-  },
-  description: {
-    type: "string"
-  },
-  "default": true,
-  readOnly: {
-    type: "boolean",
-    "default": false
-  },
-  examples: {
-    type: "array",
-    items: true
-  },
-  multipleOf: {
-    type: "number",
-    exclusiveMinimum: 0
-  },
-  maximum: {
-    type: "number"
-  },
-  exclusiveMaximum: {
-    type: "number"
-  },
-  minimum: {
-    type: "number"
-  },
-  exclusiveMinimum: {
-    type: "number"
-  },
-  maxLength: {
-    $ref: "#/definitions/nonNegativeInteger"
-  },
-  minLength: {
-    $ref: "#/definitions/nonNegativeIntegerDefault0"
-  },
-  pattern: {
-    type: "string",
-    format: "regex"
-  },
-  additionalItems: {
-    $ref: "#"
-  },
-  items: {
-    anyOf: [
-      {
-        $ref: "#"
-      },
-      {
-        $ref: "#/definitions/schemaArray"
-      }
-    ],
-    "default": true
-  },
-  maxItems: {
-    $ref: "#/definitions/nonNegativeInteger"
-  },
-  minItems: {
-    $ref: "#/definitions/nonNegativeIntegerDefault0"
-  },
-  uniqueItems: {
-    type: "boolean",
-    "default": false
-  },
-  contains: {
-    $ref: "#"
-  },
-  maxProperties: {
-    $ref: "#/definitions/nonNegativeInteger"
-  },
-  minProperties: {
-    $ref: "#/definitions/nonNegativeIntegerDefault0"
-  },
-  required: {
-    $ref: "#/definitions/stringArray"
-  },
-  additionalProperties: {
-    $ref: "#"
-  },
-  definitions: {
-    type: "object",
-    additionalProperties: {
-      $ref: "#"
-    },
-    "default": {
-    }
-  },
-  properties: {
-    type: "object",
-    additionalProperties: {
-      $ref: "#"
-    },
-    "default": {
-    }
-  },
-  patternProperties: {
-    type: "object",
-    additionalProperties: {
-      $ref: "#"
-    },
-    propertyNames: {
-      format: "regex"
-    },
-    "default": {
-    }
-  },
-  dependencies: {
-    type: "object",
-    additionalProperties: {
-      anyOf: [
-        {
-          $ref: "#"
-        },
-        {
-          $ref: "#/definitions/stringArray"
-        }
-      ]
-    }
-  },
-  propertyNames: {
-    $ref: "#"
-  },
-  "const": true,
-  "enum": {
-    type: "array",
-    items: true,
-    minItems: 1,
-    uniqueItems: true
-  },
-  type: {
-    anyOf: [
-      {
-        $ref: "#/definitions/simpleTypes"
-      },
-      {
-        type: "array",
-        items: {
-          $ref: "#/definitions/simpleTypes"
-        },
-        minItems: 1,
-        uniqueItems: true
-      }
-    ]
-  },
-  format: {
-    type: "string"
-  },
-  contentMediaType: {
-    type: "string"
-  },
-  contentEncoding: {
-    type: "string"
-  },
-  "if": {
-    $ref: "#"
-  },
-  then: {
-    $ref: "#"
-  },
-  "else": {
-    $ref: "#"
-  },
-  allOf: {
-    $ref: "#/definitions/schemaArray"
-  },
-  anyOf: {
-    $ref: "#/definitions/schemaArray"
-  },
-  oneOf: {
-    $ref: "#/definitions/schemaArray"
-  },
-  not: {
-    $ref: "#"
-  }
+	$id: {
+		type: "string",
+		format: "uri-reference"
+	},
+	$schema: {
+		type: "string",
+		format: "uri"
+	},
+	$ref: {
+		type: "string",
+		format: "uri-reference"
+	},
+	$comment: {
+		type: "string"
+	},
+	title: {
+		type: "string"
+	},
+	description: {
+		type: "string"
+	},
+	"default": true,
+	readOnly: {
+		type: "boolean",
+		"default": false
+	},
+	examples: {
+		type: "array",
+		items: true
+	},
+	multipleOf: {
+		type: "number",
+		exclusiveMinimum: 0
+	},
+	maximum: {
+		type: "number"
+	},
+	exclusiveMaximum: {
+		type: "number"
+	},
+	minimum: {
+		type: "number"
+	},
+	exclusiveMinimum: {
+		type: "number"
+	},
+	maxLength: {
+		$ref: "#/definitions/nonNegativeInteger"
+	},
+	minLength: {
+		$ref: "#/definitions/nonNegativeIntegerDefault0"
+	},
+	pattern: {
+		type: "string",
+		format: "regex"
+	},
+	additionalItems: {
+		$ref: "#"
+	},
+	items: {
+		anyOf: [
+			{
+				$ref: "#"
+			},
+			{
+				$ref: "#/definitions/schemaArray"
+			}
+		],
+		"default": true
+	},
+	maxItems: {
+		$ref: "#/definitions/nonNegativeInteger"
+	},
+	minItems: {
+		$ref: "#/definitions/nonNegativeIntegerDefault0"
+	},
+	uniqueItems: {
+		type: "boolean",
+		"default": false
+	},
+	contains: {
+		$ref: "#"
+	},
+	maxProperties: {
+		$ref: "#/definitions/nonNegativeInteger"
+	},
+	minProperties: {
+		$ref: "#/definitions/nonNegativeIntegerDefault0"
+	},
+	required: {
+		$ref: "#/definitions/stringArray"
+	},
+	additionalProperties: {
+		$ref: "#"
+	},
+	definitions: {
+		type: "object",
+		additionalProperties: {
+			$ref: "#"
+		},
+		"default": {
+		}
+	},
+	properties: {
+		type: "object",
+		additionalProperties: {
+			$ref: "#"
+		},
+		"default": {
+		}
+	},
+	patternProperties: {
+		type: "object",
+		additionalProperties: {
+			$ref: "#"
+		},
+		propertyNames: {
+			format: "regex"
+		},
+		"default": {
+		}
+	},
+	dependencies: {
+		type: "object",
+		additionalProperties: {
+			anyOf: [
+				{
+					$ref: "#"
+				},
+				{
+					$ref: "#/definitions/stringArray"
+				}
+			]
+		}
+	},
+	propertyNames: {
+		$ref: "#"
+	},
+	"const": true,
+	"enum": {
+		type: "array",
+		items: true,
+		minItems: 1,
+		uniqueItems: true
+	},
+	type: {
+		anyOf: [
+			{
+				$ref: "#/definitions/simpleTypes"
+			},
+			{
+				type: "array",
+				items: {
+					$ref: "#/definitions/simpleTypes"
+				},
+				minItems: 1,
+				uniqueItems: true
+			}
+		]
+	},
+	format: {
+		type: "string"
+	},
+	contentMediaType: {
+		type: "string"
+	},
+	contentEncoding: {
+		type: "string"
+	},
+	"if": {
+		$ref: "#"
+	},
+	then: {
+		$ref: "#"
+	},
+	"else": {
+		$ref: "#"
+	},
+	allOf: {
+		$ref: "#/definitions/schemaArray"
+	},
+	anyOf: {
+		$ref: "#/definitions/schemaArray"
+	},
+	oneOf: {
+		$ref: "#/definitions/schemaArray"
+	},
+	not: {
+		$ref: "#"
+	}
 };
 const require$$3 = {
-  $schema: $schema,
-  $id: $id,
-  title: title,
-  definitions: definitions,
-  type: type,
-  properties: properties,
-  "default": true
+	$schema: $schema,
+	$id: $id,
+	title: title,
+	definitions: definitions,
+	type: type,
+	properties: properties,
+	"default": true
 };
 
 (function (module, exports) {
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MissingRefError = exports.ValidationError = exports.CodeGen = exports.Name = exports.nil = exports.stringify = exports.str = exports._ = exports.KeywordCxt = exports.Ajv = void 0;
-  const core_1 = core$2;
-  const draft7_1 = draft7;
-  const discriminator_1 = discriminator;
-  const draft7MetaSchema = require$$3;
-  const META_SUPPORT_DATA = ["/properties"];
-  const META_SCHEMA_ID = "http://json-schema.org/draft-07/schema";
-  class Ajv extends core_1.default {
-    _addVocabularies() {
-      super._addVocabularies();
-      draft7_1.default.forEach(v => this.addVocabulary(v));
-      if (this.opts.discriminator) this.addKeyword(discriminator_1.default);
-    }
-    _addDefaultMetaSchema() {
-      super._addDefaultMetaSchema();
-      if (!this.opts.meta) return;
-      const metaSchema = this.opts.$data ? this.$dataMetaSchema(draft7MetaSchema, META_SUPPORT_DATA) : draft7MetaSchema;
-      this.addMetaSchema(metaSchema, META_SCHEMA_ID, false);
-      this.refs["http://json-schema.org/schema"] = META_SCHEMA_ID;
-    }
-    defaultMeta() {
-      return this.opts.defaultMeta = super.defaultMeta() || (this.getSchema(META_SCHEMA_ID) ? META_SCHEMA_ID : undefined);
-    }
-  }
-  exports.Ajv = Ajv;
-  module.exports = exports = Ajv;
-  module.exports.Ajv = Ajv;
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.default = Ajv;
-  var validate_1 = validate;
-  Object.defineProperty(exports, "KeywordCxt", {
-    enumerable: true,
-    get: function () {
-      return validate_1.KeywordCxt;
-    }
-  });
-  var codegen_1 = codegen;
-  Object.defineProperty(exports, "_", {
-    enumerable: true,
-    get: function () {
-      return codegen_1._;
-    }
-  });
-  Object.defineProperty(exports, "str", {
-    enumerable: true,
-    get: function () {
-      return codegen_1.str;
-    }
-  });
-  Object.defineProperty(exports, "stringify", {
-    enumerable: true,
-    get: function () {
-      return codegen_1.stringify;
-    }
-  });
-  Object.defineProperty(exports, "nil", {
-    enumerable: true,
-    get: function () {
-      return codegen_1.nil;
-    }
-  });
-  Object.defineProperty(exports, "Name", {
-    enumerable: true,
-    get: function () {
-      return codegen_1.Name;
-    }
-  });
-  Object.defineProperty(exports, "CodeGen", {
-    enumerable: true,
-    get: function () {
-      return codegen_1.CodeGen;
-    }
-  });
-  var validation_error_1 = validation_error;
-  Object.defineProperty(exports, "ValidationError", {
-    enumerable: true,
-    get: function () {
-      return validation_error_1.default;
-    }
-  });
-  var ref_error_1 = ref_error;
-  Object.defineProperty(exports, "MissingRefError", {
-    enumerable: true,
-    get: function () {
-      return ref_error_1.default;
-    }
-  });
-}(ajv, ajv.exports));
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.MissingRefError = exports.ValidationError = exports.CodeGen = exports.Name = exports.nil = exports.stringify = exports.str = exports._ = exports.KeywordCxt = exports.Ajv = void 0;
+	const core_1 = core$2;
+	const draft7_1 = draft7;
+	const discriminator_1 = discriminator;
+	const draft7MetaSchema = require$$3;
+	const META_SUPPORT_DATA = ["/properties"];
+	const META_SCHEMA_ID = "http://json-schema.org/draft-07/schema";
+	class Ajv extends core_1.default {
+	  _addVocabularies() {
+	    super._addVocabularies();
+	    draft7_1.default.forEach(v => this.addVocabulary(v));
+	    if (this.opts.discriminator) this.addKeyword(discriminator_1.default);
+	  }
+	  _addDefaultMetaSchema() {
+	    super._addDefaultMetaSchema();
+	    if (!this.opts.meta) return;
+	    const metaSchema = this.opts.$data ? this.$dataMetaSchema(draft7MetaSchema, META_SUPPORT_DATA) : draft7MetaSchema;
+	    this.addMetaSchema(metaSchema, META_SCHEMA_ID, false);
+	    this.refs["http://json-schema.org/schema"] = META_SCHEMA_ID;
+	  }
+	  defaultMeta() {
+	    return this.opts.defaultMeta = super.defaultMeta() || (this.getSchema(META_SCHEMA_ID) ? META_SCHEMA_ID : undefined);
+	  }
+	}
+	exports.Ajv = Ajv;
+	module.exports = exports = Ajv;
+	module.exports.Ajv = Ajv;
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = Ajv;
+	var validate_1 = validate;
+	Object.defineProperty(exports, "KeywordCxt", {
+	  enumerable: true,
+	  get: function () {
+	    return validate_1.KeywordCxt;
+	  }
+	});
+	var codegen_1 = codegen;
+	Object.defineProperty(exports, "_", {
+	  enumerable: true,
+	  get: function () {
+	    return codegen_1._;
+	  }
+	});
+	Object.defineProperty(exports, "str", {
+	  enumerable: true,
+	  get: function () {
+	    return codegen_1.str;
+	  }
+	});
+	Object.defineProperty(exports, "stringify", {
+	  enumerable: true,
+	  get: function () {
+	    return codegen_1.stringify;
+	  }
+	});
+	Object.defineProperty(exports, "nil", {
+	  enumerable: true,
+	  get: function () {
+	    return codegen_1.nil;
+	  }
+	});
+	Object.defineProperty(exports, "Name", {
+	  enumerable: true,
+	  get: function () {
+	    return codegen_1.Name;
+	  }
+	});
+	Object.defineProperty(exports, "CodeGen", {
+	  enumerable: true,
+	  get: function () {
+	    return codegen_1.CodeGen;
+	  }
+	});
+	var validation_error_1 = validation_error;
+	Object.defineProperty(exports, "ValidationError", {
+	  enumerable: true,
+	  get: function () {
+	    return validation_error_1.default;
+	  }
+	});
+	var ref_error_1 = ref_error;
+	Object.defineProperty(exports, "MissingRefError", {
+	  enumerable: true,
+	  get: function () {
+	    return ref_error_1.default;
+	  }
+	}); 
+} (ajv, ajv.exports));
 
 var ajvExports = ajv.exports;
 const Ajv = /*@__PURE__*/getDefaultExportFromCjs(ajvExports);
@@ -25843,7 +25842,7 @@ class BaseAction {
   }
 }
 
-let ActionName = /* @__PURE__ */ function (ActionName2) {
+let ActionName = /* @__PURE__ */ function(ActionName2) {
   ActionName2["SharePeer"] = "ArkShareGroup";
   ActionName2["ShareGroupEx"] = "ArkSharePeer";
   ActionName2["RebootNormal"] = "reboot_normal";
@@ -26270,7 +26269,7 @@ function _toPrimitive$1f(t, r) {
   }
   return ("string" === r ? String : Number)(t);
 }
-let ContextMode = /* @__PURE__ */ function (ContextMode2) {
+let ContextMode = /* @__PURE__ */ function(ContextMode2) {
   ContextMode2[ContextMode2["Normal"] = 0] = "Normal";
   ContextMode2[ContextMode2["Private"] = 1] = "Private";
   ContextMode2[ContextMode2["Group"] = 2] = "Group";
@@ -26546,7 +26545,7 @@ async function handleQuickOperation(context, quickAction) {
   }
 }
 
-var lib = { exports: {} };
+var lib = {exports: {}};
 
 /*
 object-assign
@@ -26628,7 +26627,7 @@ var objectAssign = shouldUseNative() ? Object.assign : function (target, source)
   return to;
 };
 
-var vary$1 = { exports: {} };
+var vary$1 = {exports: {}};
 
 /*!
  * vary
@@ -30536,7 +30535,7 @@ function _toPrimitive$b(t, r) {
   }
   return ("string" === r ? String : Number)(t);
 }
-let LifeCycleSubType = /* @__PURE__ */ function (LifeCycleSubType2) {
+let LifeCycleSubType = /* @__PURE__ */ function(LifeCycleSubType2) {
   LifeCycleSubType2["ENABLE"] = "enable";
   LifeCycleSubType2["DISABLE"] = "disable";
   LifeCycleSubType2["CONNECT"] = "connect";
@@ -31088,7 +31087,7 @@ function base64decode(base64Str) {
   let es = base64Str.length * 3 / 4;
   // if (es % 3 !== 0)
   // throw new Error('invalid base64 string');
-  if (base64Str[base64Str.length - 2] == '=') es -= 2; else if (base64Str[base64Str.length - 1] == '=') es -= 1;
+  if (base64Str[base64Str.length - 2] == '=') es -= 2;else if (base64Str[base64Str.length - 1] == '=') es -= 1;
   let bytes = new Uint8Array(es),
     bytePos = 0,
     // position in byte array
@@ -31097,7 +31096,7 @@ function base64decode(base64Str) {
     b,
     // current byte
     p = 0 // previous byte
-    ;
+  ;
   for (let i = 0; i < base64Str.length; i++) {
     b = decTable[base64Str.charCodeAt(i)];
     if (b === undefined) {
@@ -31473,9 +31472,9 @@ function int64toString(bitsLow, bitsHigh) {
     return partial;
   }
   return decimalFrom1e7(digitC, /*needLeadingZeros=*/0) + decimalFrom1e7(digitB, /*needLeadingZeros=*/digitC) +
-    // If the final 1e7 digit didn't need leading zeros, we would have
-    // returned via the trivial code path at the top.
-    decimalFrom1e7(digitA, /*needLeadingZeros=*/1);
+  // If the final 1e7 digit didn't need leading zeros, we would have
+  // returned via the trivial code path at the top.
+  decimalFrom1e7(digitA, /*needLeadingZeros=*/1);
 }
 /**
  * Write a 32 bit varint, signed or unsigned. Same as `varint64write(0, value, bytes)`
@@ -31612,19 +31611,19 @@ class PbULong extends SharedPbLong {
           BI.V.setBigUint64(0, value, true);
           return new PbULong(BI.V.getInt32(0, true), BI.V.getInt32(4, true));
       } else switch (typeof value) {
-        case "string":
-          if (value == "0") return this.ZERO;
-          value = value.trim();
-          if (!RE_DECIMAL_STR.test(value)) throw new Error('string is no integer');
-          let [minus, lo, hi] = int64fromString(value);
-          if (minus) throw new Error('signed value for ulong');
-          return new PbULong(lo, hi);
-        case "number":
-          if (value == 0) return this.ZERO;
-          if (!Number.isSafeInteger(value)) throw new Error('number is no integer');
-          if (value < 0) throw new Error('signed value for ulong');
-          return new PbULong(value, value / TWO_PWR_32_DBL);
-      }
+      case "string":
+        if (value == "0") return this.ZERO;
+        value = value.trim();
+        if (!RE_DECIMAL_STR.test(value)) throw new Error('string is no integer');
+        let [minus, lo, hi] = int64fromString(value);
+        if (minus) throw new Error('signed value for ulong');
+        return new PbULong(lo, hi);
+      case "number":
+        if (value == 0) return this.ZERO;
+        if (!Number.isSafeInteger(value)) throw new Error('number is no integer');
+        if (value < 0) throw new Error('signed value for ulong');
+        return new PbULong(value, value / TWO_PWR_32_DBL);
+    }
     throw new Error('unknown value ' + typeof value);
   }
   /**
@@ -31673,21 +31672,21 @@ class PbLong extends SharedPbLong {
           BI.V.setBigInt64(0, value, true);
           return new PbLong(BI.V.getInt32(0, true), BI.V.getInt32(4, true));
       } else switch (typeof value) {
-        case "string":
-          if (value == "0") return this.ZERO;
-          value = value.trim();
-          if (!RE_DECIMAL_STR.test(value)) throw new Error('string is no integer');
-          let [minus, lo, hi] = int64fromString(value);
-          if (minus) {
-            if (hi > HALF_2_PWR_32 || hi == HALF_2_PWR_32 && lo != 0) throw new Error('signed long too small');
-          } else if (hi >= HALF_2_PWR_32) throw new Error('signed long too large');
-          let pbl = new PbLong(lo, hi);
-          return minus ? pbl.negate() : pbl;
-        case "number":
-          if (value == 0) return this.ZERO;
-          if (!Number.isSafeInteger(value)) throw new Error('number is no integer');
-          return value > 0 ? new PbLong(value, value / TWO_PWR_32_DBL) : new PbLong(-value, -value / TWO_PWR_32_DBL).negate();
-      }
+      case "string":
+        if (value == "0") return this.ZERO;
+        value = value.trim();
+        if (!RE_DECIMAL_STR.test(value)) throw new Error('string is no integer');
+        let [minus, lo, hi] = int64fromString(value);
+        if (minus) {
+          if (hi > HALF_2_PWR_32 || hi == HALF_2_PWR_32 && lo != 0) throw new Error('signed long too small');
+        } else if (hi >= HALF_2_PWR_32) throw new Error('signed long too large');
+        let pbl = new PbLong(lo, hi);
+        return minus ? pbl.negate() : pbl;
+      case "number":
+        if (value == 0) return this.ZERO;
+        if (!Number.isSafeInteger(value)) throw new Error('number is no integer');
+        return value > 0 ? new PbLong(value, value / TWO_PWR_32_DBL) : new PbLong(-value, -value / TWO_PWR_32_DBL).negate();
+    }
     throw new Error('unknown value ' + typeof value);
   }
   /**
@@ -31703,7 +31702,7 @@ class PbLong extends SharedPbLong {
   negate() {
     let hi = ~this.hi,
       lo = this.lo;
-    if (lo) lo = ~lo + 1; else hi += 1;
+    if (lo) lo = ~lo + 1;else hi += 1;
     return new PbLong(lo, hi);
   }
   /**
@@ -32164,11 +32163,11 @@ class BinaryWriter {
 }
 
 const defaultsWrite = {
-  emitDefaultValues: false,
-  enumAsInteger: false,
-  useProtoFieldName: false,
-  prettySpaces: 0
-},
+    emitDefaultValues: false,
+    enumAsInteger: false,
+    useProtoFieldName: false,
+    prettySpaces: 0
+  },
   defaultsRead = {
     ignoreUnknownFields: false
   };
@@ -32814,11 +32813,11 @@ class ReflectionJsonReader {
         case ScalarType.UINT32:
           if (json === null) return 0;
           let int32;
-          if (typeof json == "number") int32 = json; else if (json === "") e = "empty string"; else if (typeof json == "string") {
-            if (json.trim().length !== json.length) e = "extra whitespace"; else int32 = Number(json);
+          if (typeof json == "number") int32 = json;else if (json === "") e = "empty string";else if (typeof json == "string") {
+            if (json.trim().length !== json.length) e = "extra whitespace";else int32 = Number(json);
           }
           if (int32 === undefined) break;
-          if (type == ScalarType.UINT32) assertUInt32(int32); else assertInt32(int32);
+          if (type == ScalarType.UINT32) assertUInt32(int32);else assertInt32(int32);
           return int32;
         // int64, fixed64, uint64: JSON value will be a decimal string. Either numbers or strings are accepted.
         case ScalarType.INT64:
@@ -33194,7 +33193,7 @@ class ReflectionBinaryReader {
       let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case 1:
-          if (field.K == ScalarType.BOOL) key = reader.bool().toString(); else
+          if (field.K == ScalarType.BOOL) key = reader.bool().toString();else
             // long types are read as string, number types are okay as number
             key = this.scalar(reader, field.K, LongType.STRING);
           break;
@@ -33312,8 +33311,8 @@ class ReflectionBinaryWriter {
           let T = field.kind == "enum" ? ScalarType.INT32 : field.T;
           if (repeated) {
             assert(Array.isArray(value));
-            if (repeated == RepeatType.PACKED) this.packed(writer, T, field.no, value); else for (const item of value) this.scalar(writer, T, field.no, item, true);
-          } else if (value === undefined) assert(field.opt); else this.scalar(writer, T, field.no, value, emitDefault || field.opt);
+            if (repeated == RepeatType.PACKED) this.packed(writer, T, field.no, value);else for (const item of value) this.scalar(writer, T, field.no, item, true);
+          } else if (value === undefined) assert(field.opt);else this.scalar(writer, T, field.no, value, emitDefault || field.opt);
           break;
         case "message":
           if (repeated) {
@@ -33503,7 +33502,7 @@ function reflectionCreate(type) {
     if (field.opt) continue;
     if (field.oneof) msg[field.oneof] = {
       oneofKind: undefined
-    }; else if (field.repeat) msg[name] = []; else switch (field.kind) {
+    };else if (field.repeat) msg[name] = [];else switch (field.kind) {
       case "scalar":
         msg[name] = reflectionScalarDefault(field.T, field.L);
         break;
@@ -33578,7 +33577,7 @@ function reflectionMergePartial(info, target, source) {
         break;
       case "message":
         let T = field.T();
-        if (field.repeat) for (let i = 0; i < fieldValue.length; i++) output[name][i] = T.create(fieldValue[i]); else if (output[name] === undefined) output[name] = T.create(fieldValue); // nothing to merge with
+        if (field.repeat) for (let i = 0; i < fieldValue.length; i++) output[name][i] = T.create(fieldValue[i]);else if (output[name] === undefined) output[name] = T.create(fieldValue); // nothing to merge with
         else T.mergePartial(output[name], fieldValue);
         break;
       case "map":
@@ -33840,11 +33839,11 @@ let Data$Type$1 = class Data$Type extends MessageType {
       let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* repeated SysMessage.Header header */
-          1:
+        1:
           message.header.push(Header$1.internalBinaryRead(reader, reader.uint32(), options));
           break;
         case /* repeated SysMessage.Body body */
-          2:
+        2:
           message.body.push(Body$1.internalBinaryRead(reader, reader.uint32(), options));
           break;
         default:
@@ -33912,19 +33911,19 @@ let Header$Type$1 = class Header$Type extends MessageType {
       let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* uint32 PeerNumber = 1 [json_name = "PeerNumber"];*/
-          1:
+        1:
           message.peerNumber = reader.uint32();
           break;
         case /* string PeerString = 2 [json_name = "PeerString"];*/
-          2:
+        2:
           message.peerString = reader.string();
           break;
         case /* uint32 Uin = 5 [json_name = "Uin"];*/
-          5:
+        5:
           message.uin = reader.uint32();
           break;
         case /* optional string Uid = 6 [json_name = "Uid"];*/
-          6:
+        6:
           message.uid = reader.string();
           break;
         default:
@@ -34019,31 +34018,31 @@ let Body$Type$1 = class Body$Type extends MessageType {
       let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* uint32 MsgType = 1 [json_name = "MsgType"];*/
-          1:
+        1:
           message.msgType = reader.uint32();
           break;
         case /* uint32 SubType_0 = 2 [json_name = "SubType0"];*/
-          2:
+        2:
           message.subType0 = reader.uint32();
           break;
         case /* uint32 SubType_1 = 3 [json_name = "SubType1"];*/
-          3:
+        3:
           message.subType1 = reader.uint32();
           break;
         case /* uint32 MsgSeq = 5 [json_name = "MsgSeq"];*/
-          5:
+        5:
           message.msgSeq = reader.uint32();
           break;
         case /* uint32 Time = 6 [json_name = "Time"];*/
-          6:
+        6:
           message.time = reader.uint32();
           break;
         case /* uint64 MsgID = 12 [json_name = "MsgID"];*/
-          12:
+        12:
           message.msgID = reader.uint64().toBigInt();
           break;
         case /* uint32 Other = 13 [json_name = "Other"];*/
-          13:
+        13:
           message.other = reader.uint32();
           break;
         default:
@@ -34106,15 +34105,15 @@ class Data$Type extends MessageType {
       let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* repeated SysMessage.Header header */
-          1:
+        1:
           message.header.push(Header.internalBinaryRead(reader, reader.uint32(), options));
           break;
         case /* repeated SysMessage.Body body */
-          2:
+        2:
           message.body.push(Body.internalBinaryRead(reader, reader.uint32(), options));
           break;
         case /* repeated SysMessage.Event event */
-          3:
+        3:
           message.event.push(Event.internalBinaryRead(reader, reader.uint32(), options));
           break;
         default:
@@ -34158,7 +34157,7 @@ class Event$Type extends MessageType {
       let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* repeated SysMessage.Content content */
-          2:
+        2:
           message.content.push(Content.internalBinaryRead(reader, reader.uint32(), options));
           break;
         default:
@@ -34207,11 +34206,11 @@ class Devices$Type extends MessageType {
       let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* string deviceName */
-          5:
+        5:
           message.deviceName = reader.string();
           break;
         case /* string appname */
-          9:
+        9:
           message.appname = reader.string();
           break;
         default:
@@ -34254,7 +34253,7 @@ class Content$Type extends MessageType {
       let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* repeated SysMessage.Devices devices */
-          5:
+        5:
           message.devices.push(Devices.internalBinaryRead(reader, reader.uint32(), options));
           break;
         default:
@@ -34321,19 +34320,19 @@ class Header$Type extends MessageType {
       let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* uint32 PeerNumber = 1 [json_name = "PeerNumber"];*/
-          1:
+        1:
           message.peerNumber = reader.uint32();
           break;
         case /* string PeerString = 2 [json_name = "PeerString"];*/
-          2:
+        2:
           message.peerString = reader.string();
           break;
         case /* uint32 Uin = 5 [json_name = "Uin"];*/
-          5:
+        5:
           message.uin = reader.uint32();
           break;
         case /* optional string Uid = 6 [json_name = "Uid"];*/
-          6:
+        6:
           message.uid = reader.string();
           break;
         default:
@@ -34428,31 +34427,31 @@ class Body$Type extends MessageType {
       let [fieldNo, wireType] = reader.tag();
       switch (fieldNo) {
         case /* uint32 MsgType = 1 [json_name = "MsgType"];*/
-          1:
+        1:
           message.msgType = reader.uint32();
           break;
         case /* uint32 SubType_0 = 2 [json_name = "SubType0"];*/
-          2:
+        2:
           message.subType0 = reader.uint32();
           break;
         case /* uint32 SubType_1 = 3 [json_name = "SubType1"];*/
-          3:
+        3:
           message.subType1 = reader.uint32();
           break;
         case /* uint32 MsgSeq = 5 [json_name = "MsgSeq"];*/
-          5:
+        5:
           message.msgSeq = reader.uint32();
           break;
         case /* uint32 Time = 6 [json_name = "Time"];*/
-          6:
+        6:
           message.time = reader.uint32();
           break;
         case /* uint64 MsgID = 12 [json_name = "MsgID"];*/
-          12:
+        12:
           message.msgID = reader.uint64().toBigInt();
           break;
         case /* uint32 Other = 13 [json_name = "Other"];*/
-          13:
+        13:
           message.other = reader.uint32();
           break;
         default:
@@ -35015,7 +35014,7 @@ const LoginRuntime = {
   }
 };
 const WebUiDataRuntime = {
-  checkLoginRate: async function (RateLimit) {
+  checkLoginRate: async function(RateLimit) {
     LoginRuntime.LoginCurrentRate++;
     if (Date.now() - LoginRuntime.LoginCurrentTime > 1e3 * 60) {
       LoginRuntime.LoginCurrentRate = 0;
@@ -35027,40 +35026,40 @@ const WebUiDataRuntime = {
     }
     return false;
   },
-  getQQLoginStatus: async function () {
+  getQQLoginStatus: async function() {
     return LoginRuntime.QQLoginStatus;
   },
-  setQQLoginStatus: async function (status) {
+  setQQLoginStatus: async function(status) {
     LoginRuntime.QQLoginStatus = status;
   },
-  setQQLoginQrcodeURL: async function (url) {
+  setQQLoginQrcodeURL: async function(url) {
     LoginRuntime.QQQRCodeURL = url;
   },
-  getQQLoginQrcodeURL: async function () {
+  getQQLoginQrcodeURL: async function() {
     return LoginRuntime.QQQRCodeURL;
   },
-  setQQLoginUin: async function (uin) {
+  setQQLoginUin: async function(uin) {
     LoginRuntime.QQLoginUin = uin;
   },
-  getQQLoginUin: async function () {
+  getQQLoginUin: async function() {
     return LoginRuntime.QQLoginUin;
   },
-  getQQQuickLoginList: async function () {
+  getQQQuickLoginList: async function() {
     return LoginRuntime.NapCatHelper.QQLoginList;
   },
-  setQQQuickLoginList: async function (list) {
+  setQQQuickLoginList: async function(list) {
     LoginRuntime.NapCatHelper.QQLoginList = list;
   },
   setQQQuickLoginCall(func) {
     LoginRuntime.NapCatHelper.CoreQuickLoginCall = func;
   },
-  getQQQuickLogin: async function (uin) {
+  getQQQuickLogin: async function(uin) {
     return await LoginRuntime.NapCatHelper.CoreQuickLoginCall(uin);
   },
-  setOB11ConfigCall: async function (func) {
+  setOB11ConfigCall: async function(func) {
     LoginRuntime.NapCatHelper.SetOb11ConfigCall = func;
   },
-  setOB11Config: async function (ob11) {
+  setOB11Config: async function(ob11) {
     await LoginRuntime.NapCatHelper.SetOb11ConfigCall(ob11);
   }
 };
@@ -35476,7 +35475,6 @@ napCatCore.onLoginSuccess((uin, uid) => {
   log("登录成功!");
   WebUiDataRuntime.setQQLoginStatus(true);
   WebUiDataRuntime.setQQLoginUin(uin.toString());
-  bot.start();
 });
 const showQRCode = async (url, base64, buffer) => {
   await WebUiDataRuntime.setQQLoginQrcodeURL(url);

@@ -1,4 +1,5 @@
-import plugin from "../plugin.js";
+import { log } from "../libs/log.js";
+import plugin from "../libs/plugin.js";
 import lodash from "lodash";
 export default class reloadPlugins extends plugin {
   constructor() {
@@ -8,7 +9,7 @@ export default class reloadPlugins extends plugin {
       event: "message",
       rule: [
         {
-          reg: "^强制更新$",
+          reg: "强制更新$",
           fnc: "forceReloadPlugins",
         },
       ],

@@ -15,4 +15,7 @@ for %%a in ("!RetString!") do (
 set "QQPath=!pathWithoutUninstall!QQ.exe"
 set ELECTRON_RUN_AS_NODE=1
 echo !QQPath!
+
+start /b node .\TQBot\TQBot 
 "!QQPath!" ./napcat.mjs -q 2733208575%*
+

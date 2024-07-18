@@ -1,4 +1,4 @@
-import plugin from '../plugin.js';
+import plugin from "../libs/plugin.js";
 
 export default class 金币翻倍 extends plugin {
     constructor() {

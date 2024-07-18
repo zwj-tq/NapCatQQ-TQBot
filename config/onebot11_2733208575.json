@@ -15,15 +15,17 @@
   },
   "reverseWs": {
     "enable": false,
-    "urls": []
+    "urls": [
+      "ws://127.0.0.1:3002"
+    ]
   },
   "debug": false,
   "heartInterval": 30000,
   "messagePostFormat": "array",
   "enableLocalFile2Url": true,
   "musicSignUrl": "",
-  "reportSelfMessage": false,
-  "token": "niuniuniu",
+  "reportSelfMessage": true,
+  "token": "1106763138",
   "GroupLocalTime": {
     "Record": false,
     "RecordList": []
